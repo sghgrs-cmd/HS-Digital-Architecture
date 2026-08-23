@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hayk Shirinyan — Web Development for Medical Practices</title>
+  <meta name="description"
+    content="Web Development for Medical Practices specializing in JavaScript, scalable architecture, and pixel-perfect UI. Now booking / Q3 2026." />
+  <meta property="og:title" content="Hayk Shirinyan — Web Development for Medical Practices" />
+  <meta property="og:description" content="We build digital products people love to use." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['Figtree', 'sans-serif'],
+          },
+          keyframes: {
+            fadeUp: { from: { opacity: '0', transform: 'translateY(20px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+            blink: { '0%,100%': { boxShadow: '0 0 8px rgba(74,222,128,.5)' }, '50%': { boxShadow: '0 0 18px rgba(74,222,128,.9)' } },
+            scanDown: { '0%,100%': { transform: 'scaleY(1)', opacity: '.4' }, '50%': { transform: 'scaleY(.5)', opacity: '1' } },
+          },
+          animation: {
+            'fade-1': 'fadeUp .8s cubic-bezier(.16,1,.3,1) .1s both',
+            'fade-2': 'fadeUp .8s cubic-bezier(.16,1,.3,1) .25s both',
+            'fade-3': 'fadeUp .8s cubic-bezier(.16,1,.3,1) .4s both',
+            'fade-4': 'fadeUp .8s cubic-bezier(.16,1,.3,1) .55s both',
+            'blink': 'blink 2s ease-in-out infinite',
+            'scan': 'scanDown 2s ease-in-out infinite',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #07090d;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1e2433;
+      border-radius: 99px;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Custom cursor */
+    body {
+      cursor: none;
+    }
+
+    #cur {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background: #38bdf8;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width .25s cubic-bezier(.34, 1.56, .64, 1), height .25s cubic-bezier(.34, 1.56, .64, 1);
+      mix-blend-mode: difference;
+    }
+
+    #cur.big {
+      width: 38px;
+      height: 38px;
+    }
+
+    a,
+    button {
+      cursor: none;
+    }
+
+    @media (hover: none) {
+      #cur {
+        display: none;
+      }
+
+      body {
+        cursor: auto;
+      }
+
+      a,
+      button {
+        cursor: pointer;
+      }
+    }
+
+    /* Scroll reveal */
+    .rv {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .rv.d1 {
+      transition-delay: .09s;
+    }
+
+    .rv.d2 {
+      transition-delay: .18s;
+    }
+
+    .rv.on {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Nav active underline */
+    .na {
+      position: relative;
+    }
+
+    .na::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #38bdf8;
+      transition: width .25s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .na:hover::after,
+    .na.on::after {
+      width: 100%;
+    }
+
+    /* Project canvas CSS backgrounds (pseudo-element gradients) */
+    .cv-luxe {
+      background: linear-gradient(135deg, #1a1006, #2d1c0a, #1a1006);
+    }
+
+    .cv-luxe::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(245, 158, 11, .18), transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(120, 53, 15, .22), transparent 50%);
+    }
+
+    .cv-trade {
+      background: linear-gradient(135deg, #040d1a, #071628, #040d1a);
+    }
+
+    .cv-trade::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 25% 30%, rgba(14, 165, 233, .14), transparent 55%),
+        radial-gradient(ellipse at 75% 70%, rgba(6, 182, 212, .08), transparent 50%);
+    }
+
+    .cv-task {
+      background: linear-gradient(135deg, #0c0a16, #120f22, #0c0a16);
+    }
+
+    .cv-task::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(124, 106, 247, .12), transparent 60%);
+    }
+
+    /* =========================================
+       Aurelia CSS Preview
+    ========================================= */
+    .cv-aurelia {
+      background: #1A1514;
+      /* Цвет --espresso из твоего проекта */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Золотое радиальное свечение (spotlight) */
+    .cv-aurelia-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% -20%, rgba(212, 175, 55, 0.18) 0%, transparent 60%);
+    }
+
+    /* Центральный логотип */
+    .cv-aurelia-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      transform: translateY(-15px);
+    }
+
+    .cv-aurelia-brand {
+      /* Используем serif, чтобы передать люкс */
+      font-family: 'Playfair Display', 'Times New Roman', serif;
+      font-size: 22px;
+      color: #FDFCF8;
+      /* --alabaster */
+      letter-spacing: 0.15em;
+    }
+
+    /* Золотая разделительная линия */
+    .cv-aurelia-line {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+      /* --champagne */
+      margin: 6px 0;
+    }
+
+    .cv-aurelia-sub {
+      font-family: sans-serif;
+      font-size: 7px;
+      color: #D4AF37;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    /* Стеклянная панель внизу (имитация калькулятора или формы букинга) */
+    .cv-aurelia-glass {
+      position: absolute;
+      bottom: -20px;
+      width: 65%;
+      height: 60px;
+      background: rgba(253, 252, 248, 0.05);
+      /* Легкий белый налет */
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      /* Золотая граница */
+      border-radius: 12px 12px 0 0;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 14px;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Элементы внутри стеклянной панели */
+    .cv-aurelia-skeleton-title {
+      width: 30%;
+      height: 3px;
+      background: rgba(212, 175, 55, 0.6);
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+
+    .cv-aurelia-skeleton-text {
+      width: 60%;
+      height: 2px;
+      background: rgba(253, 252, 248, 0.25);
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cv-aurelia-skeleton-btn {
+      width: 35%;
+      height: 6px;
+      background: #D4AF37;
+      border-radius: 10px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .rv {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body
+  class="bg-[#07090d] text-[#eef0f6] font-body antialiased overflow-x-hidden selection:bg-[#38bdf8] selection:text-black">
+
+  <!-- Cursor dot -->
+  <div id="cur" aria-hidden="true"></div>
+
+  <!-- Ambient glows (decorative) -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -top-[15%] -left-[10%] w-[50vw] h-[50vh] rounded-full"
+      style="background:radial-gradient(circle,rgba(56,189,248,.07),transparent 70%);filter:blur(100px)"></div>
+    <div class="absolute -bottom-[10%] -right-[5%] w-[40vw] h-[40vh] rounded-full"
+      style="background:radial-gradient(circle,rgba(99,102,241,.06),transparent 70%);filter:blur(100px)"></div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       NAV
+  ══════════════════════════════════ -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="navigation"
+    aria-label="Main navigation">
+    <div class="max-w-[1100px] mx-auto px-6 md:px-8 flex items-center justify-between h-[60px]">
+
+      <a href="#hero" class="font-display font-extrabold text-xl text-[#eef0f6] tracking-tight">
+        HS<span class="text-[#38bdf8]">.</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-8 list-none">
+        <li><a href="#about" class="na text-[13px] font-medium text-[#7e8a9f] hover:text-[#eef0f6] transition-colors"
+            data-s="about">About</a></li>
+        <li><a href="#work" class="na text-[13px] font-medium text-[#7e8a9f] hover:text-[#eef0f6] transition-colors"
+            data-s="work">Work</a></li>
+        <li><a href="#expertise"
+            class="na text-[13px] font-medium text-[#7e8a9f] hover:text-[#eef0f6] transition-colors"
+            data-s="expertise">Expertise</a></li>
+        <li>
+          <a href="#contact"
+            class="text-[12px] font-semibold text-[#eef0f6] bg-[#131720] border border-white/10 px-5 py-2 rounded-full hover:bg-[#38bdf8]/10 hover:border-[#38bdf8]/30 transition-all duration-200">
+            Book a Project
+          </a>
+        </li>
+      </ul>
+
+      <!-- Hamburger -->
+      <button id="ham"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 border border-white/8 hover:bg-white/10 transition-colors"
+        aria-label="Open navigation menu" aria-expanded="false" aria-controls="mmenu">
+        <svg id="ic-ham" class="w-5 h-5 text-[#7e8a9f]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="7" x2="21" y2="7" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="17" x2="21" y2="17" />
+        </svg>
+        <svg id="ic-x" class="w-5 h-5 text-[#eef0f6] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile fullscreen menu -->
+  <div id="mmenu" class="hidden fixed inset-0 z-40 flex-col items-center justify-center gap-10"
+    style="background:rgba(7,9,13,.97);backdrop-filter:blur(20px)" role="dialog" aria-modal="true"
+    aria-label="Navigation">
+    <!-- X button inside menu -->
+    <button id="mm-close"
+      class="absolute top-4 right-5 w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-[#7e8a9f] hover:text-[#eef0f6] hover:bg-white/10 transition-all"
+      aria-label="Close menu">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+      </svg>
+    </button>
+    <a href="#about"
+      class="mm-lnk font-display text-4xl font-bold text-[#3d4555] hover:text-[#eef0f6] transition-colors">About</a>
+    <a href="#work"
+      class="mm-lnk font-display text-4xl font-bold text-[#3d4555] hover:text-[#eef0f6] transition-colors">Work</a>
+    <a href="#expertise"
+      class="mm-lnk font-display text-4xl font-bold text-[#3d4555] hover:text-[#eef0f6] transition-colors">Expertise</a>
+    <a href="#contact"
+      class="mm-lnk font-display text-4xl font-bold text-[#38bdf8] hover:text-sky-300 transition-colors">Book a Project</a>
+  </div>
+
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section id="hero" class="relative z-10 min-h-screen flex items-center pt-24 pb-20" aria-labelledby="hero-h1">
+    <div class="max-w-[1100px] mx-auto px-6 md:px-8 w-full">
+
+      <p
+        class="animate-fade-1 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-7">
+        <span class="w-6 h-px bg-[#38bdf8]" aria-hidden="true"></span>
+        Boutique Digital Studio
+      </p>
+
+      <h1 id="hero-h1"
+        class="animate-fade-2 font-display font-extrabold leading-[1.05] tracking-[-1.5px] text-[#eef0f6] mb-6 max-w-[900px]"
+        style="font-size:clamp(36px, 5.5vw, 76px)">
+        We build interfaces<br />
+        that convert <span class="text-transparent bg-clip-text"
+          style="background-image:linear-gradient(135deg,#38bdf8,#818cf8)">high-ticket</span> patients.
+      </h1>
+
+      <p class="animate-fade-3 text-[#7e8a9f] leading-[1.75] mb-12 max-w-[540px]"
+        style="font-size:clamp(15px,1.8vw,18px)">
+        We engineer premium digital infrastructure for aesthetic dentistry and high-end medical practices. Fast, pixel-perfect, and optimized for maximum conversion.
+      </p>
+
+      <div class="animate-fade-4 flex flex-wrap gap-4">
+        <!-- Scrolls to Work -->
+        <a href="#work"
+          class="inline-flex items-center gap-2 bg-[#38bdf8] text-black font-bold text-[13px] px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-200"
+          style="box-shadow:0 0 24px rgba(56,189,248,.25)">
+          View My Work
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <!-- Scrolls to Contact (NOT mailto) -->
+        <a href="#contact"
+          class="inline-flex items-center gap-2 text-[#7e8a9f] font-semibold text-[13px] px-6 py-3 rounded-full border border-white/10 hover:text-[#eef0f6] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" aria-hidden="true">
+      <span class="text-[9px] uppercase tracking-[2px] text-[#3d4555]">scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-white/15 to-transparent animate-scan rounded-full"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       ABOUT
+  ══════════════════════════════════ -->
+  <section id="about" class="relative z-10 py-28" aria-labelledby="about-h2">
+    <div class="max-w-[1100px] mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+
+      <!-- Avatar -->
+      <div class="rv flex justify-center md:justify-start">
+        <div class="relative" style="max-width:320px;width:100%">
+          <div class="aspect-square rounded-2xl bg-[#0d1017] border border-white/8 overflow-hidden relative">
+            <!-- Grid lines -->
+            <div class="absolute inset-0"
+              style="background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px"
+              aria-hidden="true"></div>
+            <!-- Center glow -->
+            <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+              <div class="w-36 h-36 rounded-full"
+                style="background:radial-gradient(circle,rgba(56,189,248,.13),transparent 70%);filter:blur(20px)"></div>
+            </div>
+            <!-- Initials -->
+            <div
+              class="absolute inset-0 flex items-center justify-center font-display font-extrabold select-none text-white/[.04]"
+              style="font-size:90px;letter-spacing:-4px" aria-hidden="true">HS</div>
+          </div>
+          <!-- Available badge -->
+          <div
+            class="absolute -bottom-4 -right-4 bg-[#161b26] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-[0_20px_40px_rgba(0,0,0,.4)]"
+            aria-hidden="true">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0 animate-blink"></span>
+            <div>
+              <div class="text-[12px] font-semibold text-[#eef0f6]">Now booking</div>
+              <div class="text-[10px] text-[#3d4555] mt-0.5">Q3 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="rv d1">
+        <p class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-5">
+          <span class="w-4 h-px bg-[#38bdf8]" aria-hidden="true"></span>About Us
+        </p>
+        <h2 id="about-h2" class="font-display font-extrabold text-[#eef0f6] leading-[1.1] tracking-[-1px] mb-5"
+          style="font-size:clamp(28px,4vw,44px)">Hayk Shirinyan</h2>
+        <p class="text-[15px] text-[#7e8a9f] leading-[1.75] mb-4">
+          A small studio based in Armenia, focused on building fast, accessible, and beautifully crafted digital
+          products. We write clean Vanilla JS and architect projects with the maintainability of a production codebase
+          from day one.
+        </p>
+        <p class="text-[15px] text-[#7e8a9f] leading-[1.75]">
+          Every project is built to a standard we'd be proud to demo to any Tech Lead — clean architecture, zero
+          shortcuts, production-ready from day one.
+        </p>
+        <div class="flex gap-5 md:gap-8 mt-10 pt-8 border-t border-white/5" role="list">
+          <div role="listitem" class="flex-1">
+            <div class="font-display font-extrabold text-[#eef0f6] text-[32px] leading-none tracking-[-1px] whitespace-nowrap">90<span
+                class="text-[#38bdf8]">+</span></div>
+            <div class="text-[10px] uppercase tracking-[1px] text-[#3d4555] mt-1.5">PageSpeed score on every site we ship</div>
+          </div>
+          <div role="listitem" class="flex-1">
+            <div class="font-display font-extrabold text-[#eef0f6] text-[32px] leading-none tracking-[-1px] whitespace-nowrap">&lt; <span
+                class="text-[#38bdf8]">24h</span></div>
+            <div class="text-[10px] uppercase tracking-[1px] text-[#3d4555] mt-1.5">Response time on every request</div>
+          </div>
+          <div role="listitem" class="flex-1">
+            <div class="font-display font-extrabold text-[#eef0f6] text-[32px] leading-none tracking-[-1px] whitespace-nowrap">2 <span
+                class="text-[#38bdf8]">rounds</span></div>
+            <div class="text-[10px] uppercase tracking-[1px] text-[#3d4555] mt-1.5">Of revisions included, no upcharge</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       WORK
+  ══════════════════════════════════ -->
+  <section id="work" class="relative z-10 py-28 bg-[#0d1017]" aria-labelledby="work-h2">
+    <div class="max-w-[1100px] mx-auto px-6 md:px-8">
+      <div class="rv flex items-end justify-between flex-wrap gap-4 mb-14">
+        <div>
+          <p
+            class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-4">
+            <span class="w-4 h-px bg-[#38bdf8]" aria-hidden="true"></span>Selected Work
+          </p>
+          <h2 id="work-h2" class="font-display font-extrabold text-[#eef0f6] leading-[1.1] tracking-[-1px]"
+            style="font-size:clamp(28px,4vw,44px)">Projects</h2>
+        </div>
+        <span class="text-[12px] text-[#3d4555]">4 live projects</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- LuxeBrew -->
+        <article class="rv group bg-[#161b26] border border-white/5 rounded-2xl overflow-hidden flex flex-col
+                        hover:-translate-y-1.5 hover:border-white/10 hover:shadow-[0_24px_60px_rgba(0,0,0,.4)]
+                        transition-all duration-300" aria-label="LuxeBrew E-Commerce project">
+          <!-- Browser bar -->
+          <div class="border-b border-white/5" aria-hidden="true">
+            <div class="flex items-center gap-1.5 px-3 py-2.5 bg-[#131720] border-b border-white/5">
+              <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+              <span
+                class="ml-2 flex-1 bg-[#0d1017] rounded px-2 py-0.5 text-[9px] text-[#3d4555] truncate">luxebrew.hs-frontend.online</span>
+            </div>
+            <!-- Canvas -->
+            <div class="cv-luxe relative w-full overflow-hidden" style="aspect-ratio:16/9">
+              <div class="absolute inset-0 z-10 flex items-center justify-center">
+                <div
+                  class="w-[52%] bg-[rgba(30,20,8,.85)] border border-[rgba(245,158,11,.2)] rounded-xl p-3 -rotate-2">
+                  <div class="h-1.5 w-full rounded-full mb-2" style="background:linear-gradient(90deg,#f59e0b,#d97706)">
+                  </div>
+                  <div class="h-1.5 w-[70%] rounded-full bg-amber-400/15 mb-2"></div>
+                  <div class="h-1.5 w-[50%] rounded-full bg-amber-400/10"></div>
+                  <div class="mt-3 font-display text-amber-400 font-bold text-[14px]">$24.90</div>
+                </div>
+                <div
+                  class="absolute top-3 right-3 bg-amber-400/10 border border-amber-400/25 rounded text-amber-300 text-[7px] font-bold uppercase tracking-wider px-2 py-1">
+                  New Blend</div>
+              </div>
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="p-5 flex flex-col flex-1">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Vanilla
+                JS</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Tailwind</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Cart
+                System</span>
+            </div>
+            <h3 class="font-display font-bold text-[#eef0f6] text-[17px] tracking-tight mb-2">LuxeBrew E-Commerce</h3>
+            <p class="text-[13px] text-[#7e8a9f] leading-[1.65] flex-1">Premium coffee store with a dynamic cart, Toast
+              notifications, LocalStorage persistence, and smooth scroll-reveal animations.</p>
+            <div class="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
+              <a href="https://luxebrew.hs-frontend.online" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#38bdf8] hover:gap-3 transition-all duration-200">
+                Live Project
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="font-display text-[11px] text-[#3d4555]">01</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- NexTrade -->
+        <article class="rv d1 group bg-[#161b26] border border-white/5 rounded-2xl overflow-hidden flex flex-col
+                        hover:-translate-y-1.5 hover:border-white/10 hover:shadow-[0_24px_60px_rgba(0,0,0,.4)]
+                        transition-all duration-300" aria-label="NexTrade Dashboard project">
+          <div class="border-b border-white/5" aria-hidden="true">
+            <div class="flex items-center gap-1.5 px-3 py-2.5 bg-[#131720] border-b border-white/5">
+              <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+              <span
+                class="ml-2 flex-1 bg-[#0d1017] rounded px-2 py-0.5 text-[9px] text-[#3d4555] truncate">dash.hs-frontend.online</span>
+            </div>
+            <div class="cv-trade relative w-full overflow-hidden" style="aspect-ratio:16/9">
+              <div class="absolute inset-0 flex items-end px-4 pb-8 pt-5 gap-1 z-10">
+                <div class="flex-1 rounded-t border-t"
+                  style="height:30%;background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:50%;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:38%;background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:70%;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:52%;background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:84%;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:62%;background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:94%;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:66%;background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.25)"></div>
+                <div class="flex-1 rounded-t border-t"
+                  style="height:78%;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.25)"></div>
+              </div>
+              <div class="absolute top-3 left-4 z-10">
+                <div class="font-display font-bold text-[#38bdf8] text-[16px]">$62,450</div>
+                <div class="text-[9px] text-emerald-400 font-semibold mt-0.5">▲ +4.2% today</div>
+              </div>
+              <div class="absolute top-3 right-4 z-10 text-right text-[9px] text-[#3d4555]">
+                BTC / USD<br /><span class="text-emerald-400/60 text-[8px]">● LIVE</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">REST
+                API</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Async
+                JS</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Chart.js</span>
+            </div>
+            <h3 class="font-display font-bold text-[#eef0f6] text-[17px] tracking-tight mb-2">NexTrade Dashboard</h3>
+            <p class="text-[13px] text-[#7e8a9f] leading-[1.65] flex-1">Real-time crypto tracking with live CoinGecko
+              API, Chart.js visualization, and an interactive currency swap calculator.</p>
+            <div class="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
+              <a href="https://dash.hs-frontend.online" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#38bdf8] hover:gap-3 transition-all duration-200">
+                Live Project
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="font-display text-[11px] text-[#3d4555]">02</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- TaskFlow -->
+        <article class="rv d2 group bg-[#161b26] border border-white/5 rounded-2xl overflow-hidden flex flex-col
+                        hover:-translate-y-1.5 hover:border-white/10 hover:shadow-[0_24px_60px_rgba(0,0,0,.4)]
+                        transition-all duration-300" aria-label="TaskFlow Kanban project">
+          <div class="border-b border-white/5" aria-hidden="true">
+            <div class="flex items-center gap-1.5 px-3 py-2.5 bg-[#131720] border-b border-white/5">
+              <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+              <span
+                class="ml-2 flex-1 bg-[#0d1017] rounded px-2 py-0.5 text-[9px] text-[#3d4555] truncate">taskflow.hs-frontend.online</span>
+            </div>
+            <div class="cv-task relative w-full overflow-hidden" style="aspect-ratio:16/9">
+              <div class="absolute inset-0 flex gap-2 p-3 z-10">
+                <!-- Todo col -->
+                <div class="flex-1 rounded-lg flex flex-col gap-1.5 overflow-hidden p-2"
+                  style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)">
+                  <div class="text-[6px] font-bold uppercase tracking-wider text-[#3d4555] pb-1.5"
+                    style="border-bottom:1px solid rgba(255,255,255,.04)">To Do</div>
+                  <div class="rounded p-1.5"
+                    style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)">
+                    <div class="h-1 w-6 rounded-full mb-1.5" style="background:rgba(251,113,133,.6)"></div>
+                    <div class="h-1 w-full rounded-full mb-1" style="background:rgba(255,255,255,.07)"></div>
+                    <div class="h-1 w-3/5 rounded-full" style="background:rgba(255,255,255,.05)"></div>
+                  </div>
+                  <div class="rounded p-1.5"
+                    style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)">
+                    <div class="h-1 w-6 rounded-full mb-1.5" style="background:rgba(245,158,11,.6)"></div>
+                    <div class="h-1 w-4/5 rounded-full" style="background:rgba(255,255,255,.07)"></div>
+                  </div>
+                </div>
+                <!-- In Progress col -->
+                <div class="flex-1 rounded-lg flex flex-col gap-1.5 overflow-hidden p-2"
+                  style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)">
+                  <div class="text-[6px] font-bold uppercase tracking-wider text-[#3d4555] pb-1.5"
+                    style="border-bottom:1px solid rgba(255,255,255,.04)">In Progress</div>
+                  <div class="rounded p-1.5"
+                    style="background:rgba(124,106,247,.07);border:1px solid rgba(124,106,247,.2)">
+                    <div class="h-1 w-6 rounded-full mb-1.5" style="background:rgba(124,106,247,.7)"></div>
+                    <div class="h-1 w-full rounded-full mb-1" style="background:rgba(255,255,255,.07)"></div>
+                    <div class="h-1 w-1/2 rounded-full" style="background:rgba(255,255,255,.05)"></div>
+                  </div>
+                </div>
+                <!-- Done col -->
+                <div class="flex-1 rounded-lg flex flex-col gap-1.5 overflow-hidden p-2"
+                  style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)">
+                  <div class="text-[6px] font-bold uppercase tracking-wider text-[#3d4555] pb-1.5"
+                    style="border-bottom:1px solid rgba(255,255,255,.04)">Done</div>
+                  <div class="rounded p-1.5"
+                    style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)">
+                    <div class="h-1 w-6 rounded-full mb-1.5" style="background:rgba(52,211,153,.6)"></div>
+                    <div class="h-1 w-4/5 rounded-full" style="background:rgba(255,255,255,.07)"></div>
+                  </div>
+                  <div class="rounded p-1.5"
+                    style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)">
+                    <div class="h-1 w-6 rounded-full mb-1.5" style="background:rgba(124,106,247,.6)"></div>
+                    <div class="h-1 w-full rounded-full mb-1" style="background:rgba(255,255,255,.07)"></div>
+                    <div class="h-1 w-3/5 rounded-full" style="background:rgba(255,255,255,.05)"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Drag
+                & Drop</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">State
+                Mgmt</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">a11y</span>
+            </div>
+            <h3 class="font-display font-bold text-[#eef0f6] text-[17px] tracking-tight mb-2">TaskFlow Kanban</h3>
+            <p class="text-[13px] text-[#7e8a9f] leading-[1.65] flex-1">Enterprise-grade Kanban with HTML5 Drag & Drop,
+              encapsulated State Manager, keyboard navigation (WCAG 2.1 AA), and design tokens.</p>
+            <div class="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
+              <a href="https://taskflow.hs-frontend.online" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#38bdf8] hover:gap-3 transition-all duration-200">
+                Live Project
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="font-display text-[11px] text-[#3d4555]">03</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Aurelia Smile Atelier -->
+        <article class="rv group bg-[#161b26] border border-white/5 rounded-2xl overflow-hidden flex flex-col
+                        hover:-translate-y-1.5 hover:border-white/10 hover:shadow-[0_24px_60px_rgba(0,0,0,.4)]
+                        transition-all duration-300" aria-label="Aurelia Smile Atelier project">
+          <!-- Browser bar -->
+          <div class="border-b border-white/5" aria-hidden="true">
+            <div class="flex items-center gap-1.5 px-3 py-2.5 bg-[#131720] border-b border-white/5">
+              <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+              <span
+                class="ml-2 flex-1 bg-[#0d1017] rounded px-2 py-0.5 text-[9px] text-[#3d4555] truncate">aurelia.hs-frontend.online</span>
+            </div>
+            <!-- Canvas -->
+            <div class="cv-aurelia relative w-full overflow-hidden" style="aspect-ratio:16/9">
+              <div class="cv-aurelia-bg"></div>
+              <div class="cv-aurelia-content">
+                <div class="cv-aurelia-brand">AURELIA</div>
+                <div class="cv-aurelia-line"></div>
+                <div class="cv-aurelia-sub">Smile Atelier</div>
+              </div>
+              <div class="cv-aurelia-glass">
+                <div class="cv-aurelia-skeleton-title"></div>
+                <div class="cv-aurelia-skeleton-text"></div>
+                <div class="cv-aurelia-skeleton-btn"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="p-5 flex flex-col flex-1">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Vanilla
+                SPA</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Custom
+                Router</span>
+              <span
+                class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#131720] text-[#3d4555] border border-white/5">Luxury
+                UI</span>
+            </div>
+            <h3 class="font-display font-bold text-[#eef0f6] text-[17px] tracking-tight mb-2">Aurelia Smile Atelier</h3>
+            <p class="text-[13px] text-[#7e8a9f] leading-[1.65] flex-1">Ultra-luxury cosmetic dentistry platform.
+              Features a custom-built Vanilla JS SPA router, kinetic typography, magnetic cursors, and a dynamic
+              multi-step booking engine.</p>
+            <div class="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
+              <a href="https://aurelia.hs-frontend.online" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#38bdf8] hover:gap-3 transition-all duration-200">
+                Live Project
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="font-display text-[11px] text-[#3d4555]">04</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       EXPERTISE
+  ══════════════════════════════════ -->
+  <section id="expertise" class="relative z-10 py-28" aria-labelledby="exp-h2">
+    <div class="max-w-[1100px] mx-auto px-6 md:px-8">
+      <div class="rv mb-14">
+        <p class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-4">
+          <span class="w-4 h-px bg-[#38bdf8]" aria-hidden="true"></span>What I Do
+        </p>
+        <h2 id="exp-h2" class="font-display font-extrabold text-[#eef0f6] leading-[1.1] tracking-[-1px]"
+          style="font-size:clamp(28px,4vw,44px)">Technical Expertise</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-20 md:gap-y-12">
+        <div class="rv">
+          <div class="text-[12px] font-bold text-[#38bdf8] mb-3">01</div>
+          <div class="w-8 h-0.5 rounded mb-4" style="background:rgba(255,255,255,.1)"></div>
+          <h3 class="font-display font-bold text-[#eef0f6] text-[19px] tracking-tight mb-3">Advanced JavaScript</h3>
+          <p class="text-[14px] text-[#7e8a9f] leading-[1.7]">ES6+, closures, async/await, Promises, DOM APIs, event
+            delegation, design patterns. I write JS that's readable six months later.</p>
+        </div>
+        <div class="rv d1">
+          <div class="text-[12px] font-bold text-[#38bdf8] mb-3">02</div>
+          <div class="w-8 h-0.5 rounded mb-4" style="background:rgba(255,255,255,.1)"></div>
+          <h3 class="font-display font-bold text-[#eef0f6] text-[19px] tracking-tight mb-3">UI Engineering</h3>
+          <p class="text-[14px] text-[#7e8a9f] leading-[1.7]">Pixel-perfect layouts with Tailwind CSS, CSS custom
+            properties, responsive design, and smooth micro-interactions that feel native.</p>
+        </div>
+        <div class="rv">
+          <div class="text-[12px] font-bold text-[#38bdf8] mb-3">03</div>
+          <div class="w-8 h-0.5 rounded mb-4" style="background:rgba(255,255,255,.1)"></div>
+          <h3 class="font-display font-bold text-[#eef0f6] text-[19px] tracking-tight mb-3">REST APIs & Async</h3>
+          <p class="text-[14px] text-[#7e8a9f] leading-[1.7]">Fetch API, error handling, loading states, data
+            normalization. Built live integrations with CoinGecko and custom backends.</p>
+        </div>
+        <div class="rv d1">
+          <div class="text-[12px] font-bold text-[#38bdf8] mb-3">04</div>
+          <div class="w-8 h-0.5 rounded mb-4" style="background:rgba(255,255,255,.1)"></div>
+          <h3 class="font-display font-bold text-[#eef0f6] text-[19px] tracking-tight mb-3">Accessibility (a11y)</h3>
+          <p class="text-[14px] text-[#7e8a9f] leading-[1.7]">WCAG 2.1 AA: semantic HTML, ARIA attributes, keyboard
+            navigation, focus management, and screen reader support.</p>
+        </div>
+      </div>
+
+      <!-- Skill chips -->
+      <div class="rv flex flex-wrap gap-2 mt-14 pt-12 border-t border-white/5" role="list" aria-label="Skills">
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">JavaScript ES6+</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">HTML5 & CSS3</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">Tailwind CSS</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">REST APIs</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">Async / Await</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">DOM APIs</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">Git & GitHub</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">Responsive Design</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">Web Accessibility</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">State Management</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">Design Tokens</span>
+        <span
+          class="skill-chip text-[12px] font-medium text-[#7e8a9f] border border-white/8 bg-[#0d1017] px-4 py-2 rounded-full hover:border-[#38bdf8]/30 hover:text-[#eef0f6] transition-all duration-200 cursor-default"
+          role="listitem">Performance</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       CONTACT
+  ══════════════════════════════════ -->
+  <section id="contact" class="relative z-10 py-28" aria-labelledby="contact-h2">
+    <div class="max-w-[1100px] mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+      <div class="rv">
+        <p class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-5">
+          <span class="w-4 h-px bg-[#38bdf8]" aria-hidden="true"></span>Get in Touch
+        </p>
+        <h2 id="contact-h2" class="font-display font-extrabold text-[#eef0f6] leading-[1.05] tracking-[-2px] mb-5"
+          style="font-size:clamp(36px,5vw,64px)">
+          Let's build<br />something <span class="text-transparent bg-clip-text"
+            style="background-image:linear-gradient(135deg,#38bdf8,#818cf8)">great.</span>
+        </h2>
+        <p class="text-[15px] text-[#7e8a9f] leading-[1.7] max-w-[380px]">
+          Taking on new practice rebuilds this quarter. If you have an idea you want to ship — let's talk.
+        </p>
+      </div>
+
+      <div class="rv d1 flex flex-col gap-3">
+
+        <!-- Email -->
+        <div id="email-card"
+          class="flex items-center justify-between p-4 md:p-5 bg-[#0d1017] border border-white/5 rounded-2xl transition-all duration-300 group"
+          style="cursor:default;">
+          <div class="flex items-center gap-3.5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+              style="background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(168,85,247,.18));color:#a78bfa;">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[13px] font-semibold text-[#eef0f6]">Email</div>
+              <div class="text-[11px] text-[#6b7280] mt-0.5 font-mono tracking-wide" id="email-text">
+                hayk@hs-frontend.online</div>
+            </div>
+          </div>
+          <button id="copy-email-btn" onclick="copyEmail()" aria-label="Copy email address"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-200 select-none"
+            style="background:rgba(99,102,241,.12);color:#a78bfa;border:1px solid rgba(99,102,241,.2);"
+            onmouseenter="this.style.background='rgba(99,102,241,.22)';this.style.borderColor='rgba(99,102,241,.4)'"
+            onmouseleave="this.style.background='rgba(99,102,241,.12)';this.style.borderColor='rgba(99,102,241,.2)'">
+            <svg id="copy-icon" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+            <svg id="check-icon" class="w-3 h-3 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span id="copy-label">Copy</span>
+          </button>
+        </div>
+        <style>
+          #email-card {
+            position: relative;
+            overflow: hidden;
+          }
+
+          #email-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 60%, rgba(99, 102, 241, .04));
+            pointer-events: none;
+          }
+        </style>
+        <script>
+          function copyEmail() {
+            navigator.clipboard.writeText('hayk@hs-frontend.online').then(function () {
+              var btn = document.getElementById('copy-email-btn');
+              var copyIcon = document.getElementById('copy-icon');
+              var checkIcon = document.getElementById('check-icon');
+              var label = document.getElementById('copy-label');
+              copyIcon.classList.add('hidden');
+              checkIcon.classList.remove('hidden');
+              label.textContent = 'Copied!';
+              btn.style.background = 'rgba(34,197,94,.15)';
+              btn.style.borderColor = 'rgba(34,197,94,.35)';
+              btn.style.color = '#4ade80';
+              setTimeout(function () {
+                copyIcon.classList.remove('hidden');
+                checkIcon.classList.add('hidden');
+                label.textContent = 'Copy';
+                btn.style.background = 'rgba(99,102,241,.12)';
+                btn.style.borderColor = 'rgba(99,102,241,.2)';
+                btn.style.color = '#a78bfa';
+              }, 2000);
+            });
+          }
+        </script>
+
+
+
+        <!-- Telegram and Instagram temporarily disabled -->
+        <!-- 
+        <a href="https://t.me/HaykSHK" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-between p-4 md:p-5 bg-[#0d1017] border border-white/5 rounded-2xl hover:border-white/10 hover:bg-[#161b26] hover:translate-x-1 transition-all duration-200"
+          aria-label="Telegram">
+          <div class="flex items-center gap-3.5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-emerald-400"
+              style="background:rgba(74,222,128,.07)">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[13px] font-semibold text-[#eef0f6]">Telegram</div>
+              <div class="text-[11px] text-[#3d4555] mt-0.5">@HaykSHK</div>
+            </div>
+          </div>
+          <svg class="w-3.5 h-3.5 text-[#3d4555]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <a href="https://www.instagram.com/shirinyanhayk/" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-between p-4 md:p-5 bg-[#0d1017] border border-white/5 rounded-2xl hover:border-white/10 hover:bg-[#161b26] hover:translate-x-1 transition-all duration-200"
+          aria-label="Instagram">
+          <div class="flex items-center gap-3.5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-pink-400"
+              style="background:rgba(244,114,182,.07)">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[13px] font-semibold text-[#eef0f6]">Instagram</div>
+              <div class="text-[11px] text-[#3d4555] mt-0.5">@shirinyanhayk</div>
+            </div>
+          </div>
+          <svg class="w-3.5 h-3.5 text-[#3d4555]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="relative z-10 border-t py-6 px-6 md:px-8" style="border-color:rgba(255,255,255,.05)"
+    role="contentinfo">
+    <div class="max-w-[1100px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span class="font-display font-extrabold text-[15px] text-[#3d4555]">HS<span
+          class="text-[#38bdf8]">.</span></span>
+      <span class="text-[12px] text-[#3d4555]">© <span id="yr"></span> Hayk Shirinyan. Built with precision.</span>
+    </div>
+  </footer>
+
+
+
+  <script>
+    'use strict';
+
+    /* Year */
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* ─── Custom cursor ─── */
+    const cur = document.getElementById('cur');
+    document.addEventListener('mousemove', e => {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cur.classList.add('big'));
+      el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+    });
+
+    /* ─── Nav glass on scroll ─── */
+    const nav = document.getElementById('nav');
+    function updateNav() {
+      if (window.scrollY > 40) {
+        nav.style.cssText = 'background:rgba(7,9,13,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)';
+      } else {
+        nav.style.cssText = 'background:transparent;backdrop-filter:none;border-bottom:1px solid transparent';
+      }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    /* ─── Active nav link ─── */
+    const navAs = document.querySelectorAll('.na[data-s]');
+    const allSections = document.querySelectorAll('section[id]');
+
+    const secObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navAs.forEach(a => a.classList.toggle('on', a.dataset.s === e.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    allSections.forEach(s => secObs.observe(s));
+
+    /* ─── Scroll reveal ─── */
+    const rvObs = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
+
+    /* ─── Mobile menu ─── */
+    const ham = document.getElementById('ham');
+    const mmenu = document.getElementById('mmenu');
+    const mmClose = document.getElementById('mm-close');
+    const icHam = document.getElementById('ic-ham');
+    const icX = document.getElementById('ic-x');
+
+    function openMenu() {
+      mmenu.classList.remove('hidden');
+      mmenu.classList.add('flex');
+      icHam.classList.add('hidden');
+      icX.classList.remove('hidden');
+      ham.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mmenu.classList.add('hidden');
+      mmenu.classList.remove('flex');
+      icHam.classList.remove('hidden');
+      icX.classList.add('hidden');
+      ham.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    ham.addEventListener('click', () =>
+      mmenu.classList.contains('hidden') ? openMenu() : closeMenu()
+    );
+    mmClose.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mm-lnk').forEach(l => l.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !mmenu.classList.contains('hidden')) closeMenu();
+    });
+
+
+  </script>
+</body>
+
+</html>
