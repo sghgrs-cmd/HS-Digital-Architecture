@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
   <meta charset="UTF-8" />
@@ -13,8 +13,9 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
@@ -48,6 +49,12 @@
   </script>
 
   <style>
+    html,
+    body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar {
       width: 5px;
@@ -314,7 +321,7 @@
 </head>
 
 <body
-  class="bg-[#07090d] text-[#eef0f6] font-body antialiased overflow-x-hidden selection:bg-[#38bdf8] selection:text-black">
+  class="bg-[#07090d] text-[#eef0f6] font-body antialiased overflow-x-hidden w-full selection:bg-[#38bdf8] selection:text-black">
 
   <!-- Cursor dot -->
   <div id="cur" aria-hidden="true"></div>
@@ -330,9 +337,9 @@
   <!-- ══════════════════════════════════
        NAV
   ══════════════════════════════════ -->
-  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="navigation"
+  <nav id="nav" class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300" role="navigation"
     aria-label="Main navigation">
-    <div class="max-w-[1100px] mx-auto px-6 md:px-8 flex items-center justify-between h-[60px]">
+    <div class="max-w-[1100px] w-full mx-auto px-5 sm:px-6 md:px-8 flex items-center justify-between h-[60px]">
 
       <a href="#hero" class="font-display font-extrabold text-xl text-[#eef0f6] tracking-tight">
         HS<span class="text-[#38bdf8]">.</span>
@@ -357,7 +364,7 @@
 
       <!-- Hamburger -->
       <button id="ham"
-        class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 border border-white/8 hover:bg-white/10 transition-colors"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 border border-white/8 hover:bg-white/10 transition-colors flex-shrink-0"
         aria-label="Open navigation menu" aria-expanded="false" aria-controls="mmenu">
         <svg id="ic-ham" class="w-5 h-5 text-[#7e8a9f]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -401,29 +408,29 @@
   <!-- ══════════════════════════════════
        HERO
   ══════════════════════════════════ -->
-  <section id="hero" class="relative z-10 min-h-screen flex items-center pt-24 pb-20" aria-labelledby="hero-h1">
-    <div class="max-w-[1100px] mx-auto px-6 md:px-8 w-full">
+  <section id="hero" class="relative z-10 min-h-[100svh] flex flex-col justify-start md:justify-center pt-24 sm:pt-28 md:py-0 md:min-h-screen md:items-center" aria-labelledby="hero-h1">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-6 md:px-8 w-full">
 
       <p
-        class="animate-fade-1 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-7">
+        class="animate-fade-1 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-4 sm:mb-7">
         <span class="w-6 h-px bg-[#38bdf8]" aria-hidden="true"></span>
         Boutique Digital Studio
       </p>
 
       <h1 id="hero-h1"
-        class="animate-fade-2 font-display font-extrabold leading-[1.05] tracking-[-1.5px] text-[#eef0f6] mb-6 max-w-[900px]"
-        style="font-size:clamp(36px, 5.5vw, 76px)">
-        We build interfaces<br />
+        class="animate-fade-2 font-display font-extrabold leading-[1.08] sm:leading-[1.05] tracking-[-1px] sm:tracking-[-1.5px] text-[#eef0f6] mb-5 sm:mb-6 max-w-[900px] break-words"
+        style="font-size:clamp(32px, 5.5vw, 76px)">
+        We build interfaces<br class="hidden sm:inline" />
         that convert <span class="text-transparent bg-clip-text"
           style="background-image:linear-gradient(135deg,#38bdf8,#818cf8)">high-ticket</span> patients.
       </h1>
 
-      <p class="animate-fade-3 text-[#7e8a9f] leading-[1.75] mb-12 max-w-[540px]"
+      <p class="animate-fade-3 text-[#7e8a9f] leading-[1.7] sm:leading-[1.75] mb-8 sm:mb-12 max-w-[540px]"
         style="font-size:clamp(15px,1.8vw,18px)">
         We engineer premium digital infrastructure for aesthetic dentistry and high-end medical practices. Fast, pixel-perfect, and optimized for maximum conversion.
       </p>
 
-      <div class="animate-fade-4 flex flex-wrap gap-4">
+      <div class="animate-fade-4 flex flex-wrap gap-3 sm:gap-4">
         <!-- Scrolls to Work -->
         <a href="#work"
           class="inline-flex items-center gap-2 bg-[#38bdf8] text-black font-bold text-[13px] px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-200"
@@ -443,9 +450,9 @@
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" aria-hidden="true">
+    <div class="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2" aria-hidden="true">
       <span class="text-[9px] uppercase tracking-[2px] text-[#3d4555]">scroll</span>
-      <div class="w-px h-12 bg-gradient-to-b from-white/15 to-transparent animate-scan rounded-full"></div>
+      <div class="w-px h-10 md:h-12 bg-gradient-to-b from-white/15 to-transparent animate-scan rounded-full"></div>
     </div>
   </section>
 
@@ -475,7 +482,7 @@
           </div>
           <!-- Available badge -->
           <div
-            class="absolute -bottom-4 -right-4 bg-[#161b26] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-[0_20px_40px_rgba(0,0,0,.4)]"
+            class="absolute -bottom-4 right-0 sm:-right-4 bg-[#161b26] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-[0_20px_40px_rgba(0,0,0,.4)]"
             aria-hidden="true">
             <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0 animate-blink"></span>
             <div>
@@ -502,19 +509,19 @@
           Every project is built to a standard we'd be proud to demo to any Tech Lead — clean architecture, zero
           shortcuts, production-ready from day one.
         </p>
-        <div class="flex gap-5 md:gap-8 mt-10 pt-8 border-t border-white/5" role="list">
-          <div role="listitem" class="flex-1">
-            <div class="font-display font-extrabold text-[#eef0f6] text-[32px] leading-none tracking-[-1px] whitespace-nowrap">90<span
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 md:gap-8 mt-10 pt-8 border-t border-white/5" role="list">
+          <div role="listitem">
+            <div class="font-display font-extrabold text-[#eef0f6] text-3xl sm:text-[32px] leading-none tracking-[-1px]">90<span
                 class="text-[#38bdf8]">+</span></div>
             <div class="text-[10px] uppercase tracking-[1px] text-[#3d4555] mt-1.5">PageSpeed score on every site we ship</div>
           </div>
-          <div role="listitem" class="flex-1">
-            <div class="font-display font-extrabold text-[#eef0f6] text-[32px] leading-none tracking-[-1px] whitespace-nowrap">&lt; <span
+          <div role="listitem">
+            <div class="font-display font-extrabold text-[#eef0f6] text-3xl sm:text-[32px] leading-none tracking-[-1px]">&lt; <span
                 class="text-[#38bdf8]">24h</span></div>
             <div class="text-[10px] uppercase tracking-[1px] text-[#3d4555] mt-1.5">Response time on every request</div>
           </div>
-          <div role="listitem" class="flex-1">
-            <div class="font-display font-extrabold text-[#eef0f6] text-[32px] leading-none tracking-[-1px] whitespace-nowrap">2 <span
+          <div role="listitem">
+            <div class="font-display font-extrabold text-[#eef0f6] text-3xl sm:text-[32px] leading-none tracking-[-1px]">2 <span
                 class="text-[#38bdf8]">rounds</span></div>
             <div class="text-[10px] uppercase tracking-[1px] text-[#3d4555] mt-1.5">Of revisions included, no upcharge</div>
           </div>
@@ -938,9 +945,9 @@
 
         <!-- Email -->
         <div id="email-card"
-          class="flex items-center justify-between p-4 md:p-5 bg-[#0d1017] border border-white/5 rounded-2xl transition-all duration-300 group"
+          class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 p-4 md:p-5 bg-[#0d1017] border border-white/5 rounded-2xl transition-all duration-300 group"
           style="cursor:default;">
-          <div class="flex items-center gap-3.5">
+          <div class="flex items-center gap-3.5 min-w-0">
             <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
               style="background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(168,85,247,.18));color:#a78bfa;">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -949,14 +956,14 @@
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
             </div>
-            <div>
+            <div class="min-w-0">
               <div class="text-[13px] font-semibold text-[#eef0f6]">Email</div>
-              <div class="text-[11px] text-[#6b7280] mt-0.5 font-mono tracking-wide" id="email-text">
+              <div class="text-[11px] text-[#6b7280] mt-0.5 font-mono tracking-wide truncate" id="email-text">
                 hayk@hs-frontend.online</div>
             </div>
           </div>
           <button id="copy-email-btn" onclick="copyEmail()" aria-label="Copy email address"
-            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-200 select-none"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-200 select-none flex-shrink-0"
             style="background:rgba(99,102,241,.12);color:#a78bfa;border:1px solid rgba(99,102,241,.2);"
             onmouseenter="this.style.background='rgba(99,102,241,.22)';this.style.borderColor='rgba(99,102,241,.4)'"
             onmouseleave="this.style.background='rgba(99,102,241,.12)';this.style.borderColor='rgba(99,102,241,.2)'">
