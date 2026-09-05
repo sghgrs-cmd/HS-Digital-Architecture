@@ -302,6 +302,26 @@
       border-radius: 10px;
     }
 
+    /* Marquee / Ticker */
+    @keyframes studioTicker {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: studioTicker 28s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
 
@@ -408,8 +428,8 @@
   <!-- ══════════════════════════════════
        HERO
   ══════════════════════════════════ -->
-  <section id="hero" class="relative z-10 min-h-[100svh] flex flex-col justify-start md:justify-center pt-24 sm:pt-28 md:py-0 md:min-h-screen md:items-center" aria-labelledby="hero-h1">
-    <div class="max-w-[1100px] mx-auto px-5 sm:px-6 md:px-8 w-full">
+  <section id="hero" class="relative z-10 min-h-[100svh] flex flex-col justify-between pt-24 pb-6 sm:pb-8 md:min-h-screen md:justify-center md:py-24" aria-labelledby="hero-h1">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-6 md:px-8 w-full my-auto">
 
       <p
         class="animate-fade-1 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-4 sm:mb-7">
@@ -435,7 +455,7 @@
         <a href="#work"
           class="inline-flex items-center gap-2 bg-[#38bdf8] text-black font-bold text-[13px] px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-200"
           style="box-shadow:0 0 24px rgba(56,189,248,.25)">
-          View My Work
+          View Our Work
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
@@ -449,21 +469,66 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2" aria-hidden="true">
-      <span class="text-[9px] uppercase tracking-[2px] text-[#3d4555]">scroll</span>
-      <div class="w-px h-10 md:h-12 bg-gradient-to-b from-white/15 to-transparent animate-scan rounded-full"></div>
+    <!-- Hero Bottom Bar -->
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-6 md:px-8 w-full mt-6 md:mt-0">
+      <div class="flex items-center justify-between pt-4 border-t border-white/5 text-[11px] text-[#7e8a9f]">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-[#eef0f6] font-medium">Accepting Projects</span>
+          <span class="hidden sm:inline text-[#3d4555]">· Aesthetic & Medical Practices</span>
+        </div>
+        <a href="#about" class="inline-flex items-center gap-1.5 text-[#38bdf8] font-medium hover:text-sky-300 transition-colors" aria-label="Scroll to About Studio">
+          <span>Scroll to explore</span>
+          <svg class="w-3.5 h-3.5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════
+       STUDIO TICKER / MARQUEE
+  ══════════════════════════════════ -->
+  <div class="relative z-10 w-full overflow-hidden border-y border-white/5 bg-[#0a0d14]/80 backdrop-blur-sm py-3.5" aria-hidden="true">
+    <div class="ticker-track flex items-center gap-8 whitespace-nowrap text-[11px] font-bold uppercase tracking-[2.5px] text-[#7e8a9f]/80 select-none">
+      <span>Aesthetic Dentistry</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+      <span class="text-[#eef0f6]">High-Ticket Patient Conversion</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></span>
+      <span>Bespoke Digital Infrastructure</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+      <span class="text-[#eef0f6]">Pixel-Perfect UI Engineering</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></span>
+      <span>Medical Practices</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+      <span class="text-[#eef0f6]">Sub-Second Speed</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+
+      <!-- Duplicate for seamless loop -->
+      <span>Aesthetic Dentistry</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+      <span class="text-[#eef0f6]">High-Ticket Patient Conversion</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></span>
+      <span>Bespoke Digital Infrastructure</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+      <span class="text-[#eef0f6]">Pixel-Perfect UI Engineering</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></span>
+      <span>Medical Practices</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+      <span class="text-[#eef0f6]">Sub-Second Speed</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
        ABOUT
   ══════════════════════════════════ -->
-  <section id="about" class="relative z-10 py-28" aria-labelledby="about-h2">
-    <div class="max-w-[1100px] mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+  <section id="about" class="relative z-10 py-20 md:py-28" aria-labelledby="about-h2">
+    <div class="max-w-[1100px] mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
 
-      <!-- Avatar -->
-      <div class="rv flex justify-center md:justify-start">
+      <!-- Avatar (order-2 on mobile, order-1 on desktop) -->
+      <div class="rv flex justify-center md:justify-start order-2 md:order-1">
         <div class="relative" style="max-width:320px;width:100%">
           <div class="aspect-square rounded-2xl bg-[#0d1017] border border-white/8 overflow-hidden relative">
             <!-- Grid lines -->
@@ -493,8 +558,8 @@
         </div>
       </div>
 
-      <!-- Content -->
-      <div class="rv d1">
+      <!-- Content (order-1 on mobile, order-2 on desktop) -->
+      <div class="rv d1 order-1 md:order-2">
         <p class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-5">
           <span class="w-4 h-px bg-[#38bdf8]" aria-hidden="true"></span>About Us
         </p>
@@ -842,7 +907,7 @@
     <div class="max-w-[1100px] mx-auto px-6 md:px-8">
       <div class="rv mb-14">
         <p class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[#38bdf8] mb-4">
-          <span class="w-4 h-px bg-[#38bdf8]" aria-hidden="true"></span>What I Do
+          <span class="w-4 h-px bg-[#38bdf8]" aria-hidden="true"></span>What We Do
         </p>
         <h2 id="exp-h2" class="font-display font-extrabold text-[#eef0f6] leading-[1.1] tracking-[-1px]"
           style="font-size:clamp(28px,4vw,44px)">Technical Expertise</h2>
@@ -854,7 +919,7 @@
           <div class="w-8 h-0.5 rounded mb-4" style="background:rgba(255,255,255,.1)"></div>
           <h3 class="font-display font-bold text-[#eef0f6] text-[19px] tracking-tight mb-3">Advanced JavaScript</h3>
           <p class="text-[14px] text-[#7e8a9f] leading-[1.7]">ES6+, closures, async/await, Promises, DOM APIs, event
-            delegation, design patterns. I write JS that's readable six months later.</p>
+            delegation, design patterns. We write JS that's readable six months later.</p>
         </div>
         <div class="rv d1">
           <div class="text-[12px] font-bold text-[#38bdf8] mb-3">02</div>
