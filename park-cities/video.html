@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Desktop Walkthrough — Park Cities Family Dentistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F6F2EC;
+  --paper-2: #EFE9DF;
+  --ink-deep: #0F0C0A;
+  --stone: #8E8276;
+  --accent: #A24E33;
+  --accent-inv: #D98A6A;
+  --rule: rgba(246, 242, 236, 0.12);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--paper);
+  background-color: var(--ink-deep);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle luxury grain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23paper)'/%3E%3C/svg%3E");
+}
+
+.top-bar {
+  padding: 2.75rem 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-inv);
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow::before, .eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.5vw, 4.25rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 24ch;
+  margin: 0 auto;
+}
+
+.headline em {
+  font-style: italic;
+  color: var(--accent-inv);
+}
+
+.video-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* =============================================================================
+   QUIET LUXURY VIDEO PLAYER
+   ============================================================================= */
+.lux-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.07);
+  user-select: none;
+  cursor: pointer;
+}
+
+.lux-player video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Big center play icon */
+.lux-center-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(15, 12, 10, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(246, 242, 236, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.lux-center-play svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--paper);
+  margin-left: 3px;
+  transition: transform 0.2s ease;
+}
+
+.lux-player.is-playing .lux-center-play {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.85);
+  pointer-events: none;
+}
+
+.lux-player:not(.is-playing):hover .lux-center-play {
+  border-color: var(--accent-inv);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+/* Sleek bottom controls */
+.lux-controls {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2.5rem 1.5rem 1.25rem;
+  background: linear-gradient(to top, rgba(12, 9, 8, 0.9) 0%, rgba(12, 9, 8, 0.45) 65%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  z-index: 15;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lux-player:hover .lux-controls,
+.lux-player.show-controls .lux-controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hairline Progress Scrubber */
+.lux-progress-wrap {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.lux-progress-track {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(246, 242, 236, 0.18);
+  border-radius: 1px;
+  transition: height 0.2s ease;
+}
+
+.lux-progress-wrap:hover .lux-progress-track {
+  height: 4px;
+}
+
+.lux-progress-buffered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: rgba(246, 242, 236, 0.12);
+  border-radius: 1px;
+}
+
+.lux-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--accent-inv);
+  border-radius: 1px;
+  transition: width 0.08s linear;
+}
+
+.lux-progress-thumb {
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 0 8px rgba(217, 138, 106, 0.8);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lux-progress-wrap:hover .lux-progress-thumb {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Control bar elements */
+.lux-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lux-controls-left,
+.lux-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.lux-btn {
+  background: none;
+  border: none;
+  color: var(--paper);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.lux-btn:hover {
+  opacity: 1;
+  color: var(--accent-inv);
+}
+
+.lux-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.lux-time {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: rgba(246, 242, 236, 0.7);
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+/* Action button underneath */
+.action-bar {
+  margin-top: 1.85rem;
+  display: flex;
+  justify-content: center;
+}
+
+.live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.25s ease;
+}
+
+.live-link:hover {
+  border-color: var(--accent-inv);
+  color: var(--accent-inv);
+  background: rgba(217, 138, 106, 0.06);
+  transform: translateY(-1px);
+}
+
+.footer {
+  padding: 2.25rem 2rem;
+  text-align: center;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  border-top: 1px solid var(--rule);
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 2rem 1.25rem 1rem;
+  }
+  .video-container {
+    padding: 0.75rem 1.25rem 2rem;
+  }
+  .headline {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+  }
+  .lux-controls {
+    padding: 1.5rem 1rem 0.85rem;
+  }
+  .lux-controls-left, .lux-controls-right {
+    gap: 0.75rem;
+  }
+}
+</style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="eyebrow">Desktop Walkthrough · Concept Preview</div>
+    <h1 class="headline">New Concept for <em>Park Cities Family Dentistry</em></h1>
+  </header>
+
+  <main class="video-container">
+    <div class="lux-player" id="playerWrap">
+      <video id="videoElement" src="https://storage.googleapis.com/hs-frontend-videos-public/videos/park-cities-walkthrough.mp4" playsinline preload="metadata"></video>
+
+      <!-- Center Elegant Play Button -->
+      <div class="lux-center-play" id="centerPlay">
+        <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+      </div>
+
+      <!-- Luxury Bottom Control Bar -->
+      <div class="lux-controls" id="luxControls">
+        <!-- Scrubber Progress Bar -->
+        <div class="lux-progress-wrap" id="progressWrap">
+          <div class="lux-progress-track">
+            <div class="lux-progress-buffered" id="bufferedBar"></div>
+            <div class="lux-progress-bar" id="progressBar">
+              <div class="lux-progress-thumb"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Row -->
+        <div class="lux-controls-row">
+          <div class="lux-controls-left">
+            <button class="lux-btn" id="playBtn" aria-label="Play/Pause">
+              <svg viewBox="0 0 24 24" id="playIcon"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </button>
+            <span class="lux-time" id="timeDisplay">0:00 / 0:00</span>
+          </div>
+
+          <div class="lux-controls-right">
+            <button class="lux-btn" id="muteBtn" aria-label="Mute/Unmute">
+              <svg viewBox="0 0 24 24" id="volumeIcon">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            </button>
+            <button class="lux-btn" id="fullscreenBtn" aria-label="Fullscreen">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-bar">
+      <a href="/park-cities/" class="live-link" target="_blank">View Live Interactive Site &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Private Walkthrough · HS Digital Architecture
+  </footer>
+
+<script>
+(function() {
+  const wrap = document.getElementById('playerWrap');
+  const video = document.getElementById('videoElement');
+  const playBtn = document.getElementById('playBtn');
+  const playIcon = document.getElementById('playIcon');
+  const progressWrap = document.getElementById('progressWrap');
+  const progressBar = document.getElementById('progressBar');
+  const bufferedBar = document.getElementById('bufferedBar');
+  const timeDisplay = document.getElementById('timeDisplay');
+  const muteBtn = document.getElementById('muteBtn');
+  const volumeIcon = document.getElementById('volumeIcon');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+  let idleTimeout = null;
+
+  function formatTime(sec) {
+    if (isNaN(sec)) return "0:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ":" + (s < 10 ? "0" : "") + s;
+  }
+
+  function togglePlay() {
+    if (video.paused || video.ended) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  }
+
+  video.addEventListener('play', () => {
+    wrap.classList.add('is-playing');
+    playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+    resetIdleTimer();
+  });
+
+  video.addEventListener('pause', () => {
+    wrap.classList.remove('is-playing');
+    playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
+    wrap.classList.add('show-controls');
+    clearTimeout(idleTimeout);
+  });
+
+  video.addEventListener('timeupdate', () => {
+    const cur = video.currentTime;
+    const dur = video.duration || 0;
+    const pct = dur > 0 ? (cur / dur) * 100 : 0;
+    progressBar.style.width = pct + "%";
+    timeDisplay.textContent = formatTime(cur) + " / " + formatTime(dur);
+
+    if (video.buffered.length > 0) {
+      const bufEnd = video.buffered.end(video.buffered.length - 1);
+      bufferedBar.style.width = (dur > 0 ? (bufEnd / dur) * 100 : 0) + "%";
+    }
+  });
+
+  video.addEventListener('ended', () => {
+    wrap.classList.remove('is-playing');
+    wrap.classList.add('show-controls');
+    playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
+  });
+
+  playBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    togglePlay();
+  });
+
+  wrap.addEventListener('click', (e) => {
+    // If clicked on controls row, do nothing
+    if (e.target.closest('.lux-controls')) return;
+    togglePlay();
+  });
+
+  // Seeking via scrubber
+  let isSeeking = false;
+  function seek(e) {
+    const rect = progressWrap.getBoundingClientRect();
+    const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    video.currentTime = pos * (video.duration || 0);
+  }
+
+  progressWrap.addEventListener('mousedown', (e) => {
+    isSeeking = true;
+    seek(e);
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (isSeeking) seek(e);
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isSeeking) isSeeking = false;
+  });
+
+  // Volume / Mute
+  muteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    if (video.muted) {
+      volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>';
+    } else {
+      volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
+    }
+  });
+
+  // Fullscreen
+  fullscreenBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!document.fullscreenElement) {
+      if (wrap.requestFullscreen) wrap.requestFullscreen();
+      else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+    }
+  });
+
+  // Autohide controls on idle
+  function resetIdleTimer() {
+    wrap.classList.add('show-controls');
+    clearTimeout(idleTimeout);
+    if (!video.paused) {
+      idleTimeout = setTimeout(() => {
+        wrap.classList.remove('show-controls');
+      }, 2500);
+    }
+  }
+
+  wrap.addEventListener('mousemove', resetIdleTimer);
+  wrap.addEventListener('mouseleave', () => {
+    if (!video.paused) {
+      wrap.classList.remove('show-controls');
+    }
+  });
+
+  // Keyboard controls
+  window.addEventListener('keydown', (e) => {
+    if (['Space', 'KeyK'].includes(e.code) && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      togglePlay();
+    } else if (e.code === 'KeyM') {
+      video.muted = !video.muted;
+    } else if (e.code === 'KeyF') {
+      if (!document.fullscreenElement) wrap.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
