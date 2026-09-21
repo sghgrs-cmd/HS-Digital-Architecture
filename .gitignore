@@ -1,0 +1,8 @@
+# Sensitive configs
+bank_details.json
+agreement_config.json
+*.secret.json
+
+# Python
+__pycache__/
+*.pyc

@@ -304,12 +304,16 @@ body::after {
 .action-bar {
   margin-top: 1.85rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .live-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
   color: var(--paper);
   text-decoration: none;
@@ -322,6 +326,8 @@ body::after {
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.02);
   transition: all 0.25s ease;
+  max-width: 100%;
+  text-align: center;
 }
 
 .live-link:hover {
@@ -329,6 +335,17 @@ body::after {
   color: var(--accent-inv);
   background: rgba(217, 138, 106, 0.06);
   transform: translateY(-1px);
+}
+
+.process-link {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  padding: 0.6rem 1.4rem;
+  opacity: 0.85;
+}
+
+.process-link:hover {
+  opacity: 1;
 }
 
 .footer {
@@ -359,6 +376,16 @@ body::after {
   .lux-controls-left, .lux-controls-right {
     gap: 0.75rem;
   }
+  .live-link {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.6875rem;
+  }
+  .process-link {
+    font-size: 0.625rem;
+    padding: 0.55rem 1rem;
+  }
 }
 </style>
 </head>
@@ -371,7 +398,7 @@ body::after {
 
   <main class="video-container">
     <div class="lux-player" id="playerWrap">
-      <video id="videoElement" src="https://storage.googleapis.com/hs-frontend-videos-public/videos/highland-smiles-walkthrough.mp4" playsinline preload="metadata"></video>
+      <video id="videoElement" src="https://storage.googleapis.com/hs-frontend-videos-public/videos/highland-smiles-walkthrough.mp4" poster="poster.jpg" playsinline preload="metadata"></video>
 
       <!-- Center Elegant Play Button -->
       <div class="lux-center-play" id="centerPlay">
@@ -418,11 +445,12 @@ body::after {
 
     <div class="action-bar">
       <a href="/highland-smiles/" class="live-link" target="_blank">View Live Interactive Site &rarr;</a>
+      <a href="/highland-smiles/process.pdf" class="live-link process-link" target="_blank">How It Works &middot; Price &amp; Terms &rarr;</a>
     </div>
   </main>
 
   <footer class="footer">
-    Private Walkthrough · HS Digital Architecture
+    Private Walkthrough · HS Frontend
   </footer>
 
 <script>
