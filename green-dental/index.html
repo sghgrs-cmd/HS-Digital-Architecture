@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname))location.replace('https:'+location.href.substring(5));</script>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F6F2EC">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#F6F2EC" name="theme-color"/>
 <!--
 ================================================================================
   CLINIC SHEET
@@ -43,18 +43,16 @@
          footer.legal      footer.note      footer.credit
 ================================================================================
 -->
-
 <title>Green Dental &amp; Orthodontics</title>
-<meta name="description" content="We are equipped to meet all your cosmetic, restorative, implantology, orthodontics, periodontics, endodontics, and oral surgery needs. Cosmetic Dentistry · Sh">
-<link rel="canonical" href="https://greendental.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Green Dental &amp; Orthodontics">
-<meta property="og:description" content="We are equipped to meet all your cosmetic, restorative, implantology, orthodontics, periodontics, endodontics, and oral surgery needs. Cosmetic Dentistry · Sh">
-<meta property="og:url" content="https://greendental.com">
-<meta name="twitter:card" content="summary">
-
-<link rel="preload" as="font" type="font/woff2" href="fraunces-normal.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="inter-400.woff2" crossorigin>
+<meta content="We are equipped to meet all your cosmetic, restorative, implantology, orthodontics, periodontics, endodontics, and oral surgery needs. Cosmetic Dentistry · Sh" name="description"/>
+<link href="https://greendental.com" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Green Dental &amp; Orthodontics" property="og:title"/>
+<meta content="We are equipped to meet all your cosmetic, restorative, implantology, orthodontics, periodontics, endodontics, and oral surgery needs. Cosmetic Dentistry · Sh" property="og:description"/>
+<meta content="https://greendental.com" property="og:url"/>
+<meta content="summary" name="twitter:card"/>
+<link as="font" crossorigin="" href="fraunces-normal.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="inter-400.woff2" rel="preload" type="font/woff2"/>
 <style>
 @font-face {
   font-family: 'Fraunces';
@@ -85,7 +83,6 @@
   src: url('inter-600.woff2') format('woff2');
 }
 </style>
-
 <!-- ============================================================================
      STYLES — inlined on purpose.
      As a separate file this was the last render-blocking request on the page
@@ -1236,7 +1233,6 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   .hero .mark { opacity: 0.12 !important; }
 }
 </style>
-
 <script>
 /* Sets `.js` so the reveal styles can hide content before it animates in.
    Two failsafes, because `.js [data-reveal]{opacity:0}` would otherwise leave
@@ -1258,8 +1254,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   setTimeout(function(){ h.classList.add('fonts-ready'); }, 2200);
 })(document);
 </script>
-<script src="app.js" defer></script>
-
+<script defer="" src="app.js"></script>
 <noscript><style>
   [data-reveal]{opacity:1!important;transform:none!important}
   .ln__i{transform:none!important}
@@ -1271,768 +1266,659 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   .mark [data-draw],.figmark path{stroke-dasharray:none!important;stroke-dashoffset:0!important}
 </style></noscript>
 </head>
-
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
 <!-- cursor (desktop, fine pointer only — created here, activated from app.js) -->
-<span id="cur-ring" aria-hidden="true"></span>
-<span id="cur-dot" aria-hidden="true"></span>
-
+<span aria-hidden="true" id="cur-ring"></span>
+<span aria-hidden="true" id="cur-dot"></span>
 <!-- toast container -->
-<div class="toasts" id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
-
+<div aria-atomic="false" aria-live="polite" class="toasts" id="toasts" role="status"></div>
 <!-- ============================= NAV ============================= -->
 <header class="nav" id="nav">
-  <a class="brand" href="#top" aria-label="Dr. Basil Hammoudeh, DMD, home">
-    <span class="brand__name" data-c="brand.name">Dr. Basil Hammoudeh, DMD</span>
-    <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Sherman Oaks</span>
-  </a>
-
-  <nav class="nav__links" aria-label="Primary">
-    <a class="nav__link" href="#doctor">The Dentist</a>
-    <a class="nav__link" href="#approach">Approach</a>
-    <a class="nav__link" href="#location">Location</a>
-    <a class="nav__link" href="#book">Contact</a>
-  </nav>
-
-  <div class="nav__right">
-    <a class="btn btn--sm nav__cta" href="#book" data-magnetic>
-      <span data-c="hero.cta">Schedule a consultation</span>
-    </a>
-    <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="menu">Menu</button>
-  </div>
-
-  <span class="nav__progress" id="progress" aria-hidden="true"></span>
-</header>
-
-<!-- ============================= MENU ============================= -->
-<div class="menu" id="menu" data-open="false" aria-hidden="true">
-  <div class="menu__top">
-    <span class="brand">
-      <span class="brand__name" data-c="brand.name">Dr. Basil Hammoudeh, DMD</span>
-      <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Sherman Oaks</span>
-    </span>
-    <button class="menu-btn" id="menu-close">Close</button>
-  </div>
-
-  <nav class="menu__links" aria-label="Mobile">
-    <a class="menu__link" href="#doctor">The Dentist</a>
-    <a class="menu__link" href="#approach">Approach</a>
-    <a class="menu__link" href="#location">Location</a>
-    <a class="menu__link" href="#book">Contact</a>
-  </nav>
-
-  <div class="menu__foot">
-    <a href="tel:+18187829500" data-c="book.phone">(818) 782-9500</a>
-    <a href="mailto:info@greendental.com" data-c="book.email">info@greendental.com</a>
-  </div>
+<a aria-label="Dr. Joseph Azizi, DMD, home" class="brand" href="#top">
+<span class="brand__name" data-c="brand.name">Dr. Joseph Azizi, DMD</span>
+<span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Restorative Dentistry · Sherman Oaks</span>
+</a>
+<nav aria-label="Primary" class="nav__links">
+<a class="nav__link" href="#doctor">The Dentist</a>
+<a class="nav__link" href="#approach">Approach</a>
+<a class="nav__link" href="#location">Location</a>
+<a class="nav__link" href="#book">Contact</a>
+</nav>
+<div class="nav__right">
+<a class="btn btn--sm nav__cta" data-magnetic="" href="#book">
+<span data-c="hero.cta">Schedule a consultation</span>
+</a>
+<button aria-controls="menu" aria-expanded="false" class="menu-btn" id="menu-open">Menu</button>
 </div>
-
+<span aria-hidden="true" class="nav__progress" id="progress"></span>
+</header>
+<!-- ============================= MENU ============================= -->
+<div aria-hidden="true" class="menu" data-open="false" id="menu">
+<div class="menu__top">
+<span class="brand">
+<span class="brand__name" data-c="brand.name">Dr. Joseph Azizi, DMD</span>
+<span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Restorative Dentistry · Sherman Oaks</span>
+</span>
+<button class="menu-btn" id="menu-close">Close</button>
+</div>
+<nav aria-label="Mobile" class="menu__links">
+<a class="menu__link" href="#doctor">The Dentist</a>
+<a class="menu__link" href="#approach">Approach</a>
+<a class="menu__link" href="#location">Location</a>
+<a class="menu__link" href="#book">Contact</a>
+</nav>
+<div class="menu__foot">
+<a data-c="book.phone" href="tel:+18187829500">(818) 782-9500</a>
+<a data-c="book.email" href="mailto:info@greendental.com">info@greendental.com</a>
+</div>
+</div>
 <main id="main">
-
 <!-- ============================= HERO ============================= -->
 <section class="hero" id="top">
-
-  <!-- The one mark. A compass construction: overlapping arcs on a shared
+<!-- The one mark. A compass construction: overlapping arcs on a shared
        baseline, golden division ticks, vesica crosshairs, one accent curve.
        Draws itself over 2.4s on load, then drifts slowly as the hero leaves. -->
-  <div class="mark" id="mark" aria-hidden="true">
-    <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-      <path data-draw pathLength="1" d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0"/>
-      <path data-draw pathLength="1" d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0"/>
-      <path data-draw pathLength="1" d="M60,400 L740,400"/>
-      <path data-draw pathLength="1" d="M400,40 L400,760"/>
-      <path data-draw pathLength="1" d="M160,392 L160,408 M252,392 L252,408 M308,392 L308,408 M492,392 L492,408 M548,392 L548,408 M640,392 L640,408"/>
-      <path data-draw pathLength="1" d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622"/>
-      <path data-draw data-accent pathLength="1" d="M140,500 Q400,626 660,500"/>
-    </svg>
-  </div>
-
-  <div class="wrap hero__inner">
-    <p class="hero__eyebrow eyebrow" data-hero>
-      <span data-c="hero.eyebrow">Sherman Oaks</span>
-      <span class="rule" data-hero="rule" data-delay="1" aria-hidden="true"></span>
-    </p>
-
-    <!-- Pre-split in the markup, not by JavaScript. This is the whole LCP fix:
+<div aria-hidden="true" class="mark" id="mark">
+<svg viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+<path d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0" data-draw="" pathlength="1"></path>
+<path d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0" data-draw="" pathlength="1"></path>
+<path d="M60,400 L740,400" data-draw="" pathlength="1"></path>
+<path d="M400,40 L400,760" data-draw="" pathlength="1"></path>
+<path d="M160,392 L160,408 M252,392 L252,408 M308,392 L308,408 M492,392 L492,408 M548,392 L548,408 M640,392 L640,408" data-draw="" pathlength="1"></path>
+<path d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622" data-draw="" pathlength="1"></path>
+<path d="M140,500 Q400,626 660,500" data-accent="" data-draw="" pathlength="1"></path>
+</svg>
+</div>
+<div class="wrap hero__inner">
+<p class="hero__eyebrow eyebrow" data-hero="">
+<span data-c="hero.eyebrow">Sherman Oaks</span>
+<span aria-hidden="true" class="rule" data-delay="1" data-hero="rule"></span>
+</p>
+<!-- Pre-split in the markup, not by JavaScript. This is the whole LCP fix:
          the largest text on the page no longer waits for app.js to download,
          parse and run before it is allowed to become visible. -->
-    <h1 class="hero__head d-xl" data-hero="lines">
-      <span class="ln"><span class="ln__i"><span data-c="hero.line1">Over fifty years of</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line2">combined expertise in</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line3"><em>dentistry</em></span></span></span>
-    </h1>
-
-    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">We are equipped to meet all your cosmetic, restorative, implantology, orthodontics, periodontics, endodontics, and oral surgery needs.</p>
-
-    <div data-hero data-delay="3">
-      <a class="btn" href="#book" data-magnetic>
-        <span>Schedule a consultation</span>
-        <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-      </a>
-    </div>
-
-    <!-- phones only: a hairline and two facts, so the space under the button
+<h1 class="hero__head d-xl" data-hero="lines">
+<span class="ln"><span class="ln__i"><span data-c="hero.line1">Over fifty years of</span></span></span>
+<span class="ln"><span class="ln__i"><span data-c="hero.line2">combined expertise in</span></span></span>
+<span class="ln"><span class="ln__i"><span data-c="hero.line3"><em>dentistry</em></span></span></span>
+</h1>
+<p class="hero__lede lede" data-c="hero.lede" data-delay="2" data-hero="">We are equipped to meet all your cosmetic, restorative, implantology, orthodontics, periodontics, endodontics, and oral surgery needs.</p>
+<div data-delay="3" data-hero="">
+<a class="btn" data-magnetic="" href="#book">
+<span>Schedule a consultation</span>
+<span aria-hidden="true" class="btn__arrow">→</span>
+</a>
+</div>
+<!-- phones only: a hairline and two facts, so the space under the button
          reads as composed rather than left over -->
-    <div class="hero__foot">
-      <span class="rule" data-hero="rule" data-delay="4" aria-hidden="true"></span>
-      <p class="hero__meta" data-hero data-delay="4">
-        <span data-c="hero.meta1">Consultations by appointment</span>
-        <span data-c="hero.meta2">Mon 9:00-18:00 · Tue 10:00-19:00 · Wed-Thu 9:00-18:00 · Fri 8:00-17:00</span>
-      </p>
-    </div>
-
-    <p class="hero__cue" data-hero data-delay="4" aria-hidden="true">
-      <span>Scroll</span><i></i>
-    </p>
-  </div>
+<div class="hero__foot">
+<span aria-hidden="true" class="rule" data-delay="4" data-hero="rule"></span>
+<p class="hero__meta" data-delay="4" data-hero="">
+<span data-c="hero.meta1">Consultations by appointment</span>
+<span data-c="hero.meta2">Mon 9:00-18:00 · Tue 10:00-19:00 · Wed-Thu 9:00-18:00 · Fri 8:00-17:00</span>
+</p>
+</div>
+<p aria-hidden="true" class="hero__cue" data-delay="4" data-hero="">
+<span>Scroll</span><i></i>
+</p>
+</div>
 </section>
-
 <!-- ============================= PROOF BAND ============================= -->
-<section class="proof" aria-label="Credentials">
-  <div class="wrap">
-    <div class="proof__grid">
-
-      <div class="proof__cell" data-reveal>
-        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/>
-        </svg>
-        <p class="proof__val" data-c="proof.1.value">50+</p>
-        <p class="proof__lab" data-c="proof.1.label">Years combined expertise</p>
-      </div>
-
-      <div class="proof__cell" data-reveal data-delay="1">
-        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-          <circle cx="10" cy="10" r="7"/><path d="M10 5.5 V10 L13.2 12"/>
-        </svg>
-        <p class="proof__val" data-c="proof.2.value">50</p>
-        <p class="proof__lab" data-c="proof.2.label">Years Expertise</p>
-      </div>
-
-      <div class="proof__cell" data-reveal data-delay="2">
-        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-          <circle cx="10" cy="7.5" r="5.2"/><path d="M6.6 12.1 V18 L10 16.2 L13.4 18 V12.1"/>
-        </svg>
-        <p class="proof__val" data-c="proof.3.value">125</p>
-        <p class="proof__lab" data-c="proof.3.label">Linked Conditions</p>
-      </div>
-
-
-    </div>
-  </div>
+<section aria-label="Credentials" class="proof">
+<div class="wrap">
+<div class="proof__grid">
+<div class="proof__cell" data-reveal="">
+<svg aria-hidden="true" class="ico proof__ico" height="20" viewbox="0 0 20 20" width="20">
+<path d="M3 14.5 Q10 8.5 17 14.5"></path><path d="M3 11 Q10 5 17 11"></path><path d="M3 7.5 Q10 1.5 17 7.5"></path>
+</svg>
+<p class="proof__val" data-c="proof.1.value">50+</p>
+<p class="proof__lab" data-c="proof.1.label">Years combined expertise</p>
+</div>
+<div class="proof__cell" data-delay="1" data-reveal="">
+<svg aria-hidden="true" class="ico proof__ico" height="20" viewbox="0 0 20 20" width="20">
+<circle cx="10" cy="10" r="7"></circle><path d="M10 5.5 V10 L13.2 12"></path>
+</svg>
+<p class="proof__val" data-c="proof.2.value">50</p>
+<p class="proof__lab" data-c="proof.2.label">Years Expertise</p>
+</div>
+<div class="proof__cell" data-delay="2" data-reveal="">
+<svg aria-hidden="true" class="ico proof__ico" height="20" viewbox="0 0 20 20" width="20">
+<circle cx="10" cy="7.5" r="5.2"></circle><path d="M6.6 12.1 V18 L10 16.2 L13.4 18 V12.1"></path>
+</svg>
+<p class="proof__val" data-c="proof.3.value">125</p>
+<p class="proof__lab" data-c="proof.3.label">Linked Conditions</p>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ============================= 01 · THE DOCTOR ============================= -->
-<section class="doctor" id="doctor" aria-labelledby="doctor-h">
-  <!-- the hero construction again, cropped to this window -->
-  <div class="figmark figmark--doctor" data-figmark aria-hidden="true">
-    <svg viewBox="320 220 480 480" xmlns="http://www.w3.org/2000/svg">
-      <path data-draw pathLength="1" d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0"/>
-      <path data-draw pathLength="1" d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0"/>
-      <path data-draw pathLength="1" d="M60,400 L740,400"/>
-      <path data-draw pathLength="1" d="M400,40 L400,760"/>
-      <path data-draw pathLength="1" d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622"/>
-      <path data-draw data-accent pathLength="1" d="M140,500 Q400,626 660,500"/>
-    </svg>
-  </div>
+<section aria-labelledby="doctor-h" class="doctor" id="doctor">
+<!-- the hero construction again, cropped to this window -->
+<div aria-hidden="true" class="figmark figmark--doctor" data-figmark="">
+<svg viewbox="320 220 480 480" xmlns="http://www.w3.org/2000/svg">
+<path d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0" data-draw="" pathlength="1"></path>
+<path d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0" data-draw="" pathlength="1"></path>
+<path d="M60,400 L740,400" data-draw="" pathlength="1"></path>
+<path d="M400,40 L400,760" data-draw="" pathlength="1"></path>
+<path d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622" data-draw="" pathlength="1"></path>
+<path d="M140,500 Q400,626 660,500" data-accent="" data-draw="" pathlength="1"></path>
+</svg>
+</div>
+<div class="wrap">
+<div class="smark">
+<span aria-hidden="true" class="smark__n">01</span>
+<span class="smark__lab eyebrow">The Dentist</span>
+<span aria-hidden="true" class="smark__rule" data-reveal="rule"></span>
+</div>
+<div class="doctor__grid">
+<!-- THE ONE PHOTOGRAPH -->
+<figure class="portrait" data-portrait="" data-reveal-crop="">
+<div class="portrait__plate">
+<div class="portrait__frame">
+<!-- Drop the clinic's existing headshot in as portrait.jpg. -->
+<img alt="Dr. Joseph Azizi, DMD" class="portrait__img" decoding="async" height="600" loading="lazy" onerror="this.closest('.portrait__frame').classList.add('is-missing')" src="https://i0.wp.com/greendental.com/wp-content/uploads/2021/09/dr.-joe-azizi.png" width="600"/>
+<span aria-hidden="true" class="portrait__tint"></span>
+<span aria-hidden="true" class="portrait__ph"><span>.B</span></span>
+</div>
+<span aria-hidden="true" class="crop crop--tl"></span>
+<span aria-hidden="true" class="crop crop--tr"></span>
+<span aria-hidden="true" class="crop crop--bl"></span>
+<span aria-hidden="true" class="crop crop--br"></span>
+</div>
+<figcaption class="portrait__cap" data-c="doctor.caption" data-reveal="">Dr. Joseph Azizi, DMD — Sherman Oaks</figcaption>
+</figure>
+<div>
+<h2 class="doctor__name d-l" data-reveal="lines" id="doctor-h">
+<span data-c="doctor.name">Dr. Joseph Azizi, DMD</span>
+</h2>
 
-  <div class="wrap">
-
-    <div class="smark">
-      <span class="smark__n" aria-hidden="true">01</span>
-      <span class="smark__lab eyebrow">The Dentist</span>
-      <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
-    </div>
-
-    <div class="doctor__grid">
-
-      <!-- THE ONE PHOTOGRAPH -->
-      <figure class="portrait" data-portrait data-reveal-crop>
-        <div class="portrait__plate">
-          <div class="portrait__frame">
-            <!-- Drop the clinic's existing headshot in as portrait.jpg. -->
-            <img class="portrait__img" src="portrait.jpg" width="1000" height="1250"
-                 loading="lazy" decoding="async"
-                 alt="Dr. Basil Hammoudeh, DMD"
-                 onerror="this.closest('.portrait__frame').classList.add('is-missing')">
-            <span class="portrait__tint" aria-hidden="true"></span>
-            <span class="portrait__ph" aria-hidden="true"><span>.B</span></span>
-          </div>
-          <span class="crop crop--tl" aria-hidden="true"></span>
-          <span class="crop crop--tr" aria-hidden="true"></span>
-          <span class="crop crop--bl" aria-hidden="true"></span>
-          <span class="crop crop--br" aria-hidden="true"></span>
-        </div>
-        <figcaption class="portrait__cap" data-reveal data-c="doctor.caption">Dr. Basil Hammoudeh, DMD · Sherman Oaks</figcaption>
-      </figure>
-
-      <div>
-        <h2 class="doctor__name d-l" id="doctor-h" data-reveal="lines">
-          <span data-c="doctor.name">Dr. Basil Hammoudeh, DMD</span>
-        </h2>
-
-
-        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Our experience is extensive, with over 50+ Years combined expertise. We offer a variety of services, including Invisalign® clear aligners, Lumineers® smile makeovers, i-CAT® 3D imaging, professional fluoride treatments, and braces for adults.</p>
-
-        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">The American Dental Association has linked 125 medical conditions that are influenced by dental care. We are equipped to meet all your dental needs, providing everything from oral surgery to restorative dentistry.</p>
-
-        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">With over 50 years of combined expertise in all areas of dentistry—cosmetic, restorative, implantology, orthodontics, periodontics, endodontics, and oral surgery—we are equipped to meet all your dental needs.</blockquote>
-
-        <div class="school">
-          <div class="school__row" data-reveal>
-            <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-              <path d="M9 5 V14.5"/><path d="M9 5 Q5.5 3.2 2.5 4 V13 Q5.5 12.2 9 14.5 Q12.5 12.2 15.5 13 V4 Q12.5 3.2 9 5"/>
-            </svg>
-            <span class="school__k" data-c="doctor.school1.k">Doctorate</span>
-            <span class="school__v" data-c="doctor.school1.v">DMD · Nova Southeastern College of Dental Medicine</span>
-          </div>
-          <div class="school__row" data-reveal data-delay="1">
-            <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-              <path d="M9 2.2 15 5.6 V12.4 L9 15.8 3 12.4 V5.6 Z"/><circle cx="9" cy="9" r="2.1"/>
-            </svg>
-            <span class="school__k" data-c="doctor.school2.k">Practice</span>
-            <span class="school__v" data-c="doctor.school2.v">50+ Years Sherman Oaks Practice History</span>
-          </div>
-          <div class="school__row" data-reveal data-delay="2">
-            <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-              <path d="M6 3.2 Q2.4 9 6 14.8"/><path d="M12 3.2 Q15.6 9 12 14.8"/><path d="M9 5.4 V13.4"/>
-            </svg>
-            <span class="school__k" data-c="doctor.school3.k">Membership</span>
-            <span class="school__v" data-c="doctor.school3.v">American Dental Association</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<p class="body" data-c="doctor.bio2" data-delay="3" data-reveal="">With over 20 years of practice, Dr. Azizi specializes in smile makeovers, full mouth reconstruction, veneers, and dental implants. He has shared his expertise by teaching at Temple University and USC, and is a proud member of the ADA, AACD, AAID, CDA, and WLADS.</p>
+<blockquote class="doctor__quote" data-c="doctor.quote" data-delay="2" data-reveal="">I'm very caring and gentle. I use a sensitive approach, combined with my expertise in the dental field to create a relaxed atmosphere for each and every one of our patients.</blockquote>
+<div class="school">
+<div class="school__row" data-reveal="">
+<svg aria-hidden="true" class="ico school__ico" height="18" viewbox="0 0 18 18" width="18">
+<path d="M9 5 V14.5"></path><path d="M9 5 Q5.5 3.2 2.5 4 V13 Q5.5 12.2 9 14.5 Q12.5 12.2 15.5 13 V4 Q12.5 3.2 9 5"></path>
+</svg>
+<span class="school__k" data-c="doctor.school1.k">Doctorate</span>
+<span class="school__v" data-c="doctor.school1.v">DMD — University of Pennsylvania School of Dental Medicine</span>
+</div>
+<div class="school__row" data-delay="1" data-reveal="">
+<svg aria-hidden="true" class="ico school__ico" height="18" viewbox="0 0 18 18" width="18">
+<path d="M9 2.2 15 5.6 V12.4 L9 15.8 3 12.4 V5.6 Z"></path><circle cx="9" cy="9" r="2.1"></circle>
+</svg>
+<span class="school__k" data-c="doctor.school2.k">Practice</span>
+<span class="school__v" data-c="doctor.school2.v">50+ Years Sherman Oaks Practice History</span>
+</div>
+<div class="school__row" data-delay="2" data-reveal="">
+<svg aria-hidden="true" class="ico school__ico" height="18" viewbox="0 0 18 18" width="18">
+<path d="M6 3.2 Q2.4 9 6 14.8"></path><path d="M12 3.2 Q15.6 9 12 14.8"></path><path d="M9 5.4 V13.4"></path>
+</svg>
+<span class="school__k" data-c="doctor.school3.k">Membership</span>
+<span class="school__v" data-c="doctor.school3.v">American Dental Association</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ============================= 02 · TREATMENTS ============================= -->
-
 <!-- ============================= 03 · APPROACH ============================= -->
-<section class="section dark approach-sec" id="approach" aria-labelledby="ap-h" data-dark>
-  <!-- the hero construction again, cropped to this window -->
-  <div class="figmark figmark--approach" data-figmark aria-hidden="true">
-    <svg viewBox="20 300 480 480" xmlns="http://www.w3.org/2000/svg">
-      <path data-draw pathLength="1" d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0"/>
-      <path data-draw pathLength="1" d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0"/>
-      <path data-draw pathLength="1" d="M60,400 L740,400"/>
-      <path data-draw pathLength="1" d="M400,40 L400,760"/>
-      <path data-draw pathLength="1" d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622"/>
-      <path data-draw data-accent pathLength="1" d="M140,500 Q400,626 660,500"/>
-    </svg>
-  </div>
-
-  <div class="wrap">
-
-    <div class="smark">
-      <span class="smark__n" aria-hidden="true">03</span>
-      <span class="smark__lab eyebrow">Approach</span>
-      <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
-    </div>
-
-    <div class="approach__head">
-      <h2 class="d-l" id="ap-h" data-reveal="lines">
-        <span data-c="approach.head1">Equipped for your</span><br>
-        <span data-c="approach.head2"><em>needs</em></span>
-      </h2>
-    </div>
-
-    <ol class="steps" data-spine>
-      <li class="step" data-reveal>
-        <span class="step__n">01</span>
-        <h3 class="step__t" data-c="approach.step1.t">Consultation</h3>
-        <p class="step__p" data-c="approach.step1.p">A full examination and an unhurried conversation about what you would change, before anything is decided.</p>
-      </li>
-      <li class="step" data-reveal data-delay="1">
-        <span class="step__n">02</span>
-        <h3 class="step__t" data-c="approach.step2.t">Planning</h3>
-        <p class="step__p" data-c="approach.step2.p">Digital imaging maps the mouth so the result is designed before a single tooth is touched.</p>
-      </li>
-      <li class="step" data-reveal data-delay="2">
-        <span class="step__n">03</span>
-        <h3 class="step__t" data-c="approach.step3.t">Preparation</h3>
-        <p class="step__p" data-c="approach.step3.p">Preparation is kept to the minimum the plan actually requires, preserving natural tooth structure.</p>
-      </li>
-      <li class="step" data-reveal data-delay="3">
-        <span class="step__n">04</span>
-        <h3 class="step__t" data-c="approach.step4.t">Seating</h3>
-        <p class="step__p" data-c="approach.step4.p">Restorations are fitted and shade-matched so the result reads as your own teeth, not new ones.</p>
-      </li>
-    </ol>
-
-    <!-- signature element: a Vita shade ladder, drawn entirely in CSS -->
-    <figure class="shade" data-shade>
-      <figcaption class="shade__lab">
-        <span class="eyebrow" data-c="shade.title">Shade selection · daylight</span>
-        <span class="eyebrow eyebrow--quiet" id="shade-selected" data-c="shade.selected">Selected: A1</span>
-      </figcaption>
-      <div class="shade__ladder" role="radiogroup" aria-label="Shade selection" id="shade-ladder">
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="B1">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">B1</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="true" tabindex="0" data-code="A1">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">A1</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="B2">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">B2</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="D2">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">D2</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="A2">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">A2</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="C1">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">C1</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="C2">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">C2</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="D4">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">D4</span>
-        </button>
-        <button type="button" class="shade__col" role="radio" aria-checked="false" tabindex="-1" data-code="A3.5">
-          <span class="shade__chip" aria-hidden="true"></span>
-          <span class="shade__code">A3.5</span>
-        </button>
-      </div>
-      <p class="shade__note" data-c="shade.note">Whiter is not the goal. The goal is a shade nobody notices changed at all.</p>
-      <p class="shade__hint" data-c="shade.hint">Tap a shade to compare</p>
-    </figure>
-  </div>
+<section aria-labelledby="ap-h" class="section dark approach-sec" data-dark="" id="approach">
+<!-- the hero construction again, cropped to this window -->
+<div aria-hidden="true" class="figmark figmark--approach" data-figmark="">
+<svg viewbox="20 300 480 480" xmlns="http://www.w3.org/2000/svg">
+<path d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0" data-draw="" pathlength="1"></path>
+<path d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0" data-draw="" pathlength="1"></path>
+<path d="M60,400 L740,400" data-draw="" pathlength="1"></path>
+<path d="M400,40 L400,760" data-draw="" pathlength="1"></path>
+<path d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622" data-draw="" pathlength="1"></path>
+<path d="M140,500 Q400,626 660,500" data-accent="" data-draw="" pathlength="1"></path>
+</svg>
+</div>
+<div class="wrap">
+<div class="smark">
+<span aria-hidden="true" class="smark__n">03</span>
+<span class="smark__lab eyebrow">Approach</span>
+<span aria-hidden="true" class="smark__rule" data-reveal="rule"></span>
+</div>
+<div class="approach__head">
+<h2 class="d-l" data-reveal="lines" id="ap-h">
+<span data-c="approach.head1">Equipped for your</span><br/>
+<span data-c="approach.head2"><em>needs</em></span>
+</h2>
+</div>
+<ol class="steps" data-spine="">
+<li class="step" data-reveal="">
+<span class="step__n">01</span>
+<h3 class="step__t" data-c="approach.step1.t">Consultation</h3>
+<p class="step__p" data-c="approach.step1.p">A full examination and an unhurried conversation about what you would change, before anything is decided.</p>
+</li>
+<li class="step" data-delay="1" data-reveal="">
+<span class="step__n">02</span>
+<h3 class="step__t" data-c="approach.step2.t">Planning</h3>
+<p class="step__p" data-c="approach.step2.p">Digital imaging maps the mouth so the result is designed before a single tooth is touched.</p>
+</li>
+<li class="step" data-delay="2" data-reveal="">
+<span class="step__n">03</span>
+<h3 class="step__t" data-c="approach.step3.t">Preparation</h3>
+<p class="step__p" data-c="approach.step3.p">Preparation is kept to the minimum the plan actually requires, preserving natural tooth structure.</p>
+</li>
+<li class="step" data-delay="3" data-reveal="">
+<span class="step__n">04</span>
+<h3 class="step__t" data-c="approach.step4.t">Seating</h3>
+<p class="step__p" data-c="approach.step4.p">Restorations are fitted and shade-matched so the result reads as your own teeth, not new ones.</p>
+</li>
+</ol>
+<!-- signature element: a Vita shade ladder, drawn entirely in CSS -->
+<figure class="shade" data-shade="">
+<figcaption class="shade__lab">
+<span class="eyebrow" data-c="shade.title">Shade selection · daylight</span>
+<span class="eyebrow eyebrow--quiet" data-c="shade.selected" id="shade-selected">Selected: A1</span>
+</figcaption>
+<div aria-label="Shade selection" class="shade__ladder" id="shade-ladder" role="radiogroup">
+<button aria-checked="false" class="shade__col" data-code="B1" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">B1</span>
+</button>
+<button aria-checked="true" class="shade__col" data-code="A1" role="radio" tabindex="0" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">A1</span>
+</button>
+<button aria-checked="false" class="shade__col" data-code="B2" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">B2</span>
+</button>
+<button aria-checked="false" class="shade__col" data-code="D2" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">D2</span>
+</button>
+<button aria-checked="false" class="shade__col" data-code="A2" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">A2</span>
+</button>
+<button aria-checked="false" class="shade__col" data-code="C1" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">C1</span>
+</button>
+<button aria-checked="false" class="shade__col" data-code="C2" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">C2</span>
+</button>
+<button aria-checked="false" class="shade__col" data-code="D4" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">D4</span>
+</button>
+<button aria-checked="false" class="shade__col" data-code="A3.5" role="radio" tabindex="-1" type="button">
+<span aria-hidden="true" class="shade__chip"></span>
+<span class="shade__code">A3.5</span>
+</button>
+</div>
+<p class="shade__note" data-c="shade.note">Whiter is not the goal. The goal is a shade nobody notices changed at all.</p>
+<p class="shade__hint" data-c="shade.hint">Tap a shade to compare</p>
+</figure>
+</div>
 </section>
-
 <!-- ============================= 04 · PATIENTS ============================= -->
-<section class="section words-sec" id="words" aria-labelledby="w-h">
-  <!-- the hero construction again, cropped to this window -->
-  <div class="figmark figmark--words" data-figmark aria-hidden="true">
-    <svg viewBox="180 30 440 440" xmlns="http://www.w3.org/2000/svg">
-      <path data-draw pathLength="1" d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0"/>
-      <path data-draw pathLength="1" d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path data-draw pathLength="1" d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0"/>
-      <path data-draw pathLength="1" d="M60,400 L740,400"/>
-      <path data-draw pathLength="1" d="M400,40 L400,760"/>
-      <path data-draw pathLength="1" d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622"/>
-      <path data-draw data-accent pathLength="1" d="M140,500 Q400,626 660,500"/>
-    </svg>
-  </div>
-
-  <div class="wrap">
-
-    <div class="smark">
-      <span class="smark__n" aria-hidden="true">04</span>
-      <span class="smark__lab eyebrow">Patients</span>
-      <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
-    </div>
-
-    <div class="words__head">
-      <h2 class="d-l" id="w-h" data-reveal="lines">
-        <span data-c="words.head1">In their</span><br>
-        <span data-c="words.head2">own <em>words</em></span>
-      </h2>
-    </div>
-
-    <div>
-      <!-- Slot 1 -->
-      <figure class="word" data-reveal>
-        <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.1.quote">I came to Green Dental because I was so frustrated that I had very little options that took my insurance. I was pleasantly surprised that Omar here at Green dental gave me a very good deal on my single veneer, a teeth whitening, and lastly graciously added a service I needed desperately which was my night guard for no extra cost. I was so happy with my teeth whitening because my teeth were completely tinted yellow and they came out so much whiter and they were able to match my new teeth color to my new veneer perfectly. I felt like I was in very good/gentle care with Dr. Basil Hammoudeh, DMD and that they truly wanted to help me with my dental care and I am truly happy with my veneer because it matches my whole smile. The entire staff was so attentive, kind, and very pleasantly professional. I'm no longer afraid to smile with my mouth open, thanks to Green Dental. I recommend Green Dental to anyone who needs any and all dental services, they went above and beyond.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="words.1.name">Savannah M.</b>
-          <span data-c="words.1.detail">Veneers</span>
-        </figcaption>
-      </figure>
-
-      <!-- Slot 2 -->
-      <figure class="word" data-reveal data-delay="1">
-        <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.2.quote">Green Dental has changed the way I feel about the dentist. There's a reason why they have such great reviews. From start to finish, the team took great care of me. Everyone made the experience so easy and relaxing. The front staff is very nice and accommodating. Omar helped me with financing. He made it a fast and easy process. And then the procedures and treatment. The dental hygienist who did my cleaning was gentle and empathic to my pain. It was one of the best teeth cleaning appointments I've ever had. I had to get my wisdom teeth taken out and I was stressing. But Dr. Asadi made the experience quick and painless, literally. Even the recovery afterwards was very easy and painless. The team at Green Dental are all skilled in their roles and highly skilled in customer service. Not once did I ever feel scared or neglected. I need to do more work on my teeth, but now I'm not afraid to get anything done.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="words.2.name">Mark T.</b>
-          <span data-c="words.2.detail">Hygiene</span>
-        </figcaption>
-      </figure>
-
-      <!-- Slot 3 -->
-      <figure class="word" data-reveal data-delay="2">
-        <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.3.quote">My son Jaden and I have had an excellent experience with this dental office. The entire team is friendly, professional, and genuinely caring. They always make us feel comfortable and take the time to explain everything clearly. My son received great care, and I've recently started my own treatment with braces and a crown. The staff has been supportive every step of the way, and I'm excited to see the results. The office is clean, organized, and welcoming. We highly recommend this dental office to anyone looking for quality dental care and a team that truly cares about their patients!"</blockquote>
-        <figcaption class="word__by">
-          <b data-c="words.3.name">Rami G.</b>
-          <span data-c="words.3.detail">Crown</span>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
+<section aria-labelledby="w-h" class="section words-sec" id="words">
+<!-- the hero construction again, cropped to this window -->
+<div aria-hidden="true" class="figmark figmark--words" data-figmark="">
+<svg viewbox="180 30 440 440" xmlns="http://www.w3.org/2000/svg">
+<path d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0" data-draw="" pathlength="1"></path>
+<path d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0" data-draw="" pathlength="1"></path>
+<path d="M252,400 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0" data-draw="" pathlength="1"></path>
+<path d="M60,400 L740,400" data-draw="" pathlength="1"></path>
+<path d="M400,40 L400,760" data-draw="" pathlength="1"></path>
+<path d="M386,192 L414,192 M400,178 L400,206 M386,608 L414,608 M400,594 L400,622" data-draw="" pathlength="1"></path>
+<path d="M140,500 Q400,626 660,500" data-accent="" data-draw="" pathlength="1"></path>
+</svg>
+</div>
+<div class="wrap">
+<div class="smark">
+<span aria-hidden="true" class="smark__n">04</span>
+<span class="smark__lab eyebrow">Patients</span>
+<span aria-hidden="true" class="smark__rule" data-reveal="rule"></span>
+</div>
+<div class="words__head">
+<h2 class="d-l" data-reveal="lines" id="w-h">
+<span data-c="words.head1">In their</span><br/>
+<span data-c="words.head2">own <em>words</em></span>
+</h2>
+</div>
+<div>
+<!-- Slot 1 -->
+<figure class="word" data-reveal="">
+<span aria-hidden="true" class="word__glyph">“</span>
+<blockquote class="word__q" data-c="words.1.quote">Thanks to Omar and Dr. Azizi for taking care of me and helping me get my smile back. Thank you to everyone. I will recommend this office to all my family and friends.</blockquote>
+<figcaption class="word__by">
+<b data-c="words.1.name">Hector Lopez</b>
+<span data-c="words.1.detail">Veneers</span>
+</figcaption>
+</figure>
+<!-- Slot 2 -->
+<figure class="word" data-delay="1" data-reveal="">
+<span aria-hidden="true" class="word__glyph">“</span>
+<blockquote class="word__q" data-c="words.2.quote">This is my second visit, and so far everything is great, everyone is very patient.</blockquote>
+<figcaption class="word__by">
+<b data-c="words.2.name">Genessis Hinnebra</b>
+<span data-c="words.2.detail">Hygiene</span>
+</figcaption>
+</figure>
+<!-- Slot 3 -->
+<figure class="word" data-delay="2" data-reveal="">
+<span aria-hidden="true" class="word__glyph">“</span>
+<blockquote class="word__q" data-c="words.3.quote">Thanks to the office of Green Dental and Orthodontics for helping me rebuild my teeth. I recommend this office to everyone. Talk to Omar, he will help you with good payment plans so you can get your teeth done.</blockquote>
+<figcaption class="word__by">
+<b data-c="words.3.name">Martin Guzman</b>
+<span data-c="words.3.detail">Crown</span>
+</figcaption>
+</figure>
+</div>
+</div>
 </section>
-
 <!-- ============================= 05 · STANDARDS ============================= -->
 <!-- Permanent. Unlike Patients above, this section never empties: it does
      not read reviews, so it renders identically whether the clinic has
      zero testimonials or sixty. -->
-<section class="section" id="trust" aria-labelledby="trust-h">
-  <div class="wrap">
-
-    <div class="smark">
-      <span class="smark__n" aria-hidden="true">05</span>
-      <span class="smark__lab eyebrow">Standards</span>
-      <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
-    </div>
-
-    <h2 class="d-l trust__head" id="trust-h" data-reveal="lines" data-c="words.kicker">Built on precision.</h2>
-
-    <div class="trust-grid">
-      <article class="trust" data-reveal>
-        <h3 class="trust__t" data-c="words.trust.1.t">Digital planning</h3>
-        <p class="trust__p" data-c="words.trust.1.p">Every case starts on screen, not in the mouth. A digital scan shows the plan before a single tool touches a tooth.</p>
-      </article>
-
-      <article class="trust" data-reveal data-delay="1">
-        <h3 class="trust__t" data-c="words.trust.2.t">Precision over guesswork</h3>
-        <p class="trust__p" data-c="words.trust.2.p">Measurements come from the scan, not from memory. What is proposed is what gets made, without chairside improvising.</p>
-      </article>
-
-      <article class="trust" data-reveal data-delay="2">
-        <h3 class="trust__t" data-c="words.trust.3.t">Records that last</h3>
-        <p class="trust__p" data-c="words.trust.3.p">Your scan, photographs, and plan stay on file, so a future visit builds on what is already known about your bite.</p>
-      </article>
-    </div>
-
-  </div>
+<section aria-labelledby="trust-h" class="section" id="trust">
+<div class="wrap">
+<div class="smark">
+<span aria-hidden="true" class="smark__n">05</span>
+<span class="smark__lab eyebrow">Standards</span>
+<span aria-hidden="true" class="smark__rule" data-reveal="rule"></span>
+</div>
+<h2 class="d-l trust__head" data-c="words.kicker" data-reveal="lines" id="trust-h">Built on precision.</h2>
+<div class="trust-grid">
+<article class="trust" data-reveal="">
+<h3 class="trust__t" data-c="words.trust.1.t">Digital planning</h3>
+<p class="trust__p" data-c="words.trust.1.p">Every case starts on screen, not in the mouth. A digital scan shows the plan before a single tool touches a tooth.</p>
+</article>
+<article class="trust" data-delay="1" data-reveal="">
+<h3 class="trust__t" data-c="words.trust.2.t">Precision over guesswork</h3>
+<p class="trust__p" data-c="words.trust.2.p">Measurements come from the scan, not from memory. What is proposed is what gets made, without chairside improvising.</p>
+</article>
+<article class="trust" data-delay="2" data-reveal="">
+<h3 class="trust__t" data-c="words.trust.3.t">Records that last</h3>
+<p class="trust__p" data-c="words.trust.3.p">Your scan, photographs, and plan stay on file, so a future visit builds on what is already known about your bite.</p>
+</article>
+</div>
+</div>
 </section>
-
 <!-- ============================= 06 · CONSULTATION ============================= -->
-<section class="section dark" id="book" aria-labelledby="b-h" data-dark>
-  <div class="wrap">
-
-    <div class="smark">
-      <span class="smark__n" aria-hidden="true">06</span>
-      <span class="smark__lab eyebrow">Consultation</span>
-      <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
-    </div>
-
-    <div class="book__head">
-      <h2 class="d-l" id="b-h" data-reveal="lines">
-        <span data-c="book.head1">Begin with a</span><br>
-        <span data-c="book.head2"><em>conversation</em></span>
-      </h2>
-    </div>
-
-    <div class="book__grid">
-
-      <div class="info" data-reveal>
-        <div class="info__row">
-          <svg class="ico info__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-            <path d="M5.4 2.6 7 6 5.4 7.6 Q7.6 11.4 10.4 12.6 L12 11 15.4 12.6 V15.4 Q8 15.4 2.6 5.4 Z"/>
-          </svg>
-          <span class="info__k">Telephone</span>
-          <span class="info__v"><a href="tel:+18187829500" data-c="book.phone">(818) 782-9500</a></span>
-        </div>
-        <div class="info__row">
-          <svg class="ico info__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-            <path d="M2.4 4.4 H15.6 V13.6 H2.4 Z"/><path d="M2.4 4.8 9 9.8 15.6 4.8"/>
-          </svg>
-          <span class="info__k">Email</span>
-          <span class="info__v"><a href="mailto:info@greendental.com" data-c="book.email">info@greendental.com</a></span>
-        </div>
-        <div class="info__row">
-          <svg class="ico info__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-            <path d="M9 15.8 Q14.4 10.2 14.4 7 A5.4 5.4 0 1 0 3.6 7 Q3.6 10.2 9 15.8 Z"/><circle cx="9" cy="7" r="2"/>
-          </svg>
-          <span class="info__k">Practice</span>
-          <span class="info__v" data-c="book.address">14401 Burbank Blvd Ste A, Sherman Oaks, CA 91401</span>
-        </div>
-        <div class="info__row">
-          <svg class="ico info__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-            <circle cx="9" cy="9" r="6.4"/><path d="M9 5 V9 L11.9 10.8"/>
-          </svg>
-          <span class="info__k">Hours</span>
-          <span class="info__v" data-c="book.hours">Mon 9:00-18:00 · Tue 10:00-19:00 · Wed-Thu 9:00-18:00 · Fri 8:00-17:00 · Sat 8:00-14:00 · Sun closed</span>
-        </div>
-      </div>
-
-      <div class="plate" data-plate>
-        <span class="crop crop--tl" aria-hidden="true"></span>
-        <span class="crop crop--tr" aria-hidden="true"></span>
-        <span class="crop crop--bl" aria-hidden="true"></span>
-        <span class="crop crop--br" aria-hidden="true"></span>
-
-        <form class="form" id="form" novalidate data-reveal data-delay="1">
-          <div class="row2">
-            <div class="field" data-field>
-              <label for="f-first">First name</label>
-              <input id="f-first" name="first" type="text" autocomplete="given-name" required aria-describedby="e-first">
-              <p class="field__err" id="e-first">Enter your first name.</p>
-            </div>
-            <div class="field" data-field>
-              <label for="f-last">Last name</label>
-              <input id="f-last" name="last" type="text" autocomplete="family-name" required aria-describedby="e-last">
-              <p class="field__err" id="e-last">Enter your last name.</p>
-            </div>
-          </div>
-
-          <div class="row2">
-            <div class="field" data-field>
-              <label for="f-email">Email</label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
-              <p class="field__err" id="e-email">Enter an email we can reply to.</p>
-            </div>
-            <div class="field" data-field>
-              <label for="f-phone">Telephone</label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="e-phone">
-              <p class="field__err" id="e-phone">Enter a number we can reach you on.</p>
-            </div>
-          </div>
-
-          <div class="field" data-field>
-            <span class="sel__label" id="tx-label">What you are considering</span>
-
-            <!-- Custom listbox rather than <select>. A native option popup is
+<section aria-labelledby="b-h" class="section dark" data-dark="" id="book">
+<div class="wrap">
+<div class="smark">
+<span aria-hidden="true" class="smark__n">06</span>
+<span class="smark__lab eyebrow">Consultation</span>
+<span aria-hidden="true" class="smark__rule" data-reveal="rule"></span>
+</div>
+<div class="book__head">
+<h2 class="d-l" data-reveal="lines" id="b-h">
+<span data-c="book.head1">Begin with a</span><br/>
+<span data-c="book.head2"><em>conversation</em></span>
+</h2>
+</div>
+<div class="book__grid">
+<div class="info" data-reveal="">
+<div class="info__row">
+<svg aria-hidden="true" class="ico info__ico" height="18" viewbox="0 0 18 18" width="18">
+<path d="M5.4 2.6 7 6 5.4 7.6 Q7.6 11.4 10.4 12.6 L12 11 15.4 12.6 V15.4 Q8 15.4 2.6 5.4 Z"></path>
+</svg>
+<span class="info__k">Telephone</span>
+<span class="info__v"><a data-c="book.phone" href="tel:+18187829500">(818) 782-9500</a></span>
+</div>
+<div class="info__row">
+<svg aria-hidden="true" class="ico info__ico" height="18" viewbox="0 0 18 18" width="18">
+<path d="M2.4 4.4 H15.6 V13.6 H2.4 Z"></path><path d="M2.4 4.8 9 9.8 15.6 4.8"></path>
+</svg>
+<span class="info__k">Email</span>
+<span class="info__v"><a data-c="book.email" href="mailto:info@greendental.com">info@greendental.com</a></span>
+</div>
+<div class="info__row">
+<svg aria-hidden="true" class="ico info__ico" height="18" viewbox="0 0 18 18" width="18">
+<path d="M9 15.8 Q14.4 10.2 14.4 7 A5.4 5.4 0 1 0 3.6 7 Q3.6 10.2 9 15.8 Z"></path><circle cx="9" cy="7" r="2"></circle>
+</svg>
+<span class="info__k">Practice</span>
+<span class="info__v" data-c="book.address">14401 Burbank Blvd Ste A, Sherman Oaks, CA 91401</span>
+</div>
+<div class="info__row">
+<svg aria-hidden="true" class="ico info__ico" height="18" viewbox="0 0 18 18" width="18">
+<circle cx="9" cy="9" r="6.4"></circle><path d="M9 5 V9 L11.9 10.8"></path>
+</svg>
+<span class="info__k">Hours</span>
+<span class="info__v" data-c="book.hours">Mon 9:00-18:00 · Tue 10:00-19:00 · Wed-Thu 9:00-18:00 · Fri 8:00-17:00 · Sat 8:00-14:00 · Sun closed</span>
+</div>
+</div>
+<div class="plate" data-plate="">
+<span aria-hidden="true" class="crop crop--tl"></span>
+<span aria-hidden="true" class="crop crop--tr"></span>
+<span aria-hidden="true" class="crop crop--bl"></span>
+<span aria-hidden="true" class="crop crop--br"></span>
+<form class="form" data-delay="1" data-reveal="" id="form" novalidate="">
+<div class="row2">
+<div class="field" data-field="">
+<label for="f-first">First name</label>
+<input aria-describedby="e-first" autocomplete="given-name" id="f-first" name="first" required="" type="text"/>
+<p class="field__err" id="e-first">Enter your first name.</p>
+</div>
+<div class="field" data-field="">
+<label for="f-last">Last name</label>
+<input aria-describedby="e-last" autocomplete="family-name" id="f-last" name="last" required="" type="text"/>
+<p class="field__err" id="e-last">Enter your last name.</p>
+</div>
+</div>
+<div class="row2">
+<div class="field" data-field="">
+<label for="f-email">Email</label>
+<input aria-describedby="e-email" autocomplete="email" id="f-email" name="email" required="" type="email"/>
+<p class="field__err" id="e-email">Enter an email we can reply to.</p>
+</div>
+<div class="field" data-field="">
+<label for="f-phone">Telephone</label>
+<input aria-describedby="e-phone" autocomplete="tel" id="f-phone" name="phone" required="" type="tel"/>
+<p class="field__err" id="e-phone">Enter a number we can reach you on.</p>
+</div>
+</div>
+<div class="field" data-field="">
+<span class="sel__label" id="tx-label">What you are considering</span>
+<!-- Custom listbox rather than <select>. A native option popup is
                  drawn by the operating system, so it cannot be styled and the
                  site cursor cannot survive over it. Built from real elements,
                  both work. ARIA 1.2 combobox pattern: focus stays on the
                  button, aria-activedescendant moves. -->
-            <div class="sel" data-select>
-              <button type="button" class="sel__btn" id="tx-btn"
-                      role="combobox" aria-haspopup="listbox" aria-expanded="false"
-                      aria-controls="tx-list" aria-labelledby="tx-label tx-btn"
-                      aria-describedby="e-tx">
-                <span class="sel__value" id="tx-value" data-empty="true">Select one</span>
-                <svg class="sel__chev" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true">
-                  <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
-                </svg>
-              </button>
-
-              <ul class="sel__list" id="tx-list" role="listbox" aria-labelledby="tx-label" hidden>
-                <li class="sel__opt" role="option" id="tx-o1" aria-selected="false" data-value="Porcelain veneers">Porcelain veneers</li>
-                <li class="sel__opt" role="option" id="tx-o2" aria-selected="false" data-value="Full-mouth reconstruction">Full-mouth reconstruction</li>
-                <li class="sel__opt" role="option" id="tx-o3" aria-selected="false" data-value="Implant restoration">Implant restoration</li>
-                <li class="sel__opt" role="option" id="tx-o4" aria-selected="false" data-value="Gum architecture">Gum architecture</li>
-                <li class="sel__opt" role="option" id="tx-o5" aria-selected="false" data-value="Invisible aligner therapy">Invisible aligner therapy</li>
-                <li class="sel__opt" role="option" id="tx-o6" aria-selected="false" data-value="Not sure yet">Not sure yet</li>
-              </ul>
-
-              <input type="hidden" id="f-tx" name="treatment" value=""
-                     data-required data-focus="#tx-btn">
-            </div>
-            <p class="field__err" id="e-tx">Choose a treatment, or select &ldquo;not sure yet&rdquo;.</p>
-          </div>
-
-          <div class="field" data-field>
-            <label for="f-msg">What you would change</label>
-            <textarea id="f-msg" name="message" rows="4" placeholder="In your own words. There is no wrong answer."></textarea>
-          </div>
-
-          <div class="form__foot">
-            <button class="btn btn--filled" type="submit" id="submit" data-magnetic>
-              <span id="submit-label">Schedule a consultation</span>
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </button>
-            <p class="form__note" data-c="book.note">We reply to every consultation request within two working days.</p>
-          </div>
-        </form>
-
-        <div class="sent" id="sent" role="status" aria-live="polite" data-on="false">
-          <p class="d-m" data-c="book.sentHead">Received.</p>
-          <p class="body" style="margin-top:1rem" data-c="book.sentBody">Reception will call to arrange a time. If it is urgent, please call the practice directly.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="sel" data-select="">
+<button aria-controls="tx-list" aria-describedby="e-tx" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="tx-label tx-btn" class="sel__btn" id="tx-btn" role="combobox" type="button">
+<span class="sel__value" data-empty="true" id="tx-value">Select one</span>
+<svg aria-hidden="true" class="sel__chev" height="8" viewbox="0 0 12 8" width="12">
+<path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.2"></path>
+</svg>
+</button>
+<ul aria-labelledby="tx-label" class="sel__list" hidden="" id="tx-list" role="listbox">
+<li aria-selected="false" class="sel__opt" data-value="Porcelain veneers" id="tx-o1" role="option">Porcelain veneers</li>
+<li aria-selected="false" class="sel__opt" data-value="Full-mouth reconstruction" id="tx-o2" role="option">Full-mouth reconstruction</li>
+<li aria-selected="false" class="sel__opt" data-value="Implant restoration" id="tx-o3" role="option">Implant restoration</li>
+<li aria-selected="false" class="sel__opt" data-value="Gum architecture" id="tx-o4" role="option">Gum architecture</li>
+<li aria-selected="false" class="sel__opt" data-value="Invisible aligner therapy" id="tx-o5" role="option">Invisible aligner therapy</li>
+<li aria-selected="false" class="sel__opt" data-value="Not sure yet" id="tx-o6" role="option">Not sure yet</li>
+</ul>
+<input data-focus="#tx-btn" data-required="" id="f-tx" name="treatment" type="hidden" value=""/>
+</div>
+<p class="field__err" id="e-tx">Choose a treatment, or select “not sure yet”.</p>
+</div>
+<div class="field" data-field="">
+<label for="f-msg">What you would change</label>
+<textarea id="f-msg" name="message" placeholder="In your own words. There is no wrong answer." rows="4"></textarea>
+</div>
+<div class="form__foot">
+<button class="btn btn--filled" data-magnetic="" id="submit" type="submit">
+<span id="submit-label">Schedule a consultation</span>
+<span aria-hidden="true" class="btn__arrow">→</span>
+</button>
+<p class="form__note" data-c="book.note">We reply to every consultation request within two working days.</p>
+</div>
+</form>
+<div aria-live="polite" class="sent" data-on="false" id="sent" role="status">
+<p class="d-m" data-c="book.sentHead">Received.</p>
+<p class="body" data-c="book.sentBody" style="margin-top:1rem">Reception will call to arrange a time. If it is urgent, please call the practice directly.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- ============================= 07 · LOCATION ============================= -->
-<section class="section loc" id="location" aria-labelledby="loc-h">
-  <div class="wrap">
-
-    <div class="smark">
-      <span class="smark__n" aria-hidden="true">07</span>
-      <span class="smark__lab eyebrow">Location</span>
-      <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
-    </div>
-
-    <h2 class="d-l loc__head" id="loc-h" data-reveal="lines">
-      <span data-c="loc.head1">In Sherman Oaks,</span><br>
-      <span data-c="loc.head2">at <em>your service</em></span>
-    </h2>
-
-    <div class="loc__grid">
-
-      <div class="loc__info">
-        <address class="loc__addr d-m" data-reveal data-c="loc.address">14401 Burbank Blvd Ste A</address>
-
-        <div class="rating" data-reveal data-delay="1">
-          <p class="rating__score" data-c="loc.score">4.6</p>
-          <div class="rating__right">
-            <span class="stars" role="img" aria-label="Rated 5 out of 5">
-              <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-              <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-              <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-              <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-              <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            </span>
-            <p class="rating__src" data-c="loc.source">358 reviews on Google</p>
-          </div>
-        </div>
-
-        <div class="phones" data-reveal data-delay="2">
-          <a class="phone" href="tel:+18187829500">
-            <span class="phone__k" data-c="loc.phone1.label">Reception</span>
-            <span class="phone__v" data-c="loc.phone1.value">(818) 782-9500</span>
-          </a>
-        </div>
-
-        <a class="btn loc__btn" data-c="map.directions" data-magnetic
-           href="https://www.google.com/maps/dir/?api=1&destination=14401+Burbank+Blvd+Ste+A%2C+Sherman+Oaks%2C+CA+91401"
-           target="_blank" rel="noopener noreferrer">
-          <span>Get directions</span>
-          <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-        </a>
-      </div>
-
-      <!-- Info comes first in the DOM so keyboard order on desktop reads
+<section aria-labelledby="loc-h" class="section loc" id="location">
+<div class="wrap">
+<div class="smark">
+<span aria-hidden="true" class="smark__n">07</span>
+<span class="smark__lab eyebrow">Location</span>
+<span aria-hidden="true" class="smark__rule" data-reveal="rule"></span>
+</div>
+<h2 class="d-l loc__head" data-reveal="lines" id="loc-h">
+<span data-c="loc.head1">In Sherman Oaks,</span><br/>
+<span data-c="loc.head2">at <em>your service</em></span>
+</h2>
+<div class="loc__grid">
+<div class="loc__info">
+<address class="loc__addr d-m" data-c="loc.address" data-reveal="">14401 Burbank Blvd Ste A</address>
+<div class="rating" data-delay="1" data-reveal="">
+<p class="rating__score" data-c="loc.score">4.6</p>
+<div class="rating__right">
+<span aria-label="Rated 5 out of 5" class="stars" role="img">
+<svg aria-hidden="true" class="star is-on" height="15" viewbox="0 0 16 16" width="15"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="15" viewbox="0 0 16 16" width="15"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="15" viewbox="0 0 16 16" width="15"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="15" viewbox="0 0 16 16" width="15"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="15" viewbox="0 0 16 16" width="15"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+</span>
+<p class="rating__src" data-c="loc.source">358 reviews on Google</p>
+</div>
+</div>
+<div class="phones" data-delay="2" data-reveal="">
+<a class="phone" href="tel:+18187829500">
+<span class="phone__k" data-c="loc.phone1.label">Reception</span>
+<span class="phone__v" data-c="loc.phone1.value">(818) 782-9500</span>
+</a>
+</div>
+<a class="btn loc__btn" data-c="map.directions" data-magnetic="" href="https://www.google.com/maps/dir/?api=1&amp;destination=14401+Burbank+Blvd+Ste+A%2C+Sherman+Oaks%2C+CA+91401" rel="noopener noreferrer" target="_blank">
+<span>Get directions</span>
+<span aria-hidden="true" class="btn__arrow">→</span>
+</a>
+</div>
+<!-- Info comes first in the DOM so keyboard order on desktop reads
            address -> phones -> directions before entering the map iframe.
            The map is lifted above it on phones with order:-1. -->
-      <div class="loc__map" data-reveal>
-        <div class="map" data-map data-armed="false">
-          <span class="crop crop--tl" aria-hidden="true"></span>
-          <span class="crop crop--tr" aria-hidden="true"></span>
-          <span class="crop crop--bl" aria-hidden="true"></span>
-          <span class="crop crop--br" aria-hidden="true"></span>
-          <div class="map__frame">
-            <!-- the iframe is a separate document: `cursor:none` cannot reach
+<div class="loc__map" data-reveal="">
+<div class="map" data-armed="false" data-map="">
+<span aria-hidden="true" class="crop crop--tl"></span>
+<span aria-hidden="true" class="crop crop--tr"></span>
+<span aria-hidden="true" class="crop crop--bl"></span>
+<span aria-hidden="true" class="crop crop--br"></span>
+<div class="map__frame">
+<!-- the iframe is a separate document: `cursor:none` cannot reach
                  inside it, so the custom cursor stands down at its edge -->
-            <div class="map__plate" data-cursor-off>
-              <!-- The shield comes first in the DOM so a keyboard reaches it
+<div class="map__plate" data-cursor-off="">
+<!-- The shield comes first in the DOM so a keyboard reaches it
                    before falling into the map, which is full of focusable
                    Google controls. z-index handles the visual stacking. -->
-              <button type="button" class="map__shield" data-map-shield>
-                <span class="map__shield-label" data-c="map.shield">Open in Google Maps</span>
-              </button>
-
-              <iframe
-                class="map__iframe"
-                data-c="map.embed"
-                src="https://www.google.com/maps?q=14401%20Burbank%20Blvd%20Ste%20A%2C%20Sherman%20Oaks%2C%20CA%2091401&output=embed"
-                title="Dr. Basil Hammoudeh, DMD — 14401 Burbank Blvd Ste A"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Reviews are pasted in per clinic, real and verbatim. These are slots. -->
-    <div class="revs">
-      <figure class="word" data-reveal>
-        <blockquote class="word__q" data-c="review.1.quote">Thank you Green Dental and Orthodontics for helping getting me teeth fix with braces for my self and ortho Aligners for my daughter. I Wouldn't be able to have done it with the help of Omar and the entire staff. I recommend Green dental to any one looking for a great dentist.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.1.name">CRISTINA R.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="word" data-reveal data-delay="1">
-        <blockquote class="word__q" data-c="review.2.quote">Green Dental staff is the best. I've been coming to Green Dental since 2014 and I never go anywhere else especially for cleaning with Tatiana; she's amazing and very professional and expert . Omar always helps with my treatment getting done ; he is also as wonderful.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.2.name">Angela T.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="word" data-reveal data-delay="2">
-        <blockquote class="word__q" data-c="review.3.quote">Omar at Green Dental & Orthodontics was amazing! He was professional, kind, and made the whole visit feel easy and comfortable. You can tell he really cares about his patients and takes the time to explain everything. Highly recommend asking for Omar if you go!</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.3.name">Idallis E.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-
-  </div>
+<button class="map__shield" data-map-shield="" type="button">
+<span class="map__shield-label" data-c="map.shield">Open in Google Maps</span>
+</button>
+<iframe class="map__iframe" data-c="map.embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=14401%20Burbank%20Blvd%20Ste%20A%2C%20Sherman%20Oaks%2C%20CA%2091401&amp;output=embed" title="Dr. Joseph Azizi, DMD — 14401 Burbank Blvd Ste A"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Reviews are pasted in per clinic, real and verbatim. These are slots. -->
+<div class="revs">
+<figure class="word" data-reveal="">
+<blockquote class="word__q" data-c="review.1.quote">Great attention. Friendly staff. Good service. I recommend them 100%.</blockquote>
+<figcaption class="word__by">
+<b data-c="review.1.name">Reynaldo Rodriguez</b>
+<span aria-label="Rated 5 out of 5" class="stars" role="img">
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+</span>
+</figcaption>
+</figure>
+<figure class="word" data-delay="1" data-reveal="">
+<blockquote class="word__q" data-c="review.2.quote">I liked how I was treated. I had some extractions done and they were very professional, I had no pain at all. Dr. Azizi was very professional and the assistant Raffi was also very kind, patient, and a good person, as well as the whole staff. Nancy explained everything to me and also helped me. I recommend it 100%, I loved it and I love my new smile.</blockquote>
+<figcaption class="word__by">
+<b data-c="review.2.name">Ana Montejano</b>
+<span aria-label="Rated 5 out of 5" class="stars" role="img">
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+</span>
+</figcaption>
+</figure>
+<figure class="word" data-delay="2" data-reveal="">
+<blockquote class="word__q" data-c="review.3.quote">Excellent care. All the staff is very friendly and patient. My 8-year-old son gets very nervous at the dentist, but they knew how to guide him calmly and explain everything in a friendly way so he felt comfortable. Without a doubt a great experience.</blockquote>
+<figcaption class="word__by">
+<b data-c="review.3.name">Adriana Borrallas Rios</b>
+<span aria-label="Rated 5 out of 5" class="stars" role="img">
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+<svg aria-hidden="true" class="star is-on" height="13" viewbox="0 0 16 16" width="13"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"></path></svg>
+</span>
+</figcaption>
+</figure>
+</div>
+</div>
 </section>
-
 </main>
-
 <!-- ============================= FOOTER ============================= -->
 <footer class="foot">
-
-  <!-- the hero construction returns, cropped and near-silent -->
-  <div class="foot__mark" aria-hidden="true">
-    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
-      <path d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0"/>
-      <path d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"/>
-      <path d="M60,400 L740,400"/>
-      <path d="M140,500 Q400,626 660,500"/>
-    </svg>
-  </div>
-
-  <div class="wrap">
-    <div class="foot__grid">
-      <div class="foot__col foot__brand">
-        <span class="brand">
-          <span class="brand__name" data-c="brand.name">Dr. Basil Hammoudeh, DMD</span>
-          <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Sherman Oaks</span>
-        </span>
-      </div>
-      <div class="foot__col">
-        <h3>Practice</h3>
-        <p data-c="footer.address">14401 Burbank Blvd Ste A, Sherman Oaks, CA 91401</p>
-      </div>
-      <div class="foot__col">
-        <h3>Contact</h3>
-        <a href="tel:+18187829500" data-c="book.phone">(818) 782-9500</a>
-        <a href="mailto:info@greendental.com" data-c="book.email">info@greendental.com</a>
-      </div>
-    </div>
-    <div class="foot__legal">
-      <span data-c="footer.legal">© 2026 Green Dental & Orthodontics</span>
-      <span data-c="footer.note">Cosmetic & general dentistry</span>
-      <a class="foot__credit" href="https://hs-frontend.online/" target="_blank" rel="noopener noreferrer" data-c="footer.credit">Site by hs-frontend.online</a>
-    </div>
-  </div>
+<!-- the hero construction returns, cropped and near-silent -->
+<div aria-hidden="true" class="foot__mark">
+<svg viewbox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+<path d="M60,400 a340,340 0 1,0 680,0 a340,340 0 1,0 -680,0"></path>
+<path d="M40,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"></path>
+<path d="M280,400 a240,240 0 1,0 480,0 a240,240 0 1,0 -480,0"></path>
+<path d="M60,400 L740,400"></path>
+<path d="M140,500 Q400,626 660,500"></path>
+</svg>
+</div>
+<div class="wrap">
+<div class="foot__grid">
+<div class="foot__col foot__brand">
+<span class="brand">
+<span class="brand__name" data-c="brand.name">Dr. Joseph Azizi, DMD</span>
+<span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Restorative Dentistry · Sherman Oaks</span>
+</span>
+</div>
+<div class="foot__col">
+<h3>Practice</h3>
+<p data-c="footer.address">14401 Burbank Blvd Ste A, Sherman Oaks, CA 91401</p>
+</div>
+<div class="foot__col">
+<h3>Contact</h3>
+<a data-c="book.phone" href="tel:+18187829500">(818) 782-9500</a>
+<a data-c="book.email" href="mailto:info@greendental.com">info@greendental.com</a>
+</div>
+</div>
+<div class="foot__legal">
+<span data-c="footer.legal">© 2026 Green Dental &amp; Orthodontics</span>
+<span data-c="footer.note">Cosmetic &amp; general dentistry</span>
+<a class="foot__credit" data-c="footer.credit" href="https://hs-frontend.online/" rel="noopener noreferrer" target="_blank">Site by hs-frontend.online</a>
+</div>
+</div>
 </footer>
-
-<p class="index" id="index" aria-hidden="true">&mdash; <b>The Dentist</b></p>
-
+<p aria-hidden="true" class="index" id="index">— <b>The Dentist</b></p>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
