@@ -84,53 +84,7 @@
   font-display: swap;
   src: url('inter-600.woff2') format('woff2');
 }
-/* --- HOTFIX: UI Polish --- */
-#trust { padding-top: clamp(1.5rem, 3vw, 3rem); }
-@media (max-width: 899px) {
-  .hero .mark { opacity: 0.3 !important; }
-}
-/* --- MOBILE HERO v2 (phones only; desktop is untouched) ---
-   The first phone screen used to be headline + one outline button + a lot of
-   empty cream. Now it carries a face, the rating and two clear actions. */
-.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
-.hero__call{display:none}
-.hero__trust{display:none}
-@media (max-width: 899px) {
-  .hero{min-height:auto;padding-block:7.5rem 3.5rem}
-  .hero__inner{flex:0 1 auto}
-  .hero__eyebrow{margin-bottom:2rem}
-  .hero__head{margin-block:0 1.75rem;font-size:clamp(2.6rem,12.6vw,4.25rem);line-height:.96}
-  .hero__lede{margin-bottom:2.25rem;font-size:1.0625rem;max-width:32ch}
-  .hero__actions{flex-direction:column;gap:.65rem}
-  .hero__actions .btn{width:100%;justify-content:center;padding-block:1.15rem}
-  .hero__actions .btn--book{background:var(--ink);color:var(--paper)}
-  .hero__actions .btn--book::before{background:var(--accent)}
-  .hero__call{display:inline-flex}
-  .hero__trust{
-    display:flex;align-items:center;gap:.9rem;
-    margin-top:2.25rem;padding:1.15rem 1.25rem;
-    background:rgba(255,255,255,.55);border:1px solid var(--rule);
-  }
-  .hero__avatar{
-    width:52px;height:52px;flex:0 0 52px;border-radius:50%;
-    display:block;background:url(portrait.jpg) 50% 14%/190% auto no-repeat;border:1px solid var(--rule);
-  }
-  .hero__trust-name{font-family:var(--font-display);font-size:1.0625rem;line-height:1.2;color:var(--ink)}
-  .hero__trust-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin-top:.3rem;
-    font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
-  .hero__stars{color:var(--accent);letter-spacing:.08em;font-size:.8rem}
-  .hero__foot{margin-top:1.75rem;padding-top:0}
-  .hero__meta{gap:.35rem 1rem;letter-spacing:.14em}
-  .hero__cue{display:none}
-}
-@media (max-width: 360px) {
-  .hero__trust-meta{letter-spacing:.08em}
-}
-@media (max-width: 400px) {
-  .brand__name{font-size:.95rem;letter-spacing:.1em;white-space:nowrap}
-  .brand__tag{letter-spacing:.18em}
-}
-</style>
+
 
 <!-- ============================================================================
      STYLES — inlined on purpose.
@@ -1235,8 +1189,8 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
    pushes LCP out by roughly its own length, so the hero is fully in under a
    second while everything further down keeps the slower, calmer timing.
    --------------------------------------------------------------------------- */
-.js [data-hero]{animation:hero-in 1.1s var(--ease-out) both}
-.js [data-hero="rule"]{animation:hero-rule 1.2s var(--ease-out) both}
+.js [data-hero]{animation:hero-in 1.2s var(--ease-out) both}
+.js [data-hero="rule"]{animation:hero-rule 1.3s var(--ease-out) both}
 .js [data-hero="lines"]{animation:none;opacity:1}
 .js [data-hero="lines"] .ln__i{animation:hero-line .7s var(--ease-out) both}
 .js [data-hero="lines"] .ln:nth-child(2) .ln__i{animation-delay:.07s}
@@ -1281,6 +1235,56 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 @media (max-width: 899px) {
   .hero .mark { opacity: 0.12 !important; }
 }
+
+/* --- DEFINITIVE MOBILE HERO OVERRIDES (highest cascade priority) --- */
+.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero__call{display:none}
+.hero__trust{display:none}
+
+@media (max-width: 899px) {
+  .hero .mark { opacity: 0.35 !important; }
+  .hero { min-height: auto !important; padding-block: 7.5rem 3.5rem !important; }
+  .hero__inner { flex: 0 1 auto !important; }
+  .hero__eyebrow { margin-bottom: 2rem !important; }
+  .hero__head { margin-block: 0 1.75rem !important; font-size: clamp(2.6rem, 12.6vw, 4.25rem) !important; line-height: .96 !important; }
+  .hero__lede { margin-bottom: 2.25rem !important; font-size: 1.0625rem !important; max-width: 32ch !important; }
+  .hero__actions { flex-direction: column !important; gap: .75rem !important; }
+  .hero__actions .btn { width: 100% !important; justify-content: center !important; padding-block: 1.15rem !important; }
+  .hero__actions .btn--book { background: var(--ink) !important; color: var(--paper) !important; }
+  .hero__actions .btn--book::before { background: var(--accent) !important; }
+  .hero__call { display: inline-flex !important; }
+  .hero__trust {
+    display: flex !important; align-items: center !important; gap: .9rem !important;
+    margin-top: 2.25rem !important; padding: 1.15rem 1.25rem !important;
+    background: rgba(255, 255, 255, .65) !important; border: 1px solid var(--rule) !important;
+  }
+  .hero__avatar {
+    width: 54px !important; height: 54px !important; flex: 0 0 54px !important; border-radius: 50% !important;
+    display: block !important; background: url(portrait.jpg) 50% 14%/190% auto no-repeat !important; border: 1px solid var(--rule) !important;
+  }
+  .hero__trust-name { font-family: var(--font-display) !important; font-size: 1.0625rem !important; line-height: 1.2 !important; color: var(--ink) !important; }
+  .hero__trust-meta { display: flex !important; align-items: center !important; flex-wrap: wrap !important; gap: .45rem !important; margin-top: .3rem !important;
+    font-size: var(--fs-micro) !important; font-weight: 600 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--stone) !important; }
+  .hero__stars { color: var(--accent) !important; letter-spacing: .08em !important; font-size: .85rem !important; }
+  .hero__foot { margin-top: 2rem !important; padding-top: 0 !important; }
+  .hero__meta { gap: .35rem 1rem !important; letter-spacing: .14em !important; }
+  .hero__cue { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding-block: 7.5rem 3.5rem !important; }
+}
+
+@media (max-width: 360px) {
+  .hero { padding-block: 7.5rem 3.5rem !important; }
+  .hero__trust-meta { letter-spacing: .08em !important; }
+}
+
+@media (max-width: 400px) {
+  .brand__name { font-size: .95rem !important; letter-spacing: .1em !important; white-space: nowrap !important; }
+  .brand__tag { letter-spacing: .18em !important; }
+}
+
 </style>
 
 <script>
