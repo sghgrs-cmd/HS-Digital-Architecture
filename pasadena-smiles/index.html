@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Ôªø<!DOCTYPE html>
 <html lang="en">
 <head>
 <script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname))location.replace('https:'+location.href.substring(5));</script>
@@ -10,13 +10,13 @@
 ================================================================================
   CLINIC SHEET
 
-  Files:  index.html  ∑  app.js  ∑  portrait.jpg   (three, that is all)
+  Files:  index.html  ¬∑  app.js  ¬∑  portrait.jpg   (three, that is all)
   Deploy: upload the folder. No build step, no server, no dependencies.
 
-  Re-skin checklist (about 20 minutes) ó see README.md for the long version:
+  Re-skin checklist (about 20 minutes) ‚Äî see README.md for the long version:
     1. <title>, <meta description>, og: tags, <link rel=canonical>
-    2. JSON-LD at the foot of this file ó name, address, phone, hours
-    3. The :root block in the <style> below ó --accent, --accent-inv,
+    2. JSON-LD at the foot of this file ‚Äî name, address, phone, hours
+    3. The :root block in the <style> below ‚Äî --accent, --accent-inv,
        --paper, --ink, --portrait-shadow, --mark-opacity, --map-filter
     4. portrait.jpg beside index.html. ANY headshot works: it is greyscaled
        and re-tinted to the palette. --portrait-focal moves the crop.
@@ -30,8 +30,8 @@
          doctor.school1..3 doctor.caption
          treatment.1..5    (name + note + visits + span)
          approach.head     approach.step1..4  shade.*
-         words.1..3        (quote + name + detail)  ó real reviews only
-         words.kicker       words.trust.1..3   (title + body ó Standards
+         words.1..3        (quote + name + detail)  ‚Äî real reviews only
+         words.kicker       words.trust.1..3   (title + body ‚Äî Standards
                             section; permanent, unrelated to review count)
          book.head         book.phone  book.email  book.address  book.hours
          loc.address       loc.score   loc.source  loc.phone1..3
@@ -84,10 +84,56 @@
   font-display: swap;
   src: url('inter-600.woff2') format('woff2');
 }
+/* --- HOTFIX: UI Polish --- */
+#trust { padding-top: clamp(1.5rem, 3vw, 3rem); }
+@media (max-width: 899px) {
+  .hero .mark { opacity: 0.3 !important; }
+}
+/* --- MOBILE HERO v2 (phones only; desktop is untouched) ---
+   The first phone screen used to be headline + one outline button + a lot of
+   empty cream. Now it carries a face, the rating and two clear actions. */
+.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero__call{display:none}
+.hero__trust{display:none}
+@media (max-width: 899px) {
+  .hero{min-height:auto;padding-block:7.5rem 3.5rem}
+  .hero__inner{flex:0 1 auto}
+  .hero__eyebrow{margin-bottom:2rem}
+  .hero__head{margin-block:0 1.75rem;font-size:clamp(2.6rem,12.6vw,4.25rem);line-height:.96}
+  .hero__lede{margin-bottom:2.25rem;font-size:1.0625rem;max-width:32ch}
+  .hero__actions{flex-direction:column;gap:.65rem}
+  .hero__actions .btn{width:100%;justify-content:center;padding-block:1.15rem}
+  .hero__actions .btn--book{background:var(--ink);color:var(--paper)}
+  .hero__actions .btn--book::before{background:var(--accent)}
+  .hero__call{display:inline-flex}
+  .hero__trust{
+    display:flex;align-items:center;gap:.9rem;
+    margin-top:2.25rem;padding:1.15rem 1.25rem;
+    background:rgba(255,255,255,.55);border:1px solid var(--rule);
+  }
+  .hero__avatar{
+    width:52px;height:52px;flex:0 0 52px;border-radius:50%;
+    display:block;background:url(portrait.jpg) 50% 14%/190% auto no-repeat;border:1px solid var(--rule);
+  }
+  .hero__trust-name{font-family:var(--font-display);font-size:1.0625rem;line-height:1.2;color:var(--ink)}
+  .hero__trust-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin-top:.3rem;
+    font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+  .hero__stars{color:var(--accent);letter-spacing:.08em;font-size:.8rem}
+  .hero__foot{margin-top:1.75rem;padding-top:0}
+  .hero__meta{gap:.35rem 1rem;letter-spacing:.14em}
+  .hero__cue{display:none}
+}
+@media (max-width: 360px) {
+  .hero__trust-meta{letter-spacing:.08em}
+}
+@media (max-width: 400px) {
+  .brand__name{font-size:.95rem;letter-spacing:.1em;white-space:nowrap}
+  .brand__tag{letter-spacing:.18em}
+}
 </style>
 
 <!-- ============================================================================
-     STYLES ó inlined on purpose.
+     STYLES ‚Äî inlined on purpose.
      As a separate file this was the last render-blocking request on the page
      (280ms plus a whole round trip on 4G). Inline it and there are zero
      render-blocking resources: the font CSS loads async, app.js is deferred.
@@ -95,7 +141,7 @@
      ============================================================================ -->
 <style>
 /* =============================================================================
-   WARREN ó luxury practice template
+   WARREN ‚Äî luxury practice template
    styles.css
 
    Everything that changes per clinic is in the TOKENS block below.
@@ -109,7 +155,7 @@
 
   /* --- colour ---------------------------------------------------------------
      Six values carry the whole site. The accent is deliberately deeper than the
-     usual clay so it clears 4.5:1 on paper at 11px ó the size it is used at.
+     usual clay so it clears 4.5:1 on paper at 11px ‚Äî the size it is used at.
      --accent-inv is the same hue lifted for the dark sections, where the base
      accent only reaches 3.4:1 and would fail.                                */
   --paper:#F7F4ED;
@@ -130,9 +176,9 @@
      already owns lands inside the palette. --portrait-shadow is the colour the
      blacks become: warm brown by default, #22303A for a cool clinical read.  */
   --portrait-shadow:#674A32;
-  --portrait-focal:50% 28%;   /* object-position ó move the crop, not the file */
+  --portrait-focal:50% 28%;   /* object-position ‚Äî move the crop, not the file */
   --portrait-lift:1.04;       /* brightness nudge for a dark original          */
-  --portrait-ratio:4/5;       /* 4/5 upright ∑ 1/1 square ∑ 3/2 landscape      */
+  --portrait-ratio:4/5;       /* 4/5 upright ¬∑ 1/1 square ¬∑ 3/2 landscape      */
 
   /* --- line art -------------------------------------------------------------
      The hero construction, the footer echo, the crop marks.                  */
@@ -225,7 +271,7 @@ button{background:none;border:none;cursor:pointer}
 .skip:focus{left:0}
 
 /* -----------------------------------------------------------------------------
-   SCROLLBAR ó hairline track, accent thumb, no radius
+   SCROLLBAR ‚Äî hairline track, accent thumb, no radius
    -------------------------------------------------------------------------- */
 @media (hover:hover) and (pointer:fine){
 html{}
@@ -234,7 +280,7 @@ html{}
 ::-webkit-scrollbar-thumb{background:var(--accent);border:4px solid var(--paper-2);border-left-width:5px}
 ::-webkit-scrollbar-thumb:hover{background:var(--ink)}
 ::-webkit-scrollbar-corner{background:var(--paper-2)}
-/* end caps, drawn in the accent. Square, like everything else here ó add a
+/* end caps, drawn in the accent. Square, like everything else here ‚Äî add a
    radius on the thumb above if a clinic wants the softer look. */
 ::-webkit-scrollbar-button:single-button{
   background:var(--paper-2);display:block;height:12px;width:12px;
@@ -257,17 +303,17 @@ html{}
 }
 
 /* -----------------------------------------------------------------------------
-   CURSOR ó dot and ring, different lag, difference-blended so it inverts
+   CURSOR ‚Äî dot and ring, different lag, difference-blended so it inverts
    itself over the dark sections instead of disappearing into them.
 
    `cursor:none` is applied from JS after both elements exist, never from this
    stylesheet: if the script fails, the visitor keeps a normal pointer.
-   Gated on (pointer:fine), not on viewport width ó a touchscreen laptop at
+   Gated on (pointer:fine), not on viewport width ‚Äî a touchscreen laptop at
    1200px must not get a cursor it cannot use.
    -------------------------------------------------------------------------- */
 /* Hiding is instant, showing fades. The base rule carries no opacity
    transition, so dropping .cursor-on removes the custom cursor on the same
-   frame ó otherwise it would linger over the scrollbar next to the system
+   frame ‚Äî otherwise it would linger over the scrollbar next to the system
    arrow for the length of the fade. */
 #cur-dot,#cur-ring{
   position:fixed;top:0;left:0;border-radius:50%;
@@ -301,7 +347,7 @@ html.cursor-on #cur-ring{
 #cur-ring.is-text{width:2px;height:26px;border-radius:0;border-width:0;background:#fff}
 @media (pointer:coarse),(prefers-reduced-motion:reduce){#cur-dot,#cur-ring{display:none}}
 
-/* paper grain ó one fixed overlay, whole site, no request, no file */
+/* paper grain ‚Äî one fixed overlay, whole site, no request, no file */
 body::after{
   content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.04;
 }
@@ -320,7 +366,7 @@ body::after{
   text-wrap:balance;
 }
 /* Fraunces carries an optical-size axis. Holding every level at opsz 144 makes
-   the smaller ones read thin and brittle ó a 22px heading drawn for a 144px
+   the smaller ones read thin and brittle ‚Äî a 22px heading drawn for a 144px
    billboard. Optical size and weight now move together, so the scale has real
    density contrast and not just four sizes of one weight. */
 .d-xl{font-size:var(--fs-xl);line-height:.98;letter-spacing:-.032em;font-weight:300;font-variation-settings:'opsz' 144}
@@ -359,7 +405,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .dark .rule{background:var(--rule-inv)}
 
 /* -----------------------------------------------------------------------------
-   6. BUTTONS ó 1px rule, ink fill wiping up from the baseline.
+   6. BUTTONS ‚Äî 1px rule, ink fill wiping up from the baseline.
    No radius, no shadow, no gradient, no scale.
    -------------------------------------------------------------------------- */
 .btn{
@@ -479,11 +525,11 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 
 /* CLS: the line drawings are absolutely positioned against containers whose
    height moves when Fraunces swaps in. Lighthouse attributed 0.186 of 0.193 to
-   exactly this. Hold them back until the fonts have settled ó they are
+   exactly this. Hold them back until the fonts have settled ‚Äî they are
    decorative and revealed on scroll anyway, so nothing is lost. */
 /* The figmarks and the footer mark sit in containers whose height moves when
    Fraunces lands, so they stay gated. The hero mark lives inside a container
-   pinned to 100svh ó it cannot shift ó so holding it back only delayed the
+   pinned to 100svh ‚Äî it cannot shift ‚Äî so holding it back only delayed the
    Speed Index for nothing. */
 .js .figmark,.js .foot__mark{visibility:hidden}
 .js.fonts-ready .figmark,.js.fonts-ready .foot__mark{visibility:visible}
@@ -544,7 +590,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 /* The eyebrow used to carry margin-bottom:auto, which shoved the headline to
    the bottom of the viewport. Fixed gap instead, and the scroll cue takes the
-   auto ó so the copy starts near the top and the cue still sits at the foot. */
+   auto ‚Äî so the copy starts near the top and the cue still sits at the foot. */
 @media (max-width:899px){
   .hero__eyebrow{margin-bottom:clamp(2rem,7vh,4rem)}
   /* the foot takes the auto now, so the space below the button is composed
@@ -558,7 +604,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   .hero__lede{margin-bottom:2rem}
 }
 @media (max-width:400px){
-  /* 9 columns across 272px leaves 28px each ó the codes have to come down */
+  /* 9 columns across 272px leaves 28px each ‚Äî the codes have to come down */
   .shade__code{font-size:.5625rem;letter-spacing:.06em}
 }
 @media (max-width:360px){
@@ -579,7 +625,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 /* -----------------------------------------------------------------------------
    8c. FIELD MARKS
    The same compass construction as the hero, seen through different windows.
-   Not new drawings ó one drawing, cropped. Each sits behind its section at
+   Not new drawings ‚Äî one drawing, cropped. Each sits behind its section at
    roughly half the hero's weight and draws itself in on scroll.
    -------------------------------------------------------------------------- */
 .figmark{
@@ -613,7 +659,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
    9. SECTION MARKER
    One device at every boundary: numeral, name, hairline drawing to the edge.
    The sheet reference on a drawing. The number indexes the document, not the
-   content inside it ó which is why the treatment list has none.
+   content inside it ‚Äî which is why the treatment list has none.
    -------------------------------------------------------------------------- */
 .smark{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.75rem}
 .smark__n{
@@ -631,12 +677,12 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 @media (min-width:900px){.smark{gap:1.75rem;margin-bottom:3.5rem}}
 
 /* -----------------------------------------------------------------------------
-   10. LINE ICONS ó 18ñ20px, 1px stroke, currentColor, one per line item
+   10. LINE ICONS ‚Äî 18‚Äì20px, 1px stroke, currentColor, one per line item
    -------------------------------------------------------------------------- */
 .ico{flex:none;display:block;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
 
 /* -----------------------------------------------------------------------------
-   11. PROOF BAND ó a rule, not a section
+   11. PROOF BAND ‚Äî a rule, not a section
    -------------------------------------------------------------------------- */
 .proof{background:var(--paper-2);border-block:1px solid var(--rule)}
 .proof__grid{display:grid;grid-template-columns:1fr 1fr}
@@ -657,7 +703,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 
 /* -----------------------------------------------------------------------------
-   12. THE DOCTOR ó the only photograph on the site
+   12. THE DOCTOR ‚Äî the only photograph on the site
    Hard rectangle, no radius, no shadow, no floating badge. Hairline
    registration marks sit outside the frame like crops on a print proof.
    -------------------------------------------------------------------------- */
@@ -679,7 +725,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .js .portrait.is-in .portrait__img{transform:scale(1)}
 .portrait__tint{position:absolute;inset:0;background:transparent;mix-blend-mode:screen;pointer-events:none}
 
-/* state before the clinic's headshot is dropped in ó or if there is none.
+/* state before the clinic's headshot is dropped in ‚Äî or if there is none.
    Outlined initials inside a hairline frame, so it reads as a monogram plate
    rather than a broken image. */
 .portrait__ph{position:absolute;inset:0;display:none;place-items:center;background:var(--ink)}
@@ -697,7 +743,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   .portrait__ph span{color:transparent;-webkit-text-stroke:1px rgba(247,244,237,.34)}
 }
 
-/* registration marks ó shown at every width since the portrait stopped
+/* registration marks ‚Äî shown at every width since the portrait stopped
    bleeding off the right edge (it read as a botched crop on a phone) */
 .crop{position:absolute;width:16px;height:16px;pointer-events:none;opacity:0;display:block;transition:opacity var(--dur) var(--ease-out) .5s}
 .portrait.is-in .crop{opacity:.5}
@@ -736,7 +782,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 
 /* -----------------------------------------------------------------------------
-   13. TREATMENTS ó an index, not cards
+   13. TREATMENTS ‚Äî an index, not cards
    -------------------------------------------------------------------------- */
 .treatments__head{margin-bottom:3rem}
 .tx{border-top:1px solid var(--rule)}
@@ -758,7 +804,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 
 /* -----------------------------------------------------------------------------
-   14. APPROACH ó the dark section, with a margin spine that draws downward
+   14. APPROACH ‚Äî the dark section, with a margin spine that draws downward
    -------------------------------------------------------------------------- */
 .approach__head{margin-bottom:3.25rem}
 .steps{position:relative;padding-left:1.75rem}
@@ -821,7 +867,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .shade__hint{margin-top:.9rem;font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:rgba(247,244,237,.4)}
 
 /* -----------------------------------------------------------------------------
-   15. PATIENT WORDS ó stacked, no carousel, no cards, no stars.
+   15. PATIENT WORDS ‚Äî stacked, no carousel, no cards, no stars.
    Each quote sits against an outlined mark drawn in the same 1px weight as
    the hero construction.
    -------------------------------------------------------------------------- */
@@ -841,10 +887,10 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   position:relative;z-index:1;
   font-family:var(--font-display);font-style:italic;font-weight:300;
   font-weight:340;font-variation-settings:'opsz' 40;
-  /* ŒÚÁ˚‚˚ ‚ÒÚ‡‚Îˇ˛ÚÒˇ ‰ÓÒÎÓ‚ÌÓ Ë ·˚‚‡˛Ú ‰ÎËÌÌ˚ÏË ó ÂÁ‡Ú¸ ˜ÛÊËÂ ÒÎÓ‚‡
-     ÌÂÎ¸Áˇ. –‡ÁÏÂ Ë ÏÂ‡ ÔÓ‰ÒÚ‡Ë‚‡˛ÚÒˇ ÔÓ‰ ÚÂÍÒÚ, ‡ ÌÂ Ì‡Ó·ÓÓÚ:
-     ¯ËÙÚ ÏÂÎ¸˜Â Ì‡ ‰ÎËÌÌ˚ı ˆËÚ‡Ú‡ı, ÏÂ‡ ¯ËÂ ‚‰‚ÓÂ. 230 ÒÎÓ‚ ÚÂÔÂ¸
-     ÎÓÊ‡ÚÒˇ ‚ ~9 ÒÚÓÍ ‚ÏÂÒÚÓ 21. */
+  /* –û—Ç–∑—ã–≤—ã –≤—Å—Ç–∞–≤–ª—è—é—Ç—Å—è –¥–æ—Å–ª–æ–≤–Ω–æ –∏ –±—ã–≤–∞—é—Ç –¥–ª–∏–Ω–Ω—ã–º–∏ ‚Äî —Ä–µ–∑–∞—Ç—å —á—É–∂–∏–µ —Å–ª–æ–≤–∞
+     –Ω–µ–ª—å–∑—è. –†–∞–∑–º–µ—Ä –∏ –º–µ—Ä–∞ –ø–æ–¥—Å—Ç—Ä–∞–∏–≤–∞—é—Ç—Å—è –ø–æ–¥ —Ç–µ–∫—Å—Ç, –∞ –Ω–µ –Ω–∞–æ–±–æ—Ä–æ—Ç:
+     —à—Ä–∏—Ñ—Ç –º–µ–ª—å—á–µ –Ω–∞ –¥–ª–∏–Ω–Ω—ã—Ö —Ü–∏—Ç–∞—Ç–∞—Ö, –º–µ—Ä–∞ —à–∏—Ä–µ –≤–¥–≤–æ–µ. 230 —Å–ª–æ–≤ —Ç–µ–ø–µ—Ä—å
+     –ª–æ–∂–∞—Ç—Å—è –≤ ~9 —Å—Ç—Ä–æ–∫ –≤–º–µ—Å—Ç–æ 21. */
   font-size:clamp(1.0625rem,1.1vw + .75rem,1.375rem);line-height:1.45;
   letter-spacing:-.005em;max-width:62ch;text-wrap:pretty;
 }
@@ -857,7 +903,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 
 /* -----------------------------------------------------------------------------
-   16. STANDARDS ó the permanent trust block. Formerly two figures sharing
+   16. STANDARDS ‚Äî the permanent trust block. Formerly two figures sharing
    each Patient Words slot; now its own section so it never depends on how
    many real reviews a clinic has. Three parallel statements, typeset away
    from Patient Words on purpose: no glyph, no bold byline, so a reader
@@ -899,7 +945,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 /* The form sits on a plate of heavier stock: one tonal step off the section,
    its own denser grain, a hairline border and registration marks at the
    corners. This is the tactile effect without a gradient glow or a blurred
-   glass panel ó both of which are the language the audit criticises. */
+   glass panel ‚Äî both of which are the language the audit criticises. */
 .plate{position:relative;padding:clamp(1.6rem,5vw,2.9rem)}
 .plate::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -1033,7 +1079,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 @media (min-width:900px){.book__grid{grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:clamp(3rem,7vw,7rem)}}
 
 /* -----------------------------------------------------------------------------
-   18. LOCATION ó address, rating, phones, map, reviews
+   18. LOCATION ‚Äî address, rating, phones, map, reviews
    Map sits above the copy on a phone (DOM order) and moves to the right column
    at 900px via grid `order`. No new colours: the scrim is ink-deep mixed with
    transparent, the stars are currentColor.
@@ -1070,7 +1116,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 /* --- map ---------------------------------------------------------------- */
 .map{position:relative}
 /* Framed like a print: a paper mat, a hairline on the mount and a second
-   hairline on the plate itself. Two rules and a tonal step ó no shadow. */
+   hairline on the plate itself. Two rules and a tonal step ‚Äî no shadow. */
 .map__frame{position:relative;padding:10px;background:var(--paper-2);border:1px solid var(--rule)}
 .map__plate{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--rule);background:var(--paper-2)}
 .map__iframe{width:100%;height:100%;border:0;display:block;filter:var(--map-filter)}
@@ -1097,7 +1143,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 @media (hover:hover) and (pointer:fine){.map__shield{display:none}}
 
-/* --- reviews ó same treatment as Patient Words, minus the glyph ---------- */
+/* --- reviews ‚Äî same treatment as Patient Words, minus the glyph ---------- */
 .revs{margin-top:clamp(3rem,8vw,5rem)}
 .revs .word__by{align-items:baseline}
 
@@ -1109,7 +1155,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 
 /* -----------------------------------------------------------------------------
-   19. FOOTER ó the hero construction returns, cropped and near-silent
+   19. FOOTER ‚Äî the hero construction returns, cropped and near-silent
    -------------------------------------------------------------------------- */
 .foot{padding-block:3.5rem;border-top:1px solid var(--rule);position:relative;overflow:hidden}
 .foot__mark{
@@ -1134,7 +1180,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 @media (min-width:760px){.foot__grid{grid-template-columns:2fr 1fr 1fr}}
 
 /* -----------------------------------------------------------------------------
-   20. SECTION INDEX ó desktop only
+   20. SECTION INDEX ‚Äî desktop only
    -------------------------------------------------------------------------- */
 .index{
   position:fixed;left:var(--gutter);bottom:2rem;z-index:40;display:none;
@@ -1159,14 +1205,14 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   .foot__col a{display:flex;align-items:center;min-height:44px;line-height:1.4}
   .foot__credit{display:inline-flex;align-items:center;min-height:44px}
   .nav__link{padding-block:.85rem}
-  /* the shade chips are 28px wide at 320px ó 28x64 clears WCAG 2.5.8 AA (24px)
+  /* the shade chips are 28px wide at 320px ‚Äî 28x64 clears WCAG 2.5.8 AA (24px)
      but not the 44px HIG figure. Non-essential control, keyboard path intact. */
   .shade__col{padding-block:.35rem}
   a,button{-webkit-tap-highlight-color:transparent}
 }
 
 /* -----------------------------------------------------------------------------
-   21. MOTION ó line masks, fades, hairline draws. Two curves. Nothing else.
+   21. MOTION ‚Äî line masks, fades, hairline draws. Two curves. Nothing else.
    -------------------------------------------------------------------------- */
 .js [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)}
 .js [data-reveal].is-in{opacity:1;transform:none}
@@ -1177,11 +1223,11 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .js [data-reveal="lines"].is-in .ln__i{transform:none}
 
 /* ---------------------------------------------------------------------------
-   ABOVE THE FOLD ó CSS only, no JavaScript in the path.
+   ABOVE THE FOLD ‚Äî CSS only, no JavaScript in the path.
 
    Everything below the fold can wait for app.js; the hero cannot. While it was
    on [data-reveal] the largest text on the page sat at opacity:0 until app.js
-   had downloaded, parsed, run, and had an IntersectionObserver fire ó which on
+   had downloaded, parsed, run, and had an IntersectionObserver fire ‚Äî which on
    a throttled 4G phone is the entire LCP figure. These keyframes start at first
    paint instead, so LCP is bound by the document and nothing else.
 
@@ -1233,48 +1279,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 /* --- HOTFIX: UI Polish --- */
 #trust { padding-top: clamp(1.5rem, 3vw, 3rem); }
 @media (max-width: 899px) {
-  .hero .mark { opacity: 0.3 !important; }
-}
-/* --- MOBILE HERO v2 (phones only; desktop is untouched) ---
-   The first phone screen used to be headline + one outline button + a lot of
-   empty cream. Now it carries a face, the rating and two clear actions. */
-.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
-.hero__call{display:none}
-.hero__trust{display:none}
-@media (max-width: 899px) {
-  .hero{min-height:auto;padding-block:7.5rem 3.5rem}
-  .hero__inner{flex:0 1 auto}
-  .hero__eyebrow{margin-bottom:2rem}
-  .hero__head{margin-block:0 1.75rem;font-size:clamp(2.6rem,12.6vw,4.25rem);line-height:.96}
-  .hero__lede{margin-bottom:2.25rem;font-size:1.0625rem;max-width:32ch}
-  .hero__actions{flex-direction:column;gap:.65rem}
-  .hero__actions .btn{width:100%;justify-content:center;padding-block:1.15rem}
-  .hero__actions .btn--book{background:var(--ink);color:var(--paper)}
-  .hero__actions .btn--book::before{background:var(--accent)}
-  .hero__call{display:inline-flex}
-  .hero__trust{
-    display:flex;align-items:center;gap:.9rem;
-    margin-top:2.25rem;padding:1.15rem 1.25rem;
-    background:rgba(255,255,255,.55);border:1px solid var(--rule);
-  }
-  .hero__avatar{
-    width:52px;height:52px;flex:0 0 52px;border-radius:50%;
-    display:block;background:url(portrait.jpg) 50% 14%/190% auto no-repeat;border:1px solid var(--rule);
-  }
-  .hero__trust-name{font-family:var(--font-display);font-size:1.0625rem;line-height:1.2;color:var(--ink)}
-  .hero__trust-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin-top:.3rem;
-    font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
-  .hero__stars{color:var(--accent);letter-spacing:.08em;font-size:.8rem}
-  .hero__foot{margin-top:1.75rem;padding-top:0}
-  .hero__meta{gap:.35rem 1rem;letter-spacing:.14em}
-  .hero__cue{display:none}
-}
-@media (max-width: 360px) {
-  .hero__trust-meta{letter-spacing:.08em}
-}
-@media (max-width: 400px) {
-  .brand__name{font-size:.95rem;letter-spacing:.1em;white-space:nowrap}
-  .brand__tag{letter-spacing:.18em}
+  .hero .mark { opacity: 0.12 !important; }
 }
 </style>
 
@@ -1290,7 +1295,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   setTimeout(function(){ if (!h.classList.contains('js-ready')) h.classList.remove('js'); }, 2500);
 
   /* Called from the font stylesheet's onload. It has to run *after* the
-     @font-face rules exist ó asking document.fonts.ready before they are
+     @font-face rules exist ‚Äî asking document.fonts.ready before they are
      parsed resolves immediately and defeats the whole point. */
   window.__fontsReady = function(){
     if (d.fonts && d.fonts.ready) d.fonts.ready.then(function(){ h.classList.add('fonts-ready'); });
@@ -1316,7 +1321,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- cursor (desktop, fine pointer only ó created here, activated from app.js) -->
+<!-- cursor (desktop, fine pointer only ‚Äî created here, activated from app.js) -->
 <span id="cur-ring" aria-hidden="true"></span>
 <span id="cur-dot" aria-hidden="true"></span>
 
@@ -1327,7 +1332,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Dr. Niloufar Molayem, home">
     <span class="brand__name" data-c="brand.name">Dr. Niloufar Molayem</span>
-    <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry ∑ Pasadena</span>
+    <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry ¬∑ Pasadena</span>
   </a>
 
   <nav class="nav__links" aria-label="Primary">
@@ -1352,7 +1357,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   <div class="menu__top">
     <span class="brand">
       <span class="brand__name" data-c="brand.name">Dr. Niloufar Molayem</span>
-      <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry ∑ Pasadena</span>
+      <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry ¬∑ Pasadena</span>
     </span>
     <button class="menu-btn" id="menu-close">Close</button>
   </div>
@@ -1434,7 +1439,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
       <span class="rule" data-hero="rule" data-delay="4" aria-hidden="true"></span>
       <p class="hero__meta" data-hero data-delay="4">
         <span data-c="hero.meta1">Consultations by appointment</span>
-        <span data-c="hero.meta2">Mon-Thu 8:00-17:00 ∑ Fri, Sat, Sun closed</span>
+        <span data-c="hero.meta2">Mon-Thu 8:00-17:00 ¬∑ Fri, Sat, Sun closed</span>
       </p>
     </div>
 
@@ -1452,7 +1457,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
       <div class="proof__cell" data-reveal>
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 12.3 7.3 17.5 7.9 13.6 11.4 14.7 16.5 10 13.9 5.3 16.5 6.4 11.4 2.5 7.9 7.7 7.3Z"/></svg>
         <p class="proof__val" data-c="proof.1.value">4.9</p>
-        <p class="proof__lab" data-c="proof.1.label">Google rating ∑ 139 reviews</p>
+        <p class="proof__lab" data-c="proof.1.label">Google rating ¬∑ 139 reviews</p>
       </div>
       <div class="proof__cell" data-reveal data-delay="1">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/></svg>
@@ -1474,7 +1479,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 01 ∑ THE DOCTOR ============================= -->
+<!-- ============================= 01 ¬∑ THE DOCTOR ============================= -->
 <section class="doctor" id="doctor" aria-labelledby="doctor-h">
   <!-- the hero construction again, cropped to this window -->
   <div class="figmark figmark--doctor" data-figmark aria-hidden="true">
@@ -1517,7 +1522,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
           <span class="crop crop--bl" aria-hidden="true"></span>
           <span class="crop crop--br" aria-hidden="true"></span>
         </div>
-        <figcaption class="portrait__cap" data-reveal data-c="doctor.caption">Dr. Niloufar Molayem ∑ Pasadena</figcaption>
+        <figcaption class="portrait__cap" data-reveal data-c="doctor.caption">Dr. Niloufar Molayem ¬∑ Pasadena</figcaption>
       </figure>
 
       <div>
@@ -1538,21 +1543,21 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
               <path d="M9 5 V14.5"/><path d="M9 5 Q5.5 3.2 2.5 4 V13 Q5.5 12.2 9 14.5 Q12.5 12.2 15.5 13 V4 Q12.5 3.2 9 5"/>
             </svg>
             <span class="school__k" data-c="doctor.school1.k">Faculty</span>
-            <span class="school__v" data-c="doctor.school1.v">Part-time professor ∑ USC School of Dentistry</span>
+            <span class="school__v" data-c="doctor.school1.v">Part-time professor ¬∑ USC School of Dentistry</span>
           </div>
           <div class="school__row" data-reveal data-delay="1">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M9 2.2 15 5.6 V12.4 L9 15.8 3 12.4 V5.6 Z"/><circle cx="9" cy="9" r="2.1"/>
             </svg>
             <span class="school__k" data-c="doctor.school2.k">Protocol</span>
-            <span class="school__v" data-c="doctor.school2.v">SMART safe mercury removal ∑ IAOMT</span>
+            <span class="school__v" data-c="doctor.school2.v">SMART safe mercury removal ¬∑ IAOMT</span>
           </div>
           <div class="school__row" data-reveal data-delay="2">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M6 3.2 Q2.4 9 6 14.8"/><path d="M12 3.2 Q15.6 9 12 14.8"/><path d="M9 5.4 V13.4"/>
             </svg>
             <span class="school__k" data-c="doctor.school3.k">Team</span>
-            <span class="school__v" data-c="doctor.school3.v">Dr. Sanchita Mehra ∑ board-certified periodontist</span>
+            <span class="school__v" data-c="doctor.school3.v">Dr. Sanchita Mehra ¬∑ board-certified periodontist</span>
           </div>
           <!-- At these fees the patient is buying the laboratory as much as the
                dentist. Naming the ceramist turns "one ceramist" from a claim
@@ -1563,9 +1568,9 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 02 ∑ TREATMENTS ============================= -->
+<!-- ============================= 02 ¬∑ TREATMENTS ============================= -->
 
-<!-- ============================= 03 ∑ APPROACH ============================= -->
+<!-- ============================= 03 ¬∑ APPROACH ============================= -->
 <section class="section dark approach-sec" id="approach" aria-labelledby="ap-h" data-dark>
   <!-- the hero construction again, cropped to this window -->
   <div class="figmark figmark--approach" data-figmark aria-hidden="true">
@@ -1622,7 +1627,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
     <!-- signature element: a Vita shade ladder, drawn entirely in CSS -->
     <figure class="shade" data-shade>
       <figcaption class="shade__lab">
-        <span class="eyebrow" data-c="shade.title">Shade selection ∑ daylight</span>
+        <span class="eyebrow" data-c="shade.title">Shade selection ¬∑ daylight</span>
         <span class="eyebrow eyebrow--quiet" id="shade-selected" data-c="shade.selected">Selected: A1</span>
       </figcaption>
       <div class="shade__ladder" role="radiogroup" aria-label="Shade selection" id="shade-ladder">
@@ -1669,7 +1674,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 04 ∑ PATIENTS ============================= -->
+<!-- ============================= 04 ¬∑ PATIENTS ============================= -->
 <section class="section words-sec" id="words" aria-labelledby="w-h">
   <!-- the hero construction again, cropped to this window -->
   <div class="figmark figmark--words" data-figmark aria-hidden="true">
@@ -1734,7 +1739,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 05 ∑ STANDARDS ============================= -->
+<!-- ============================= 05 ¬∑ STANDARDS ============================= -->
 <!-- Permanent. Unlike Patients above, this section never empties: it does
      not read reviews, so it renders identically whether the clinic has
      zero testimonials or sixty. -->
@@ -1769,7 +1774,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 06 ∑ CONSULTATION ============================= -->
+<!-- ============================= 06 ¬∑ CONSULTATION ============================= -->
 <section class="section dark" id="book" aria-labelledby="b-h" data-dark>
   <div class="wrap">
 
@@ -1815,7 +1820,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
             <circle cx="9" cy="9" r="6.4"/><path d="M9 5 V9 L11.9 10.8"/>
           </svg>
           <span class="info__k">Hours</span>
-          <span class="info__v" data-c="book.hours">Mon-Thu 8:00-17:00 ∑ Fri, Sat, Sun closed</span>
+          <span class="info__v" data-c="book.hours">Mon-Thu 8:00-17:00 ¬∑ Fri, Sat, Sun closed</span>
         </div>
       </div>
 
@@ -1911,7 +1916,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 </section>
 
 
-<!-- ============================= 07 ∑ LOCATION ============================= -->
+<!-- ============================= 07 ¬∑ LOCATION ============================= -->
 <section class="section loc" id="location" aria-labelledby="loc-h">
   <div class="wrap">
 
@@ -1984,7 +1989,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
                 class="map__iframe"
                 data-c="map.embed"
                 src="https://www.google.com/maps?q=761%20Union%20St%2C%20Pasadena%2C%20CA%2091101&output=embed"
-                title="Dr. Niloufar Molayem ó 761 Union St"
+                title="Dr. Niloufar Molayem ‚Äî 761 Union St"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -2063,7 +2068,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
       <div class="foot__col foot__brand">
         <span class="brand">
           <span class="brand__name" data-c="brand.name">Dr. Niloufar Molayem</span>
-          <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry ∑ Pasadena</span>
+          <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry ¬∑ Pasadena</span>
         </span>
       </div>
       <div class="foot__col">
@@ -2077,7 +2082,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
       </div>
     </div>
     <div class="foot__legal">
-      <span data-c="footer.legal">© 2026 Pasadena Smile Center</span>
+      <span data-c="footer.legal">¬© 2026 Pasadena Smile Center</span>
       <span data-c="footer.note">Holistic, family &amp; cosmetic dentistry</span>
       <a class="foot__credit" href="https://hs-frontend.online/" target="_blank" rel="noopener noreferrer" data-c="footer.credit">Site by hs-frontend.online</a>
     </div>
