@@ -4,19 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Desktop Walkthrough — Pasadena Smile Center</title>
+<link rel="icon" href="data:,">
+<title>Concept Walkthroughs — Pasadena Smile Center</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper: #F6F2EC;
   --paper-2: #EFE9DF;
   --ink-deep: #0F0C0A;
-  --stone: #8E8276;
+  --ink-card: #171310;
+  --stone: #9E9286;
   --accent: #A24E33;
   --accent-inv: #D98A6A;
+  --accent-teal: #2A857E;
   --rule: rgba(246, 242, 236, 0.12);
+  --rule-strong: rgba(246, 242, 236, 0.22);
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Inter', -apple-system, system-ui, sans-serif;
 }
@@ -42,7 +46,6 @@ body {
   position: relative;
 }
 
-/* Subtle luxury grain */
 body::after {
   content: "";
   position: fixed;
@@ -54,7 +57,7 @@ body::after {
 }
 
 .top-bar {
-  padding: 2.75rem 2rem 1.5rem;
+  padding: 2.75rem 1.5rem 1.25rem;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -69,7 +72,7 @@ body::after {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent-inv);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .eyebrow::before, .eyebrow::after {
@@ -81,7 +84,7 @@ body::after {
 
 .headline {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5.5vw, 4.25rem);
+  font-size: clamp(2rem, 4.8vw, 3.65rem);
   font-weight: 300;
   line-height: 1.08;
   letter-spacing: -0.025em;
@@ -94,18 +97,88 @@ body::after {
   color: var(--accent-inv);
 }
 
+.subhead {
+  margin: 0.9rem auto 0;
+  max-width: 56ch;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--stone);
+}
+
 .video-container {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 1.5rem 2rem 2.5rem;
+  gap: 2.75rem;
+  padding: 1.25rem 1.5rem 3rem;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
+}
+
+.concept-card {
+  width: 100%;
+  background: var(--ink-card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.concept-card--warm {
+  border-color: rgba(217, 138, 106, 0.32);
+}
+
+.concept-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.concept-head__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.concept-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-inv);
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(217, 138, 106, 0.12);
+  border: 1px solid rgba(217, 138, 106, 0.28);
+}
+
+.concept-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 300;
+  color: var(--paper);
+}
+
+.concept-desc {
+  font-size: 0.85rem;
+  color: var(--stone);
+  max-width: 58ch;
+  line-height: 1.5;
 }
 
 /* =============================================================================
@@ -116,9 +189,9 @@ body::after {
   width: 100%;
   aspect-ratio: 16 / 9;
   background: #000;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.07);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
   user-select: none;
   cursor: pointer;
 }
@@ -131,7 +204,6 @@ body::after {
   background: #000;
 }
 
-/* Big center play icon */
 .lux-center-play {
   position: absolute;
   top: 50%;
@@ -140,10 +212,10 @@ body::after {
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: rgba(15, 12, 10, 0.45);
+  background: rgba(15, 12, 10, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(246, 242, 236, 0.28);
+  border: 1px solid rgba(246, 242, 236, 0.32);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,13 +229,11 @@ body::after {
   height: 22px;
   fill: var(--paper);
   margin-left: 3px;
-  transition: transform 0.2s ease;
 }
 
 .lux-player.is-playing .lux-center-play {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.85);
-  pointer-events: none;
 }
 
 .lux-player:not(.is-playing):hover .lux-center-play {
@@ -171,7 +241,6 @@ body::after {
   transform: translate(-50%, -50%) scale(1.06);
 }
 
-/* Sleek bottom controls */
 .lux-controls {
   position: absolute;
   inset: auto 0 0 0;
@@ -192,7 +261,6 @@ body::after {
   pointer-events: auto;
 }
 
-/* Hairline Progress Scrubber */
 .lux-progress-wrap {
   position: relative;
   width: 100%;
@@ -253,7 +321,6 @@ body::after {
   transform: translateY(-50%) scale(1);
 }
 
-/* Control bar elements */
 .lux-controls-row {
   display: flex;
   align-items: center;
@@ -300,14 +367,13 @@ body::after {
   font-weight: 400;
 }
 
-/* Action button underneath */
-.action-bar {
-  margin-top: 1.85rem;
+.concept-foot {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
-  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.25rem;
 }
 
 .live-link {
@@ -317,35 +383,53 @@ body::after {
   gap: 0.6rem;
   color: var(--paper);
   text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.76rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.75rem 1.75rem;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 0.85rem 1.75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
   transition: all 0.25s ease;
-  max-width: 100%;
   text-align: center;
 }
 
 .live-link:hover {
   border-color: var(--accent-inv);
   color: var(--accent-inv);
-  background: rgba(217, 138, 106, 0.06);
+  background: rgba(217, 138, 106, 0.08);
   transform: translateY(-1px);
+}
+
+.live-link--warm {
+  background: var(--accent-inv);
+  color: #14100E;
+  border-color: var(--accent-inv);
+}
+
+.live-link--warm:hover {
+  background: #E59B7D;
+  color: #14100E;
+  border-color: #E59B7D;
+}
+
+.action-bar {
+  margin-top: 0.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
 }
 
 .process-link {
   font-size: 0.6875rem;
   letter-spacing: 0.12em;
-  padding: 0.6rem 1.4rem;
-  opacity: 0.85;
-}
-
-.process-link:hover {
-  opacity: 1;
+  padding: 0.65rem 1.4rem;
+  opacity: 0.88;
 }
 
 .footer {
@@ -362,29 +446,22 @@ body::after {
 
 @media (max-width: 600px) {
   .top-bar {
-    padding: 2rem 1.25rem 1rem;
+    padding: 2rem 1.15rem 1rem;
   }
   .video-container {
-    padding: 0.75rem 1.25rem 2rem;
+    padding: 0.75rem 1.15rem 2.25rem;
+    gap: 2rem;
   }
-  .headline {
-    font-size: clamp(1.85rem, 8vw, 2.5rem);
+  .concept-card {
+    padding: 1.15rem;
   }
   .lux-controls {
     padding: 1.5rem 1rem 0.85rem;
   }
-  .lux-controls-left, .lux-controls-right {
-    gap: 0.75rem;
-  }
   .live-link {
     width: 100%;
-    max-width: 320px;
-    padding: 0.7rem 1.25rem;
-    font-size: 0.6875rem;
-  }
-  .process-link {
-    font-size: 0.625rem;
-    padding: 0.55rem 1rem;
+    padding: 0.8rem 1.15rem;
+    font-size: 0.7rem;
   }
 }
 </style>
@@ -392,83 +469,123 @@ body::after {
 <body>
 
   <header class="top-bar">
-    <div class="eyebrow">Desktop Walkthrough · Concept Preview</div>
-    <h1 class="headline">New Concept for <em>Pasadena Smile Center</em></h1>
+    <div class="eyebrow">Desktop Walkthrough · Two Concept Directions</div>
+    <h1 class="headline">New Concepts for <em>Pasadena Smile Center</em></h1>
+    <p class="subhead">We prepared two distinct design directions so you can choose the atmosphere that best fits your practice: a warm, holistic family sanctuary or an editorial luxury aesthetic.</p>
   </header>
 
   <main class="video-container">
-    <div class="lux-player" id="playerWrap">
-      <video id="videoElement" src="./walkthrough.mp4" poster="poster.jpg" playsinline preload="metadata"></video>
 
-      <!-- Center Elegant Play Button -->
-      <div class="lux-center-play" id="centerPlay">
-        <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+    <!-- CONCEPT 1: WARM & HOLISTIC SANCTUARY -->
+    <section class="concept-card concept-card--warm" aria-label="Option 1: Warm & Holistic Concept">
+      <div class="concept-head">
+        <div class="concept-head__left">
+          <span class="concept-badge">Option 01 · Warm &amp; Holistic Sanctuary</span>
+          <h2 class="concept-title">Warm Botanical &amp; Biocompatible Edition</h2>
+          <p class="concept-desc">Sunlit cream &amp; sand palette, deep cypress-sage contrast, custom holistic illustrations, and an unhurried family-friendly flow.</p>
+        </div>
+        <a href="/pasadena-smiles/index-warm.html" class="live-link live-link--warm" target="_blank" rel="noopener">Open Warm Live Site &rarr;</a>
       </div>
 
-      <!-- Luxury Bottom Control Bar -->
-      <div class="lux-controls" id="luxControls">
-        <!-- Scrubber Progress Bar -->
-        <div class="lux-progress-wrap" id="progressWrap">
-          <div class="lux-progress-track">
-            <div class="lux-progress-buffered" id="bufferedBar"></div>
-            <div class="lux-progress-bar" id="progressBar">
-              <div class="lux-progress-thumb"></div>
+      <div class="lux-player" data-lux-player>
+        <video src="/pasadena-smiles/video/walkthrough-warm.mp4" poster="/pasadena-smiles/video/poster-warm.jpg" playsinline preload="metadata"></video>
+        <div class="lux-center-play">
+          <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+        </div>
+        <div class="lux-controls">
+          <div class="lux-progress-wrap" data-progress-wrap>
+            <div class="lux-progress-track">
+              <div class="lux-progress-buffered" data-buffered></div>
+              <div class="lux-progress-bar" data-progress><div class="lux-progress-thumb"></div></div>
+            </div>
+          </div>
+          <div class="lux-controls-row">
+            <div class="lux-controls-left">
+              <button class="lux-btn" data-play aria-label="Play/Pause">
+                <svg viewBox="0 0 24 24" data-play-icon><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+              <span class="lux-time" data-time>0:00 / 0:00</span>
+            </div>
+            <div class="lux-controls-right">
+              <button class="lux-btn" data-mute aria-label="Mute/Unmute">
+                <svg viewBox="0 0 24 24" data-vol-icon>
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+              <button class="lux-btn" data-fullscreen aria-label="Fullscreen">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Controls Row -->
-        <div class="lux-controls-row">
-          <div class="lux-controls-left">
-            <button class="lux-btn" id="playBtn" aria-label="Play/Pause">
-              <svg viewBox="0 0 24 24" id="playIcon"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-            </button>
-            <span class="lux-time" id="timeDisplay">0:00 / 0:00</span>
+    <!-- CONCEPT 2: EDITORIAL QUIET LUXURY -->
+    <section class="concept-card" aria-label="Option 2: Editorial Quiet Luxury Concept">
+      <div class="concept-head">
+        <div class="concept-head__left">
+          <span class="concept-badge">Option 02 · Editorial Quiet Luxury</span>
+          <h2 class="concept-title">Architectural Editorial Edition</h2>
+          <p class="concept-desc">High-contrast editorial typography, precision geometric linework, and a gallery-inspired presentation.</p>
+        </div>
+        <a href="/pasadena-smiles/" class="live-link" target="_blank" rel="noopener">Open Editorial Live Site &rarr;</a>
+      </div>
+
+      <div class="lux-player" data-lux-player>
+        <video src="/pasadena-smiles/video/walkthrough.mp4" poster="/pasadena-smiles/video/poster.jpg" playsinline preload="metadata"></video>
+        <div class="lux-center-play">
+          <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+        </div>
+        <div class="lux-controls">
+          <div class="lux-progress-wrap" data-progress-wrap>
+            <div class="lux-progress-track">
+              <div class="lux-progress-buffered" data-buffered></div>
+              <div class="lux-progress-bar" data-progress><div class="lux-progress-thumb"></div></div>
+            </div>
           </div>
-
-          <div class="lux-controls-right">
-            <button class="lux-btn" id="muteBtn" aria-label="Mute/Unmute">
-              <svg viewBox="0 0 24 24" id="volumeIcon">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-              </svg>
-            </button>
-            <button class="lux-btn" id="fullscreenBtn" aria-label="Fullscreen">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-              </svg>
-            </button>
+          <div class="lux-controls-row">
+            <div class="lux-controls-left">
+              <button class="lux-btn" data-play aria-label="Play/Pause">
+                <svg viewBox="0 0 24 24" data-play-icon><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+              <span class="lux-time" data-time>0:00 / 0:00</span>
+            </div>
+            <div class="lux-controls-right">
+              <button class="lux-btn" data-mute aria-label="Mute/Unmute">
+                <svg viewBox="0 0 24 24" data-vol-icon>
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+              <button class="lux-btn" data-fullscreen aria-label="Fullscreen">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <div class="action-bar">
-      <a href="/pasadena-smiles/" class="live-link" target="_blank">View Live Interactive Site &rarr;</a>
-      <a href="/pasadena-smiles/Pasadena-Smile-Center-Audit.pdf" class="live-link process-link" target="_blank">VIEW MOBILE AUDIT REPORT &rarr;</a>
-      <a href="/pasadena-smiles/process.pdf?v=20261006b" class="live-link process-link" target="_blank">How It Works &middot; Price &amp; Terms &rarr;</a>
+      <a href="/pasadena-smiles/Pasadena-Smile-Center-Audit.pdf" class="live-link process-link" target="_blank" rel="noopener">VIEW MOBILE AUDIT REPORT &rarr;</a>
+      <a href="/pasadena-smiles/process.pdf?v=20261006b" class="live-link process-link" target="_blank" rel="noopener">How It Works &middot; Price &amp; Terms &rarr;</a>
     </div>
   </main>
 
   <footer class="footer">
-    Private Walkthrough · HS Frontend
+    Private Walkthrough · <a href="https://hs-frontend.online" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">HS Frontend</a>
   </footer>
 
 <script>
 (function() {
-  const wrap = document.getElementById('playerWrap');
-  const video = document.getElementById('videoElement');
-  const playBtn = document.getElementById('playBtn');
-  const playIcon = document.getElementById('playIcon');
-  const progressWrap = document.getElementById('progressWrap');
-  const progressBar = document.getElementById('progressBar');
-  const bufferedBar = document.getElementById('bufferedBar');
-  const timeDisplay = document.getElementById('timeDisplay');
-  const muteBtn = document.getElementById('muteBtn');
-  const volumeIcon = document.getElementById('volumeIcon');
-  const fullscreenBtn = document.getElementById('fullscreenBtn');
-
-  let idleTimeout = null;
+  const players = Array.from(document.querySelectorAll('[data-lux-player]'));
+  const allVideos = players.map(p => p.querySelector('video'));
 
   function formatTime(sec) {
     if (isNaN(sec)) return "0:00";
@@ -477,129 +594,139 @@ body::after {
     return m + ":" + (s < 10 ? "0" : "") + s;
   }
 
-  function togglePlay() {
-    if (video.paused || video.ended) {
-      video.play();
-    } else {
-      video.pause();
+  players.forEach((wrap) => {
+    const video = wrap.querySelector('video');
+    const playBtn = wrap.querySelector('[data-play]');
+    const playIcon = wrap.querySelector('[data-play-icon]');
+    const progressWrap = wrap.querySelector('[data-progress-wrap]');
+    const progressBar = wrap.querySelector('[data-progress]');
+    const bufferedBar = wrap.querySelector('[data-buffered]');
+    const timeDisplay = wrap.querySelector('[data-time]');
+    const muteBtn = wrap.querySelector('[data-mute]');
+    const volumeIcon = wrap.querySelector('[data-vol-icon]');
+    const fullscreenBtn = wrap.querySelector('[data-fullscreen]');
+    let idleTimeout = null;
+
+    /* Fallback for local server rooted inside /pasadena-smiles/ */
+    video.addEventListener('error', function onErr() {
+      const src = video.getAttribute('src') || '';
+      if (src.startsWith('/pasadena-smiles/video/')) {
+        video.removeEventListener('error', onErr);
+        video.src = './' + src.replace('/pasadena-smiles/video/', '');
+        const p = video.getAttribute('poster') || '';
+        if (p.startsWith('/pasadena-smiles/video/')) {
+          video.poster = './' + p.replace('/pasadena-smiles/video/', '');
+        }
+        video.load();
+      }
+    }, { once: true });
+
+    function togglePlay() {
+      if (video.paused || video.ended) {
+        allVideos.forEach(v => { if (v !== video && !v.paused) v.pause(); });
+        video.play();
+      } else {
+        video.pause();
+      }
     }
-  }
 
-  video.addEventListener('play', () => {
-    wrap.classList.add('is-playing');
-    playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
-    resetIdleTimer();
-  });
-
-  video.addEventListener('pause', () => {
-    wrap.classList.remove('is-playing');
-    playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
-    wrap.classList.add('show-controls');
-    clearTimeout(idleTimeout);
-  });
-
-  video.addEventListener('timeupdate', () => {
-    const cur = video.currentTime;
-    const dur = video.duration || 0;
-    const pct = dur > 0 ? (cur / dur) * 100 : 0;
-    progressBar.style.width = pct + "%";
-    timeDisplay.textContent = formatTime(cur) + " / " + formatTime(dur);
-
-    if (video.buffered.length > 0) {
-      const bufEnd = video.buffered.end(video.buffered.length - 1);
-      bufferedBar.style.width = (dur > 0 ? (bufEnd / dur) * 100 : 0) + "%";
+    function resetIdleTimer() {
+      wrap.classList.add('show-controls');
+      clearTimeout(idleTimeout);
+      if (!video.paused) {
+        idleTimeout = setTimeout(() => {
+          wrap.classList.remove('show-controls');
+        }, 2500);
+      }
     }
-  });
 
-  video.addEventListener('ended', () => {
-    wrap.classList.remove('is-playing');
-    wrap.classList.add('show-controls');
-    playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
-  });
+    video.addEventListener('play', () => {
+      wrap.classList.add('is-playing');
+      playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+      resetIdleTimer();
+    });
 
-  playBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    togglePlay();
-  });
+    video.addEventListener('pause', () => {
+      wrap.classList.remove('is-playing');
+      playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
+      wrap.classList.add('show-controls');
+      clearTimeout(idleTimeout);
+    });
 
-  wrap.addEventListener('click', (e) => {
-    // If clicked on controls row, do nothing
-    if (e.target.closest('.lux-controls')) return;
-    togglePlay();
-  });
+    video.addEventListener('loadedmetadata', () => {
+      timeDisplay.textContent = "0:00 / " + formatTime(video.duration || 0);
+    });
 
-  // Seeking via scrubber
-  let isSeeking = false;
-  function seek(e) {
-    const rect = progressWrap.getBoundingClientRect();
-    const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    video.currentTime = pos * (video.duration || 0);
-  }
+    video.addEventListener('timeupdate', () => {
+      const cur = video.currentTime;
+      const dur = video.duration || 0;
+      const pct = dur > 0 ? (cur / dur) * 100 : 0;
+      progressBar.style.width = pct + "%";
+      timeDisplay.textContent = formatTime(cur) + " / " + formatTime(dur);
+      if (video.buffered.length > 0) {
+        const bufEnd = video.buffered.end(video.buffered.length - 1);
+        bufferedBar.style.width = (dur > 0 ? (bufEnd / dur) * 100 : 0) + "%";
+      }
+    });
 
-  progressWrap.addEventListener('mousedown', (e) => {
-    isSeeking = true;
-    seek(e);
-  });
+    video.addEventListener('ended', () => {
+      wrap.classList.remove('is-playing');
+      wrap.classList.add('show-controls');
+      playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
+    });
 
-  window.addEventListener('mousemove', (e) => {
-    if (isSeeking) seek(e);
-  });
-
-  window.addEventListener('mouseup', () => {
-    if (isSeeking) isSeeking = false;
-  });
-
-  // Volume / Mute
-  muteBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    video.muted = !video.muted;
-    if (video.muted) {
-      volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>';
-    } else {
-      volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
-    }
-  });
-
-  // Fullscreen
-  fullscreenBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (!document.fullscreenElement) {
-      if (wrap.requestFullscreen) wrap.requestFullscreen();
-      else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
-    } else {
-      if (document.exitFullscreen) document.exitFullscreen();
-    }
-  });
-
-  // Autohide controls on idle
-  function resetIdleTimer() {
-    wrap.classList.add('show-controls');
-    clearTimeout(idleTimeout);
-    if (!video.paused) {
-      idleTimeout = setTimeout(() => {
-        wrap.classList.remove('show-controls');
-      }, 2500);
-    }
-  }
-
-  wrap.addEventListener('mousemove', resetIdleTimer);
-  wrap.addEventListener('mouseleave', () => {
-    if (!video.paused) {
-      wrap.classList.remove('show-controls');
-    }
-  });
-
-  // Keyboard controls
-  window.addEventListener('keydown', (e) => {
-    if (['Space', 'KeyK'].includes(e.code) && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-      e.preventDefault();
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       togglePlay();
-    } else if (e.code === 'KeyM') {
-      video.muted = !video.muted;
-    } else if (e.code === 'KeyF') {
-      if (!document.fullscreenElement) wrap.requestFullscreen();
-      else document.exitFullscreen();
+    });
+
+    wrap.addEventListener('click', (e) => {
+      if (e.target.closest('.lux-controls')) return;
+      togglePlay();
+    });
+
+    let isSeeking = false;
+    function seek(e) {
+      const rect = progressWrap.getBoundingClientRect();
+      const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      video.currentTime = pos * (video.duration || 0);
     }
+
+    progressWrap.addEventListener('mousedown', (e) => {
+      isSeeking = true;
+      seek(e);
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (isSeeking) seek(e);
+    });
+    window.addEventListener('mouseup', () => {
+      if (isSeeking) isSeeking = false;
+    });
+
+    muteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      if (video.muted) {
+        volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>';
+      } else {
+        volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
+      }
+    });
+
+    fullscreenBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!document.fullscreenElement) {
+        if (wrap.requestFullscreen) wrap.requestFullscreen();
+        else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    });
+
+    wrap.addEventListener('mousemove', resetIdleTimer);
+    wrap.addEventListener('mouseleave', () => {
+      if (!video.paused) wrap.classList.remove('show-controls');
+    });
   });
 })();
 </script>
