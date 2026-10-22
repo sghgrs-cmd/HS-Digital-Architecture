@@ -2696,19 +2696,42 @@
     color: var(--accent-terracotta);
   }
 
-  /* Bespoke Architectural Mini-Diagrams in Section 04 (Standards) */
-  .trust__art {
+  /* Bespoke Architectural Framed Atelier Canvases in Section 04 (Standards) */
+  .trust__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    padding-bottom: 0.65rem;
+    padding-bottom: 0.55rem;
     border-bottom: 1px solid var(--border-warm);
-    margin-bottom: 0.25rem;
   }
-  .trust__art svg {
-    width: 148px;
-    height: 62px;
+  .trust__spec {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-terracotta);
+  }
+  .trust__canvas {
+    background: var(--surface-warm);
+    border: 1px solid var(--border-warm);
+    border-radius: 16px;
+    padding: 0.65rem;
+    margin: 0.25rem 0 0.45rem;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .trust:hover .trust__canvas {
+    border-color: var(--terracotta-border);
+    transform: translateY(-2px);
+  }
+  .trust__canvas svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .step__icon {
+    width: 44px !important;
+    height: 44px !important;
     flex-shrink: 0;
   }
 
@@ -3121,7 +3144,12 @@
         <div class="step reveal">
           <div class="step__top">
             <span class="step__num">Step 01</span>
-            <svg class="step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M18 22.5C18 19.5 20.7 17 24 17C27.3 17 30 19.5 30 22.5C30 25.2 27.8 27.4 24.8 27.9L21 30.5V27.6C19.2 26.7 18 24.8 18 22.5Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <circle cx="24" cy="9" r="2" fill="var(--terracotta-light)"/>
+            </svg>
           </div>
           <h3 class="step__title" data-c="approach.step1.t">Consultation</h3>
           <p class="step__body" data-c="approach.step1.p">A full examination and an unhurried conversation. Your concerns, and any metal sensitivities, are heard before anything is decided.</p>
@@ -3131,7 +3159,12 @@
         <div class="step reveal">
           <div class="step__top">
             <span class="step__num">Step 02</span>
-            <svg class="step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M24 15L30.5 18V23.8C30.5 28 27.7 31.3 24 32.8C20.3 31.3 17.5 28 17.5 23.8V18L24 15Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <path d="M21.5 24L23.3 25.8L27 22" stroke="var(--sage-text)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
           <h3 class="step__title" data-c="approach.step2.t">Biocompatibility</h3>
           <p class="step__body" data-c="approach.step2.p">Materials are tested for biocompatibility before any implant, filling or crown is placed.</p>
@@ -3141,7 +3174,13 @@
         <div class="step reveal">
           <div class="step__top">
             <span class="step__num">Step 03</span>
-            <svg class="step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313-12.454z"/><path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"/></svg>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M17 28C19.5 22 23 18 29 17C28 23 24.5 26.5 18.5 29Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <path d="M17 29L25 21" stroke="var(--sage-text)" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="31" cy="17" r="1.8" fill="var(--terracotta-light)"/>
+            </svg>
           </div>
           <h3 class="step__title" data-c="approach.step3.t">Least invasive first</h3>
           <p class="step__body" data-c="approach.step3.p">Ozone therapy for early decay, and natural tooth structure preserved wherever the plan allows.</p>
@@ -3151,7 +3190,12 @@
         <div class="step reveal">
           <div class="step__top">
             <span class="step__num">Step 04</span>
-            <svg class="step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M7 4c2-1.5 4-.5 5 1c1-1.5 3-2.5 5-1c2.5 2 2 7 0 11c-1 2-2.2 2-3 0c-.6-1.5-1.2-2.5-2-2.5s-1.4 1-2 2.5c-.8 2-2 2-3 0c-2-4-2.5-9 0-11z"/></svg>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M20 18.5C21.2 17.3 22.8 17.5 24 18.6C25.2 17.5 26.8 17.3 28 18.5C29.6 20.2 29.2 24.4 27.6 28C26.9 29.5 25.8 29.5 25.1 27.8C24.7 26.6 24.4 25.8 24 25.8C23.6 25.8 23.3 26.6 22.9 27.8C22.2 29.5 21.1 29.5 20.4 28C18.8 24.4 18.4 20.2 20 18.5Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <circle cx="24" cy="14.5" r="1.6" fill="var(--sage-text)"/>
+            </svg>
           </div>
           <h3 class="step__title" data-c="approach.step4.t">Metal-free restoration</h3>
           <p class="step__body" data-c="approach.step4.p">Ceramic implants, composite fillings and crowns, shade-matched so the result reads as your own teeth.</p>
@@ -3237,54 +3281,89 @@
 
       <div class="trust-grid">
         <article class="trust reveal">
-          <div class="trust__art" aria-hidden="true">
-            <svg viewBox="0 0 160 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="42" cy="34" r="24" stroke="var(--terracotta-border)" stroke-width="1" stroke-dasharray="3 4"/>
-              <circle cx="42" cy="34" r="17" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.3"/>
-              <path d="M42 23L50 26.5V33.2C50 38.4 46.6 42.3 42 44C37.4 42.3 34 38.4 34 33.2V26.5L42 23Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.25"/>
-              <path d="M38.5 33.5L41 36L46 31" stroke="var(--accent-terracotta)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="76" y1="26" x2="144" y2="26" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="76" y1="34" x2="132" y2="34" stroke="var(--terracotta-border)" stroke-width="1.2"/>
-              <line x1="76" y1="42" x2="144" y2="42" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="2 4"/>
-              <circle cx="132" cy="34" r="2.5" fill="var(--accent-terracotta)"/>
-            </svg>
+          <div class="trust__top">
             <span class="trust__idx">Standard I</span>
+            <span class="trust__spec">Bio-Safe Protocol</span>
+          </div>
+          <div class="trust__canvas" aria-hidden="true">
+            <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
+              <line x1="6" y1="72" x2="314" y2="72" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <line x1="160" y1="6" x2="160" y2="138" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <circle cx="160" cy="72" r="52" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="5 6"/>
+              <circle cx="160" cy="72" r="38" fill="var(--surface-card)" stroke="var(--teal-border)" stroke-width="1.2"/>
+              <circle cx="160" cy="72" r="28" stroke="var(--terracotta-border)" stroke-width="0.9"/>
+              <path d="M56 108 C82 86, 102 76, 122 72" stroke="var(--accent-teal)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M78 92 C72 80, 82 70, 94 76 C88 86, 82 90, 78 92 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              <path d="M100 79 C97 68, 106 60, 116 67 C111 75, 105 78, 100 79 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+              <path d="M264 108 C238 86, 218 76, 198 72" stroke="var(--accent-teal)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M242 92 C248 80, 238 70, 226 76 C232 86, 238 90, 242 92 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              <path d="M220 79 C223 68, 214 60, 204 67 C209 75, 215 78, 220 79 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+              <path d="M160 53L174 59V71.2C174 80.5 168 87.4 160 90.5C152 87.4 146 80.5 146 71.2V59L160 53Z" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.45" stroke-linejoin="round"/>
+              <path d="M154.5 71.5L158.5 75.5L166.5 67.5" stroke="var(--accent-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="160" cy="20" r="2.8" fill="var(--accent-terracotta)"/>
+              <circle cx="204" cy="44" r="2.8" fill="var(--accent-teal)"/>
+              <circle cx="116" cy="100" r="2.5" fill="var(--accent-terracotta)"/>
+            </svg>
           </div>
           <h3 class="trust__t" data-c="words.trust.1.t">Safe mercury removal</h3>
           <p class="trust__p" data-c="words.trust.1.p">Old silver fillings come out under the IAOMT SMART protocol: rubber dam, high-volume suction, air filtration and a clean air supply for you.</p>
         </article>
 
         <article class="trust reveal">
-          <div class="trust__art" aria-hidden="true">
-            <svg viewBox="0 0 160 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="42" cy="34" r="24" stroke="var(--teal-border)" stroke-width="1" stroke-dasharray="3 4"/>
-              <circle cx="42" cy="23" r="6.5" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.3"/>
-              <circle cx="32" cy="40" r="6.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.3"/>
-              <circle cx="52" cy="40" r="6.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.3"/>
-              <path d="M37 27L34 34 M47 27L50 34 M38.5 40H45.5" stroke="var(--accent-teal)" stroke-width="1.2"/>
-              <path d="M76 38 C90 26, 106 46, 120 34 C130 25, 138 34, 146 30" stroke="var(--accent-terracotta)" stroke-width="1.3" stroke-linecap="round"/>
-              <line x1="76" y1="46" x2="146" y2="46" stroke="var(--border-warm)" stroke-width="1"/>
-            </svg>
+          <div class="trust__top">
             <span class="trust__idx">Standard II</span>
+            <span class="trust__spec">Gentle Preservation</span>
+          </div>
+          <div class="trust__canvas" aria-hidden="true">
+            <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
+              <line x1="6" y1="72" x2="314" y2="72" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <line x1="160" y1="6" x2="160" y2="138" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <circle cx="160" cy="72" r="52" stroke="var(--teal-border)" stroke-width="1.1" stroke-dasharray="5 6"/>
+              <circle cx="160" cy="72" r="38" fill="var(--surface-card)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M48 82 C76 62, 98 86, 122 72" stroke="var(--accent-terracotta)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M198 72 C222 58, 244 82, 272 62" stroke="var(--accent-terracotta)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M82 68 C78 56, 88 48, 98 55 C93 64, 86 67, 82 68 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              <path d="M238 76 C242 88, 232 96, 222 89 C227 80, 234 77, 238 76 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              <line x1="160" y1="56" x2="145" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
+              <line x1="160" y1="56" x2="175" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
+              <line x1="145" y1="81" x2="175" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
+              <circle cx="160" cy="56" r="8.5" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.4"/>
+              <circle cx="145" cy="81" r="8.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+              <circle cx="175" cy="81" r="8.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+              <circle cx="160" cy="56" r="2.5" fill="var(--accent-terracotta)"/>
+              <circle cx="114" cy="46" r="2.8" fill="var(--accent-teal)"/>
+              <circle cx="206" cy="98" r="2.8" fill="var(--accent-terracotta)"/>
+            </svg>
           </div>
           <h3 class="trust__t" data-c="words.trust.2.t">Ozone before the drill</h3>
           <p class="trust__p" data-c="words.trust.2.p">Early decay can often be treated with ozone therapy: no drilling, no injections, back to your day straight after.</p>
         </article>
 
         <article class="trust reveal">
-          <div class="trust__art" aria-hidden="true">
-            <svg viewBox="0 0 160 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="20" y="14" width="44" height="40" rx="8" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.3"/>
-              <circle cx="42" cy="34" r="10" stroke="var(--accent-terracotta)" stroke-width="1.25"/>
-              <circle cx="42" cy="34" r="3" fill="var(--accent-teal)"/>
-              <line x1="42" y1="19" x2="42" y2="23" stroke="var(--border-strong)" stroke-width="1"/>
-              <line x1="42" y1="45" x2="42" y2="49" stroke="var(--border-strong)" stroke-width="1"/>
-              <line x1="27" y1="34" x2="31" y2="34" stroke="var(--border-strong)" stroke-width="1"/>
-              <line x1="53" y1="34" x2="57" y2="34" stroke="var(--border-strong)" stroke-width="1"/>
-              <path d="M76 24 H142 M76 34 H126 M76 44 H136" stroke="var(--teal-border)" stroke-width="1.2" stroke-linecap="round"/>
-              <circle cx="126" cy="34" r="2.5" fill="var(--accent-teal)"/>
-            </svg>
+          <div class="trust__top">
             <span class="trust__idx">Standard III</span>
+            <span class="trust__spec">Optical Precision</span>
+          </div>
+          <div class="trust__canvas" aria-hidden="true">
+            <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
+              <line x1="6" y1="72" x2="314" y2="72" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <line x1="160" y1="6" x2="160" y2="138" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <circle cx="160" cy="72" r="52" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="5 6"/>
+              <circle cx="160" cy="72" r="38" fill="var(--surface-card)" stroke="var(--teal-border)" stroke-width="1.2"/>
+              <path d="M56 58 H108 M68 72 H114 M56 86 H108" stroke="var(--teal-border)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M212 58 H264 M206 72 H252 M212 86 H264" stroke="var(--teal-border)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M92 50 C88 40, 96 34, 105 40 C100 47, 95 49, 92 50 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+              <path d="M228 94 C232 104, 224 110, 215 104 C220 97, 225 95, 228 94 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              <rect x="138" y="50" width="44" height="44" rx="10" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+              <circle cx="160" cy="72" r="12" stroke="var(--accent-terracotta)" stroke-width="1.35"/>
+              <circle cx="160" cy="72" r="3.5" fill="var(--accent-teal)"/>
+              <circle cx="160" cy="20" r="2.8" fill="var(--accent-teal)"/>
+              <circle cx="212" cy="72" r="2.5" fill="var(--accent-terracotta)"/>
+              <circle cx="108" cy="72" r="2.5" fill="var(--accent-terracotta)"/>
+            </svg>
           </div>
           <h3 class="trust__t" data-c="words.trust.3.t">Digital, low-dose imaging</h3>
           <p class="trust__p" data-c="words.trust.3.p">Digital X-rays and the iTero scanner: less radiation than film, and no impression trays.</p>
