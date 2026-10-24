@@ -2751,6 +2751,181 @@
     }
   }
 
+
+/* Ultra-Luxury Meditative Micro-Animations for Clinical Standards */
+  .trust__orbit {
+    transform-origin: 160px 72px;
+    animation: trustOrbit 30s linear infinite;
+  }
+  .trust:hover .trust__orbit {
+    animation-duration: 15s;
+  }
+  @keyframes trustOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .trust__orbit-inner {
+    transform-origin: 160px 72px;
+    animation: trustOrbitCounter 22s linear infinite;
+  }
+  .trust:hover .trust__orbit-inner {
+    animation-duration: 11s;
+  }
+  @keyframes trustOrbitCounter {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+
+  .trust__center {
+    transform-origin: 160px 72px;
+    animation: trustPulse 4.8s ease-in-out infinite;
+    transition: filter 0.3s ease;
+  }
+  .trust:hover .trust__center {
+    filter: drop-shadow(0 0 8px var(--terracotta-border));
+    animation-duration: 2.6s;
+  }
+  @keyframes trustPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); }
+  }
+
+  .trust__leaf {
+    transform-origin: 88px 84px;
+    animation: trustFloat 4.8s ease-in-out infinite alternate;
+  }
+  .trust__leaf--alt {
+    transform-origin: 232px 84px;
+    animation: trustFloatAlt 5.4s ease-in-out infinite alternate;
+  }
+  @keyframes trustFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(1.5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+  @keyframes trustFloatAlt {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-2.5px) rotate(-1.5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  /* --- Warm Independent AI Verification Card --- */
+  .warm-ai-verify {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .warm-ai-verify:hover {
+    border-color: var(--terracotta-border);
+    box-shadow: 0 12px 28px -6px rgba(41, 37, 36, 0.08);
+  }
+  .warm-ai-verify__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: var(--terracotta-soft);
+    border: 1px solid var(--terracotta-border);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-terracotta);
+    margin-bottom: 0.85rem;
+  }
+  .warm-ai-verify__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-terracotta);
+  }
+  .warm-ai-verify__title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--text-ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .warm-ai-verify__desc {
+    font-size: 0.92rem;
+    color: var(--text-warm-stone);
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+    max-width: 58ch;
+  }
+  .warm-ai-verify__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  @media (min-width: 640px) {
+    .warm-ai-verify__actions {
+      flex-direction: row;
+    }
+  }
+  .warm-ai-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1.25rem;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-warm);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text-ink);
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .warm-ai-btn:hover {
+    border-color: var(--terracotta-border);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px -3px rgba(194, 109, 80, 0.15);
+  }
+  .warm-ai-btn__icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: var(--accent-terracotta);
+  }
+  .warm-ai-btn--gpt .warm-ai-btn__icon {
+    color: var(--accent-teal);
+  }
+  .warm-ai-btn__meta {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .warm-ai-btn__label {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-ink);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .warm-ai-btn:hover .warm-ai-btn__label {
+    color: var(--accent-terracotta);
+  }
+  .warm-ai-btn--gpt:hover .warm-ai-btn__label {
+    color: var(--accent-teal);
+  }
+  .warm-ai-btn__arrow {
+    font-size: 0.9rem;
+    transition: transform 0.25s ease;
+  }
+  .warm-ai-btn:hover .warm-ai-btn__arrow {
+    transform: translate(2px, -2px);
+  }
+  .warm-ai-btn__sub {
+    font-size: 0.68rem;
+    color: var(--text-warm-stone);
+  }
+
 </style>
 
 <script type="application/ld+json">
@@ -3268,6 +3443,49 @@
           </figcaption>
         </figure>
       </div>
+
+      <!-- =====================================================================
+           INDEPENDENT AI VERIFICATION (Third-Party Consensus)
+           Direct unvarnished inquiries via Google AI Overview (udm=50) & ChatGPT
+           ===================================================================== -->
+      <div class="warm-ai-verify reveal">
+        <div class="warm-ai-verify__header">
+          <div class="warm-ai-verify__badge">
+            <span class="warm-ai-verify__dot" aria-hidden="true"></span>
+            <span>Third-Party Verification</span>
+          </div>
+          <h3 class="warm-ai-verify__title">Prefer an unedited perspective?</h3>
+          <p class="warm-ai-verify__desc">Ask an independent artificial intelligence engine to evaluate Dr. <span data-c="doctor.name">Niloufar Molayem</span>’s biological protocols, IAOMT SMART certification, and patient outcomes across California.</p>
+        </div>
+        <div class="warm-ai-verify__actions">
+          <a class="warm-ai-btn warm-ai-btn--google" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+            <svg class="warm-ai-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
+              <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-dasharray="1.5 2"/>
+              <circle cx="19" cy="5" r="0.75" fill="currentColor"/>
+              <circle cx="5" cy="19" r="0.75" fill="currentColor"/>
+            </svg>
+            <div class="warm-ai-btn__meta">
+              <span class="warm-ai-btn__label">Google AI Overview <span class="warm-ai-btn__arrow" aria-hidden="true">&nearr;</span></span>
+              <span class="warm-ai-btn__sub">udm=50 &middot; Instant direct summary</span>
+            </div>
+          </a>
+          <a class="warm-ai-btn warm-ai-btn--gpt" href="https://chatgpt.com/?q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+            <svg class="warm-ai-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 3C8 6 8 18 12 21"/>
+              <path d="M12 3C16 6 16 18 12 21"/>
+              <path d="M3 12C6 8 18 8 21 12"/>
+              <path d="M3 12C6 16 18 16 21 12"/>
+              <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
+            </svg>
+            <div class="warm-ai-btn__meta">
+              <span class="warm-ai-btn__label">ChatGPT Consensus <span class="warm-ai-btn__arrow" aria-hidden="true">&nearr;</span></span>
+              <span class="warm-ai-btn__sub">Live dialogue &middot; Zero login needed</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -3290,20 +3508,28 @@
               <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
               <line x1="6" y1="72" x2="314" y2="72" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
               <line x1="160" y1="6" x2="160" y2="138" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
-              <circle cx="160" cy="72" r="52" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="5 6"/>
+              <g class="trust__orbit"><circle cx="160" cy="72" r="52" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="5 6"/></g>
               <circle cx="160" cy="72" r="38" fill="var(--surface-card)" stroke="var(--teal-border)" stroke-width="1.2"/>
               <circle cx="160" cy="72" r="28" stroke="var(--terracotta-border)" stroke-width="0.9"/>
               <path d="M56 108 C82 86, 102 76, 122 72" stroke="var(--accent-teal)" stroke-width="1.3" stroke-linecap="round"/>
-              <path d="M78 92 C72 80, 82 70, 94 76 C88 86, 82 90, 78 92 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
-              <path d="M100 79 C97 68, 106 60, 116 67 C111 75, 105 78, 100 79 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+              <g class="trust__leaf">
+                <path d="M78 92 C72 80, 82 70, 94 76 C88 86, 82 90, 78 92 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+                <path d="M100 79 C97 68, 106 60, 116 67 C111 75, 105 78, 100 79 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+              </g>
               <path d="M264 108 C238 86, 218 76, 198 72" stroke="var(--accent-teal)" stroke-width="1.3" stroke-linecap="round"/>
-              <path d="M242 92 C248 80, 238 70, 226 76 C232 86, 238 90, 242 92 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
-              <path d="M220 79 C223 68, 214 60, 204 67 C209 75, 215 78, 220 79 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
-              <path d="M160 53L174 59V71.2C174 80.5 168 87.4 160 90.5C152 87.4 146 80.5 146 71.2V59L160 53Z" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.45" stroke-linejoin="round"/>
-              <path d="M154.5 71.5L158.5 75.5L166.5 67.5" stroke="var(--accent-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="160" cy="20" r="2.8" fill="var(--accent-terracotta)"/>
-              <circle cx="204" cy="44" r="2.8" fill="var(--accent-teal)"/>
-              <circle cx="116" cy="100" r="2.5" fill="var(--accent-terracotta)"/>
+              <g class="trust__leaf--alt">
+                <path d="M242 92 C248 80, 238 70, 226 76 C232 86, 238 90, 242 92 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+                <path d="M220 79 C223 68, 214 60, 204 67 C209 75, 215 78, 220 79 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+              </g>
+              <g class="trust__center">
+                <path d="M160 53L174 59V71.2C174 80.5 168 87.4 160 90.5C152 87.4 146 80.5 146 71.2V59L160 53Z" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.45" stroke-linejoin="round"/>
+                <path d="M154.5 71.5L158.5 75.5L166.5 67.5" stroke="var(--accent-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <g class="trust__orbit-inner">
+                <circle cx="160" cy="20" r="2.8" fill="var(--accent-terracotta)"/>
+                <circle cx="204" cy="44" r="2.8" fill="var(--accent-teal)"/>
+                <circle cx="116" cy="100" r="2.5" fill="var(--accent-terracotta)"/>
+              </g>
             </svg>
           </div>
           <h3 class="trust__t" data-c="words.trust.1.t">Safe mercury removal</h3>
@@ -3320,21 +3546,29 @@
               <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
               <line x1="6" y1="72" x2="314" y2="72" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
               <line x1="160" y1="6" x2="160" y2="138" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
-              <circle cx="160" cy="72" r="52" stroke="var(--teal-border)" stroke-width="1.1" stroke-dasharray="5 6"/>
+              <g class="trust__orbit"><circle cx="160" cy="72" r="52" stroke="var(--teal-border)" stroke-width="1.1" stroke-dasharray="5 6"/></g>
               <circle cx="160" cy="72" r="38" fill="var(--surface-card)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
               <path d="M48 82 C76 62, 98 86, 122 72" stroke="var(--accent-terracotta)" stroke-width="1.3" stroke-linecap="round"/>
               <path d="M198 72 C222 58, 244 82, 272 62" stroke="var(--accent-terracotta)" stroke-width="1.3" stroke-linecap="round"/>
-              <path d="M82 68 C78 56, 88 48, 98 55 C93 64, 86 67, 82 68 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
-              <path d="M238 76 C242 88, 232 96, 222 89 C227 80, 234 77, 238 76 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
-              <line x1="160" y1="56" x2="145" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
-              <line x1="160" y1="56" x2="175" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
-              <line x1="145" y1="81" x2="175" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
-              <circle cx="160" cy="56" r="8.5" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.4"/>
-              <circle cx="145" cy="81" r="8.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.4"/>
-              <circle cx="175" cy="81" r="8.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.4"/>
-              <circle cx="160" cy="56" r="2.5" fill="var(--accent-terracotta)"/>
-              <circle cx="114" cy="46" r="2.8" fill="var(--accent-teal)"/>
-              <circle cx="206" cy="98" r="2.8" fill="var(--accent-terracotta)"/>
+              <g class="trust__leaf">
+                <path d="M82 68 C78 56, 88 48, 98 55 C93 64, 86 67, 82 68 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              </g>
+              <g class="trust__leaf--alt">
+                <path d="M238 76 C242 88, 232 96, 222 89 C227 80, 234 77, 238 76 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              </g>
+              <g class="trust__center">
+                <line x1="160" y1="56" x2="145" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
+                <line x1="160" y1="56" x2="175" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
+                <line x1="145" y1="81" x2="175" y2="81" stroke="var(--accent-teal)" stroke-width="1.3"/>
+                <circle cx="160" cy="56" r="8.5" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.4"/>
+                <circle cx="145" cy="81" r="8.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+                <circle cx="175" cy="81" r="8.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+                <circle cx="160" cy="56" r="2.5" fill="var(--accent-terracotta)"/>
+              </g>
+              <g class="trust__orbit-inner">
+                <circle cx="114" cy="46" r="2.8" fill="var(--accent-teal)"/>
+                <circle cx="206" cy="98" r="2.8" fill="var(--accent-terracotta)"/>
+              </g>
             </svg>
           </div>
           <h3 class="trust__t" data-c="words.trust.2.t">Ozone before the drill</h3>
@@ -3351,18 +3585,26 @@
               <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
               <line x1="6" y1="72" x2="314" y2="72" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
               <line x1="160" y1="6" x2="160" y2="138" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
-              <circle cx="160" cy="72" r="52" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="5 6"/>
+              <g class="trust__orbit"><circle cx="160" cy="72" r="52" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="5 6"/></g>
               <circle cx="160" cy="72" r="38" fill="var(--surface-card)" stroke="var(--teal-border)" stroke-width="1.2"/>
               <path d="M56 58 H108 M68 72 H114 M56 86 H108" stroke="var(--teal-border)" stroke-width="1.2" stroke-linecap="round"/>
               <path d="M212 58 H264 M206 72 H252 M212 86 H264" stroke="var(--teal-border)" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M92 50 C88 40, 96 34, 105 40 C100 47, 95 49, 92 50 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
-              <path d="M228 94 C232 104, 224 110, 215 104 C220 97, 225 95, 228 94 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
-              <rect x="138" y="50" width="44" height="44" rx="10" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.4"/>
-              <circle cx="160" cy="72" r="12" stroke="var(--accent-terracotta)" stroke-width="1.35"/>
-              <circle cx="160" cy="72" r="3.5" fill="var(--accent-teal)"/>
-              <circle cx="160" cy="20" r="2.8" fill="var(--accent-teal)"/>
-              <circle cx="212" cy="72" r="2.5" fill="var(--accent-terracotta)"/>
-              <circle cx="108" cy="72" r="2.5" fill="var(--accent-terracotta)"/>
+              <g class="trust__leaf">
+                <path d="M92 50 C88 40, 96 34, 105 40 C100 47, 95 49, 92 50 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+              </g>
+              <g class="trust__leaf--alt">
+                <path d="M228 94 C232 104, 224 110, 215 104 C220 97, 225 95, 228 94 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+              </g>
+              <g class="trust__center">
+                <rect x="138" y="50" width="44" height="44" rx="10" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+                <circle cx="160" cy="72" r="12" stroke="var(--accent-terracotta)" stroke-width="1.35"/>
+                <circle cx="160" cy="72" r="3.5" fill="var(--accent-teal)"/>
+              </g>
+              <g class="trust__orbit-inner">
+                <circle cx="160" cy="20" r="2.8" fill="var(--accent-teal)"/>
+                <circle cx="212" cy="72" r="2.5" fill="var(--accent-terracotta)"/>
+                <circle cx="108" cy="72" r="2.5" fill="var(--accent-terracotta)"/>
+              </g>
             </svg>
           </div>
           <h3 class="trust__t" data-c="words.trust.3.t">Digital, low-dose imaging</h3>
