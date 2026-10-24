@@ -2757,9 +2757,6 @@
     transform-origin: 160px 72px;
     animation: trustOrbit 30s linear infinite;
   }
-  .trust:hover .trust__orbit {
-    animation-duration: 15s;
-  }
   @keyframes trustOrbit {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -2768,9 +2765,6 @@
   .trust__orbit-inner {
     transform-origin: 160px 72px;
     animation: trustOrbitCounter 22s linear infinite;
-  }
-  .trust:hover .trust__orbit-inner {
-    animation-duration: 11s;
   }
   @keyframes trustOrbitCounter {
     from { transform: rotate(0deg); }
@@ -2781,10 +2775,6 @@
     transform-origin: 160px 72px;
     animation: trustPulse 4.8s ease-in-out infinite;
     transition: filter 0.3s ease;
-  }
-  .trust:hover .trust__center {
-    filter: drop-shadow(0 0 8px var(--terracotta-border));
-    animation-duration: 2.6s;
   }
   @keyframes trustPulse {
     0%, 100% { transform: scale(1); }
