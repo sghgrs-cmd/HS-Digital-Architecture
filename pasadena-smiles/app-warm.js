@@ -663,13 +663,92 @@
     hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important}';
     document.head.appendChild(hide);
 
-    /* Prevent middle-click (mouse wheel press) browser autoscroll from spawning a 2nd native OS cursor */
+    /* Custom Luxury Middle-Click Autoscroll Circle with Up/Down Arrows (prevents native OS double-cursor) */
+    const disc = document.createElement('div');
+    disc.className = 'autoscroll-disc';
+    disc.setAttribute('aria-hidden', 'true');
+    disc.innerHTML = '<svg viewBox="0 0 24 24"><path class="autoscroll-disc__up" d="M8 7l4-4 4 4"/><circle class="autoscroll-disc__dot" cx="12" cy="12" r="2.2"/><path class="autoscroll-disc__dn" d="M8 17l4 4 4-4"/></svg>';
+    document.body.appendChild(disc);
+
+    let autoScrollActive = false;
+    let autoOriginX = 0;
+    let autoOriginY = 0;
+    let autoCurY = 0;
+    let autoDownTime = 0;
+    let autoRaf = null;
+
+    const stopAutoScroll = () => {
+      if (!autoScrollActive) return;
+      autoScrollActive = false;
+      disc.classList.remove('is-active', 'is-up', 'is-dn');
+      disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(0.75)`;
+      if (autoRaf) {
+        cancelAnimationFrame(autoRaf);
+        autoRaf = null;
+      }
+    };
+
+    const tickAutoScroll = () => {
+      if (!autoScrollActive) return;
+      const dy = autoCurY - autoOriginY;
+      const absDy = Math.abs(dy);
+      const DEADZONE = 12;
+      if (absDy > DEADZONE) {
+        const sign = dy > 0 ? 1 : -1;
+        const speed = Math.min(28, Math.pow((absDy - DEADZONE) / 13, 1.35));
+        window.scrollBy(0, sign * speed);
+        disc.classList.toggle('is-dn', sign > 0);
+        disc.classList.toggle('is-up', sign < 0);
+      } else {
+        disc.classList.remove('is-up', 'is-dn');
+      }
+      autoRaf = requestAnimationFrame(tickAutoScroll);
+    };
+
     window.addEventListener('mousedown', (e) => {
-      if (e.button === 1) e.preventDefault();
+      if (e.button === 1) {
+        e.preventDefault();
+        if (autoScrollActive) {
+          stopAutoScroll();
+        } else {
+          autoScrollActive = true;
+          autoOriginX = e.clientX;
+          autoOriginY = e.clientY;
+          autoCurY = e.clientY;
+          autoDownTime = performance.now();
+          disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
+          disc.classList.add('is-active');
+          if (!autoRaf) autoRaf = requestAnimationFrame(tickAutoScroll);
+        }
+      } else if (autoScrollActive) {
+        e.preventDefault();
+        stopAutoScroll();
+      }
     }, { passive: false });
+
+    window.addEventListener('mouseup', (e) => {
+      if (e.button === 1 && autoScrollActive) {
+        const heldMs = performance.now() - autoDownTime;
+        const movedPx = Math.hypot(e.clientX - autoOriginX, e.clientY - autoOriginY);
+        if (heldMs > 240 && movedPx > 18) {
+          stopAutoScroll();
+        }
+      }
+    }, { passive: true });
+
     window.addEventListener('auxclick', (e) => {
       if (e.button === 1) e.preventDefault();
     }, { passive: false });
+
+    window.addEventListener('wheel', () => {
+      if (autoScrollActive) stopAutoScroll();
+    }, { passive: true });
+
+    window.addEventListener('keydown', (e) => {
+      if (autoScrollActive && (e.key === 'Escape' || e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+        stopAutoScroll();
+      }
+    });
 
     let live = false;
     let off = false;
@@ -717,6 +796,7 @@
     };
 
     window.addEventListener('mousemove', (e) => {
+      if (autoScrollActive) autoCurY = e.clientY;
       if (off) return;
       if (inGutter(e.clientX, e.clientY)) {
         show(false);
