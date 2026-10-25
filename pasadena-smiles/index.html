@@ -282,9 +282,18 @@ html{}
 }
 #cur-ring{
   width:34px;height:34px;border:1px solid #fff;z-index:100;
+  display:flex;align-items:center;justify-content:center;
   transition:width .45s var(--ease-out),height .45s var(--ease-out),
-             border-radius .45s var(--ease-out);
+             border-radius .45s var(--ease-out),background-color .28s var(--ease-out);
 }
+#cur-label{
+  font-family:var(--f-sans);font-size:9px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  opacity:0;transition:opacity .2s var(--ease-out);
+  white-space:nowrap;pointer-events:none;user-select:none;
+}
+#cur-ring.is-over #cur-label{opacity:1}
+#cur-ring.is-text #cur-label{opacity:0}
 html.cursor-on #cur-dot{
   opacity:1;
   transition:width .28s var(--ease-out),height .28s var(--ease-out),opacity .22s linear .03s;
@@ -1139,7 +1148,12 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   padding:.65rem 0;font-size:1.0625rem;color:var(--paper);border-radius:0;
   -webkit-appearance:none;appearance:none;transition:border-color var(--dur-fast) linear;
 }
-.field textarea{resize:vertical;min-height:5.5rem;line-height:1.55}
+.field textarea{resize:vertical;width:100%;max-width:100%;min-width:0;min-height:5.5rem;max-height:16rem;line-height:1.55;box-sizing:border-box;overflow-x:hidden}
+textarea::-webkit-resizer{cursor:none!important}
+.loc-branches{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1.5rem}
+.loc-branch-pill{display:inline-flex;align-items:center;gap:.45rem;padding:.48rem .95rem;border:1px solid var(--rule);background:transparent;font-family:var(--f-sans);font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);transition:all var(--dur-fast) var(--ease-out)}
+.loc-branch-pill:hover{border-color:var(--ink);color:var(--ink)}
+.loc-branch-pill.is-active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 /* -----------------------------------------------------------------------------
    CUSTOM LISTBOX
    A native <option> popup is drawn by the OS: it cannot be styled and the site
@@ -1538,7 +1552,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- cursor (desktop, fine pointer only — created here, activated from app.js) -->
-<span id="cur-ring" aria-hidden="true"></span>
+<span id="cur-ring" aria-hidden="true"><span id="cur-label"></span></span>
 <span id="cur-dot" aria-hidden="true"></span>
 
 <!-- toast container -->
@@ -1559,7 +1573,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </nav>
 
   <div class="nav__right">
-    <a class="btn btn--sm nav__cta" href="#book" data-magnetic>
+    <a class="btn btn--sm nav__cta" href="#book" data-magnetic data-cursor="Book">
       <span data-c="hero.cta">Schedule a consultation</span>
     </a>
     <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -2001,7 +2015,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
           <p class="ai-verify__desc">Ask Google AI or ChatGPT to evaluate Dr. <span data-c="doctor.name">Niloufar Molayem</span>’s holistic biocompatibility standards, credentials, and patient outcomes &mdash; instantly synthesized without promotional editing.</p>
         </div>
         <div class="ai-verify__actions">
-          <a class="ai-verify-btn ai-verify-btn--google" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+          <a class="ai-verify-btn ai-verify-btn--google" data-cursor="Ask AI" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
             <svg class="ai-verify-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
               <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-dasharray="1.5 2"/>
@@ -2013,7 +2027,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
               <span class="ai-verify-btn__sub">udm=50 &middot; Instant direct summary</span>
             </div>
           </a>
-          <a class="ai-verify-btn ai-verify-btn--gpt" href="https://chatgpt.com/?q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+          <a class="ai-verify-btn ai-verify-btn--gpt" data-cursor="Ask AI" href="https://chatgpt.com/?q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
             <svg class="ai-verify-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
               <path d="M12 3C8 6 8 18 12 21"/>
@@ -2290,7 +2304,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
           </div>
 
           <div class="form__foot">
-            <button class="btn btn--filled" type="submit" id="submit" data-magnetic>
+            <button class="btn btn--filled" type="submit" id="submit" data-magnetic data-cursor="Send">
               <span id="submit-label">Schedule a consultation</span>
               <span class="btn__arrow" aria-hidden="true">&#8594;</span>
             </button>

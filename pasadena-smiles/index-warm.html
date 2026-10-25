@@ -1403,6 +1403,59 @@
     border-color: var(--accent-teal);
   }
 
+  textarea.field__input {
+    resize: vertical;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 110px;
+    max-height: 260px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  textarea::-webkit-resizer {
+    cursor: none !important;
+  }
+
+  /* Multi-Location Branch Switcher (2+ Offices) */
+  .loc-branches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-bottom: 1.5rem;
+  }
+  .loc-branch-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-warm-stone);
+    transition: all 0.22s ease;
+  }
+  .loc-branch-pill:hover {
+    border-color: var(--accent-teal);
+    color: var(--text-ink);
+  }
+  .loc-branch-pill.is-active {
+    background: var(--accent-teal);
+    border-color: var(--accent-teal);
+    color: #FFFFFF;
+  }
+  .loc-branch-pill__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.75;
+  }
+
   .field__select.is-enhanced {
     position: absolute;
     opacity: 0;
@@ -3448,7 +3501,7 @@
           <p class="warm-ai-verify__desc">Ask an independent artificial intelligence engine to evaluate Dr. <span data-c="doctor.name">Niloufar Molayem</span>’s biological protocols, IAOMT SMART certification, and patient outcomes across California.</p>
         </div>
         <div class="warm-ai-verify__actions">
-          <a class="warm-ai-btn warm-ai-btn--google" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+          <a class="warm-ai-btn warm-ai-btn--google" data-cursor="Ask AI" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
             <svg class="warm-ai-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
               <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-dasharray="1.5 2"/>
@@ -3460,7 +3513,7 @@
               <span class="warm-ai-btn__sub">udm=50 &middot; Instant direct summary</span>
             </div>
           </a>
-          <a class="warm-ai-btn warm-ai-btn--gpt" href="https://chatgpt.com/?q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+          <a class="warm-ai-btn warm-ai-btn--gpt" data-cursor="Ask AI" href="https://chatgpt.com/?q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
             <svg class="warm-ai-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
               <path d="M12 3C8 6 8 18 12 21"/>

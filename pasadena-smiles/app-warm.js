@@ -63,6 +63,7 @@
     });
     syncWarmDynamicBindings();
     initOnePhotoDiscipline();
+    initMultiLocations(data);
     enforceHiddenInertSafety();
   };
 
@@ -659,8 +660,16 @@
 
     const root = document.documentElement;
     const hide = document.createElement('style');
-    hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner{cursor:none!important}';
+    hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important}';
     document.head.appendChild(hide);
+
+    /* Prevent middle-click (mouse wheel press) browser autoscroll from spawning a 2nd native OS cursor */
+    window.addEventListener('mousedown', (e) => {
+      if (e.button === 1) e.preventDefault();
+    }, { passive: false });
+    window.addEventListener('auxclick', (e) => {
+      if (e.button === 1) e.preventDefault();
+    }, { passive: false });
 
     let live = false;
     let off = false;
@@ -730,8 +739,22 @@
       cursor.classList.toggle('is-active', !!clicky);
 
       let cursorText = '';
-      if (clicky && clicky.hasAttribute('data-cursor')) {
-        cursorText = clicky.getAttribute('data-cursor');
+      if (clicky) {
+        if (clicky.hasAttribute('data-cursor')) {
+          cursorText = clicky.getAttribute('data-cursor');
+        } else if (clicky.matches('.warm-ai-btn')) {
+          cursorText = 'Ask AI';
+        } else if (clicky.matches('a[href^="tel:"]')) {
+          cursorText = 'Call';
+        } else if (clicky.matches('a[href="#book"]')) {
+          cursorText = 'Book';
+        } else if (clicky.matches('button[type="submit"]')) {
+          cursorText = 'Send';
+        } else if (clicky.matches('[data-c="map.directions"]')) {
+          cursorText = 'Maps';
+        } else if (clicky.matches('.loc-branch-pill')) {
+          cursorText = 'Office';
+        }
       }
       if (label) label.textContent = cursorText;
     };
@@ -807,6 +830,70 @@
     }
   }
   initLazyMap();
+
+  /* ------------------------------------------------------------------------
+     8b. SMART MULTI-LOCATION / MULTI-BRANCH SUPPORT (2+ Physical Offices)
+     ------------------------------------------------------------------------ */
+  function initMultiLocations(data) {
+    const rawLocations =
+      (data && Array.isArray(data.locations) && data.locations) ||
+      (window.CLINIC_DATA && Array.isArray(window.CLINIC_DATA.locations) && window.CLINIC_DATA.locations) ||
+      (Array.isArray(window.CLINIC_LOCATIONS) && window.CLINIC_LOCATIONS) ||
+      [];
+    if (rawLocations.length < 2) return;
+
+    const locInfo = document.querySelector('#location .info');
+    if (locInfo && !locInfo.querySelector('.loc-branches')) {
+      const bar = document.createElement('div');
+      bar.className = 'loc-branches';
+      bar.setAttribute('role', 'tablist');
+      bar.setAttribute('aria-label', 'Practice Locations');
+
+      rawLocations.forEach((loc, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'loc-branch-pill' + (idx === 0 ? ' is-active' : '');
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+        btn.setAttribute('data-cursor', 'Office');
+        const labelText = loc.name || loc.city || `Office ${idx + 1}`;
+        btn.innerHTML = `<span class="loc-branch-pill__dot" aria-hidden="true"></span><span>${labelText}</span>`;
+        btn.addEventListener('click', () => {
+          bar.querySelectorAll('.loc-branch-pill').forEach((b, i) => {
+            b.classList.toggle('is-active', i === idx);
+            b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+          });
+          const addrEl = document.querySelector('[data-c="loc.address"]');
+          if (addrEl && loc.address) addrEl.innerHTML = loc.address;
+          const ph1El = document.querySelector('[data-c="loc.phone1.value"]');
+          if (ph1El && loc.phone) {
+            ph1El.textContent = loc.phone;
+            const phLink = ph1El.closest('a');
+            if (phLink && loc.phoneHref) phLink.setAttribute('href', loc.phoneHref);
+          }
+          const dirEl = document.querySelector('[data-c="map.directions"]');
+          if (dirEl && loc.mapDirections) dirEl.setAttribute('href', loc.mapDirections);
+          const mapIframe = document.querySelector('.map__iframe');
+          if (mapIframe && loc.mapEmbed) {
+            mapIframe.setAttribute('data-map-src', loc.mapEmbed);
+            mapIframe.setAttribute('src', loc.mapEmbed);
+            mapIframe.setAttribute('data-map-loaded', 'true');
+          }
+        });
+        bar.appendChild(btn);
+      });
+      locInfo.insertBefore(bar, locInfo.firstChild);
+    }
+
+    const bookAddr = document.querySelector('[data-c="book.address"]');
+    if (bookAddr && !bookAddr.hasAttribute('data-multi-rendered')) {
+      bookAddr.setAttribute('data-multi-rendered', 'true');
+      bookAddr.innerHTML = rawLocations
+        .map((loc) => `<strong>${loc.name || loc.city || 'Office'}:</strong> ${loc.address || ''}`)
+        .join('<br>');
+    }
+  }
+  initMultiLocations(window.CLINIC_DATA);
 
   /* ------------------------------------------------------------------------
      9. GENTLE SCROLL REVEAL & HERO ATELIER PARALLAX
