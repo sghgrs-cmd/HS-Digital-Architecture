@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
-  <rect width="800" height="450" fill="#F6F2EC"/>
-  <rect x="28" y="28" width="744" height="394" rx="2" fill="none" stroke="#171310" stroke-opacity="0.12" stroke-width="1.5"/>
-  <circle cx="400" cy="205" r="42" fill="#A24E33"/>
-  <polygon points="390,187 390,223 420,205" fill="#F6F2EC"/>
-  <text x="400" y="288" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#171310">Lake Forest Smiles</text>
-  <text x="400" y="320" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" letter-spacing="1.5" fill="#6E665C">Style A — Signature</text>
-</svg>

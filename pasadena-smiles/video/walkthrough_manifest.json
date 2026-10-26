@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\pasadena-smiles\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 19,
-  "recorded_at": "2026-10-25T22:53:57Z",
+  "recorded_at": "2026-10-25T19:21:36Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\pasadena-smiles\\video\\walkthrough-warm.mp4",
-      "size_mb": 19.18,
-      "elapsed_sec": 77.9
+      "size_mb": 18.92,
+      "elapsed_sec": 105.0
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\pasadena-smiles\\video\\walkthrough.mp4",
-      "size_mb": 16.18,
-      "elapsed_sec": 71.3
+      "size_mb": 15.66,
+      "elapsed_sec": 93.2
     }
   ]
 }
