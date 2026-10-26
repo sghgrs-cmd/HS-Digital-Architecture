@@ -1,7 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname))location.replace('https:'+location.href.substring(5));</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F6F2EC">
@@ -45,11 +44,11 @@
 -->
 
 <title>Lake Forest Smiles</title>
-<meta name="description" content="Dr. David Schmidt provides elite dental care, Invisalign® clear aligners®, and Advanced 3D imaging technology™ for patients in Lake Forest. Cosmetic Dentistry · Lake">
+<meta name="description" content="Dr. David Schmidt provides elite dental care, certified Invisalign®, and Advanced Pulsewave Technology™ for patients in Lake Forest. Cosmetic Dentistry · Lake">
 <link rel="canonical" href="https://lakeforestsmiles.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lake Forest Smiles">
-<meta property="og:description" content="Dr. David Schmidt provides elite dental care, Invisalign® clear aligners®, and Advanced 3D imaging technology™ for patients in Lake Forest. Cosmetic Dentistry · Lake">
+<meta property="og:description" content="Dr. David Schmidt provides elite dental care, certified Invisalign®, and Advanced Pulsewave Technology™ for patients in Lake Forest. Cosmetic Dentistry · Lake">
 <meta property="og:url" content="https://lakeforestsmiles.com">
 <meta name="twitter:card" content="summary">
 
@@ -281,9 +280,18 @@ html{}
 }
 #cur-ring{
   width:34px;height:34px;border:1px solid #fff;z-index:100;
+  display:flex;align-items:center;justify-content:center;
   transition:width .45s var(--ease-out),height .45s var(--ease-out),
-             border-radius .45s var(--ease-out);
+             border-radius .45s var(--ease-out),background-color .28s var(--ease-out);
 }
+#cur-label{
+  font-family:var(--f-sans);font-size:9px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  opacity:0;transition:opacity .2s var(--ease-out);
+  white-space:nowrap;pointer-events:none;user-select:none;
+}
+#cur-ring.is-over #cur-label{opacity:1}
+#cur-ring.is-text #cur-label{opacity:0}
 html.cursor-on #cur-dot{
   opacity:1;
   transition:width .28s var(--ease-out),height .28s var(--ease-out),opacity .22s linear .03s;
@@ -299,7 +307,26 @@ html.cursor-on #cur-ring{
 /* over a text field: the ring becomes an I-beam */
 #cur-dot.is-text{width:0;height:0}
 #cur-ring.is-text{width:2px;height:26px;border-radius:0;border-width:0;background:#fff}
-@media (pointer:coarse),(prefers-reduced-motion:reduce){#cur-dot,#cur-ring{display:none}}
+.autoscroll-disc{
+  position:fixed;top:0;left:0;width:44px;height:44px;border-radius:50%;
+  background:rgba(246,242,234,0.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1.5px solid var(--accent);
+  box-shadow:0 8px 24px rgba(20,19,17,0.18),0 0 0 4px rgba(162,78,51,0.08);
+  pointer-events:none;z-index:99;opacity:0;
+  transform:translate(-100px,-100px) translate(-50%,-50%) scale(0.75);
+  transition:opacity .18s ease,transform .2s var(--ease-out);
+  display:flex;align-items:center;justify-content:center;
+}
+.autoscroll-disc.is-active{opacity:1}
+.autoscroll-disc svg{width:24px;height:24px;overflow:visible}
+.autoscroll-disc__up,.autoscroll-disc__dn{
+  fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+  opacity:.42;transition:opacity .15s ease,transform .15s ease,stroke .15s ease;
+}
+.autoscroll-disc.is-up .autoscroll-disc__up{opacity:1;stroke:var(--accent);transform:translateY(-1.5px)}
+.autoscroll-disc.is-dn .autoscroll-disc__dn{opacity:1;stroke:var(--accent);transform:translateY(1.5px)}
+.autoscroll-disc__dot{fill:var(--accent)}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){#cur-dot,#cur-ring,.autoscroll-disc{display:none}}
 
 /* paper grain — one fixed overlay, whole site, no request, no file */
 body::after{
@@ -866,21 +893,231 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .trust__head{max-width:22ch}
 .trust-grid{
   display:grid;margin-top:clamp(2.5rem,5vw,3.75rem);
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:20px;
+  overflow:hidden;
 }
-.trust{padding-block:2.25rem}
+.trust{padding:clamp(1.75rem,3vw,2.4rem);display:flex;flex-direction:column;gap:.85rem}
 .trust:not(:last-child){border-bottom:1px solid var(--rule)}
-.trust__t{
-  font-family:var(--font-display);font-weight:370;font-variation-settings:'opsz' 40;
-  font-size:var(--fs-s);letter-spacing:-.01em;line-height:1.2;margin-bottom:.85rem;
+.trust__top{
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding-bottom:.65rem;border-bottom:1px solid var(--rule-soft);
 }
-.trust__p{color:var(--stone);max-width:36ch;text-wrap:pretty}
+.trust__idx{
+  font-family:var(--font-display);font-style:italic;font-weight:360;
+  font-size:.98rem;color:var(--ink);letter-spacing:.01em;
+}
+.trust__spec{
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+}
+.trust__canvas{
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:.65rem;
+  margin:.2rem 0 .45rem;
+  transition:border-color var(--dur-fast) linear,transform var(--dur-fast) var(--ease-out);
+}
+.trust:hover .trust__canvas{
+  border-color:var(--accent);
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px -6px rgba(0,0,0,0.45);
+}
+.trust__canvas svg{width:100%;height:auto;display:block}
+
+/* Ultra-Luxury Meditative Micro-Animations for Clinical Standards */
+.trust__orbit{
+  transform-origin:160px 72px;
+  animation:trustOrbit 30s linear infinite;
+}
+@keyframes trustOrbit{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+.trust__orbit-inner{
+  transform-origin:160px 72px;
+  animation:trustOrbitCounter 22s linear infinite;
+}
+@keyframes trustOrbitCounter{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(-360deg);}
+}
+
+.trust__center{
+  transform-origin:160px 72px;
+  animation:trustPulse 4.8s ease-in-out infinite;
+  transition:filter 0.3s ease;
+}
+@keyframes trustPulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.035);}
+}
+
+.trust__leaf{
+  transform-origin:88px 84px;
+  animation:trustFloat 4.8s ease-in-out infinite alternate;
+}
+.trust__leaf--alt{
+  transform-origin:232px 84px;
+  animation:trustFloatAlt 5.4s ease-in-out infinite alternate;
+}
+@keyframes trustFloat{
+  0%{transform:translateY(0px) rotate(0deg);}
+  50%{transform:translateY(-3px) rotate(1.5deg);}
+  100%{transform:translateY(0px) rotate(0deg);}
+}
+@keyframes trustFloatAlt{
+  0%{transform:translateY(0px) rotate(0deg);}
+  50%{transform:translateY(-2.5px) rotate(-1.5deg);}
+  100%{transform:translateY(0px) rotate(0deg);}
+}
+.trust__t{
+  font-family:var(--font-display);font-weight:400;font-variation-settings:'opsz' 40;
+  font-size:var(--fs-s);letter-spacing:-.01em;line-height:1.22;margin-bottom:.15rem;color:var(--ink);
+}
+.trust__p{color:var(--stone);max-width:36ch;line-height:1.62;text-wrap:pretty}
 @media (min-width:900px){
   .trust-grid{grid-template-columns:repeat(3,1fr)}
-  .trust{padding:3rem 2.5rem}
-  .trust:not(:last-child){border-bottom:0;border-right:1px solid var(--rule)}
-  .trust:first-child{padding-left:0}
-  .trust:last-child{padding-right:0}
+  .trust{padding:2.35rem 2.2rem}
+
+/* --- Independent AI Verification Card --- */
+.ai-verify{
+  margin-top:clamp(2.5rem,5vw,3.75rem);
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:18px;
+  padding:clamp(1.6rem,3vw,2.4rem);
+  position:relative;
+  overflow:hidden;
+  transition:border-color var(--dur-fast) linear,box-shadow var(--dur-fast) ease;
+}
+.ai-verify:hover{
+  border-color:var(--accent);
+  box-shadow:0 12px 32px -8px rgba(0,0,0,0.35);
+}
+.ai-verify__badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.32rem .75rem;
+  border-radius:999px;
+  background:rgba(197,160,89,.08);
+  border:1px solid rgba(197,160,89,.25);
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1.1rem;
+}
+.ai-verify__dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 6px var(--accent);
+}
+.ai-verify__content{
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+@media (min-width:860px){
+  .ai-verify__content{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:2.5rem;
+  }
+  .ai-verify__text{
+    max-width:48ch;
+  }
+}
+.ai-verify__title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:var(--fs-m);
+  letter-spacing:-.015em;
+  color:var(--ink);
+  line-height:1.2;
+  margin-bottom:.45rem;
+}
+.ai-verify__desc{
+  font-size:.86rem;
+  color:var(--stone);
+  line-height:1.55;
+  margin:0;
+}
+.ai-verify__actions{
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+  flex-shrink:0;
+}
+@media (min-width:540px){
+  .ai-verify__actions{
+    flex-direction:row;
+  }
+}
+.ai-verify-btn{
+  display:flex;
+  align-items:center;
+  gap:.85rem;
+  padding:.85rem 1.25rem;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:12px;
+  text-decoration:none;
+  color:var(--ink);
+  transition:border-color var(--dur-fast) linear,transform var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) ease;
+}
+.ai-verify-btn:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px -4px rgba(0,0,0,.35);
+  color:var(--accent);
+}
+.ai-verify-btn__icon{
+  width:22px;
+  height:22px;
+  flex-shrink:0;
+  color:var(--accent);
+}
+.ai-verify-btn__meta{
+  display:flex;
+  flex-direction:column;
+  text-align:left;
+}
+.ai-verify-btn__label{
+  font-size:.82rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:.3rem;
+}
+.ai-verify-btn:hover .ai-verify-btn__label{
+  color:var(--accent);
+}
+.ai-verify-btn__arrow{
+  font-size:.9rem;
+  transition:transform var(--dur-fast) ease;
+}
+.ai-verify-btn:hover .ai-verify-btn__arrow{
+  transform:translate(2px,-2px);
+}
+.ai-verify-btn__sub{
+  font-size:.67rem;
+  color:var(--stone);
+  letter-spacing:.02em;
+}
+.step__head{display:flex;align-items:center;gap:.85rem}
+.step__medallion{width:42px;height:42px;flex-shrink:0;display:block}
+@media (min-width:760px){
+  .step{grid-template-columns:6.5rem minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:center}
 }
 
 /* -----------------------------------------------------------------------------
@@ -927,7 +1164,12 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   padding:.65rem 0;font-size:1.0625rem;color:var(--paper);border-radius:0;
   -webkit-appearance:none;appearance:none;transition:border-color var(--dur-fast) linear;
 }
-.field textarea{resize:vertical;min-height:5.5rem;line-height:1.55}
+.field textarea{resize:vertical;width:100%;max-width:100%;min-width:0;min-height:5.5rem;max-height:16rem;line-height:1.55;box-sizing:border-box;overflow-x:hidden}
+textarea::-webkit-resizer{cursor:none!important}
+.loc-branches{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1.5rem}
+.loc-branch-pill{display:inline-flex;align-items:center;gap:.45rem;padding:.48rem .95rem;border:1px solid var(--rule);background:transparent;font-family:var(--f-sans);font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);transition:all var(--dur-fast) var(--ease-out)}
+.loc-branch-pill:hover{border-color:var(--ink);color:var(--ink)}
+.loc-branch-pill.is-active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 /* -----------------------------------------------------------------------------
    CUSTOM LISTBOX
    A native <option> popup is drawn by the OS: it cannot be styled and the site
@@ -1276,7 +1518,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- cursor (desktop, fine pointer only — created here, activated from app.js) -->
-<span id="cur-ring" aria-hidden="true"></span>
+<span id="cur-ring" aria-hidden="true"><span id="cur-label"></span></span>
 <span id="cur-dot" aria-hidden="true"></span>
 
 <!-- toast container -->
@@ -1297,7 +1539,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </nav>
 
   <div class="nav__right">
-    <a class="btn btn--sm nav__cta" href="#book" data-magnetic>
+    <a class="btn btn--sm nav__cta" href="#book" data-magnetic data-cursor="Book">
       <span data-c="hero.cta">Schedule a consultation</span>
     </a>
     <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -1366,10 +1608,10 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
       <span class="ln"><span class="ln__i"><span data-c="hero.line3">over 30 <em>years</em></span></span></span>
     </h1>
 
-    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Dr. David Schmidt provides elite dental care, Invisalign® clear aligners®, and Advanced 3D imaging technology™ for patients in Lake Forest.</p>
+    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Dr. David Schmidt provides elite dental care, certified Invisalign®, and Advanced Pulsewave Technology™ for patients in Lake Forest.</p>
 
     <div data-hero data-delay="3">
-      <a class="btn" href="#book" data-magnetic>
+      <a class="btn" href="#book" data-magnetic data-cursor="Book">
         <span>Schedule a consultation</span>
         <span class="btn__arrow" aria-hidden="true">&#8594;</span>
       </a>
@@ -1454,7 +1696,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
                  alt="Dr. David Schmidt"
                  onerror="this.closest('.portrait__frame').classList.add('is-missing')">
             <span class="portrait__tint" aria-hidden="true"></span>
-            <span class="portrait__ph" aria-hidden="true"><span>.D</span></span>
+            <span class="portrait__ph" aria-hidden="true"><span>DS</span></span>
           </div>
           <span class="crop crop--tl" aria-hidden="true"></span>
           <span class="crop crop--tr" aria-hidden="true"></span>
@@ -1472,7 +1714,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 
         <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">After graduating from University of Illinois College of Dentistry in 1982, Dr. Schmidt has provided elite dental care for more than 30 years. With over 30 years of experience, we are masters at what we do.</p>
 
-        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">Take the first step toward your best smile yet. Dr. Schmidt provides Invisalign® clear aligners® and utilizes Advanced 3D imaging technology™. We also help you figure out what’s causing your TMJ dysfunction.</p>
+        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">Take the first step toward your best smile yet. Dr. Schmidt provides certified Invisalign® and utilizes Advanced Pulsewave Technology™. We also help you figure out what’s causing your TMJ dysfunction.</p>
 
         <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">In June of 1991, I had four team members. The practice grew, we remodeled, and later added 600 square feet when it became available. With over 30 years of experience, we are masters at what we do.</blockquote>
 
@@ -1493,9 +1735,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 02 · TREATMENTS ============================= -->
-
-<!-- ============================= 03 · APPROACH ============================= -->
+<!-- ============================= 02 · APPROACH ============================= -->
 <section class="section dark approach-sec" id="approach" aria-labelledby="ap-h" data-dark>
   <!-- the hero construction again, cropped to this window -->
   <div class="figmark figmark--approach" data-figmark aria-hidden="true">
@@ -1514,7 +1754,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   <div class="wrap">
 
     <div class="smark">
-      <span class="smark__n" aria-hidden="true">03</span>
+      <span class="smark__n" aria-hidden="true">02</span>
       <span class="smark__lab eyebrow">Approach</span>
       <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
     </div>
@@ -1528,22 +1768,55 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 
     <ol class="steps" data-spine>
       <li class="step" data-reveal>
-        <span class="step__n">01</span>
+        <div class="step__head">
+          <span class="step__n">01</span>
+          <svg class="step__medallion" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="24" r="21" stroke="var(--rule-inv)" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="24" cy="24" r="15" stroke="var(--accent-inv)" stroke-width="1.1"/>
+            <path d="M18 22.5C18 19.5 20.7 17 24 17C27.3 17 30 19.5 30 22.5C30 25.2 27.8 27.4 24.8 27.9L21 30.5V27.6C19.2 26.7 18 24.8 18 22.5Z" stroke="var(--accent-inv)" stroke-width="1.3" stroke-linejoin="round"/>
+            <circle cx="24" cy="9" r="1.8" fill="var(--accent-inv)"/>
+          </svg>
+        </div>
         <h3 class="step__t" data-c="approach.step1.t">Consultation</h3>
         <p class="step__p" data-c="approach.step1.p">A full examination and an unhurried conversation about what you would change, before anything is decided.</p>
       </li>
       <li class="step" data-reveal data-delay="1">
-        <span class="step__n">02</span>
+        <div class="step__head">
+          <span class="step__n">02</span>
+          <svg class="step__medallion" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="24" r="21" stroke="var(--rule-inv)" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="24" cy="24" r="15" stroke="var(--accent-inv)" stroke-width="1.1"/>
+            <path d="M24 15L30.5 18V23.8C30.5 28 27.7 31.3 24 32.8C20.3 31.3 17.5 28 17.5 23.8V18L24 15Z" stroke="var(--accent-inv)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M21.5 24L23.3 25.8L27 22" stroke="var(--paper)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <h3 class="step__t" data-c="approach.step2.t">Planning</h3>
         <p class="step__p" data-c="approach.step2.p">Digital imaging maps the mouth so the result is designed before a single tooth is touched.</p>
       </li>
       <li class="step" data-reveal data-delay="2">
-        <span class="step__n">03</span>
+        <div class="step__head">
+          <span class="step__n">03</span>
+          <svg class="step__medallion" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="24" r="21" stroke="var(--rule-inv)" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="24" cy="24" r="15" stroke="var(--accent-inv)" stroke-width="1.1"/>
+            <path d="M17 28C19.5 22 23 18 29 17C28 23 24.5 26.5 18.5 29Z" stroke="var(--accent-inv)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M17 29L25 21" stroke="var(--paper)" stroke-width="1.15" stroke-linecap="round"/>
+            <circle cx="31" cy="17" r="1.8" fill="var(--accent-inv)"/>
+          </svg>
+        </div>
         <h3 class="step__t" data-c="approach.step3.t">Preparation</h3>
         <p class="step__p" data-c="approach.step3.p">Preparation is kept to the minimum the plan actually requires, preserving natural tooth structure.</p>
       </li>
       <li class="step" data-reveal data-delay="3">
-        <span class="step__n">04</span>
+        <div class="step__head">
+          <span class="step__n">04</span>
+          <svg class="step__medallion" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="24" r="21" stroke="var(--rule-inv)" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="24" cy="24" r="15" stroke="var(--accent-inv)" stroke-width="1.1"/>
+            <path d="M20 18.5C21.2 17.3 22.8 17.5 24 18.6C25.2 17.5 26.8 17.3 28 18.5C29.6 20.2 29.2 24.4 27.6 28C26.9 29.5 25.8 29.5 25.1 27.8C24.7 26.6 24.4 25.8 24 25.8C23.6 25.8 23.3 26.6 22.9 27.8C22.2 29.5 21.1 29.5 20.4 28C18.8 24.4 18.4 20.2 20 18.5Z" stroke="var(--accent-inv)" stroke-width="1.3" stroke-linejoin="round"/>
+            <circle cx="24" cy="14.5" r="1.6" fill="var(--paper)"/>
+          </svg>
+        </div>
         <h3 class="step__t" data-c="approach.step4.t">Seating</h3>
         <p class="step__p" data-c="approach.step4.p">Restorations are fitted and shade-matched so the result reads as your own teeth, not new ones.</p>
       </li>
@@ -1599,7 +1872,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 04 · PATIENTS ============================= -->
+<!-- ============================= 03 · PATIENTS ============================= -->
 <section class="section words-sec" id="words" aria-labelledby="w-h">
   <!-- the hero construction again, cropped to this window -->
   <div class="figmark figmark--words" data-figmark aria-hidden="true">
@@ -1618,7 +1891,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   <div class="wrap">
 
     <div class="smark">
-      <span class="smark__n" aria-hidden="true">04</span>
+      <span class="smark__n" aria-hidden="true">03</span>
       <span class="smark__lab eyebrow">Patients</span>
       <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
     </div>
@@ -1661,10 +1934,55 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
         </figcaption>
       </figure>
     </div>
+
+    <!-- =====================================================================
+         INDEPENDENT AI VERIFICATION (Third-Party Consensus)
+         Direct unvarnished inquiries via Google AI Overview (udm=50) & ChatGPT
+         ===================================================================== -->
+    <div class="ai-verify" data-reveal>
+      <div class="ai-verify__badge">
+        <span class="ai-verify__dot" aria-hidden="true"></span>
+        <span class="ai-verify__tag">Third-Party Independent Verification</span>
+      </div>
+      <div class="ai-verify__content">
+        <div class="ai-verify__text">
+          <h3 class="ai-verify__title">Unedited Clinical Assessment</h3>
+          <p class="ai-verify__desc">Ask Google AI or ChatGPT to evaluate Dr. <span data-c="doctor.name">Dr. David Schmidt</span>’s restorative tenure, aesthetic standards, and patient outcomes &mdash; instantly synthesized without promotional editing.</p>
+        </div>
+        <div class="ai-verify__actions">
+          <a class="ai-verify-btn ai-verify-btn--google" data-cursor="Ask AI" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+a+smile+makeover+in+our+area.+What+makes+Dr.+David+Schmidt+a+leading+choice+for+cosmetic+and+restorative+dentistry%2C+and+how+could+their+experience%2C+personalized+treatment+planning%2C+and+focus+on+natural-looking+results+benefit+me%3F" target="_blank" rel="noopener nofollow">
+            <svg class="ai-verify-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
+              <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-dasharray="1.5 2"/>
+              <circle cx="19" cy="5" r="0.75" fill="currentColor"/>
+              <circle cx="5" cy="19" r="0.75" fill="currentColor"/>
+            </svg>
+            <div class="ai-verify-btn__meta">
+              <span class="ai-verify-btn__label">Google AI Overview <span class="ai-verify-btn__arrow" aria-hidden="true">&nearr;</span></span>
+              <span class="ai-verify-btn__sub">udm=50 &middot; Instant direct summary</span>
+            </div>
+          </a>
+          <a class="ai-verify-btn ai-verify-btn--gpt" data-cursor="Ask AI" href="https://chatgpt.com/?q=I%27m+considering+a+smile+makeover+in+our+area.+What+makes+Dr.+David+Schmidt+a+leading+choice+for+cosmetic+and+restorative+dentistry%2C+and+how+could+their+experience%2C+personalized+treatment+planning%2C+and+focus+on+natural-looking+results+benefit+me%3F" target="_blank" rel="noopener nofollow">
+            <svg class="ai-verify-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 3C8 6 8 18 12 21"/>
+              <path d="M12 3C16 6 16 18 12 21"/>
+              <path d="M3 12C6 8 18 8 21 12"/>
+              <path d="M3 12C6 16 18 16 21 12"/>
+              <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
+            </svg>
+            <div class="ai-verify-btn__meta">
+              <span class="ai-verify-btn__label">ChatGPT Consensus <span class="ai-verify-btn__arrow" aria-hidden="true">&nearr;</span></span>
+              <span class="ai-verify-btn__sub">Live dialogue &middot; Zero login needed</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============================= 05 · STANDARDS ============================= -->
+<!-- ============================= 04 · STANDARDS ============================= -->
 <!-- Permanent. Unlike Patients above, this section never empties: it does
      not read reviews, so it renders identically whether the clinic has
      zero testimonials or sixty. -->
@@ -1672,7 +1990,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   <div class="wrap">
 
     <div class="smark">
-      <span class="smark__n" aria-hidden="true">05</span>
+      <span class="smark__n" aria-hidden="true">04</span>
       <span class="smark__lab eyebrow">Standards</span>
       <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
     </div>
@@ -1681,16 +1999,114 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 
     <div class="trust-grid">
       <article class="trust" data-reveal>
+        <div class="trust__top">
+          <span class="trust__idx">Standard I</span>
+          <span class="trust__spec">Bio-Safe Protocol</span>
+        </div>
+        <div class="trust__canvas" aria-hidden="true">
+          <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+            <line x1="6" y1="72" x2="314" y2="72" stroke="var(--rule-soft)" stroke-width="0.75" stroke-dasharray="3 5"/>
+            <line x1="160" y1="6" x2="160" y2="138" stroke="var(--rule-soft)" stroke-width="0.75" stroke-dasharray="3 5"/>
+            <g class="trust__orbit"><circle cx="160" cy="72" r="52" stroke="var(--rule)" stroke-width="1.1" stroke-dasharray="5 6"/></g>
+            <circle cx="160" cy="72" r="38" fill="var(--paper-2)" stroke="var(--rule)" stroke-width="1.2"/>
+            <circle cx="160" cy="72" r="28" stroke="var(--accent)" stroke-width="0.85"/>
+            <path d="M56 108 C82 86, 102 76, 122 72" stroke="var(--ink)" stroke-width="1.25" stroke-linecap="round"/>
+            <g class="trust__leaf">
+              <path d="M78 92 C72 80, 82 70, 94 76 C88 86, 82 90, 78 92 Z" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.1"/>
+              <path d="M100 79 C97 68, 106 60, 116 67 C111 75, 105 78, 100 79 Z" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.1"/>
+            </g>
+            <path d="M264 108 C238 86, 218 76, 198 72" stroke="var(--ink)" stroke-width="1.25" stroke-linecap="round"/>
+            <g class="trust__leaf--alt">
+              <path d="M242 92 C248 80, 238 70, 226 76 C232 86, 238 90, 242 92 Z" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.1"/>
+              <path d="M220 79 C223 68, 214 60, 204 67 C209 75, 215 78, 220 79 Z" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.1"/>
+            </g>
+            <g class="trust__center">
+              <path d="M160 53L174 59V71.2C174 80.5 168 87.4 160 90.5C152 87.4 146 80.5 146 71.2V59L160 53Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M154.5 71.5L158.5 75.5L166.5 67.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g class="trust__orbit-inner">
+              <circle cx="160" cy="20" r="2.8" fill="var(--accent)"/>
+              <circle cx="204" cy="44" r="2.6" fill="var(--ink)"/>
+              <circle cx="116" cy="100" r="2.5" fill="var(--accent)"/>
+            </g>
+          </svg>
+        </div>
         <h3 class="trust__t" data-c="words.trust.1.t">Paced to you</h3>
         <p class="trust__p" data-c="words.trust.1.p">Appointments run on your tolerance, not the clock. If something needs a pause, it pauses.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="1">
+        <div class="trust__top">
+          <span class="trust__idx">Standard II</span>
+          <span class="trust__spec">Gentle Preservation</span>
+        </div>
+        <div class="trust__canvas" aria-hidden="true">
+          <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+            <line x1="6" y1="72" x2="314" y2="72" stroke="var(--rule-soft)" stroke-width="0.75" stroke-dasharray="3 5"/>
+            <line x1="160" y1="6" x2="160" y2="138" stroke="var(--rule-soft)" stroke-width="0.75" stroke-dasharray="3 5"/>
+            <g class="trust__orbit"><circle cx="160" cy="72" r="52" stroke="var(--rule)" stroke-width="1.1" stroke-dasharray="5 6"/></g>
+            <circle cx="160" cy="72" r="38" fill="var(--paper-2)" stroke="var(--accent)" stroke-width="1.1"/>
+            <path d="M48 82 C76 62, 98 86, 122 72" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M198 72 C222 58, 244 82, 272 62" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+            <g class="trust__leaf">
+              <path d="M82 68 C78 56, 88 48, 98 55 C93 64, 86 67, 82 68 Z" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.1"/>
+            </g>
+            <g class="trust__leaf--alt">
+              <path d="M238 76 C242 88, 232 96, 222 89 C227 80, 234 77, 238 76 Z" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.1"/>
+            </g>
+            <g class="trust__center">
+              <line x1="160" y1="56" x2="145" y2="81" stroke="var(--ink)" stroke-width="1.25"/>
+              <line x1="160" y1="56" x2="175" y2="81" stroke="var(--ink)" stroke-width="1.25"/>
+              <line x1="145" y1="81" x2="175" y2="81" stroke="var(--ink)" stroke-width="1.25"/>
+              <circle cx="160" cy="56" r="8.5" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.4"/>
+              <circle cx="145" cy="81" r="8.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.35"/>
+              <circle cx="175" cy="81" r="8.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.35"/>
+              <circle cx="160" cy="56" r="2.5" fill="var(--accent)"/>
+            </g>
+            <g class="trust__orbit-inner">
+              <circle cx="114" cy="46" r="2.6" fill="var(--ink)"/>
+              <circle cx="206" cy="98" r="2.8" fill="var(--accent)"/>
+            </g>
+          </svg>
+        </div>
         <h3 class="trust__t" data-c="words.trust.2.t">Explained before it's done</h3>
         <p class="trust__p" data-c="words.trust.2.p">Every step is described in plain terms first, including what you will feel, so nothing arrives as a surprise.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="2">
+        <div class="trust__top">
+          <span class="trust__idx">Standard III</span>
+          <span class="trust__spec">Optical Precision</span>
+        </div>
+        <div class="trust__canvas" aria-hidden="true">
+          <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+            <line x1="6" y1="72" x2="314" y2="72" stroke="var(--rule-soft)" stroke-width="0.75" stroke-dasharray="3 5"/>
+            <line x1="160" y1="6" x2="160" y2="138" stroke="var(--rule-soft)" stroke-width="0.75" stroke-dasharray="3 5"/>
+            <g class="trust__orbit"><circle cx="160" cy="72" r="52" stroke="var(--rule)" stroke-width="1.1" stroke-dasharray="5 6"/></g>
+            <circle cx="160" cy="72" r="38" fill="var(--paper-2)" stroke="var(--rule)" stroke-width="1.2"/>
+            <path d="M56 58 H108 M68 72 H114 M56 86 H108" stroke="var(--rule)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M212 58 H264 M206 72 H252 M212 86 H264" stroke="var(--rule)" stroke-width="1.2" stroke-linecap="round"/>
+            <g class="trust__leaf">
+              <path d="M92 50 C88 40, 96 34, 105 40 C100 47, 95 49, 92 50 Z" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.1"/>
+            </g>
+            <g class="trust__leaf--alt">
+              <path d="M228 94 C232 104, 224 110, 215 104 C220 97, 225 95, 228 94 Z" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.1"/>
+            </g>
+            <g class="trust__center">
+              <rect x="138" y="50" width="44" height="44" rx="10" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4"/>
+              <circle cx="160" cy="72" r="12" stroke="var(--accent)" stroke-width="1.35"/>
+              <circle cx="160" cy="72" r="3.5" fill="var(--ink)"/>
+            </g>
+            <g class="trust__orbit-inner">
+              <circle cx="160" cy="20" r="2.6" fill="var(--ink)"/>
+              <circle cx="212" cy="72" r="2.5" fill="var(--accent)"/>
+              <circle cx="108" cy="72" r="2.5" fill="var(--accent)"/>
+            </g>
+          </svg>
+        </div>
         <h3 class="trust__t" data-c="words.trust.3.t">One patient at a time</h3>
         <p class="trust__p" data-c="words.trust.3.p">No two procedures are booked into the same slot. One visit gets the full length of its appointment.</p>
       </article>
@@ -1699,12 +2115,12 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   </div>
 </section>
 
-<!-- ============================= 06 · CONSULTATION ============================= -->
+<!-- ============================= 05 · CONSULTATION ============================= -->
 <section class="section dark" id="book" aria-labelledby="b-h" data-dark>
   <div class="wrap">
 
     <div class="smark">
-      <span class="smark__n" aria-hidden="true">06</span>
+      <span class="smark__n" aria-hidden="true">05</span>
       <span class="smark__lab eyebrow">Consultation</span>
       <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
     </div>
@@ -1822,7 +2238,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
           </div>
 
           <div class="form__foot">
-            <button class="btn btn--filled" type="submit" id="submit" data-magnetic>
+            <button class="btn btn--filled" type="submit" id="submit" data-magnetic data-cursor="Send">
               <span id="submit-label">Schedule a consultation</span>
               <span class="btn__arrow" aria-hidden="true">&#8594;</span>
             </button>
@@ -1840,12 +2256,12 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 </section>
 
 
-<!-- ============================= 07 · LOCATION ============================= -->
+<!-- ============================= 06 · LOCATION ============================= -->
 <section class="section loc" id="location" aria-labelledby="loc-h">
   <div class="wrap">
 
     <div class="smark">
-      <span class="smark__n" aria-hidden="true">07</span>
+      <span class="smark__n" aria-hidden="true">06</span>
       <span class="smark__lab eyebrow">Location</span>
       <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
     </div>
@@ -1912,7 +2328,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
               <iframe
                 class="map__iframe"
                 data-c="map.embed"
-                src="https://www.google.com/maps?q=825%20S%20Waukegan%20Rd%20Ste%20A1%2C%20Lake%20Forest%2C%20IL%2060045&output=embed"
+                src="about:blank" data-embed-src="https://www.google.com/maps?q=825%20S%20Waukegan%20Rd%20Ste%20A1%2C%20Lake%20Forest%2C%20IL%2060045&amp;output=embed" srcdoc="&lt;!doctype html&gt;&lt;html lang=&#x27;en&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;utf-8&#x27;&gt;&lt;style&gt;*{box-sizing:border-box;margin:0;padding:0}body{background:#EFEAE1;color:#171310;font-family:system-ui,-apple-system,sans-serif;height:100vh;display:grid;place-items:center;padding:24px;background-image:radial-gradient(rgba(30,36,43,0.08) 1px,transparent 1px);background-size:20px 20px}.card{background:#F6F2EC;border:1px solid rgba(30,36,43,0.12);border-radius:4px;padding:24px;max-width:340px;width:100%;box-shadow:0 12px 32px rgba(30,36,43,0.08);text-align:center}.pin{width:40px;height:40px;border-radius:999px;background:#A24E33;color:#fff;display:inline-grid;place-items:center;margin-bottom:12px}h3{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.3}p{font-size:13px;color:#6E665C;line-height:1.5;margin-bottom:16px}a{display:inline-block;padding:9px 16px;border-radius:2px;background:#A24E33;color:#fff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.03em}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&#x27;card&#x27;&gt;&lt;div class=&#x27;pin&#x27;&gt;&lt;svg width=&#x27;18&#x27; height=&#x27;18&#x27; viewBox=&#x27;0 0 24 24&#x27; fill=&#x27;none&#x27; stroke=&#x27;currentColor&#x27; stroke-width=&#x27;2&#x27;&gt;&lt;path d=&#x27;M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z&#x27;/&gt;&lt;circle cx=&#x27;12&#x27; cy=&#x27;9&#x27; r=&#x27;2.5&#x27;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;h3&gt;Dr. David Schmidt&lt;/h3&gt;&lt;p&gt;825 S Waukegan Rd Ste A1&lt;/p&gt;&lt;a href=&#x27;https://www.google.com/maps/dir/?api=1&amp;amp;destination=825+S+Waukegan+Rd+Ste+A1%2C+Lake+Forest%2C+IL+60045&#x27; target=&#x27;_blank&#x27; rel=&#x27;noopener&#x27;&gt;Open in Google Maps &amp;#8599;&lt;/a&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"
                 title="Dr. David Schmidt — 825 S Waukegan Rd Ste A1"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>

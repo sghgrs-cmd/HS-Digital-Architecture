@@ -91,14 +91,29 @@ function initReveals(){
 function initCursor(){
   if (!CLINIC.CURSOR || !FINE || REDUCED) return;
 
-  const dot  = document.getElementById('cur-dot');
-  const ring = document.getElementById('cur-ring');
+  const dot   = document.getElementById('cur-dot');
+  const ring  = document.getElementById('cur-ring');
+  const label = document.getElementById('cur-label');
   if (!dot || !ring) return;
 
   const root = document.documentElement;
   const hide = document.createElement('style');
-  hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner{cursor:none!important}';
+  hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important} html.autoscroll-on #cur-dot, html.autoscroll-on #cur-ring, html.autoscroll-on .cursor{opacity:0!important;visibility:hidden!important}';
   document.head.appendChild(hide);
+
+  /* Custom Luxury Middle-Click Autoscroll Circle with Up/Down Arrows (prevents native OS double-cursor) */
+  const disc = document.createElement('div');
+  disc.className = 'autoscroll-disc';
+  disc.setAttribute('aria-hidden', 'true');
+  disc.innerHTML = '<svg viewBox="0 0 24 24"><path class="autoscroll-disc__up" d="M8 7l4-4 4 4"/><circle class="autoscroll-disc__dot" cx="12" cy="12" r="2.2"/><path class="autoscroll-disc__dn" d="M8 17l4 4 4-4"/></svg>';
+  document.body.appendChild(disc);
+
+  let autoScrollActive = false;
+  let autoOriginX = 0;
+  let autoOriginY = 0;
+  let autoCurY = 0;
+  let autoDownTime = 0;
+  let autoRaf = null;
 
   let live    = false;  // custom cursor currently on screen
   let off     = false;  // permanently stood down (touch device)
@@ -106,14 +121,93 @@ function initCursor(){
 
   /* One class controls both the pointer and the visibility, so the two can
      never disagree — there is exactly one cursor on screen at any moment.
-     `blocked` outranks everything, so a stray show(true) from the document
-     mouseover handler cannot bring the cursor back over a map. */
+     `blocked` and `autoScrollActive` outrank everything, so a stray show(true)
+     from mousemove cannot bring the dot/ring cursor back while autoscrolling. */
   const show = (state) => {
-    const want = (off || blocked) ? false : state;
+    const want = (off || blocked || autoScrollActive) ? false : state;
     if (want === live) return;
     live = want;
     root.classList.toggle('cursor-on', want);
   };
+
+  const stopAutoScroll = () => {
+    if (!autoScrollActive) return;
+    autoScrollActive = false;
+    root.classList.remove('autoscroll-on');
+    root.style.scrollBehavior = '';
+    disc.classList.remove('is-active', 'is-up', 'is-dn');
+    disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(0.75)`;
+    if (autoRaf) {
+      cancelAnimationFrame(autoRaf);
+      autoRaf = null;
+    }
+    show(true);
+  };
+
+  const tickAutoScroll = () => {
+    if (!autoScrollActive) return;
+    const dy = autoCurY - autoOriginY;
+    const absDy = Math.abs(dy);
+    const DEADZONE = 8;
+    if (absDy > DEADZONE) {
+      const sign = dy > 0 ? 1 : -1;
+      const speed = Math.min(48, Math.pow((absDy - DEADZONE) / 8.5, 1.35));
+      window.scrollBy({ top: sign * speed, left: 0, behavior: 'instant' });
+      disc.classList.toggle('is-dn', sign > 0);
+      disc.classList.toggle('is-up', sign < 0);
+    } else {
+      disc.classList.remove('is-up', 'is-dn');
+    }
+    autoRaf = requestAnimationFrame(tickAutoScroll);
+  };
+
+  window.addEventListener('mousedown', (e) => {
+    if (e.button === 1) {
+      e.preventDefault();
+      if (autoScrollActive) {
+        stopAutoScroll();
+      } else {
+        autoScrollActive = true;
+        autoOriginX = e.clientX;
+        autoOriginY = e.clientY;
+        autoCurY = e.clientY;
+        autoDownTime = performance.now();
+        root.classList.add('autoscroll-on');
+        root.style.scrollBehavior = 'auto';
+        show(false);
+        disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
+        disc.classList.add('is-active');
+        if (!autoRaf) autoRaf = requestAnimationFrame(tickAutoScroll);
+      }
+    } else if (autoScrollActive) {
+      e.preventDefault();
+      stopAutoScroll();
+    }
+  }, { passive: false });
+
+  window.addEventListener('mouseup', (e) => {
+    if (e.button === 1 && autoScrollActive) {
+      const heldMs = performance.now() - autoDownTime;
+      const movedPx = Math.hypot(e.clientX - autoOriginX, e.clientY - autoOriginY);
+      if (heldMs > 240 && movedPx > 18) {
+        stopAutoScroll();
+      }
+    }
+  }, { passive: true });
+
+  window.addEventListener('auxclick', (e) => {
+    if (e.button === 1) e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('wheel', () => {
+    if (autoScrollActive) stopAutoScroll();
+  }, { passive: true });
+
+  window.addEventListener('keydown', (e) => {
+    if (autoScrollActive && (e.key === 'Escape' || e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+      stopAutoScroll();
+    }
+  });
 
   /* THE SCROLLBAR.
      It is drawn by the operating system, so `cursor:none` cannot reach it and
@@ -149,6 +243,7 @@ function initCursor(){
   };
 
   window.addEventListener('mousemove', (e) => {
+    if (autoScrollActive) autoCurY = e.clientY;
     if (off) return;
     if (inGutter(e.clientX, e.clientY)){ show(false); return; }
     m.x = e.clientX; m.y = e.clientY;
@@ -160,23 +255,51 @@ function initCursor(){
      so it gets the ring — never the I-beam. The I-beam is only for real text
      entry. [role=option] is listed so the cursor survives inside the open
      listbox, which a native <option> popup could never allow. */
-  const CLICKY = 'a, button, [role="radio"], [role="option"], [role="combobox"], label, summary, [data-magnetic]';
+  const CLICKY = 'a, button, [role="radio"], [role="option"], [role="combobox"], label, summary, [data-magnetic], [data-cursor]';
   const TEXTY  = 'input:not([type="hidden"]), textarea';
 
   const setState = (el) => {
-    const texty  = el && el.closest(TEXTY);
-    const clicky = !texty && el && el.closest(CLICKY);
+    const texty  = el && el.closest ? el.closest(TEXTY) : null;
+    const clicky = !texty && el && el.closest ? el.closest(CLICKY) : null;
     dot.classList.toggle('is-text', !!texty);
     ring.classList.toggle('is-text', !!texty);
     dot.classList.toggle('is-over', !!clicky);
     ring.classList.toggle('is-over', !!clicky);
+    ring.classList.toggle('is-active', !!clicky);
+
+    let cursorText = '';
+    if (clicky) {
+      if (clicky.hasAttribute('data-cursor')) {
+        cursorText = clicky.getAttribute('data-cursor');
+      } else if (clicky.matches('.ai-verify-btn')) {
+        cursorText = 'Ask AI';
+      } else if (clicky.matches('a[href^="tel:"]')) {
+        cursorText = 'Call';
+      } else if (clicky.matches('a[href="#book"]')) {
+        cursorText = 'Book';
+      } else if (clicky.matches('button[type="submit"]')) {
+        cursorText = 'Send';
+      } else if (clicky.matches('[data-c="map.directions"]')) {
+        cursorText = 'Maps';
+      } else if (clicky.matches('.loc-branch-pill')) {
+        cursorText = 'Office';
+      }
+    }
+    if (label) label.textContent = cursorText;
+  };
+
+  const resetCursorState = () => {
+    setState(null);
+    show(false);
   };
 
   /* A null relatedTarget means the pointer left the page content entirely —
      the window edge, or the scrollbar on a fast flick that outran mousemove. */
   document.addEventListener('mouseover', (e) => { setState(e.target); show(true); });
-  document.addEventListener('mouseout',  (e) => { if (!e.relatedTarget){ setState(null); show(false); } });
-  document.addEventListener('mouseleave', () => show(false));
+  document.addEventListener('mouseout',  (e) => { if (!e.relatedTarget) resetCursorState(); });
+  document.addEventListener('mouseleave', resetCursorState);
+  document.addEventListener('pointerleave', resetCursorState);
+  window.addEventListener('blur', resetCursorState);
 
   /* An <iframe> is a separate document. `cursor:none` stops at its border, so
      the system arrow appears inside it while ours would sit frozen at the
@@ -727,6 +850,67 @@ function initAnchors(){
 }
 
 /* -----------------------------------------------------------------------------
+   13b. SMART MULTI-LOCATION / MULTI-BRANCH SUPPORT (2+ Physical Offices)
+   -------------------------------------------------------------------------- */
+function initMultiLocations(data){
+  const rawLocations =
+    (data && Array.isArray(data.locations) && data.locations) ||
+    (window.CLINIC_DATA && Array.isArray(window.CLINIC_DATA.locations) && window.CLINIC_DATA.locations) ||
+    (Array.isArray(window.CLINIC_LOCATIONS) && window.CLINIC_LOCATIONS) ||
+    [];
+  if (rawLocations.length < 2) return;
+
+  const locInfo = document.querySelector('#location .loc__info');
+  if (locInfo && !locInfo.querySelector('.loc-branches')) {
+    const bar = document.createElement('div');
+    bar.className = 'loc-branches';
+    bar.setAttribute('role', 'tablist');
+    bar.setAttribute('aria-label', 'Practice Locations');
+
+    rawLocations.forEach((loc, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'loc-branch-pill' + (idx === 0 ? ' is-active' : '');
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+      btn.setAttribute('data-cursor', 'Office');
+      btn.textContent = loc.name || loc.city || ('Office ' + (idx + 1));
+      btn.addEventListener('click', () => {
+        bar.querySelectorAll('.loc-branch-pill').forEach((b, i) => {
+          b.classList.toggle('is-active', i === idx);
+          b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+        });
+        const addrEl = document.querySelector('[data-c="loc.address"]');
+        if (addrEl && loc.address) addrEl.innerHTML = loc.address;
+        const ph1El = document.querySelector('[data-c="loc.phone1.value"]');
+        if (ph1El && loc.phone) {
+          ph1El.textContent = loc.phone;
+          const phLink = ph1El.closest('a');
+          if (phLink && loc.phoneHref) phLink.setAttribute('href', loc.phoneHref);
+        }
+        const dirEl = document.querySelector('[data-c="map.directions"]');
+        if (dirEl && loc.mapDirections) dirEl.setAttribute('href', loc.mapDirections);
+        const mapIframe = document.querySelector('.map__iframe');
+        if (mapIframe && loc.mapEmbed) {
+          mapIframe.setAttribute('data-embed-src', loc.mapEmbed);
+          mapIframe.setAttribute('src', loc.mapEmbed);
+        }
+      });
+      bar.appendChild(btn);
+    });
+    locInfo.insertBefore(bar, locInfo.firstChild);
+  }
+
+  const bookAddr = document.querySelector('[data-c="book.address"]');
+  if (bookAddr && !bookAddr.hasAttribute('data-multi-rendered')) {
+    bookAddr.setAttribute('data-multi-rendered', 'true');
+    bookAddr.innerHTML = rawLocations
+      .map((loc) => '<strong>' + (loc.name || loc.city || 'Office') + ':</strong> ' + (loc.address || ''))
+      .join('<br>');
+  }
+}
+
+/* -----------------------------------------------------------------------------
    BOOT
    -------------------------------------------------------------------------- */
 function boot(){
@@ -745,6 +929,7 @@ function boot(){
   initIndex();
   initForm();
   initAnchors();
+  initMultiLocations(window.CLINIC_DATA);
 }
 
 function safeBoot(){
