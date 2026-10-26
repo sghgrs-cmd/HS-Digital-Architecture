@@ -660,10 +660,10 @@
 
     const root = document.documentElement;
     const hide = document.createElement('style');
-    hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important}';
+    hide.textContent = 'html, html *{cursor:none!important} [data-cursor-off], [data-cursor-off] *{cursor:auto!important} [data-cursor-off] .map__shield, [data-cursor-off] .map__shield *{cursor:pointer!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important} html.autoscroll-on #cur-dot, html.autoscroll-on #cur-ring, html.autoscroll-on .cursor{opacity:0!important;visibility:hidden!important}';
     document.head.appendChild(hide);
 
-    /* Custom Luxury Middle-Click Autoscroll Circle with Up/Down Arrows (prevents native OS double-cursor) */
+    /* Custom Luxury Middle-Click Autoscroll Disc with Up/Down Arrows (Single Cursor, Zero Secondary Anchor) */
     const disc = document.createElement('div');
     disc.className = 'autoscroll-disc';
     disc.setAttribute('aria-hidden', 'true');
@@ -673,30 +673,51 @@
     let autoScrollActive = false;
     let autoOriginX = 0;
     let autoOriginY = 0;
+    let autoCurX = 0;
     let autoCurY = 0;
     let autoDownTime = 0;
     let autoRaf = null;
 
-    const stopAutoScroll = () => {
+    let live = false;
+    let off = false;
+    let blocked = false;
+
+    const show = (state) => {
+      const want = (off || blocked || autoScrollActive) ? false : state;
+      if (want === live) return;
+      live = want;
+      root.classList.toggle('cursor-on', want);
+    };
+
+    const stopAutoScroll = (e) => {
       if (!autoScrollActive) return;
       autoScrollActive = false;
+      root.classList.remove('autoscroll-on');
+      root.style.scrollBehavior = '';
       disc.classList.remove('is-active', 'is-up', 'is-dn');
-      disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(0.75)`;
+      disc.style.transform = `translate(${autoCurX.toFixed(1)}px, ${autoCurY.toFixed(1)}px) translate(-50%, -50%) scale(0.6)`;
       if (autoRaf) {
         cancelAnimationFrame(autoRaf);
         autoRaf = null;
       }
+      const finalX = (e && typeof e.clientX === 'number') ? e.clientX : autoCurX;
+      const finalY = (e && typeof e.clientY === 'number') ? e.clientY : autoCurY;
+      m.x = finalX; m.y = finalY;
+      d.x = finalX; d.y = finalY;
+      cursor.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px) translate(-50%,-50%)`;
+      show(true);
+      if (!raf) raf = requestAnimationFrame(tick);
     };
 
     const tickAutoScroll = () => {
       if (!autoScrollActive) return;
       const dy = autoCurY - autoOriginY;
       const absDy = Math.abs(dy);
-      const DEADZONE = 12;
+      const DEADZONE = 8;
       if (absDy > DEADZONE) {
         const sign = dy > 0 ? 1 : -1;
-        const speed = Math.min(28, Math.pow((absDy - DEADZONE) / 13, 1.35));
-        window.scrollBy(0, sign * speed);
+        const speed = Math.min(48, Math.pow((absDy - DEADZONE) / 8.5, 1.35));
+        window.scrollBy({ top: sign * speed, left: 0, behavior: 'instant' });
         disc.classList.toggle('is-dn', sign > 0);
         disc.classList.toggle('is-up', sign < 0);
       } else {
@@ -709,20 +730,27 @@
       if (e.button === 1) {
         e.preventDefault();
         if (autoScrollActive) {
-          stopAutoScroll();
+          stopAutoScroll(e);
         } else {
           autoScrollActive = true;
           autoOriginX = e.clientX;
           autoOriginY = e.clientY;
+          autoCurX = e.clientX;
           autoCurY = e.clientY;
+          m.x = e.clientX; m.y = e.clientY;
+          d.x = e.clientX; d.y = e.clientY;
           autoDownTime = performance.now();
-          disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
+          root.classList.add('autoscroll-on');
+          root.style.scrollBehavior = 'auto';
+          show(false);
+          disc.style.transform = `translate(${autoCurX.toFixed(1)}px, ${autoCurY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
           disc.classList.add('is-active');
+          disc.classList.remove('is-up', 'is-dn');
           if (!autoRaf) autoRaf = requestAnimationFrame(tickAutoScroll);
         }
       } else if (autoScrollActive) {
         e.preventDefault();
-        stopAutoScroll();
+        stopAutoScroll(e);
       }
     }, { passive: false });
 
@@ -731,7 +759,7 @@
         const heldMs = performance.now() - autoDownTime;
         const movedPx = Math.hypot(e.clientX - autoOriginX, e.clientY - autoOriginY);
         if (heldMs > 240 && movedPx > 18) {
-          stopAutoScroll();
+          stopAutoScroll(e);
         }
       }
     }, { passive: true });
@@ -749,17 +777,6 @@
         stopAutoScroll();
       }
     });
-
-    let live = false;
-    let off = false;
-    let blocked = false;
-
-    const show = (state) => {
-      const want = (off || blocked) ? false : state;
-      if (want === live) return;
-      live = want;
-      root.classList.toggle('cursor-on', want);
-    };
 
     let edgeX = 0;
     let edgeY = 0;
@@ -796,7 +813,22 @@
     };
 
     window.addEventListener('mousemove', (e) => {
-      if (autoScrollActive) autoCurY = e.clientY;
+      if (autoScrollActive) {
+        autoCurX = e.clientX;
+        autoCurY = e.clientY;
+        m.x = e.clientX;
+        m.y = e.clientY;
+        d.x = e.clientX;
+        d.y = e.clientY;
+        disc.style.transform = `translate(${autoCurX.toFixed(1)}px, ${autoCurY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
+        return;
+      }
+      if (e.target && e.target.closest && e.target.closest('[data-cursor-off]')) {
+        blocked = true;
+        show(false);
+        return;
+      }
+      blocked = false;
       if (off) return;
       if (inGutter(e.clientX, e.clientY)) {
         show(false);
@@ -849,6 +881,12 @@
         show(false);
         return;
       }
+      if (e.target && e.target.closest && e.target.closest('[data-cursor-off]')) {
+        blocked = true;
+        show(false);
+        return;
+      }
+      blocked = false;
       setState(e.target);
       show(true);
     });
