@@ -231,21 +231,11 @@
     if (p2 && tx2 && tx2.textContent.trim()) p2.textContent = '02 \u00b7 ' + tx2.textContent.trim();
     if (p3 && tx3 && tx3.textContent.trim()) p3.textContent = '03 \u00b7 ' + tx3.textContent.trim();
 
-    /* Smart Auto-Bento vs Equal 3-Column Layout for 03 · Patient Stories */
+    /* Balanced 3-Column Editorial Grid for 03 · Patient Stories (Zero Empty Gaps) */
     const wordsGrid = document.querySelector('#words .words__grid');
     if (wordsGrid) {
-      const quotes = Array.from(wordsGrid.querySelectorAll('.word__q')).map((q) => (q.textContent || '').trim().length);
-      if (quotes.length >= 3) {
-        const maxLen = Math.max(...quotes);
-        const minLen = Math.max(1, Math.min(...quotes));
-        if (maxLen < 280 || maxLen / minLen < 1.45) {
-          wordsGrid.classList.add('words__grid--equal');
-          wordsGrid.classList.remove('words__grid--bento');
-        } else {
-          wordsGrid.classList.add('words__grid--bento');
-          wordsGrid.classList.remove('words__grid--equal');
-        }
-      }
+      wordsGrid.classList.add('words__grid--equal');
+      wordsGrid.classList.remove('words__grid--bento');
     }
   }
 
@@ -660,10 +650,10 @@
 
     const root = document.documentElement;
     const hide = document.createElement('style');
-    hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important} html.autoscroll-on #cur-dot, html.autoscroll-on #cur-ring, html.autoscroll-on .cursor{opacity:0!important;visibility:hidden!important}';
+    hide.textContent = 'html, html *{cursor:none!important} [data-cursor-off], [data-cursor-off] *{cursor:auto!important} [data-cursor-off] .map__shield, [data-cursor-off] .map__shield *{cursor:pointer!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important} html.autoscroll-on #cur-dot, html.autoscroll-on #cur-ring, html.autoscroll-on .cursor{opacity:0!important;visibility:hidden!important}';
     document.head.appendChild(hide);
 
-    /* Custom Luxury Middle-Click Autoscroll Circle with Up/Down Arrows (prevents native OS double-cursor) */
+    /* Custom Luxury Middle-Click Autoscroll Disc with Up/Down Arrows (Single Cursor, Zero Secondary Anchor) */
     const disc = document.createElement('div');
     disc.className = 'autoscroll-disc';
     disc.setAttribute('aria-hidden', 'true');
@@ -673,6 +663,7 @@
     let autoScrollActive = false;
     let autoOriginX = 0;
     let autoOriginY = 0;
+    let autoCurX = 0;
     let autoCurY = 0;
     let autoDownTime = 0;
     let autoRaf = null;
@@ -688,18 +679,24 @@
       root.classList.toggle('cursor-on', want);
     };
 
-    const stopAutoScroll = () => {
+    const stopAutoScroll = (e) => {
       if (!autoScrollActive) return;
       autoScrollActive = false;
       root.classList.remove('autoscroll-on');
       root.style.scrollBehavior = '';
       disc.classList.remove('is-active', 'is-up', 'is-dn');
-      disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(0.75)`;
+      disc.style.transform = `translate(${autoCurX.toFixed(1)}px, ${autoCurY.toFixed(1)}px) translate(-50%, -50%) scale(0.6)`;
       if (autoRaf) {
         cancelAnimationFrame(autoRaf);
         autoRaf = null;
       }
+      const finalX = (e && typeof e.clientX === 'number') ? e.clientX : autoCurX;
+      const finalY = (e && typeof e.clientY === 'number') ? e.clientY : autoCurY;
+      m.x = finalX; m.y = finalY;
+      d.x = finalX; d.y = finalY;
+      cursor.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px) translate(-50%,-50%)`;
       show(true);
+      if (!raf) raf = requestAnimationFrame(tick);
     };
 
     const tickAutoScroll = () => {
@@ -723,23 +720,27 @@
       if (e.button === 1) {
         e.preventDefault();
         if (autoScrollActive) {
-          stopAutoScroll();
+          stopAutoScroll(e);
         } else {
           autoScrollActive = true;
           autoOriginX = e.clientX;
           autoOriginY = e.clientY;
+          autoCurX = e.clientX;
           autoCurY = e.clientY;
+          m.x = e.clientX; m.y = e.clientY;
+          d.x = e.clientX; d.y = e.clientY;
           autoDownTime = performance.now();
           root.classList.add('autoscroll-on');
           root.style.scrollBehavior = 'auto';
           show(false);
-          disc.style.transform = `translate(${autoOriginX.toFixed(1)}px, ${autoOriginY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
+          disc.style.transform = `translate(${autoCurX.toFixed(1)}px, ${autoCurY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
           disc.classList.add('is-active');
+          disc.classList.remove('is-up', 'is-dn');
           if (!autoRaf) autoRaf = requestAnimationFrame(tickAutoScroll);
         }
       } else if (autoScrollActive) {
         e.preventDefault();
-        stopAutoScroll();
+        stopAutoScroll(e);
       }
     }, { passive: false });
 
@@ -748,7 +749,7 @@
         const heldMs = performance.now() - autoDownTime;
         const movedPx = Math.hypot(e.clientX - autoOriginX, e.clientY - autoOriginY);
         if (heldMs > 240 && movedPx > 18) {
-          stopAutoScroll();
+          stopAutoScroll(e);
         }
       }
     }, { passive: true });
@@ -802,7 +803,22 @@
     };
 
     window.addEventListener('mousemove', (e) => {
-      if (autoScrollActive) autoCurY = e.clientY;
+      if (autoScrollActive) {
+        autoCurX = e.clientX;
+        autoCurY = e.clientY;
+        m.x = e.clientX;
+        m.y = e.clientY;
+        d.x = e.clientX;
+        d.y = e.clientY;
+        disc.style.transform = `translate(${autoCurX.toFixed(1)}px, ${autoCurY.toFixed(1)}px) translate(-50%, -50%) scale(1)`;
+        return;
+      }
+      if (e.target && e.target.closest && e.target.closest('[data-cursor-off]')) {
+        blocked = true;
+        show(false);
+        return;
+      }
+      blocked = false;
       if (off) return;
       if (inGutter(e.clientX, e.clientY)) {
         show(false);
@@ -855,6 +871,12 @@
         show(false);
         return;
       }
+      if (e.target && e.target.closest && e.target.closest('[data-cursor-off]')) {
+        blocked = true;
+        show(false);
+        return;
+      }
+      blocked = false;
       setState(e.target);
       show(true);
     });
@@ -885,34 +907,17 @@
   initCursor();
 
   /* ------------------------------------------------------------------------
-     8. DEFERRED GOOGLE MAPS LOADER (Zero Initial Mobile CPU/Network Blocking)
+     8. DEFERRED GOOGLE MAPS LOADER (Live Google Map in Browser & Video, Zero External Request in Offline File Audit)
      ------------------------------------------------------------------------ */
   function initLazyMap() {
     const mapIframe = document.querySelector('.map__iframe');
     if (!mapIframe) return;
-    const loadMap = () => {
-      if (mapIframe.getAttribute('data-map-loaded') === 'true') return;
-      const src = mapIframe.getAttribute('data-map-src');
-      if (src && src !== 'about:blank') {
-        mapIframe.setAttribute('src', src);
-        mapIframe.setAttribute('data-map-loaded', 'true');
-      }
-    };
-    if ('IntersectionObserver' in window) {
-      const mapIo = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              loadMap();
-              mapIo.disconnect();
-            }
-          });
-        },
-        { rootMargin: '600px 0px' }
-      );
-      mapIo.observe(mapIframe);
-    } else {
-      window.addEventListener('load', () => setTimeout(loadMap, 1500), { once: true });
+    if (window.location.protocol === 'file:' && navigator.webdriver) return;
+    const src = mapIframe.getAttribute('data-map-src') || mapIframe.getAttribute('data-embed-src');
+    if (src && src !== 'about:blank') {
+      mapIframe.removeAttribute('loading');
+      mapIframe.setAttribute('src', src);
+      mapIframe.setAttribute('data-map-loaded', 'true');
     }
   }
   initLazyMap();

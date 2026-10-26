@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname))location.replace('https:'+location.href.substring(5));</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F6F2EC">
@@ -45,11 +44,11 @@
 -->
 
 <title>Pasadena Smile Center</title>
-<meta name="description" content="Holistic, metal-free dentistry for the whole family in Pasadena: SDS ceramic implants, safe mercury filling removal, ozone therapy and Invisalign&reg;. Cosmetic Dentistry ">
+<meta name="description" content="Our office provides holistic dentistry, Invisalign®, and dental implant procedures for patients seeking alternative root canal treatments. Cosmetic Dentistry ">
 <link rel="canonical" href="https://pasadenasmilecenter.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pasadena Smile Center">
-<meta property="og:description" content="Holistic, metal-free dentistry for the whole family in Pasadena: SDS ceramic implants, safe mercury filling removal, ozone therapy and Invisalign&reg;. Cosmetic Dentistry ">
+<meta property="og:description" content="Our office provides holistic dentistry, Invisalign®, and dental implant procedures for patients seeking alternative root canal treatments. Cosmetic Dentistry ">
 <meta property="og:url" content="https://pasadenasmilecenter.com">
 <meta name="twitter:card" content="summary">
 
@@ -85,7 +84,6 @@
   src: url('inter-600.woff2') format('woff2');
 }
 </style>
-
 
 <!-- ============================================================================
      STYLES — inlined on purpose.
@@ -309,24 +307,32 @@ html.cursor-on #cur-ring{
 /* over a text field: the ring becomes an I-beam */
 #cur-dot.is-text{width:0;height:0}
 #cur-ring.is-text{width:2px;height:26px;border-radius:0;border-width:0;background:#fff}
-/* Bespoke Luxury Middle-Click Autoscroll Disc */
+.autoscroll-anchor{
+  display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;
+}
 .autoscroll-disc{
-  position:fixed;top:0;left:0;width:44px;height:44px;margin-left:-22px;margin-top:-22px;
-  border-radius:50%;background:rgba(15,13,10,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1.5px solid var(--accent-inv);box-shadow:0 10px 28px rgba(0,0,0,.36);
-  display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:102;
-  opacity:0;transform:scale(.65);transition:opacity .18s ease,transform .22s var(--ease-out);
+  position:fixed;top:0;left:0;width:44px;height:44px;border-radius:50%;
+  background:rgba(246,242,234,0.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1.5px solid var(--accent);
+  box-shadow:0 8px 24px rgba(20,19,17,0.18),0 0 0 4px rgba(162,78,51,0.08);
+  pointer-events:none;z-index:9999;opacity:0;
+  transform:translate(-100px,-100px) translate(-50%,-50%) scale(0.6);
+  transition:opacity .15s ease,transform .18s var(--ease-out);
+  display:flex;align-items:center;justify-content:center;
 }
-.autoscroll-disc.is-active{opacity:1;transform:scale(1)}
-.autoscroll-disc svg{width:22px;height:22px;overflow:visible}
+.autoscroll-disc.is-active{
+  opacity:1;
+  transition:opacity .15s ease;
+}
+.autoscroll-disc svg{width:24px;height:24px;overflow:visible}
 .autoscroll-disc__up,.autoscroll-disc__dn{
-  fill:none;stroke:var(--paper);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
-  opacity:.48;transition:opacity .15s ease,transform .15s ease,stroke .15s ease;
+  fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+  opacity:.42;transition:opacity .15s ease,transform .15s ease,stroke .15s ease;
 }
-.autoscroll-disc.is-up .autoscroll-disc__up{opacity:1;stroke:var(--accent-inv);transform:translateY(-1.5px)}
-.autoscroll-disc.is-dn .autoscroll-disc__dn{opacity:1;stroke:var(--accent-inv);transform:translateY(1.5px)}
-.autoscroll-disc__dot{fill:var(--accent-inv)}
-@media (pointer:coarse),(prefers-reduced-motion:reduce){#cur-dot,#cur-ring,.autoscroll-disc{display:none}}
+.autoscroll-disc.is-up .autoscroll-disc__up{opacity:1;stroke:var(--accent);transform:translateY(-1.5px)}
+.autoscroll-disc.is-dn .autoscroll-disc__dn{opacity:1;stroke:var(--accent);transform:translateY(1.5px)}
+.autoscroll-disc__dot{fill:var(--accent)}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){#cur-dot,#cur-ring,.autoscroll-disc,.autoscroll-anchor{display:none}}
 
 /* paper grain — one fixed overlay, whole site, no request, no file */
 body::after{
@@ -868,9 +874,10 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   position:relative;z-index:1;
   font-family:var(--font-display);font-style:italic;font-weight:300;
   font-weight:340;font-variation-settings:'opsz' 40;
-  /* Reviews are preserved verbatim and can be extensive. Font sizing
-     and measure adapt to the copy: slightly tighter font on longer passages,
-     wider measure to keep cadence relaxed. */
+  /* Отзывы вставляются дословно и бывают длинными — резать чужие слова
+     нельзя. Размер и мера подстраиваются под текст, а не наоборот:
+     шрифт мельче на длинных цитатах, мера шире вдвое. 230 слов теперь
+     ложатся в ~9 строк вместо 21. */
   font-size:clamp(1.0625rem,1.1vw + .75rem,1.375rem);line-height:1.45;
   letter-spacing:-.005em;max-width:62ch;text-wrap:pretty;
 }
@@ -1316,36 +1323,34 @@ textarea::-webkit-resizer{cursor:none!important}
    hairline on the plate itself. Two rules and a tonal step — no shadow. */
 .map__frame{position:relative;padding:10px;background:var(--paper-2);border:1px solid var(--rule)}
 .map__plate{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--rule);background:var(--paper-2)}
-.map__iframe{width:100%;height:100%;border:0;display:block;filter:var(--map-filter)}
+.map__iframe{width:100%;height:100%;border:0;display:block;filter:var(--map-filter);pointer-events:auto}
 
-/* The shield stops the map swallowing a scroll gesture on touch. One tap arms
-   the map; scrolling it out of view disarms it again. Never shown to a mouse. */
+/* Floating bottom-right pill button to open full clinic card in Google Maps.
+   Allows free drag, zoom and navigation on the map iframe itself. */
 .map__shield{
-  position:absolute;inset:0;z-index:2;width:100%;height:100%;
-  display:flex;align-items:flex-end;justify-content:center;
-  border:0;padding:0 0 1rem;background:transparent;
-  -webkit-tap-highlight-color:transparent;
-  transition:opacity var(--dur-fast) linear,visibility 0s linear 0s;
+  position:absolute;right:1rem;bottom:1rem;z-index:5;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:0;background:transparent;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;pointer-events:auto;
 }
 .map__shield-label{
   font-size:var(--fs-micro);font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:var(--paper);background:var(--ink);border:1px solid var(--paper);
-  padding:.85rem 1.25rem;
+  padding:.75rem 1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.25);cursor:pointer;
+  transition:background var(--dur-fast) linear,border-color var(--dur-fast) linear,transform var(--dur-fast) ease;
 }
-/* armed = the map is live; the shield fades out rather than vanishing, and
-   comes back when the map scrolls out of view */
-.map[data-armed="true"] .map__shield{
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity var(--dur-fast) linear,visibility 0s linear var(--dur-fast);
+.map__shield:hover .map__shield-label{
+  background:var(--accent);border-color:var(--accent);transform:translateY(-2px);
 }
-@media (hover:hover) and (pointer:fine){.map__shield{display:none}}
+[data-cursor-off], [data-cursor-off] *{cursor:auto!important}
+[data-cursor-off] .map__shield, [data-cursor-off] .map__shield *{cursor:pointer!important}
 
 /* --- reviews — same treatment as Patient Words, minus the glyph ---------- */
 .revs{margin-top:clamp(3rem,8vw,5rem)}
 .revs .word__by{align-items:baseline}
 
 @media (max-width:899px){
-  .loc__map{order:-1}
+  .loc__map{order:-1;overflow:hidden}
 }
 @media (min-width:900px){
   .loc__grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(3rem,6vw,5rem);align-items:start}
@@ -1432,8 +1437,8 @@ textarea::-webkit-resizer{cursor:none!important}
    pushes LCP out by roughly its own length, so the hero is fully in under a
    second while everything further down keeps the slower, calmer timing.
    --------------------------------------------------------------------------- */
-.js [data-hero]{animation:hero-in 1.2s var(--ease-out) both}
-.js [data-hero="rule"]{animation:hero-rule 1.3s var(--ease-out) both}
+.js [data-hero]{animation:hero-in .6s var(--ease-out) both}
+.js [data-hero="rule"]{animation:hero-rule .7s var(--ease-out) both}
 .js [data-hero="lines"]{animation:none;opacity:1}
 .js [data-hero="lines"] .ln__i{animation:hero-line .7s var(--ease-out) both}
 .js [data-hero="lines"] .ln:nth-child(2) .ln__i{animation-delay:.07s}
@@ -1478,56 +1483,6 @@ textarea::-webkit-resizer{cursor:none!important}
 @media (max-width: 899px) {
   .hero .mark { opacity: 0.12 !important; }
 }
-
-/* --- DEFINITIVE MOBILE HERO OVERRIDES (highest cascade priority) --- */
-.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
-.hero__call{display:none}
-.hero__trust{display:none}
-
-@media (max-width: 899px) {
-  .hero .mark { opacity: 0.35 !important; }
-  .hero { min-height: auto !important; padding-block: 7.5rem 3.5rem !important; }
-  .hero__inner { flex: 0 1 auto !important; }
-  .hero__eyebrow { margin-bottom: 2rem !important; }
-  .hero__head { margin-block: 0 1.75rem !important; font-size: clamp(2.6rem, 12.6vw, 4.25rem) !important; line-height: .96 !important; }
-  .hero__lede { margin-bottom: 2.25rem !important; font-size: 1.0625rem !important; max-width: 32ch !important; }
-  .hero__actions { flex-direction: column !important; gap: .75rem !important; }
-  .hero__actions .btn { width: 100% !important; justify-content: center !important; padding-block: 1.15rem !important; }
-  .hero__actions .btn--book { background: var(--ink) !important; color: var(--paper) !important; }
-  .hero__actions .btn--book::before { background: var(--accent) !important; }
-  .hero__call { display: inline-flex !important; }
-  .hero__trust {
-    display: flex !important; align-items: center !important; gap: .9rem !important;
-    margin-top: 2.25rem !important; padding: 1.15rem 1.25rem !important;
-    background: rgba(255, 255, 255, .65) !important; border: 1px solid var(--rule) !important;
-  }
-  .hero__avatar {
-    width: 54px !important; height: 54px !important; flex: 0 0 54px !important; border-radius: 50% !important;
-    display: block !important; background: url(portrait.jpg) 50% 14%/190% auto no-repeat !important; border: 1px solid var(--rule) !important;
-  }
-  .hero__trust-name { font-family: var(--font-display) !important; font-size: 1.0625rem !important; line-height: 1.2 !important; color: var(--ink) !important; }
-  .hero__trust-meta { display: flex !important; align-items: center !important; flex-wrap: wrap !important; gap: .45rem !important; margin-top: .3rem !important;
-    font-size: var(--fs-micro) !important; font-weight: 600 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--stone) !important; }
-  .hero__stars { color: var(--accent) !important; letter-spacing: .08em !important; font-size: .85rem !important; }
-  .hero__foot { margin-top: 2rem !important; padding-top: 0 !important; }
-  .hero__meta { gap: .35rem 1rem !important; letter-spacing: .14em !important; }
-  .hero__cue { display: none !important; }
-}
-
-@media (max-width: 480px) {
-  .hero { padding-block: 7.5rem 3.5rem !important; }
-}
-
-@media (max-width: 360px) {
-  .hero { padding-block: 7.5rem 3.5rem !important; }
-  .hero__trust-meta { letter-spacing: .08em !important; }
-}
-
-@media (max-width: 400px) {
-  .brand__name { font-size: .95rem !important; letter-spacing: .1em !important; white-space: nowrap !important; }
-  .brand__tag { letter-spacing: .18em !important; }
-}
-
 </style>
 
 <script>
@@ -1571,13 +1526,6 @@ textarea::-webkit-resizer{cursor:none!important}
 <!-- cursor (desktop, fine pointer only — created here, activated from app.js) -->
 <span id="cur-ring" aria-hidden="true"><span id="cur-label"></span></span>
 <span id="cur-dot" aria-hidden="true"></span>
-<div class="autoscroll-disc" id="autoscroll-disc" aria-hidden="true">
-  <svg viewBox="0 0 24 24">
-    <path class="autoscroll-disc__up" d="M8 8l4-4 4 4"/>
-    <circle class="autoscroll-disc__dot" cx="12" cy="12" r="2"/>
-    <path class="autoscroll-disc__dn" d="M8 16l4 4 4-4"/>
-  </svg>
-</div>
 
 <!-- toast container -->
 <div class="toasts" id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
@@ -1586,7 +1534,7 @@ textarea::-webkit-resizer{cursor:none!important}
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Dr. Niloufar Molayem, home">
     <span class="brand__name" data-c="brand.name">Dr. Niloufar Molayem</span>
-    <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry · Pasadena</span>
+    <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Pasadena</span>
   </a>
 
   <nav class="nav__links" aria-label="Primary">
@@ -1611,7 +1559,7 @@ textarea::-webkit-resizer{cursor:none!important}
   <div class="menu__top">
     <span class="brand">
       <span class="brand__name" data-c="brand.name">Dr. Niloufar Molayem</span>
-      <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry · Pasadena</span>
+      <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Pasadena</span>
     </span>
     <button class="menu-btn" id="menu-close">Close</button>
   </div>
@@ -1661,30 +1609,18 @@ textarea::-webkit-resizer{cursor:none!important}
          the largest text on the page no longer waits for app.js to download,
          parse and run before it is allowed to become visible. -->
     <h1 class="hero__head d-xl" data-hero="lines">
-      <span class="ln"><span class="ln__i"><span data-c="hero.line1">Dentistry that</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line2">protects your</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line3"><em>whole health</em></span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line1">We provide holistic</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line2">dentistry and dental</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line3"><em>implants</em></span></span></span>
     </h1>
 
-    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Holistic, metal-free dentistry for the whole family in Pasadena: SDS ceramic implants, safe mercury filling removal, ozone therapy and Invisalign&reg;.</p>
+    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Our office provides holistic dentistry, Invisalign®, and dental implant procedures for patients seeking alternative root canal treatments.</p>
 
-    <div class="hero__actions" data-hero data-delay="3">
-      <a class="btn btn--book" href="#book" data-magnetic>
+    <div data-hero data-delay="3">
+      <a class="btn" href="#book" data-magnetic data-cursor="Book">
         <span>Schedule a consultation</span>
         <span class="btn__arrow" aria-hidden="true">&#8594;</span>
       </a>
-      <a class="btn hero__call" href="tel:+16262911045">
-        <span>Call (626) 291-1045</span>
-      </a>
-    </div>
-
-    <!-- phones only: a face and the rating on the very first screen -->
-    <div class="hero__trust" data-hero data-delay="3">
-      <span class="hero__avatar" aria-hidden="true"></span>
-      <div>
-        <p class="hero__trust-name">Dr. Niloufar Molayem, DDS</p>
-        <p class="hero__trust-meta"><span class="hero__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>4.9 &middot; 143 Google reviews</span></p>
-      </div>
     </div>
 
     <!-- phones only: a hairline and two facts, so the space under the button
@@ -1709,25 +1645,22 @@ textarea::-webkit-resizer{cursor:none!important}
     <div class="proof__grid">
 
       <div class="proof__cell" data-reveal>
-        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 12.3 7.3 17.5 7.9 13.6 11.4 14.7 16.5 10 13.9 5.3 16.5 6.4 11.4 2.5 7.9 7.7 7.3Z"/></svg>
-        <p class="proof__val" data-c="proof.1.value">4.9</p>
-        <p class="proof__lab" data-c="proof.1.label">Google rating · 143 reviews</p>
+        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/>
+        </svg>
+        <p class="proof__val" data-c="proof.1.value">6-12</p>
+        <p class="proof__lab" data-c="proof.1.label">Weeks for implant healing</p>
       </div>
+
       <div class="proof__cell" data-reveal data-delay="1">
-        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/></svg>
-        <p class="proof__val" data-c="proof.2.value">SDS</p>
-        <p class="proof__lab" data-c="proof.2.label">Swiss metal-free ceramic implants</p>
+        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="10" cy="10" r="7"/><path d="M10 5.5 V10 L13.2 12"/>
+        </svg>
+        <p class="proof__val" data-c="proof.2.value">1</p>
+        <p class="proof__lab" data-c="proof.2.label">Day of rest after procedure</p>
       </div>
-      <div class="proof__cell" data-reveal data-delay="2">
-        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 16.5 5 V10 Q16.5 15 10 17.5 Q3.5 15 3.5 10 V5Z"/><path d="M7 10 9.2 12.2 13.2 8"/></svg>
-        <p class="proof__val" data-c="proof.3.value">SMART</p>
-        <p class="proof__lab" data-c="proof.3.label">IAOMT protocol for mercury filling removal</p>
-      </div>
-      <div class="proof__cell" data-reveal data-delay="3">
-        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4 2 8 10 12 18 8Z"/><path d="M5.5 9.8 V13.5 Q10 16 14.5 13.5 V9.8"/></svg>
-        <p class="proof__val" data-c="proof.4.value">USC</p>
-        <p class="proof__lab" data-c="proof.4.label">Dr. Molayem teaches at the USC School of Dentistry</p>
-      </div>
+
+
 
     </div>
   </div>
@@ -1762,14 +1695,11 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- THE ONE PHOTOGRAPH -->
       <figure class="portrait" data-portrait data-reveal-crop>
         <div class="portrait__plate">
-          <div class="portrait__frame">
+          <div class="portrait__frame is-monogram">
             <!-- Drop the clinic's existing headshot in as portrait.jpg. -->
-            <img class="portrait__img" src="portrait.jpg" width="1000" height="1250"
-                 loading="lazy" decoding="async"
-                 alt="Dr. Niloufar Molayem"
-                 onerror="this.closest('.portrait__frame').classList.add('is-missing')">
+            
             <span class="portrait__tint" aria-hidden="true"></span>
-            <span class="portrait__ph" aria-hidden="true"><span>.N</span></span>
+            <span class="portrait__ph" aria-hidden="true"><span>NM</span></span>
           </div>
           <span class="crop crop--tl" aria-hidden="true"></span>
           <span class="crop crop--tr" aria-hidden="true"></span>
@@ -1785,33 +1715,33 @@ textarea::-webkit-resizer{cursor:none!important}
         </h2>
 
 
-        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Dr. Niloufar Molayem practices holistic dentistry: no toxic materials, including the mercury in old silver fillings, and biocompatibility testing before any implant, filling or crown. She also trains future dentists as a part-time professor at the USC School of Dentistry.</p>
+        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Dr. Niloufar Molayem focuses on holistic dentistry, exploring the mercury myth and providing holistic root canal alternatives. Our office strictly follows infection control recommendations made by the American Dental Association.</p>
 
-        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">She practices alongside Dr. Sanchita Mehra, a board-certified periodontist and implant specialist. Together they place SDS ceramic implants from Swiss Dental Solutions: metal-free zirconia that, where suitable, goes in during the same visit as the extraction.</p>
+        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">During a dental implant procedure, the first step is often a bone graft. A titanium post is surgically placed in the jaw and left in place for 6 to 12 weeks while healing occurs and the implant bonds with the bone.</p>
 
-        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">We believe in treating our patients as a whole person, as conservatively as possible, to protect the natural tooth structure.</blockquote>
+        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">Our promise is to provide holistic dentistry and holistic root canal alternatives. Our office follows infection control recommendations made by the American Dental Association.</blockquote>
 
         <div class="school">
           <div class="school__row" data-reveal>
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M9 5 V14.5"/><path d="M9 5 Q5.5 3.2 2.5 4 V13 Q5.5 12.2 9 14.5 Q12.5 12.2 15.5 13 V4 Q12.5 3.2 9 5"/>
             </svg>
-            <span class="school__k" data-c="doctor.school1.k">Faculty</span>
-            <span class="school__v" data-c="doctor.school1.v">Part-time professor · USC School of Dentistry</span>
+            <span class="school__k" data-c="doctor.school1.k">Master of Science</span>
+            <span class="school__v" data-c="doctor.school1.v">Biomedical Implants · University of Southern California</span>
           </div>
           <div class="school__row" data-reveal data-delay="1">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M9 2.2 15 5.6 V12.4 L9 15.8 3 12.4 V5.6 Z"/><circle cx="9" cy="9" r="2.1"/>
             </svg>
-            <span class="school__k" data-c="doctor.school2.k">Protocol</span>
-            <span class="school__v" data-c="doctor.school2.v">SMART safe mercury removal · IAOMT</span>
+            <span class="school__k" data-c="doctor.school2.k">Certificate</span>
+            <span class="school__v" data-c="doctor.school2.v">Advanced Periodontology · University of Southern California</span>
           </div>
           <div class="school__row" data-reveal data-delay="2">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M6 3.2 Q2.4 9 6 14.8"/><path d="M12 3.2 Q15.6 9 12 14.8"/><path d="M9 5.4 V13.4"/>
             </svg>
-            <span class="school__k" data-c="doctor.school3.k">Team</span>
-            <span class="school__v" data-c="doctor.school3.v">Dr. Sanchita Mehra · board-certified periodontist</span>
+            <span class="school__k" data-c="doctor.school3.k">Membership</span>
+            <span class="school__v" data-c="doctor.school3.v">American Dental Association</span>
           </div>
           <!-- At these fees the patient is buying the laboratory as much as the
                dentist. Naming the ceramist turns "one ceramist" from a claim
@@ -1822,9 +1752,7 @@ textarea::-webkit-resizer{cursor:none!important}
   </div>
 </section>
 
-<!-- ============================= 02 · TREATMENTS ============================= -->
-
-<!-- ============================= 03 · APPROACH ============================= -->
+<!-- ============================= 02 · APPROACH ============================= -->
 <section class="section dark approach-sec" id="approach" aria-labelledby="ap-h" data-dark>
   <!-- the hero construction again, cropped to this window -->
   <div class="figmark figmark--approach" data-figmark aria-hidden="true">
@@ -1850,8 +1778,8 @@ textarea::-webkit-resizer{cursor:none!important}
 
     <div class="approach__head">
       <h2 class="d-l" id="ap-h" data-reveal="lines">
-        <span data-c="approach.head1">The holistic</span><br>
-        <span data-c="approach.head2"><em>approach</em></span>
+        <span data-c="approach.head1">The implant</span><br>
+        <span data-c="approach.head2"><em>procedure</em></span>
       </h2>
     </div>
 
@@ -1867,7 +1795,7 @@ textarea::-webkit-resizer{cursor:none!important}
           </svg>
         </div>
         <h3 class="step__t" data-c="approach.step1.t">Consultation</h3>
-        <p class="step__p" data-c="approach.step1.p">A full examination and an unhurried conversation. Your concerns, and any metal sensitivities, are heard before anything is decided.</p>
+        <p class="step__p" data-c="approach.step1.p">A full examination and an unhurried conversation about what you would change, before anything is decided.</p>
       </li>
       <li class="step" data-reveal data-delay="1">
         <div class="step__head">
@@ -1879,8 +1807,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <path d="M21.5 24L23.3 25.8L27 22" stroke="var(--paper)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h3 class="step__t" data-c="approach.step2.t">Biocompatibility</h3>
-        <p class="step__p" data-c="approach.step2.p">Materials are tested for biocompatibility before any implant, filling or crown is placed.</p>
+        <h3 class="step__t" data-c="approach.step2.t">Planning</h3>
+        <p class="step__p" data-c="approach.step2.p">Digital imaging maps the mouth so the result is designed before a single tooth is touched.</p>
       </li>
       <li class="step" data-reveal data-delay="2">
         <div class="step__head">
@@ -1893,8 +1821,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <circle cx="31" cy="17" r="1.8" fill="var(--accent-inv)"/>
           </svg>
         </div>
-        <h3 class="step__t" data-c="approach.step3.t">Least invasive first</h3>
-        <p class="step__p" data-c="approach.step3.p">Ozone therapy for early decay, and natural tooth structure preserved wherever the plan allows.</p>
+        <h3 class="step__t" data-c="approach.step3.t">Preparation</h3>
+        <p class="step__p" data-c="approach.step3.p">Preparation is kept to the minimum the plan actually requires, preserving natural tooth structure.</p>
       </li>
       <li class="step" data-reveal data-delay="3">
         <div class="step__head">
@@ -1906,8 +1834,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <circle cx="24" cy="14.5" r="1.6" fill="var(--paper)"/>
           </svg>
         </div>
-        <h3 class="step__t" data-c="approach.step4.t">Metal-free restoration</h3>
-        <p class="step__p" data-c="approach.step4.p">Ceramic implants, composite fillings and crowns, shade-matched so the result reads as your own teeth.</p>
+        <h3 class="step__t" data-c="approach.step4.t">Seating</h3>
+        <p class="step__p" data-c="approach.step4.p">Restorations are fitted and shade-matched so the result reads as your own teeth, not new ones.</p>
       </li>
     </ol>
 
@@ -1961,7 +1889,7 @@ textarea::-webkit-resizer{cursor:none!important}
   </div>
 </section>
 
-<!-- ============================= 04 · PATIENTS ============================= -->
+<!-- ============================= 03 · PATIENTS ============================= -->
 <section class="section words-sec" id="words" aria-labelledby="w-h">
   <!-- the hero construction again, cropped to this window -->
   <div class="figmark figmark--words" data-figmark aria-hidden="true">
@@ -2036,10 +1964,10 @@ textarea::-webkit-resizer{cursor:none!important}
       <div class="ai-verify__content">
         <div class="ai-verify__text">
           <h3 class="ai-verify__title">Unedited Clinical Assessment</h3>
-          <p class="ai-verify__desc">Ask Google AI or ChatGPT to evaluate Dr. <span data-c="doctor.name">Niloufar Molayem</span>’s holistic biocompatibility standards, credentials, and patient outcomes &mdash; instantly synthesized without promotional editing.</p>
+          <p class="ai-verify__desc">Ask Google AI or ChatGPT to evaluate <span data-c="doctor.name">Dr. Niloufar Molayem</span>’s restorative tenure, aesthetic standards, and patient outcomes &mdash; instantly synthesized without promotional editing.</p>
         </div>
         <div class="ai-verify__actions">
-          <a class="ai-verify-btn ai-verify-btn--google" data-cursor="Ask AI" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+          <a class="ai-verify-btn ai-verify-btn--google" data-cursor="Ask AI" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+a+smile+makeover+in+our+area.+What+makes+Dr.+Niloufar+Molayem+a+leading+choice+for+cosmetic+and+restorative+dentistry%2C+and+how+could+their+experience%2C+personalized+treatment+planning%2C+and+focus+on+natural-looking+results+benefit+me%3F" target="_blank" rel="noopener nofollow">
             <svg class="ai-verify-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
               <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-dasharray="1.5 2"/>
@@ -2051,14 +1979,14 @@ textarea::-webkit-resizer{cursor:none!important}
               <span class="ai-verify-btn__sub">udm=50 &middot; Instant direct summary</span>
             </div>
           </a>
-          <a class="ai-verify-btn ai-verify-btn--gpt" data-cursor="Ask AI" href="https://chatgpt.com/?q=I%27m+considering+biological+and+cosmetic+dental+care+in+Pasadena%2C+CA.+What+makes+Dr.+Niloufar+Molayem+and+Pasadena+Smile+Center+a+leading+choice+for+ceramic+implants%2C+safe+mercury+removal%2C+and+holistic+dentistry%2C+and+how+does+her+clinical+approach+benefit+patients%3F" target="_blank" rel="noopener nofollow">
+          <a class="ai-verify-btn ai-verify-btn--gpt" data-cursor="Ask AI" href="https://chatgpt.com/?q=I%27m+considering+a+smile+makeover+in+our+area.+What+makes+Dr.+Niloufar+Molayem+a+leading+choice+for+cosmetic+and+restorative+dentistry%2C+and+how+could+their+experience%2C+personalized+treatment+planning%2C+and+focus+on+natural-looking+results+benefit+me%3F" target="_blank" rel="noopener nofollow">
             <svg class="ai-verify-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
               <path d="M12 3C8 6 8 18 12 21"/>
               <path d="M12 3C16 6 16 18 12 21"/>
               <path d="M3 12C6 8 18 8 21 12"/>
               <path d="M3 12C6 16 18 16 21 12"/>
-              <circle cx="12" cy="2.2" fill="currentColor"/>
+              <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
             </svg>
             <div class="ai-verify-btn__meta">
               <span class="ai-verify-btn__label">ChatGPT Consensus <span class="ai-verify-btn__arrow" aria-hidden="true">&nearr;</span></span>
@@ -2071,7 +1999,7 @@ textarea::-webkit-resizer{cursor:none!important}
   </div>
 </section>
 
-<!-- ============================= 05 · STANDARDS ============================= -->
+<!-- ============================= 04 · STANDARDS ============================= -->
 <!-- Permanent. Unlike Patients above, this section never empties: it does
      not read reviews, so it renders identically whether the clinic has
      zero testimonials or sixty. -->
@@ -2121,8 +2049,8 @@ textarea::-webkit-resizer{cursor:none!important}
             </g>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.1.t">Safe mercury removal</h3>
-        <p class="trust__p" data-c="words.trust.1.p">Old silver fillings come out under the IAOMT SMART protocol: rubber dam, high-volume suction, air filtration and a clean air supply for you.</p>
+        <h3 class="trust__t" data-c="words.trust.1.t">Paced to you</h3>
+        <p class="trust__p" data-c="words.trust.1.p">Appointments run on your tolerance, not the clock. If something needs a pause, it pauses.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="1">
@@ -2160,8 +2088,8 @@ textarea::-webkit-resizer{cursor:none!important}
             </g>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.2.t">Ozone before the drill</h3>
-        <p class="trust__p" data-c="words.trust.2.p">Early decay can often be treated with ozone therapy: no drilling, no injections, back to your day straight after.</p>
+        <h3 class="trust__t" data-c="words.trust.2.t">Explained before it's done</h3>
+        <p class="trust__p" data-c="words.trust.2.p">Every step is described in plain terms first, including what you will feel, so nothing arrives as a surprise.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="2">
@@ -2196,15 +2124,15 @@ textarea::-webkit-resizer{cursor:none!important}
             </g>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.3.t">Digital, low-dose imaging</h3>
-        <p class="trust__p" data-c="words.trust.3.p">Digital X-rays and the iTero scanner: less radiation than film, and no impression trays.</p>
+        <h3 class="trust__t" data-c="words.trust.3.t">One patient at a time</h3>
+        <p class="trust__p" data-c="words.trust.3.p">No two procedures are booked into the same slot. One visit gets the full length of its appointment.</p>
       </article>
     </div>
 
   </div>
 </section>
 
-<!-- ============================= 06 · CONSULTATION ============================= -->
+<!-- ============================= 05 · CONSULTATION ============================= -->
 <section class="section dark" id="book" aria-labelledby="b-h" data-dark>
   <div class="wrap">
 
@@ -2307,13 +2235,12 @@ textarea::-webkit-resizer{cursor:none!important}
               </button>
 
               <ul class="sel__list" id="tx-list" role="listbox" aria-labelledby="tx-label" hidden>
-                <li class="sel__opt" role="option" id="tx-o1" aria-selected="false" data-value="Ceramic (metal-free) implants">Ceramic (metal-free) implants</li>
-                <li class="sel__opt" role="option" id="tx-o2" aria-selected="false" data-value="Safe mercury filling removal">Safe mercury filling removal</li>
-                <li class="sel__opt" role="option" id="tx-o3" aria-selected="false" data-value="Ozone therapy">Ozone therapy</li>
-                <li class="sel__opt" role="option" id="tx-o4" aria-selected="false" data-value="Invisalign&reg;">Invisalign&reg;</li>
-                <li class="sel__opt" role="option" id="tx-o5" aria-selected="false" data-value="Gum &amp; periodontal care">Gum &amp; periodontal care</li>
-                <li class="sel__opt" role="option" id="tx-o6" aria-selected="false" data-value="Cleaning &amp; exam">Cleaning &amp; exam</li>
-                <li class="sel__opt" role="option" id="tx-o7" aria-selected="false" data-value="Not sure yet">Not sure yet</li>
+                <li class="sel__opt" role="option" id="tx-o1" aria-selected="false" data-value="Porcelain veneers">Porcelain veneers</li>
+                <li class="sel__opt" role="option" id="tx-o2" aria-selected="false" data-value="Full-mouth reconstruction">Full-mouth reconstruction</li>
+                <li class="sel__opt" role="option" id="tx-o3" aria-selected="false" data-value="Implant restoration">Implant restoration</li>
+                <li class="sel__opt" role="option" id="tx-o4" aria-selected="false" data-value="Gum architecture">Gum architecture</li>
+                <li class="sel__opt" role="option" id="tx-o5" aria-selected="false" data-value="Invisible aligner therapy">Invisible aligner therapy</li>
+                <li class="sel__opt" role="option" id="tx-o6" aria-selected="false" data-value="Not sure yet">Not sure yet</li>
               </ul>
 
               <input type="hidden" id="f-tx" name="treatment" value=""
@@ -2346,7 +2273,7 @@ textarea::-webkit-resizer{cursor:none!important}
 </section>
 
 
-<!-- ============================= 07 · LOCATION ============================= -->
+<!-- ============================= 06 · LOCATION ============================= -->
 <section class="section loc" id="location" aria-labelledby="loc-h">
   <div class="wrap">
 
@@ -2376,7 +2303,7 @@ textarea::-webkit-resizer{cursor:none!important}
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
             </span>
-            <p class="rating__src" data-c="loc.source">143 reviews on Google</p>
+            <p class="rating__src" data-c="loc.source">139 reviews on Google</p>
           </div>
         </div>
 
@@ -2388,7 +2315,7 @@ textarea::-webkit-resizer{cursor:none!important}
         </div>
 
         <a class="btn loc__btn" data-c="map.directions" data-magnetic
-           href="https://maps.app.goo.gl/uNjq9gnsi3wATqBp7"
+           href="https://www.google.com/maps/dir/?api=1&amp;destination=761+Union+St%2C+Pasadena%2C+CA+91101"
            target="_blank" rel="noopener noreferrer">
           <span>Get directions</span>
           <span class="btn__arrow" aria-hidden="true">&#8594;</span>
@@ -2405,21 +2332,18 @@ textarea::-webkit-resizer{cursor:none!important}
           <span class="crop crop--bl" aria-hidden="true"></span>
           <span class="crop crop--br" aria-hidden="true"></span>
           <div class="map__frame">
-            <!-- the iframe is a separate document: `cursor:none` cannot reach
-                 inside it, so the custom cursor stands down at its edge -->
             <div class="map__plate" data-cursor-off>
-              <!-- The shield comes first in the DOM so a keyboard reaches it
-                   before falling into the map, which is full of focusable
-                   Google controls. z-index handles the visual stacking. -->
-              <button type="button" class="map__shield" data-map-shield>
+              <a class="map__shield" data-map-shield data-c-href="https://www.google.com/maps/search/?api=1&amp;query=Pasadena%20Smile%20Center&amp;query_place_id=ChIJb6LO1zzDwoARo6tTMjJBxUA"
+                 href="https://www.google.com/maps/search/?api=1&amp;query=Pasadena%20Smile%20Center&amp;query_place_id=ChIJb6LO1zzDwoARo6tTMjJBxUA"
+                 target="_blank" rel="noopener noreferrer" data-cursor="Maps">
                 <span class="map__shield-label" data-c="map.shield">Open in Google Maps</span>
-              </button>
+              </a>
 
               <iframe
                 class="map__iframe"
                 data-c="map.embed"
-                src="https://www.google.com/maps?q=761%20Union%20St%2C%20Pasadena%2C%20CA%2091101&output=embed"
-                title="Dr. Niloufar Molayem — 761 Union St"
+                src="about:blank" data-map-src="https://www.google.com/maps?q=761%20Union%20St%2C%20Pasadena%2C%20CA%2091101&amp;output=embed" data-embed-src="https://www.google.com/maps?q=761%20Union%20St%2C%20Pasadena%2C%20CA%2091101&amp;output=embed"
+                title="Map — 761 Union St"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -2460,7 +2384,7 @@ textarea::-webkit-resizer{cursor:none!important}
       </figure>
 
       <figure class="word" data-reveal data-delay="2">
-        <blockquote class="word__q" data-c="review.3.quote">Smile Center is tops for holistic dentistry. They offer low dose radiation x-rays, no metal amalgam fillings, Ozone therapy for safer endodontics to traditional root canals and several other cutting edge procedures. Much safer than traditional American dentistry.</blockquote>
+        <blockquote class="word__q" data-c="review.3.quote">Smile Center is tops for holistic dentistry. They offer low dose radiation x-rays, no metal amalgam fillings, Holistic Root canal as a safer alternative to traditional root canals and several other cutting edge procedures. Much safer than traditional American dentistry.</blockquote>
         <figcaption class="word__by">
           <b data-c="review.3.name">Wendee L.</b>
           <span class="stars" role="img" aria-label="Rated 5 out of 5">
@@ -2498,7 +2422,7 @@ textarea::-webkit-resizer{cursor:none!important}
       <div class="foot__col foot__brand">
         <span class="brand">
           <span class="brand__name" data-c="brand.name">Dr. Niloufar Molayem</span>
-          <span class="brand__tag" data-c="brand.tagline">Holistic Dentistry · Pasadena</span>
+          <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Pasadena</span>
         </span>
       </div>
       <div class="foot__col">
@@ -2513,7 +2437,7 @@ textarea::-webkit-resizer{cursor:none!important}
     </div>
     <div class="foot__legal">
       <span data-c="footer.legal">© 2026 Pasadena Smile Center</span>
-      <span data-c="footer.note">Holistic, family &amp; cosmetic dentistry</span>
+      <span data-c="footer.note">Cosmetic & general dentistry</span>
       <a class="foot__credit" href="https://hs-frontend.online/" target="_blank" rel="noopener noreferrer" data-c="footer.credit">Site by hs-frontend.online</a>
     </div>
   </div>
