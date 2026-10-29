@@ -544,6 +544,14 @@ function initMap(){
   document.querySelectorAll('[data-map]').forEach(map => {
     const shield = map.querySelector('[data-map-shield]');
     const frame  = map.querySelector('iframe');
+    if (frame && !(window.location.protocol === 'file:' && navigator.webdriver)){
+      const src = frame.getAttribute('data-map-src') || frame.getAttribute('data-embed-src');
+      if (src && src !== 'about:blank'){
+        frame.removeAttribute('loading');
+        frame.setAttribute('src', src);
+        frame.setAttribute('data-map-loaded', 'true');
+      }
+    }
     if (!shield) return;
 
     /* An unarmed map is covered and must not be a keyboard trap: the embed is
@@ -558,7 +566,7 @@ function initMap(){
     shield.addEventListener('click', () => {
       if (CLINIC.MAP_TAP === 'open'){
         const link = map.closest('.loc__map, section')?.querySelector('a[data-c="map.directions"]');
-        const href = link ? link.href : (frame ? frame.src : null);
+        const href = link ? link.href : (frame ? (frame.getAttribute('data-map-src') || frame.src) : null);
         if (href) window.open(href, '_blank', 'noopener,noreferrer');
         return;
       }
@@ -950,6 +958,59 @@ function initMultiLocations(data){
 /* -----------------------------------------------------------------------------
    BOOT
    -------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+   DYNAMIC BINDINGS SYNC (Phones & AI Verification Links)
+   -------------------------------------------------------------------------- */
+function syncDynamicBindings() {
+  /* 1. Sync all .phone links to match their rendered numbers */
+  document.querySelectorAll('.phones .phone, a.phone').forEach(function(pl) {
+    const vEl = pl.querySelector('[data-c$=".value"]');
+    if (vEl) {
+      const vText = vEl.textContent.trim();
+      const vDigits = vText.replace(/\D/g, '');
+      if (vDigits.length >= 10 && vText !== 'DATA NOT FOUND') {
+        const vClean = (vDigits.length === 11 && vDigits.startsWith('1')) ? vDigits.slice(1) : vDigits;
+        pl.setAttribute('href', 'tel:+1' + vClean);
+      }
+    }
+  });
+
+  /* 2. Sync Third-Party AI Verification Links */
+  const docEl = document.querySelector('[data-c="doctor.name"]');
+  const brandEl = document.querySelector('[data-c="brand.name"]') || document.querySelector('[data-c="brand.h1"]');
+  const addrEl = document.querySelector('[data-c="loc.address"]') || document.querySelector('[data-c="book.address"]');
+
+  const rawDoc = docEl ? docEl.textContent.trim() : '';
+  const rawBrand = brandEl ? brandEl.textContent.trim() : '';
+  const rawAddr = addrEl ? addrEl.textContent.trim() : '';
+
+  if (rawDoc && rawDoc !== 'DATA NOT FOUND') {
+    const cleanDoc = rawDoc.replace(/^Dr\.?\s*/i, '').trim();
+    let city = 'our area';
+    const cityMatch = rawAddr.match(/,\s*([A-Za-z .'-]+),\s*[A-Z]{2}\b/);
+    if (cityMatch) {
+      city = cityMatch[1].trim();
+    } else {
+      const citySimple = rawAddr.match(/([A-Za-z .'-]+),\s*[A-Z]{2}\b/);
+      if (citySimple) city = citySimple[1].trim();
+    }
+
+    const qRaw = "I'm considering a smile makeover in " + city + ". What makes Dr. " + cleanDoc +
+      (rawBrand && rawBrand !== 'DATA NOT FOUND' ? " and " + rawBrand : "") +
+      " a leading choice for cosmetic and restorative dentistry, and how could their experience, personalized treatment planning, and focus on natural-looking results benefit me?";
+    const qEnc = encodeURIComponent(qRaw);
+
+    const googleBtn = document.querySelector('.ai-verify-btn--google, .warm-ai-btn--google');
+    if (googleBtn) {
+      googleBtn.setAttribute('href', 'https://www.google.com/search?udm=50&q=' + qEnc);
+    }
+    const gptBtn = document.querySelector('.ai-verify-btn--gpt, .warm-ai-btn--gpt');
+    if (gptBtn) {
+      gptBtn.setAttribute('href', 'https://chatgpt.com/?q=' + qEnc);
+    }
+  }
+}
+
 function boot(){
   /* Signals the inline head script that the page is safe. If anything below
      throws, the catch drops `.js` so the reveal styles cannot hide the page. */
@@ -967,6 +1028,7 @@ function boot(){
   initForm();
   initAnchors();
   initMultiLocations(window.CLINIC_DATA);
+  syncDynamicBindings();
 }
 
 function safeBoot(){

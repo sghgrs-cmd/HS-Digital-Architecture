@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\lake-forest-smiles\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 19,
-  "recorded_at": "2026-10-26T11:12:07Z",
+  "recorded_at": "2026-10-29T15:30:23Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\lake-forest-smiles\\video\\walkthrough-warm.mp4",
-      "size_mb": 36.49,
-      "elapsed_sec": 220.8
+      "size_mb": 19.81,
+      "elapsed_sec": 102.5
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\lake-forest-smiles\\video\\walkthrough.mp4",
-      "size_mb": 57.88,
-      "elapsed_sec": 306.8
+      "size_mb": 17.32,
+      "elapsed_sec": 109.3
     }
   ]
 }

@@ -43,12 +43,12 @@
 ================================================================================
 -->
 
-<title>Lake Forest Smiles</title>
-<meta name="description" content="Dr. David Schmidt provides elite dental care, certified Invisalign®, and Advanced Pulsewave Technology™ for patients in Lake Forest. Cosmetic Dentistry · Lake">
+<title>Lake Forest Smiles · Dr. David Schmidt, DDS · Cosmetic &amp; Airway Dentistry</title>
+<meta name="description" content="Cosmetic, restorative, and physiologic airway dentistry in Lake Forest, IL by Dr. David Schmidt, DDS. Serving the North Shore since 1991.">
 <link rel="canonical" href="https://lakeforestsmiles.com">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lake Forest Smiles">
-<meta property="og:description" content="Dr. David Schmidt provides elite dental care, certified Invisalign®, and Advanced Pulsewave Technology™ for patients in Lake Forest. Cosmetic Dentistry · Lake">
+<meta property="og:title" content="Lake Forest Smiles · Dr. David Schmidt, DDS · Cosmetic &amp; Airway Dentistry">
+<meta property="og:description" content="Cosmetic, restorative, and physiologic airway dentistry in Lake Forest, IL by Dr. David Schmidt, DDS. Serving the North Shore since 1991.">
 <meta property="og:url" content="https://lakeforestsmiles.com">
 <meta name="twitter:card" content="summary">
 
@@ -307,17 +307,23 @@ html.cursor-on #cur-ring{
 /* over a text field: the ring becomes an I-beam */
 #cur-dot.is-text{width:0;height:0}
 #cur-ring.is-text{width:2px;height:26px;border-radius:0;border-width:0;background:#fff}
+.autoscroll-anchor{
+  display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;
+}
 .autoscroll-disc{
   position:fixed;top:0;left:0;width:44px;height:44px;border-radius:50%;
   background:rgba(246,242,234,0.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   border:1.5px solid var(--accent);
   box-shadow:0 8px 24px rgba(20,19,17,0.18),0 0 0 4px rgba(162,78,51,0.08);
-  pointer-events:none;z-index:99;opacity:0;
-  transform:translate(-100px,-100px) translate(-50%,-50%) scale(0.75);
-  transition:opacity .18s ease,transform .2s var(--ease-out);
+  pointer-events:none;z-index:9999;opacity:0;
+  transform:translate(-100px,-100px) translate(-50%,-50%) scale(0.6);
+  transition:opacity .15s ease,transform .18s var(--ease-out);
   display:flex;align-items:center;justify-content:center;
 }
-.autoscroll-disc.is-active{opacity:1}
+.autoscroll-disc.is-active{
+  opacity:1;
+  transition:opacity .15s ease;
+}
 .autoscroll-disc svg{width:24px;height:24px;overflow:visible}
 .autoscroll-disc__up,.autoscroll-disc__dn{
   fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
@@ -326,7 +332,7 @@ html.cursor-on #cur-ring{
 .autoscroll-disc.is-up .autoscroll-disc__up{opacity:1;stroke:var(--accent);transform:translateY(-1.5px)}
 .autoscroll-disc.is-dn .autoscroll-disc__dn{opacity:1;stroke:var(--accent);transform:translateY(1.5px)}
 .autoscroll-disc__dot{fill:var(--accent)}
-@media (pointer:coarse),(prefers-reduced-motion:reduce){#cur-dot,#cur-ring,.autoscroll-disc{display:none}}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){#cur-dot,#cur-ring,.autoscroll-disc,.autoscroll-anchor{display:none}}
 
 /* paper grain — one fixed overlay, whole site, no request, no file */
 body::after{
@@ -981,6 +987,8 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 @media (min-width:900px){
   .trust-grid{grid-template-columns:repeat(3,1fr)}
   .trust{padding:2.35rem 2.2rem}
+  .trust:not(:last-child){border-bottom:0;border-right:1px solid var(--rule)}
+}
 
 /* --- Independent AI Verification Card --- */
 .ai-verify{
@@ -1315,36 +1323,34 @@ textarea::-webkit-resizer{cursor:none!important}
    hairline on the plate itself. Two rules and a tonal step — no shadow. */
 .map__frame{position:relative;padding:10px;background:var(--paper-2);border:1px solid var(--rule)}
 .map__plate{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--rule);background:var(--paper-2)}
-.map__iframe{width:100%;height:100%;border:0;display:block;filter:var(--map-filter)}
+.map__iframe{width:100%;height:100%;border:0;display:block;filter:var(--map-filter);pointer-events:auto}
 
-/* The shield stops the map swallowing a scroll gesture on touch. One tap arms
-   the map; scrolling it out of view disarms it again. Never shown to a mouse. */
+/* Floating bottom-right pill button to open full clinic card in Google Maps.
+   Allows free drag, zoom and navigation on the map iframe itself. */
 .map__shield{
-  position:absolute;inset:0;z-index:2;width:100%;height:100%;
-  display:flex;align-items:flex-end;justify-content:center;
-  border:0;padding:0 0 1rem;background:transparent;
-  -webkit-tap-highlight-color:transparent;
-  transition:opacity var(--dur-fast) linear,visibility 0s linear 0s;
+  position:absolute;right:1rem;bottom:1rem;z-index:5;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:0;background:transparent;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;pointer-events:auto;
 }
 .map__shield-label{
   font-size:var(--fs-micro);font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:var(--paper);background:var(--ink);border:1px solid var(--paper);
-  padding:.85rem 1.25rem;
+  padding:.75rem 1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.25);cursor:pointer;
+  transition:background var(--dur-fast) linear,border-color var(--dur-fast) linear,transform var(--dur-fast) ease;
 }
-/* armed = the map is live; the shield fades out rather than vanishing, and
-   comes back when the map scrolls out of view */
-.map[data-armed="true"] .map__shield{
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity var(--dur-fast) linear,visibility 0s linear var(--dur-fast);
+.map__shield:hover .map__shield-label{
+  background:var(--accent);border-color:var(--accent);transform:translateY(-2px);
 }
-@media (hover:hover) and (pointer:fine){.map__shield{display:none}}
+[data-cursor-off], [data-cursor-off] *{cursor:auto!important}
+[data-cursor-off] .map__shield, [data-cursor-off] .map__shield *{cursor:pointer!important}
 
 /* --- reviews — same treatment as Patient Words, minus the glyph ---------- */
 .revs{margin-top:clamp(3rem,8vw,5rem)}
 .revs .word__by{align-items:baseline}
 
 @media (max-width:899px){
-  .loc__map{order:-1}
+  .loc__map{order:-1;overflow:hidden}
 }
 @media (min-width:900px){
   .loc__grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(3rem,6vw,5rem);align-items:start}
@@ -1526,9 +1532,9 @@ textarea::-webkit-resizer{cursor:none!important}
 
 <!-- ============================= NAV ============================= -->
 <header class="nav" id="nav">
-  <a class="brand" href="#top" aria-label="Dr. David Schmidt, home">
-    <span class="brand__name" data-c="brand.name">Dr. David Schmidt</span>
-    <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Lake Forest</span>
+  <a class="brand" href="#top" aria-label="Lake Forest Smiles, home">
+    <span class="brand__name" data-c="brand.name">Lake Forest Smiles</span>
+    <span class="brand__tag" data-c="brand.tagline">Dr. David Schmidt, DDS · Lake Forest</span>
   </a>
 
   <nav class="nav__links" aria-label="Primary">
@@ -1552,8 +1558,8 @@ textarea::-webkit-resizer{cursor:none!important}
 <div class="menu" id="menu" data-open="false" aria-hidden="true">
   <div class="menu__top">
     <span class="brand">
-      <span class="brand__name" data-c="brand.name">Dr. David Schmidt</span>
-      <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Lake Forest</span>
+      <span class="brand__name" data-c="brand.name">Lake Forest Smiles</span>
+      <span class="brand__tag" data-c="brand.tagline">Dr. David Schmidt, DDS · Lake Forest</span>
     </span>
     <button class="menu-btn" id="menu-close">Close</button>
   </div>
@@ -1595,7 +1601,7 @@ textarea::-webkit-resizer{cursor:none!important}
 
   <div class="wrap hero__inner">
     <p class="hero__eyebrow eyebrow" data-hero>
-      <span data-c="hero.eyebrow">Lake Forest</span>
+      <span data-c="hero.eyebrow">Lake Forest, Illinois · Est. 1991</span>
       <span class="rule" data-hero="rule" data-delay="1" aria-hidden="true"></span>
     </p>
 
@@ -1603,12 +1609,12 @@ textarea::-webkit-resizer{cursor:none!important}
          the largest text on the page no longer waits for app.js to download,
          parse and run before it is allowed to become visible. -->
     <h1 class="hero__head d-xl" data-hero="lines">
-      <span class="ln"><span class="ln__i"><span data-c="hero.line1">We have provided</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line2">elite dental care for</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line3">over 30 <em>years</em></span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line1">Three decades on,</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line2">the smile still</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line3">feels <em>yours</em></span></span></span>
     </h1>
 
-    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Dr. David Schmidt provides elite dental care, certified Invisalign®, and Advanced Pulsewave Technology™ for patients in Lake Forest.</p>
+    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Physiologic cosmetic, airway, and restorative dentistry in Lake Forest — from porcelain veneers and certified Invisalign® to custom sleep appliances.</p>
 
     <div data-hero data-delay="3">
       <a class="btn" href="#book" data-magnetic data-cursor="Book">
@@ -1642,19 +1648,34 @@ textarea::-webkit-resizer{cursor:none!important}
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.1.value">30+</p>
-        <p class="proof__lab" data-c="proof.1.label">Years of experience</p>
+        <p class="proof__val" data-c="proof.1.value">30+ yrs</p>
+        <p class="proof__lab" data-c="proof.1.label">Clinical experience</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="1">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="10" cy="10" r="7"/><path d="M10 5.5 V10 L13.2 12"/>
         </svg>
-        <p class="proof__val" data-c="proof.2.value">1982</p>
-        <p class="proof__lab" data-c="proof.2.label">Year graduated</p>
+        <p class="proof__val" data-c="proof.2.value">35 yrs</p>
+        <p class="proof__lab" data-c="proof.2.label">In practice</p>
       </div>
 
+      <div class="proof__cell" data-reveal data-delay="2">
+        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="10" cy="7.5" r="5.2"/><path d="M6.6 12.1 V18 L10 16.2 L13.4 18 V12.1"/>
+        </svg>
+        <p class="proof__val" data-c="proof.3.value">150+ hrs</p>
+        <p class="proof__lab" data-c="proof.3.label">Annual CE</p>
+      </div>
 
+      <div class="proof__cell" data-reveal data-delay="3">
+        <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="4.5" cy="6" r="2"/><circle cx="15.5" cy="6" r="2"/><circle cx="10" cy="15" r="2"/>
+          <path d="M6.2 7.2 8.6 13.2 M13.8 7.2 11.4 13.2 M6.5 6 H13.5"/>
+        </svg>
+        <p class="proof__val" data-c="proof.4.value">5.0 ★</p>
+        <p class="proof__lab" data-c="proof.4.label">432 Google reviews</p>
+      </div>
 
     </div>
   </div>
@@ -1703,7 +1724,7 @@ textarea::-webkit-resizer{cursor:none!important}
           <span class="crop crop--bl" aria-hidden="true"></span>
           <span class="crop crop--br" aria-hidden="true"></span>
         </div>
-        <figcaption class="portrait__cap" data-reveal data-c="doctor.caption">Dr. David Schmidt · Lake Forest</figcaption>
+        <figcaption class="portrait__cap" data-reveal data-c="doctor.caption">Dr. David Schmidt, DDS · Lake Forest</figcaption>
       </figure>
 
       <div>
@@ -1711,12 +1732,13 @@ textarea::-webkit-resizer{cursor:none!important}
           <span data-c="doctor.name">Dr. David Schmidt</span>
         </h2>
 
+        <p class="doctor__creds" data-reveal data-delay="1" data-c="doctor.creds">DDS, Indiana University School of Dentistry · Fellow, LVI & IAPA</p>
 
-        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">After graduating from University of Illinois College of Dentistry in 1982, Dr. Schmidt has provided elite dental care for more than 30 years. With over 30 years of experience, we are masters at what we do.</p>
+        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Dr. David Schmidt graduated from Indiana University with honors in Economics before earning his DDS from Indiana University School of Dentistry in 1994. After Dr. Douglas Campbell started the practice in 1991, Dr. Schmidt joined Lake Forest Smiles in 1999 and became part-owner in 2001.</p>
 
-        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">Take the first step toward your best smile yet. Dr. Schmidt provides certified Invisalign® and utilizes Advanced Pulsewave Technology™. We also help you figure out what’s causing your TMJ dysfunction.</p>
+        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">Averaging over 150 hours of continuing education each year, Dr. Schmidt earned Fellowships from the Las Vegas Institute for Advanced Dental Studies (LVI) and the International Association of Physiologic Aesthetics (IAPA), where he served as President and Clinical Instructor.</p>
 
-        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">In June of 1991, I had four team members. The practice grew, we remodeled, and later added 600 square feet when it became available. With over 30 years of experience, we are masters at what we do.</blockquote>
+        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">We are a patient-driven office that strives to provide exceptional dentistry, in a warm, caring environment.</blockquote>
 
         <div class="school">
           <div class="school__row" data-reveal>
@@ -1724,11 +1746,32 @@ textarea::-webkit-resizer{cursor:none!important}
               <path d="M9 5 V14.5"/><path d="M9 5 Q5.5 3.2 2.5 4 V13 Q5.5 12.2 9 14.5 Q12.5 12.2 15.5 13 V4 Q12.5 3.2 9 5"/>
             </svg>
             <span class="school__k" data-c="doctor.school1.k">Doctorate</span>
-            <span class="school__v" data-c="doctor.school1.v">University of Illinois College of Dentistry</span>
+            <span class="school__v" data-c="doctor.school1.v">DDS · Indiana University School of Dentistry (1994)</span>
+          </div>
+          <div class="school__row" data-reveal data-delay="1">
+            <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M9 2.2 15 5.6 V12.4 L9 15.8 3 12.4 V5.6 Z"/><circle cx="9" cy="9" r="2.1"/>
+            </svg>
+            <span class="school__k" data-c="doctor.school2.k">Fellowship</span>
+            <span class="school__v" data-c="doctor.school2.v">Las Vegas Institute for Advanced Dental Studies (LVI)</span>
+          </div>
+          <div class="school__row" data-reveal data-delay="2">
+            <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M6 3.2 Q2.4 9 6 14.8"/><path d="M12 3.2 Q15.6 9 12 14.8"/><path d="M9 5.4 V13.4"/>
+            </svg>
+            <span class="school__k" data-c="doctor.school3.k">Leadership</span>
+            <span class="school__v" data-c="doctor.school3.v">Past President & Fellow · IAPA</span>
           </div>
           <!-- At these fees the patient is buying the laboratory as much as the
                dentist. Naming the ceramist turns "one ceramist" from a claim
                into a fact. Delete the row if a clinic has no named lab. -->
+          <div class="school__row" data-reveal data-delay="3">
+            <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M3 14.6 Q9 3.6 15 14.6"/><path d="M6.4 14.6 Q9 9.4 11.6 14.6"/>
+            </svg>
+            <span class="school__k" data-c="doctor.school4.k">Membership</span>
+            <span class="school__v" data-c="doctor.school4.v">American Dental Association · Illinois State Dental Society · CDS</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1761,8 +1804,8 @@ textarea::-webkit-resizer{cursor:none!important}
 
     <div class="approach__head">
       <h2 class="d-l" id="ap-h" data-reveal="lines">
-        <span data-c="approach.head1">Masters at what we</span><br>
-        <span data-c="approach.head2"><em>do</em></span>
+        <span data-c="approach.head1">Why the result</span><br>
+        <span data-c="approach.head2"><em>holds</em></span>
       </h2>
     </div>
 
@@ -1778,7 +1821,7 @@ textarea::-webkit-resizer{cursor:none!important}
           </svg>
         </div>
         <h3 class="step__t" data-c="approach.step1.t">Consultation</h3>
-        <p class="step__p" data-c="approach.step1.p">A full examination and an unhurried conversation about what you would change, before anything is decided.</p>
+        <p class="step__p" data-c="approach.step1.p">A comprehensive evaluation of teeth, bite, and airway — taking the first step toward your best smile before any treatment is decided.</p>
       </li>
       <li class="step" data-reveal data-delay="1">
         <div class="step__head">
@@ -1790,8 +1833,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <path d="M21.5 24L23.3 25.8L27 22" stroke="var(--paper)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h3 class="step__t" data-c="approach.step2.t">Planning</h3>
-        <p class="step__p" data-c="approach.step2.p">Digital imaging maps the mouth so the result is designed before a single tooth is touched.</p>
+        <h3 class="step__t" data-c="approach.step2.t">3D Diagnostics</h3>
+        <p class="step__p" data-c="approach.step2.p">Cone-beam 3D imaging, DEXIS CariVu™ transillumination, T-Scan bite analysis, and iTero™ scans map every detail first.</p>
       </li>
       <li class="step" data-reveal data-delay="2">
         <div class="step__head">
@@ -1805,7 +1848,7 @@ textarea::-webkit-resizer{cursor:none!important}
           </svg>
         </div>
         <h3 class="step__t" data-c="approach.step3.t">Preparation</h3>
-        <p class="step__p" data-c="approach.step3.p">Preparation is kept to the minimum the plan actually requires, preserving natural tooth structure.</p>
+        <p class="step__p" data-c="approach.step3.p">Conservative preparation with LightScalpel® CO2 laser and Advanced Pulsewave Technology™ preserves natural structure and comfort.</p>
       </li>
       <li class="step" data-reveal data-delay="3">
         <div class="step__head">
@@ -1817,8 +1860,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <circle cx="24" cy="14.5" r="1.6" fill="var(--paper)"/>
           </svg>
         </div>
-        <h3 class="step__t" data-c="approach.step4.t">Seating</h3>
-        <p class="step__p" data-c="approach.step4.p">Restorations are fitted and shade-matched so the result reads as your own teeth, not new ones.</p>
+        <h3 class="step__t" data-c="approach.step4.t">Restoration</h3>
+        <p class="step__p" data-c="approach.step4.p">Custom porcelain veneers, Planmeca same-day crowns, and SprintRay 3D restorations are shade-matched to look naturally yours.</p>
       </li>
     </ol>
 
@@ -1947,7 +1990,7 @@ textarea::-webkit-resizer{cursor:none!important}
       <div class="ai-verify__content">
         <div class="ai-verify__text">
           <h3 class="ai-verify__title">Unedited Clinical Assessment</h3>
-          <p class="ai-verify__desc">Ask Google AI or ChatGPT to evaluate Dr. <span data-c="doctor.name">Dr. David Schmidt</span>’s restorative tenure, aesthetic standards, and patient outcomes &mdash; instantly synthesized without promotional editing.</p>
+          <p class="ai-verify__desc">Ask Google AI or ChatGPT to evaluate <span data-c="doctor.name">Dr. David Schmidt</span>’s restorative tenure, aesthetic standards, and patient outcomes &mdash; instantly synthesized without promotional editing.</p>
         </div>
         <div class="ai-verify__actions">
           <a class="ai-verify-btn ai-verify-btn--google" data-cursor="Ask AI" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+a+smile+makeover+in+our+area.+What+makes+Dr.+David+Schmidt+a+leading+choice+for+cosmetic+and+restorative+dentistry%2C+and+how+could+their+experience%2C+personalized+treatment+planning%2C+and+focus+on+natural-looking+results+benefit+me%3F" target="_blank" rel="noopener nofollow">
@@ -2268,7 +2311,7 @@ textarea::-webkit-resizer{cursor:none!important}
 
     <h2 class="d-l loc__head" id="loc-h" data-reveal="lines">
       <span data-c="loc.head1">In Lake Forest,</span><br>
-      <span data-c="loc.head2">at <em>your service</em></span>
+      <span data-c="loc.head2">since <em>1991</em></span>
     </h2>
 
     <div class="loc__grid">
@@ -2291,14 +2334,14 @@ textarea::-webkit-resizer{cursor:none!important}
         </div>
 
         <div class="phones" data-reveal data-delay="2">
-          <a class="phone" href="tel:+18472344800">
+          <a class="phone" href="tel:+18472344800" data-c-href="book.phoneHref">
             <span class="phone__k" data-c="loc.phone1.label">Reception</span>
             <span class="phone__v" data-c="loc.phone1.value">(847) 234-4800</span>
           </a>
         </div>
 
         <a class="btn loc__btn" data-c="map.directions" data-magnetic
-           href="https://www.google.com/maps/dir/?api=1&destination=825+S+Waukegan+Rd+Ste+A1%2C+Lake+Forest%2C+IL+60045"
+           href="https://www.google.com/maps/dir/?api=1&amp;destination=825+S+Waukegan+Rd+Ste+A1%2C+Lake+Forest%2C+IL+60045"
            target="_blank" rel="noopener noreferrer">
           <span>Get directions</span>
           <span class="btn__arrow" aria-hidden="true">&#8594;</span>
@@ -2315,21 +2358,18 @@ textarea::-webkit-resizer{cursor:none!important}
           <span class="crop crop--bl" aria-hidden="true"></span>
           <span class="crop crop--br" aria-hidden="true"></span>
           <div class="map__frame">
-            <!-- the iframe is a separate document: `cursor:none` cannot reach
-                 inside it, so the custom cursor stands down at its edge -->
             <div class="map__plate" data-cursor-off>
-              <!-- The shield comes first in the DOM so a keyboard reaches it
-                   before falling into the map, which is full of focusable
-                   Google controls. z-index handles the visual stacking. -->
-              <button type="button" class="map__shield" data-map-shield>
+              <a class="map__shield" data-map-shield data-c-href="https://www.google.com/maps/search/?api=1&amp;query=Lake%20Forest%20Smiles&amp;query_place_id=ChIJ-wgBH12VD4gRT1cWbuHaZnI"
+                 href="https://www.google.com/maps/search/?api=1&amp;query=Lake%20Forest%20Smiles&amp;query_place_id=ChIJ-wgBH12VD4gRT1cWbuHaZnI"
+                 target="_blank" rel="noopener noreferrer" data-cursor="Maps">
                 <span class="map__shield-label" data-c="map.shield">Open in Google Maps</span>
-              </button>
+              </a>
 
               <iframe
                 class="map__iframe"
                 data-c="map.embed"
-                src="about:blank" data-embed-src="https://www.google.com/maps?q=825%20S%20Waukegan%20Rd%20Ste%20A1%2C%20Lake%20Forest%2C%20IL%2060045&amp;output=embed" srcdoc="&lt;!doctype html&gt;&lt;html lang=&#x27;en&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;utf-8&#x27;&gt;&lt;style&gt;*{box-sizing:border-box;margin:0;padding:0}body{background:#EFEAE1;color:#171310;font-family:system-ui,-apple-system,sans-serif;height:100vh;display:grid;place-items:center;padding:24px;background-image:radial-gradient(rgba(30,36,43,0.08) 1px,transparent 1px);background-size:20px 20px}.card{background:#F6F2EC;border:1px solid rgba(30,36,43,0.12);border-radius:4px;padding:24px;max-width:340px;width:100%;box-shadow:0 12px 32px rgba(30,36,43,0.08);text-align:center}.pin{width:40px;height:40px;border-radius:999px;background:#A24E33;color:#fff;display:inline-grid;place-items:center;margin-bottom:12px}h3{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.3}p{font-size:13px;color:#6E665C;line-height:1.5;margin-bottom:16px}a{display:inline-block;padding:9px 16px;border-radius:2px;background:#A24E33;color:#fff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.03em}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&#x27;card&#x27;&gt;&lt;div class=&#x27;pin&#x27;&gt;&lt;svg width=&#x27;18&#x27; height=&#x27;18&#x27; viewBox=&#x27;0 0 24 24&#x27; fill=&#x27;none&#x27; stroke=&#x27;currentColor&#x27; stroke-width=&#x27;2&#x27;&gt;&lt;path d=&#x27;M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z&#x27;/&gt;&lt;circle cx=&#x27;12&#x27; cy=&#x27;9&#x27; r=&#x27;2.5&#x27;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;h3&gt;Dr. David Schmidt&lt;/h3&gt;&lt;p&gt;825 S Waukegan Rd Ste A1&lt;/p&gt;&lt;a href=&#x27;https://www.google.com/maps/dir/?api=1&amp;amp;destination=825+S+Waukegan+Rd+Ste+A1%2C+Lake+Forest%2C+IL+60045&#x27; target=&#x27;_blank&#x27; rel=&#x27;noopener&#x27;&gt;Open in Google Maps &amp;#8599;&lt;/a&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"
-                title="Dr. David Schmidt — 825 S Waukegan Rd Ste A1"
+                src="about:blank" data-map-src="https://www.google.com/maps?q=825%20S%20Waukegan%20Rd%20Ste%20A1%2C%20Lake%20Forest%2C%20IL%2060045&amp;output=embed" data-embed-src="https://www.google.com/maps?q=825%20S%20Waukegan%20Rd%20Ste%20A1%2C%20Lake%20Forest%2C%20IL%2060045&amp;output=embed"
+                title="Map — 825 S Waukegan Rd Ste A1"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -2407,8 +2447,8 @@ textarea::-webkit-resizer{cursor:none!important}
     <div class="foot__grid">
       <div class="foot__col foot__brand">
         <span class="brand">
-          <span class="brand__name" data-c="brand.name">Dr. David Schmidt</span>
-          <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Lake Forest</span>
+          <span class="brand__name" data-c="brand.name">Lake Forest Smiles</span>
+          <span class="brand__tag" data-c="brand.tagline">Dr. David Schmidt, DDS · Lake Forest</span>
         </span>
       </div>
       <div class="foot__col">
@@ -2423,7 +2463,7 @@ textarea::-webkit-resizer{cursor:none!important}
     </div>
     <div class="foot__legal">
       <span data-c="footer.legal">© 2026 Lake Forest Smiles</span>
-      <span data-c="footer.note">Cosmetic & general dentistry</span>
+      <span data-c="footer.note">Cosmetic, airway & restorative dentistry · NPI #1851795769</span>
       <a class="foot__credit" href="https://hs-frontend.online/" target="_blank" rel="noopener noreferrer" data-c="footer.credit">Site by hs-frontend.online</a>
     </div>
   </div>

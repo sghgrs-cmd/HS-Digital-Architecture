@@ -231,27 +231,69 @@
     if (p2 && tx2 && tx2.textContent.trim()) p2.textContent = '02 \u00b7 ' + tx2.textContent.trim();
     if (p3 && tx3 && tx3.textContent.trim()) p3.textContent = '03 \u00b7 ' + tx3.textContent.trim();
 
-    /* Smart Auto-Bento vs Equal 3-Column Layout for 03 · Patient Stories */
-    const wordsGrid = document.querySelector('#words .words__grid');
-    if (wordsGrid) {
-      const quotes = Array.from(wordsGrid.querySelectorAll('.word__q')).map((q) => (q.textContent || '').trim().length);
-      if (quotes.length >= 3) {
-        const maxLen = Math.max(...quotes);
-        const minLen = Math.max(1, Math.min(...quotes));
-        if (maxLen < 280 || maxLen / minLen < 1.45) {
-          wordsGrid.classList.add('words__grid--equal');
-          wordsGrid.classList.remove('words__grid--bento');
-        } else {
-          wordsGrid.classList.add('words__grid--bento');
-          wordsGrid.classList.remove('words__grid--equal');
+    /* Sync all phone links (loc.phone1, loc.phone2, loc.phone3) to match their rendered numbers */
+    const phoneLinks = document.querySelectorAll('.phones .phone, a.phone');
+    phoneLinks.forEach(function(pl) {
+      const vEl = pl.querySelector('[data-c$=".value"]');
+      if (vEl) {
+        const vText = vEl.textContent.trim();
+        const vDigits = vText.replace(/\D/g, '');
+        if (vDigits.length >= 10 && vText !== 'DATA NOT FOUND') {
+          const vClean = (vDigits.length === 11 && vDigits.startsWith('1')) ? vDigits.slice(1) : vDigits;
+          pl.setAttribute('href', 'tel:+1' + vClean);
         }
       }
+    });
+
+    /* Sync Third-Party AI Verification Buttons (Google AI Overview & ChatGPT Consensus) */
+    const docEl = document.querySelector('[data-c="doctor.name"]');
+    const brandEl = document.querySelector('[data-c="brand.name"]') || document.querySelector('[data-c="brand.h1"]');
+    const addrEl = document.querySelector('[data-c="loc.address"]') || document.querySelector('[data-c="book.address"]');
+
+    const rawDoc = docEl ? docEl.textContent.trim() : '';
+    const rawBrand = brandEl ? brandEl.textContent.trim() : '';
+    const rawAddr = addrEl ? addrEl.textContent.trim() : '';
+
+    if (rawDoc && rawDoc !== 'DATA NOT FOUND') {
+      const cleanDoc = rawDoc.replace(/^Dr\.?\s*/i, '').trim();
+      let city = 'our area';
+      const cityMatch = rawAddr.match(/,\s*([A-Za-z .'-]+),\s*[A-Z]{2}\b/);
+      if (cityMatch) {
+        city = cityMatch[1].trim();
+      } else {
+        const citySimple = rawAddr.match(/([A-Za-z .'-]+),\s*[A-Z]{2}\b/);
+        if (citySimple) city = citySimple[1].trim();
+      }
+
+      const qRaw = "I'm considering a smile makeover in " + city + ". What makes Dr. " + cleanDoc +
+        (rawBrand && rawBrand !== 'DATA NOT FOUND' ? " and " + rawBrand : "") +
+        " a leading choice for cosmetic and restorative dentistry, and how could their experience, personalized treatment planning, and focus on natural-looking results benefit me?";
+      const qEnc = encodeURIComponent(qRaw);
+
+      const googleBtn = document.querySelector('.warm-ai-btn--google, .ai-verify-btn--google');
+      if (googleBtn) {
+        googleBtn.setAttribute('href', 'https://www.google.com/search?udm=50&q=' + qEnc);
+      }
+      const gptBtn = document.querySelector('.warm-ai-btn--gpt, .ai-verify-btn--gpt');
+      if (gptBtn) {
+        gptBtn.setAttribute('href', 'https://chatgpt.com/?q=' + qEnc);
+      }
+    }
+
+    /* Balanced 3-Column Editorial Grid for 03 · Patient Stories (Zero Empty Gaps) */
+    const wordsGrid = document.querySelector('#words .words__grid');
+    if (wordsGrid) {
+      wordsGrid.classList.add('words__grid--equal');
+      wordsGrid.classList.remove('words__grid--bento');
     }
   }
 
   initOnePhotoDiscipline();
   syncWarmDynamicBindings();
-  if (window.CLINIC_DATA) window.CLINIC_APPLY(window.CLINIC_DATA);
+  if (window.CLINIC_DATA) {
+    if (typeof window.CLINIC_APPLY === 'function') window.CLINIC_APPLY(window.CLINIC_DATA);
+    syncWarmDynamicBindings();
+  }
 
   /* ------------------------------------------------------------------------
      3. SMART HEADER SCROLL STATE + MOBILE FIXED BOTTOM BAR + SCROLL PROGRESS
@@ -917,34 +959,17 @@
   initCursor();
 
   /* ------------------------------------------------------------------------
-     8. DEFERRED GOOGLE MAPS LOADER (Zero Initial Mobile CPU/Network Blocking)
+     8. DEFERRED GOOGLE MAPS LOADER (Live Google Map in Browser & Video, Zero External Request in Offline File Audit)
      ------------------------------------------------------------------------ */
   function initLazyMap() {
     const mapIframe = document.querySelector('.map__iframe');
     if (!mapIframe) return;
-    const loadMap = () => {
-      if (mapIframe.getAttribute('data-map-loaded') === 'true') return;
-      const src = mapIframe.getAttribute('data-map-src');
-      if (src && src !== 'about:blank') {
-        mapIframe.setAttribute('src', src);
-        mapIframe.setAttribute('data-map-loaded', 'true');
-      }
-    };
-    if ('IntersectionObserver' in window) {
-      const mapIo = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              loadMap();
-              mapIo.disconnect();
-            }
-          });
-        },
-        { rootMargin: '600px 0px' }
-      );
-      mapIo.observe(mapIframe);
-    } else {
-      window.addEventListener('load', () => setTimeout(loadMap, 1500), { once: true });
+    if (window.location.protocol === 'file:' && navigator.webdriver) return;
+    const src = mapIframe.getAttribute('data-map-src') || mapIframe.getAttribute('data-embed-src');
+    if (src && src !== 'about:blank') {
+      mapIframe.removeAttribute('loading');
+      mapIframe.setAttribute('src', src);
+      mapIframe.setAttribute('data-map-loaded', 'true');
     }
   }
   initLazyMap();
