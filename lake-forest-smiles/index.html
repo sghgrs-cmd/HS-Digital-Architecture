@@ -136,8 +136,8 @@
   /* --- line art -------------------------------------------------------------
      The hero construction, the footer echo, the crop marks.                  */
   --mark-color:var(--stone);
-  --mark-opacity:.30;
-  --mark-accent-opacity:.55;
+  --mark-opacity:.35;
+  --mark-accent-opacity:.62;
 
   /* Google draws the map; all we can do is filter it. Grayscale first, then
      warm it back toward the paper so it stops reading as a blue web map. */
@@ -1478,10 +1478,73 @@ textarea::-webkit-resizer{cursor:none!important}
 }
 
 
-/* --- HOTFIX: UI Polish --- */
+/* --- HOTFIX: UI Polish & Hero Conversion Architecture --- */
 #trust { padding-top: clamp(1.5rem, 3vw, 3rem); }
+
+.hero__actions{display:flex;flex-wrap:wrap;align-items:center;gap:.85rem}
+.hero__actions .btn--book{background:var(--ink);color:var(--paper)}
+.hero__actions .btn--book::before{background:var(--accent)}
+.hero__actions .btn--book:hover,.hero__actions .btn--book:focus-visible{color:var(--paper);border-color:var(--accent)}
+.hero__call{display:inline-flex}
+
+.hero__trust{
+  display:inline-flex;align-items:center;gap:.95rem;
+  margin-top:1.35rem;padding:.85rem 1.2rem;max-width:460px;
+  background:var(--paper-2);
+  background:color-mix(in srgb,var(--paper-2) 78%,transparent);
+  border:1px solid var(--rule);
+}
+@media (min-width:900px){
+  .hero{padding-block:6.5rem 2.75rem}
+  .hero__head{margin-block:1.6rem 1.35rem}
+  .hero__lede{margin-bottom:1.65rem}
+  .hero__cue{margin-top:2rem}
+}
+.hero__avatar{
+  width:54px;height:54px;flex:0 0 54px;border-radius:50%;
+  display:block;background:url(portrait.jpg) 50% 16%/185% auto no-repeat;
+  border:1px solid var(--rule);
+}
+.hero__avatar.is-monogram{
+  background:var(--ink)!important;color:var(--paper);
+  display:inline-grid!important;place-items:center;
+  font-family:var(--font-display);font-weight:300;font-size:1.05rem;letter-spacing:.06em;
+}
+.hero__trust-name{
+  font-family:var(--font-display);font-size:1.0625rem;line-height:1.2;color:var(--ink);
+}
+.hero__trust-meta{
+  display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin-top:.3rem;
+  font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
+}
+.hero__stars{
+  position:relative;display:inline-block;line-height:1;letter-spacing:.08em;font-size:.88rem;
+}
+.hero__stars-bg{color:var(--rule)}
+.hero__stars-fill{
+  position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:var(--accent);
+}
+
 @media (max-width: 899px) {
-  .hero .mark { opacity: 0.12 !important; }
+  .hero .mark { opacity: 0.35 !important; }
+  .hero { min-height: auto !important; padding-block: 7.5rem 3.5rem !important; }
+  .hero__inner { flex: 0 1 auto !important; }
+  .hero__eyebrow { margin-bottom: 2rem !important; }
+  .hero__head { margin-block: 0 1.75rem !important; font-size: clamp(2.6rem, 12.6vw, 4.25rem) !important; line-height: .96 !important; }
+  .hero__lede { margin-bottom: 2.25rem !important; font-size: 1.0625rem !important; max-width: 32ch !important; }
+  .hero__actions { flex-direction: column !important; gap: .75rem !important; width: 100% !important; }
+  .hero__actions .btn { width: 100% !important; justify-content: center !important; padding-block: 1.15rem !important; }
+  .hero__trust {
+    display: flex !important; width: 100% !important; max-width: none !important;
+    margin-top: 2.25rem !important; padding: 1.15rem 1.25rem !important;
+  }
+  .hero__foot { margin-top: 2rem !important; padding-top: 0 !important; }
+  .hero__meta { gap: .35rem 1rem !important; letter-spacing: .14em !important; }
+  .hero__cue { display: none !important; }
+}
+
+@media (max-width: 360px) {
+  .hero__trust-meta { letter-spacing: .08em !important; }
 }
 </style>
 
@@ -1616,11 +1679,28 @@ textarea::-webkit-resizer{cursor:none!important}
 
     <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Physiologic cosmetic, airway, and restorative dentistry in Lake Forest — from porcelain veneers and certified Invisalign® to custom sleep appliances.</p>
 
-    <div data-hero data-delay="3">
-      <a class="btn" href="#book" data-magnetic data-cursor="Book">
+    <div class="hero__actions" data-hero data-delay="3">
+      <a class="btn btn--book" href="#book" data-magnetic data-cursor="Book">
         <span>Schedule a consultation</span>
         <span class="btn__arrow" aria-hidden="true">&#8594;</span>
       </a>
+      <a class="btn hero__call" id="hero-call-btn" href="tel:+18472344800" data-magnetic data-cursor="Call">
+        <span id="hero-call-label">Call (847) 234-4800</span>
+      </a>
+    </div>
+
+    <div class="hero__trust" id="hero-trust-card" data-hero data-delay="3">
+      <span class="hero__avatar" id="hero-trust-avatar" aria-hidden="true"><span id="hero-trust-ini" hidden>DS</span></span>
+      <div>
+        <p class="hero__trust-name" id="hero-trust-name">Dr. David Schmidt, DDS</p>
+        <p class="hero__trust-meta" id="hero-trust-meta">
+          <span class="hero__stars" id="hero-trust-stars" aria-label="Rated 5.0 out of 5">
+            <span class="hero__stars-bg" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="hero__stars-fill" id="hero-stars-fill" aria-hidden="true" style="width:100.0%">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          </span>
+          <span id="hero-trust-rating">5.0 &middot; 432 Google reviews</span>
+        </p>
+      </div>
     </div>
 
     <!-- phones only: a hairline and two facts, so the space under the button
@@ -1673,8 +1753,8 @@ textarea::-webkit-resizer{cursor:none!important}
           <circle cx="4.5" cy="6" r="2"/><circle cx="15.5" cy="6" r="2"/><circle cx="10" cy="15" r="2"/>
           <path d="M6.2 7.2 8.6 13.2 M13.8 7.2 11.4 13.2 M6.5 6 H13.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.4.value">5.0 ★</p>
-        <p class="proof__lab" data-c="proof.4.label">432 Google reviews</p>
+        <p class="proof__val" data-c="proof.4.value">Est. 1991</p>
+        <p class="proof__lab" data-c="proof.4.label">Serving Lake Forest</p>
       </div>
 
     </div>

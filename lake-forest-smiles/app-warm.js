@@ -186,6 +186,10 @@
     if (heroCallBtn && digits) {
       heroCallBtn.setAttribute('href', telHref);
     }
+    const fPhoneInput = document.getElementById('f-phone');
+    if (fPhoneInput && phoneText && phoneText !== 'DATA NOT FOUND') {
+      fPhoneInput.setAttribute('placeholder', phoneText);
+    }
 
     const mobCallBtn = document.getElementById('mobile-bar-call');
     if (mobCallBtn && digits) {
