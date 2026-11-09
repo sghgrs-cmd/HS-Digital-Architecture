@@ -2,60 +2,423 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>Toluca Dental Care: Dr. Nilesh Pema, D.D.S. — Private Homepage Concepts &amp; Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>Concept Walkthroughs — Toluca Dental Care: Dr. Nilesh Pema, D.D.S.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#0F0C0A; --card:#1D1815; --text:#F6F2EC; --muted:#C5BCB2; --accent:#A24E33; --teal:#1F6F6B; --rule:rgba(246,242,236,0.14);
-  }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; padding:2rem 1.25rem 4rem; }
-  .wrap { max-width:960px; margin:0 auto; }
-  .eyebrow { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.18em; color:#D98A6A; margin-bottom:0.5rem; }
-  h1 { font-family:Georgia,serif; font-weight:400; font-size:clamp(1.75rem,3.5vw,2.6rem); margin-bottom:0.6rem; }
-  .sub { color:var(--muted); font-size:0.98rem; margin-bottom:1.75rem; max-width:65ch; }
-  .video-box { margin-bottom:2rem; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-bottom:1.5rem; }
-  .card { background:var(--card); border:1px solid var(--rule); border-radius:14px; padding:1.35rem; display:flex; flex-direction:column; justify-content:space-between; gap:1rem; }
-  .card h2 { font-family:Georgia,serif; font-size:1.25rem; font-weight:400; }
-  .card p { font-size:0.88rem; color:var(--muted); }
-  .card-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.4rem; padding:0.75rem 1.15rem; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:0.9rem; }
-  .card-btn--warm { background:var(--teal); }
-  .card-btn--ghost { background:transparent; border:1px solid var(--rule); color:var(--text); }
-  .docs-row { display:flex; flex-wrap:wrap; gap:0.85rem; margin-top:1rem; }
-  footer { margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--rule); font-size:0.82rem; color:var(--muted); text-align:center; }
+:root {
+  --paper: #F6F2EC;
+  --paper-2: #EFE9DF;
+  --ink-deep: #0F0C0A;
+  --ink-card: #171310;
+  --stone: #9E9286;
+  --accent: #A24E33;
+  --accent-inv: #D98A6A;
+  --accent-teal: #2A857E;
+  --rule: rgba(246, 242, 236, 0.12);
+  --rule-strong: rgba(246, 242, 236, 0.22);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  color: var(--paper);
+  background-color: var(--ink-deep);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23paper)'/%3E%3C/svg%3E");
+}
+.top-bar { padding: 2.75rem 1.5rem 1.25rem; text-align: center; position: relative; z-index: 2; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent-inv); margin-bottom: 1rem;
+}
+.eyebrow::before, .eyebrow::after { content: ""; width: 28px; height: 1px; background: var(--rule); }
+.headline {
+  font-family: var(--font-display); font-size: clamp(2rem, 4.8vw, 3.65rem);
+  font-weight: 300; line-height: 1.08; letter-spacing: -0.025em;
+  max-width: 24ch; margin: 0 auto;
+}
+.headline em { font-style: italic; color: var(--accent-inv); }
+.subhead { margin: 0.9rem auto 0; max-width: 56ch; font-size: 0.9rem; line-height: 1.6; color: var(--stone); }
+.video-container {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 2.75rem; padding: 1.25rem 1.5rem 3rem; width: 100%; max-width: 1120px;
+  margin: 0 auto; position: relative; z-index: 2;
+}
+.concept-card {
+  width: 100%; background: var(--ink-card); border: 1px solid var(--rule);
+  border-radius: 12px; padding: clamp(1.25rem, 2.5vw, 2rem);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+.concept-card--warm { border-color: rgba(217, 138, 106, 0.32); }
+.concept-head {
+  display: flex; flex-wrap: wrap; align-items: flex-end;
+  justify-content: space-between; gap: 1rem; padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--rule);
+}
+.concept-head__left { display: flex; flex-direction: column; gap: 0.35rem; }
+.concept-badge {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: 0.45rem;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-inv); padding: 0.28rem 0.7rem; border-radius: 999px;
+  background: rgba(217, 138, 106, 0.12); border: 1px solid rgba(217, 138, 106, 0.28);
+}
+.concept-title { font-family: var(--font-display); font-size: clamp(1.35rem, 2.4vw, 1.85rem); font-weight: 300; color: var(--paper); }
+.concept-desc { font-size: 0.85rem; color: var(--stone); max-width: 58ch; line-height: 1.5; }
+.lux-player {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  user-select: none; cursor: pointer;
+}
+.lux-player video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
+.lux-center-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1);
+  width: 68px; height: 68px; border-radius: 50%;
+  background: rgba(15, 12, 10, 0.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(246, 242, 236, 0.32);
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10;
+}
+.lux-center-play svg { width: 22px; height: 22px; fill: var(--paper); margin-left: 3px; }
+.lux-player.is-playing .lux-center-play { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+.lux-player:not(.is-playing):hover .lux-center-play { border-color: var(--accent-inv); transform: translate(-50%, -50%) scale(1.06); }
+.lux-controls {
+  position: absolute; inset: auto 0 0 0; padding: 2.5rem 1.5rem 1.25rem;
+  background: linear-gradient(to top, rgba(12, 9, 8, 0.9) 0%, rgba(12, 9, 8, 0.45) 65%, transparent 100%);
+  display: flex; flex-direction: column; gap: 0.85rem; z-index: 15;
+  opacity: 0; pointer-events: none; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lux-player:hover .lux-controls, .lux-player.show-controls .lux-controls { opacity: 1; pointer-events: auto; }
+.lux-progress-wrap { position: relative; width: 100%; height: 14px; display: flex; align-items: center; cursor: pointer; }
+.lux-progress-track { position: relative; width: 100%; height: 2px; background: rgba(246, 242, 236, 0.18); border-radius: 1px; transition: height 0.2s ease; }
+.lux-progress-wrap:hover .lux-progress-track { height: 4px; }
+.lux-progress-buffered { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: rgba(246, 242, 236, 0.12); border-radius: 1px; }
+.lux-progress-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--accent-inv); border-radius: 1px; transition: width 0.08s linear; }
+.lux-progress-thumb {
+  position: absolute; top: 50%; right: -5px; transform: translateY(-50%) scale(0);
+  width: 10px; height: 10px; border-radius: 50%; background: var(--paper);
+  box-shadow: 0 0 8px rgba(217, 138, 106, 0.8); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lux-progress-wrap:hover .lux-progress-thumb { transform: translateY(-50%) scale(1); }
+.lux-controls-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.lux-controls-left, .lux-controls-right { display: flex; align-items: center; gap: 1.1rem; }
+.lux-btn {
+  background: none; border: none; color: var(--paper); cursor: pointer; padding: 4px;
+  display: flex; align-items: center; justify-content: center; opacity: 0.85;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.lux-btn:hover { opacity: 1; color: var(--accent-inv); }
+.lux-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.lux-time { font-size: 0.75rem; letter-spacing: 0.08em; color: rgba(246, 242, 236, 0.7); font-variant-numeric: tabular-nums; font-weight: 400; }
+.live-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  color: var(--paper); text-decoration: none; font-size: 0.76rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 0.85rem 1.75rem;
+  border: 1px solid var(--rule-strong); border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03); transition: all 0.25s ease; text-align: center;
+}
+.live-link:hover { border-color: var(--accent-inv); color: var(--accent-inv); background: rgba(217, 138, 106, 0.08); transform: translateY(-1px); }
+.live-link--warm { background: var(--accent-inv); color: #14100E; border-color: var(--accent-inv); }
+.live-link--warm:hover { background: #E59B7D; color: #14100E; border-color: #E59B7D; }
+.action-bar {
+  margin-top: 0.5rem; padding-top: 1.75rem; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.85rem; width: 100%;
+}
+.process-link { font-size: 0.6875rem; letter-spacing: 0.12em; padding: 0.65rem 1.4rem; opacity: 0.88; }
+.footer {
+  padding: 2.25rem 2rem; text-align: center; font-size: 0.6875rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone);
+  border-top: 1px solid var(--rule); position: relative; z-index: 2;
+}
+@media (max-width: 600px) {
+  .top-bar { padding: 2rem 1.15rem 1rem; }
+  .video-container { padding: 0.75rem 1.15rem 2.25rem; gap: 2rem; }
+  .concept-card { padding: 1.15rem; }
+  .lux-controls { padding: 1.5rem 1rem 0.85rem; }
+  .live-link { width: 100%; padding: 0.8rem 1.15rem; font-size: 0.7rem; }
+}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="eyebrow">Private Preview · Prepared for NILESH PEMA</div>
-    <h1>Two Homepage Concepts for Toluca Dental Care: Dr. Nilesh Pema, D.D.S.</h1>
-    <p class="sub">Both concepts are built around your actual clinical services, schedule, and patient reviews. Open both live versions below to compare Style A (Signature Luxury) and Style B (Warm &amp; Family-Friendly).</p>
-    <div class="video-box"><div style="padding:2.5rem 1.5rem;border-radius:14px;border:1px dashed rgba(246,242,236,0.22);background:rgba(29,24,21,0.75);text-align:center;color:#C5BCB2;"><p style="font-size:1.05rem;color:#F6F2EC;margin-bottom:0.4rem;">Interactive Live Preview Ready</p><p style="font-size:0.88rem;">Explore both live homepage concepts and your Patient Experience Review below.</p></div></div>
-    <div class="grid">
-      <div class="card">
-        <div>
-          <div class="eyebrow">Concept 01</div>
-          <h2>Style A — Signature Luxury</h2>
-          <p>Editorial, refined architectural aesthetic tailored for high-trust cosmetic and restorative care.</p>
+
+  <header class="top-bar">
+    <div class="eyebrow">Desktop Walkthrough · Two Concept Directions</div>
+    <h1 class="headline">New Concepts for <em>Toluca Dental Care: Dr. Nilesh Pema, D.D.S.</em></h1>
+    <p class="subhead">We prepared two distinct design directions so you can choose the atmosphere that best fits your practice: a warm, holistic family sanctuary or an editorial luxury aesthetic.</p>
+  </header>
+
+  <main class="video-container">
+
+    <!-- CONCEPT 1: WARM & HOLISTIC SANCTUARY -->
+    <section class="concept-card concept-card--warm" aria-label="Option 1: Warm & Holistic Concept">
+      <div class="concept-head">
+        <div class="concept-head__left">
+          <span class="concept-badge">Option 01 · Warm &amp; Holistic Sanctuary</span>
+          <h2 class="concept-title">Warm Botanical &amp; Biocompatible Edition</h2>
+          <p class="concept-desc">Sunlit cream &amp; sand palette, deep cypress-sage contrast, custom holistic illustrations, and an unhurried family-friendly flow.</p>
         </div>
-        <a class="card-btn" href="../index.html" target="_blank" rel="noopener">Open Live Style A &#8599;</a>
+        <a href="../index-warm.html" class="live-link live-link--warm" target="_blank" rel="noopener">Open Warm Live Site &rarr;</a>
       </div>
-      <div class="card">
-        <div>
-          <div class="eyebrow" style="color:#72B5B0;">Concept 02</div>
-          <h2>Style B — Warm &amp; Family-Friendly</h2>
-          <p>Calm, welcoming sanctuary design built for patient comfort and effortless mobile booking.</p>
+
+      <div class="lux-player" data-lux-player data-fallback-url="../index-warm.html">
+        <video src="./walkthrough-warm.mp4" poster="./poster-warm.svg" playsinline preload="metadata"></video>
+        <div class="lux-center-play">
+          <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
         </div>
-        <a class="card-btn card-btn--warm" href="../index-warm.html" target="_blank" rel="noopener">Open Live Style B &#8599;</a>
+        <div class="lux-controls">
+          <div class="lux-progress-wrap" data-progress-wrap>
+            <div class="lux-progress-track">
+              <div class="lux-progress-buffered" data-buffered></div>
+              <div class="lux-progress-bar" data-progress><div class="lux-progress-thumb"></div></div>
+            </div>
+          </div>
+          <div class="lux-controls-row">
+            <div class="lux-controls-left">
+              <button class="lux-btn" data-play aria-label="Play/Pause">
+                <svg viewBox="0 0 24 24" data-play-icon><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+              <span class="lux-time" data-time>0:00 / 0:00</span>
+            </div>
+            <div class="lux-controls-right">
+              <button class="lux-btn" data-mute aria-label="Mute/Unmute">
+                <svg viewBox="0 0 24 24" data-vol-icon>
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+              <button class="lux-btn" data-fullscreen aria-label="Fullscreen">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- CONCEPT 2: EDITORIAL QUIET LUXURY -->
+    <section class="concept-card" aria-label="Option 2: Editorial Quiet Luxury Concept">
+      <div class="concept-head">
+        <div class="concept-head__left">
+          <span class="concept-badge">Option 02 · Editorial Quiet Luxury</span>
+          <h2 class="concept-title">Architectural Editorial Edition</h2>
+          <p class="concept-desc">High-contrast editorial typography, precision geometric linework, and a gallery-inspired presentation.</p>
+        </div>
+        <a href="../index.html" class="live-link" target="_blank" rel="noopener">Open Editorial Live Site &rarr;</a>
+      </div>
+
+      <div class="lux-player" data-lux-player data-fallback-url="../index.html">
+        <video src="./walkthrough.mp4" poster="./poster.svg" playsinline preload="metadata"></video>
+        <div class="lux-center-play">
+          <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+        </div>
+        <div class="lux-controls">
+          <div class="lux-progress-wrap" data-progress-wrap>
+            <div class="lux-progress-track">
+              <div class="lux-progress-buffered" data-buffered></div>
+              <div class="lux-progress-bar" data-progress><div class="lux-progress-thumb"></div></div>
+            </div>
+          </div>
+          <div class="lux-controls-row">
+            <div class="lux-controls-left">
+              <button class="lux-btn" data-play aria-label="Play/Pause">
+                <svg viewBox="0 0 24 24" data-play-icon><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+              <span class="lux-time" data-time>0:00 / 0:00</span>
+            </div>
+            <div class="lux-controls-right">
+              <button class="lux-btn" data-mute aria-label="Mute/Unmute">
+                <svg viewBox="0 0 24 24" data-vol-icon>
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+              <button class="lux-btn" data-fullscreen aria-label="Fullscreen">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="action-bar">
+      <a href="../review.pdf" class="live-link process-link" target="_blank" rel="noopener">📋 Patient Experience Review of Current Site &rarr;</a>
+      <a href="../process.pdf" class="live-link process-link" target="_blank" rel="noopener">How It Works &middot; Price &amp; Terms &rarr;</a>
     </div>
-    <div class="docs-row">
-      <a class="card-btn card-btn--ghost" href="../review.pdf" target="_blank" rel="noopener">📋 Patient Experience Review of Current Site (PDF)</a>
-      <a href="../process.pdf" target="_blank" rel="noopener" class="card-btn">📄 How We Work &amp; Escrow Process (PDF)</a>
-    </div>
-    <footer>HS Frontend · Hayk Shirinyan · hs-frontend.online</footer>
-  </div>
+  </main>
+
+  <footer class="footer">
+    Private Walkthrough · <a href="https://hs-frontend.online" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">HS Frontend</a>
+  </footer>
+
+<script>
+(function() {
+  const players = Array.from(document.querySelectorAll('[data-lux-player]'));
+  const allVideos = players.map(p => p.querySelector('video'));
+
+  function formatTime(sec) {
+    if (isNaN(sec)) return "0:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ":" + (s < 10 ? "0" : "") + s;
+  }
+
+  players.forEach((wrap) => {
+    const video = wrap.querySelector('video');
+    const playBtn = wrap.querySelector('[data-play]');
+    const playIcon = wrap.querySelector('[data-play-icon]');
+    const progressWrap = wrap.querySelector('[data-progress-wrap]');
+    const progressBar = wrap.querySelector('[data-progress]');
+    const bufferedBar = wrap.querySelector('[data-buffered]');
+    const timeDisplay = wrap.querySelector('[data-time]');
+    const muteBtn = wrap.querySelector('[data-mute]');
+    const volumeIcon = wrap.querySelector('[data-vol-icon]');
+    const fullscreenBtn = wrap.querySelector('[data-fullscreen]');
+    let idleTimeout = null;
+    let videoMissing = false;
+
+    video.addEventListener('error', function() {
+      videoMissing = true;
+    });
+
+    function togglePlay() {
+      if (videoMissing) {
+        const fb = wrap.getAttribute('data-fallback-url');
+        if (fb) window.open(fb, '_blank');
+        return;
+      }
+      if (video.paused || video.ended) {
+        allVideos.forEach(v => { if (v !== video && !v.paused) v.pause(); });
+        video.play().catch(() => {
+          const fb = wrap.getAttribute('data-fallback-url');
+          if (fb) window.open(fb, '_blank');
+        });
+      } else {
+        video.pause();
+      }
+    }
+
+    function resetIdleTimer() {
+      wrap.classList.add('show-controls');
+      clearTimeout(idleTimeout);
+      if (!video.paused) {
+        idleTimeout = setTimeout(() => {
+          wrap.classList.remove('show-controls');
+        }, 2500);
+      }
+    }
+
+    video.addEventListener('play', () => {
+      wrap.classList.add('is-playing');
+      playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+      resetIdleTimer();
+    });
+
+    video.addEventListener('pause', () => {
+      wrap.classList.remove('is-playing');
+      playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
+      wrap.classList.add('show-controls');
+      clearTimeout(idleTimeout);
+    });
+
+    video.addEventListener('loadedmetadata', () => {
+      timeDisplay.textContent = "0:00 / " + formatTime(video.duration || 0);
+    });
+
+    video.addEventListener('timeupdate', () => {
+      const cur = video.currentTime;
+      const dur = video.duration || 0;
+      const pct = dur > 0 ? (cur / dur) * 100 : 0;
+      progressBar.style.width = pct + "%";
+      timeDisplay.textContent = formatTime(cur) + " / " + formatTime(dur);
+      if (video.buffered.length > 0) {
+        const bufEnd = video.buffered.end(video.buffered.length - 1);
+        bufferedBar.style.width = (dur > 0 ? (bufEnd / dur) * 100 : 0) + "%";
+      }
+    });
+
+    video.addEventListener('ended', () => {
+      wrap.classList.remove('is-playing');
+      wrap.classList.add('show-controls');
+      playIcon.innerHTML = '<polygon points="6 3 20 12 6 21 6 3"></polygon>';
+    });
+
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+
+    wrap.addEventListener('click', (e) => {
+      if (e.target.closest('.lux-controls')) return;
+      togglePlay();
+    });
+
+    let isSeeking = false;
+    function seek(e) {
+      const rect = progressWrap.getBoundingClientRect();
+      const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      video.currentTime = pos * (video.duration || 0);
+    }
+
+    progressWrap.addEventListener('mousedown', (e) => { isSeeking = true; seek(e); });
+    window.addEventListener('mousemove', (e) => { if (isSeeking) seek(e); });
+    window.addEventListener('mouseup', () => { if (isSeeking) isSeeking = false; });
+
+    muteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      if (video.muted) {
+        volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>';
+      } else {
+        volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
+      }
+    });
+
+    fullscreenBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!document.fullscreenElement) {
+        if (wrap.requestFullscreen) wrap.requestFullscreen();
+        else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    });
+
+    wrap.addEventListener('mousemove', resetIdleTimer);
+    wrap.addEventListener('mouseleave', () => {
+      if (!video.paused) wrap.classList.remove('show-controls');
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
