@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FBF7F1">
 <title>Ean Kleiger, DDS Family &amp; Cosmetic Dentistry</title>
-<meta name="description" content="Whether you need SureSmile® or dental implants, Dr. Kleiger provides family and cosmetic dentistry for patients in Thousand Oaks. Cosmetic Dentistry · Thousan">
+<meta name="description" content="Advanced cosmetic, restorative, and family dentistry serving Thousand Oaks with a patient-first approach. Cosmetic &amp; Family Dentistry · Thousand Oaks">
 <link rel="canonical" href="https://kleigerdentistry.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ean Kleiger, DDS Family &amp; Cosmetic Dentistry">
-<meta property="og:description" content="Whether you need SureSmile® or dental implants, Dr. Kleiger provides family and cosmetic dentistry for patients in Thousand Oaks. Cosmetic Dentistry · Thousan">
+<meta property="og:description" content="Advanced cosmetic, restorative, and family dentistry serving Thousand Oaks with a patient-first approach. Cosmetic &amp; Family Dentistry · Thousand Oaks">
 <meta property="og:url" content="https://kleigerdentistry.com">
 
 <link rel="icon" href="data:,">
@@ -2102,20 +2102,47 @@
   }
   .hero-atelier__svg {
     width: 100%;
-    max-width: 400px;
+    max-width: 440px;
     height: auto;
     transition: transform 0.35s var(--ease-out);
   }
   .hero-atelier__orbit {
-    transform-origin: 240px 125px;
-    animation: warmOrbitSpin 38s linear infinite;
+    transform-origin: 240px 132px;
+    animation: warmOrbitSpin 32s linear infinite;
+  }
+  .hero-atelier__orbit-rev {
+    transform-origin: 240px 132px;
+    animation: warmOrbitSpinRev 26s linear infinite;
+  }
+  .hero-atelier__scanline {
+    animation: warmScanSweep 8.5s ease-in-out infinite alternate;
+  }
+  .hero-atelier__pulse {
+    transform-origin: 240px 132px;
+    animation: warmCorePulse 5.2s ease-in-out infinite;
   }
   @keyframes warmOrbitSpin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+  @keyframes warmOrbitSpinRev {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+  @keyframes warmScanSweep {
+    0% { transform: translateY(-48px); opacity: 0.35; }
+    50% { opacity: 0.92; }
+    100% { transform: translateY(52px); opacity: 0.35; }
+  }
+  @keyframes warmCorePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.045); }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .hero-atelier__orbit { animation: none; }
+    .hero-atelier__orbit,
+    .hero-atelier__orbit-rev,
+    .hero-atelier__scanline,
+    .hero-atelier__pulse { animation: none; }
   }
   .hero-atelier__pills {
     width: 100%;
@@ -2384,91 +2411,159 @@
     color: var(--terracotta-light);
   }
 
-  /* 03 · PATIENT STORIES — Editorial Grid (Bento or Equal) */
+  /* 03 · PATIENT STORIES & 06 · MAP REVIEWS — Luxury Editorial Vertical Stack (Zero Bottom Gap) */
   .words {
     background: var(--bg-cream);
   }
-  .words__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.35rem;
-    align-items: stretch;
+  .words__grid,
+  .words__grid--bento,
+  .words__grid--equal,
+  .words__grid--stack {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    gap: 1.25rem !important;
+    counter-reset: word-idx;
   }
-  @media (min-width: 901px) {
-    .words__grid--bento {
-      display: grid !important;
-      grid-template-columns: 1.18fr 0.82fr !important;
-      grid-template-rows: auto auto !important;
-      gap: 1.35rem !important;
-      align-items: stretch !important;
-    }
-    .words__grid--bento > .word:first-child {
-      grid-column: 1 !important;
-      grid-row: 1 / span 2 !important;
-    }
-    .words__grid--bento > .word:nth-child(2) {
-      grid-column: 2 !important;
-      grid-row: 1 !important;
-    }
-    .words__grid--bento > .word:nth-child(3) {
-      grid-column: 2 !important;
-      grid-row: 2 !important;
-    }
-  }
-  @media (max-width: 900px) {
-    .words__grid,
-    .words__grid--bento,
-    .words__grid--equal {
-      grid-template-columns: 1fr !important;
-    }
-  }
-  .words .word {
+  .words .word,
+  .revs .word {
     background: var(--surface-card);
     border: 1px solid var(--border-strong);
-    padding: clamp(1.5rem, 2.5vw, 2rem);
+    border-left: 4px solid var(--accent-teal);
+    border-radius: 18px;
+    padding: clamp(1.4rem, 2.4vw, 1.95rem) clamp(1.5rem, 2.8vw, 2.35rem);
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 1.1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+    align-items: center;
+    box-shadow: var(--shadow-card);
+    counter-increment: word-idx;
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), border-color 0.25s ease;
+  }
+  .words .word:hover,
+  .revs .word:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
   }
   .words .word:first-child {
-    background: var(--surface-warm);
+    background: linear-gradient(135deg, var(--surface-warm) 0%, var(--surface-card) 100%);
     border-color: var(--terracotta-border);
+    border-left: 4px solid var(--accent-terracotta);
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
-  .words .word::before {
+  .words .word:nth-child(2),
+  .words .word:nth-child(3) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .words .word:nth-child(3),
+  .revs .word:nth-child(2) {
+    border-left-color: var(--accent-terracotta);
+  }
+  .words .word::before,
+  .revs .word::before {
     content: "\201C";
     font-family: var(--font-display);
     font-size: 5.5rem;
     line-height: 0.75;
     color: var(--terracotta-soft);
     position: absolute;
-    top: 0.95rem;
-    right: 1.15rem;
+    top: 0.85rem;
+    right: 1.25rem;
     pointer-events: none;
+    z-index: 0;
   }
-  .words .word .word__q {
-    font-size: 0.95rem;
-    line-height: 1.65;
+  .words .word .word__q,
+  .revs .word .word__q {
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: var(--text-ink);
     position: relative;
     z-index: 1;
-    flex: 1 1 auto;
+    margin: 0;
   }
-  .word__badge {
-    display: inline-flex;
-    align-self: flex-start;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.28rem 0.72rem;
-    border-radius: var(--radius-pill);
-    background: var(--surface-card);
-    border: 1px solid var(--terracotta-border);
-    font-size: 0.72rem;
+  .words .word .word__q::before {
+    content: "0" counter(word-idx) " \00B7  PATIENT STORY";
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.69rem;
     font-weight: 700;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
     color: var(--accent-terracotta);
+    margin-bottom: 0.55rem;
+  }
+  .revs .word .word__q::before {
+    content: "GOOGLE REVIEW \00B7  5.0 \2605";
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: 0.5rem;
+  }
+  .words .word .word__by,
+  .revs .word .word__by {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border-warm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .words .word .word__by b,
+  .revs .word .word__by b {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-ink);
+    letter-spacing: -0.01em;
+  }
+  .words .word .word__by span[data-c$=".detail"] {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.72rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--accent-teal);
+  }
+  .words .word .word__by::after {
+    content: "\2605\2605\2605\2605\2605";
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-terracotta);
+  }
+  @media (min-width: 840px) {
+    .words .word,
+    .revs .word {
+      grid-template-columns: minmax(0, 1fr) 230px;
+      gap: 2.25rem;
+    }
+    .words .word .word__by,
+    .revs .word .word__by {
+      border-top: none;
+      border-left: 1px solid var(--border-warm);
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+      padding-left: 1.65rem;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.45rem;
+    }
   }
 
   /* 04 · CLINICAL STANDARDS — Unified Architectural Specification Ledger */
@@ -2879,7 +2974,7 @@
   /* Ultra-Luxury Meditative Micro-Animations for Clinical Standards */
   .trust__orbit {
     transform-origin: 160px 72px;
-    animation: trustOrbit 30s linear infinite;
+    animation: trustOrbit 28s linear infinite;
   }
   @keyframes trustOrbit {
     from { transform: rotate(0deg); }
@@ -2902,26 +2997,81 @@
   }
   @keyframes trustPulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.035); }
+    50% { transform: scale(1.045); }
   }
 
   .trust__leaf {
     transform-origin: 88px 84px;
-    animation: trustFloat 4.8s ease-in-out infinite alternate;
+    animation: trustFloat 5.5s ease-in-out infinite alternate;
   }
   .trust__leaf--alt {
     transform-origin: 232px 84px;
-    animation: trustFloatAlt 5.4s ease-in-out infinite alternate;
+    animation: trustFloatAlt 6.2s ease-in-out infinite alternate;
+  }
+  .trust__scan-y {
+    animation: trustScanY 6.5s ease-in-out infinite alternate;
+  }
+  .trust__scan-x {
+    animation: trustScanX 7.0s ease-in-out infinite alternate;
+  }
+  /* Dual-Doctor Separate Portraits Layout (.portrait--dual) */
+  .portrait--dual .portrait__dual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+  @media (max-width: 540px) {
+    .portrait--dual .portrait__dual-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .portrait__dual-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .portrait__dual-card .portrait__frame {
+    aspect-ratio: 4 / 5;
+    box-shadow: -8px 8px 0 var(--linen-tint), var(--shadow-card);
+  }
+  .portrait__dual-meta {
+    padding: 0.65rem 0.85rem;
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .portrait__dual-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .portrait__dual-role {
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
   }
   @keyframes trustFloat {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-3px) rotate(1.5deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    100% { transform: translate(6px, -4px) rotate(3deg); }
   }
   @keyframes trustFloatAlt {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-2.5px) rotate(-1.5deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    100% { transform: translate(-6px, -4px) rotate(-3deg); }
+  }
+  @keyframes trustScanY {
+    0% { transform: translateY(-24px); opacity: 0.35; }
+    50% { opacity: 0.95; }
+    100% { transform: translateY(24px); opacity: 0.35; }
+  }
+  @keyframes trustScanX {
+    0% { transform: translateX(-52px); }
+    100% { transform: translateX(52px); }
   }
 
   /* --- Warm Independent AI Verification Card --- */
@@ -3045,22 +3195,6 @@
     flex-shrink: 0;
   }
 
-  /* Equal 3-column fallback when all 3 reviews in 03 · Patient Stories are short */
-  @media (min-width: 901px) {
-    .words__grid--equal {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      grid-template-rows: auto !important;
-      gap: 1.35rem !important;
-      align-items: stretch !important;
-    }
-    .words__grid--equal > .word:first-child {
-      grid-column: auto !important;
-      grid-row: auto !important;
-      padding: 1.65rem !important;
-    }
-  }
-
 </style>
 
 <script type="application/ld+json">
@@ -3106,7 +3240,7 @@
   <div class="header__inner">
     <a href="#top" class="brand" aria-label="Dr. Kleiger, home">
       <span class="brand__name" data-c="brand.name">Dr. Kleiger</span>
-      <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Thousand Oaks</span>
+      <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Family Dentistry · Thousand Oaks</span>
     </a>
 
     <nav class="nav" aria-label="Primary">
@@ -3144,7 +3278,7 @@
   </nav>
   <div class="menu__foot">
     <div>
-      <strong data-c="brand.name">Dr. Kleiger</strong> · <span data-c="brand.tagline">Cosmetic Dentistry · Thousand Oaks</span>
+      <strong data-c="brand.name">Dr. Kleiger</strong> · <span data-c="brand.tagline">Cosmetic & Family Dentistry · Thousand Oaks</span>
     </div>
     <div>
       <a href="tel:+18053879130" data-c="book.phone" data-c-href="book.phoneHref">(805) 387-9130</a> ·
@@ -3170,12 +3304,12 @@
         </div>
 
         <h1 class="display-xl hero__headline">
-          <span class="line"><span class="line__inner" data-c="hero.line1">Family and cosmetic</span></span>
-          <span class="line"><span class="line__inner" data-c="hero.line2">dentistry that puts</span></span>
-          <span class="line"><span class="line__inner" data-c="hero.line3">people <em>first</em></span></span>
+          <span class="line"><span class="line__inner" data-c="hero.line1">Compassionate care</span></span>
+          <span class="line"><span class="line__inner" data-c="hero.line2">driven by clinical</span></span>
+          <span class="line"><span class="line__inner" data-c="hero.line3"><em>excellence</em></span></span>
         </h1>
 
-        <p class="hero__sub" data-c="hero.lede">Whether you need SureSmile® or dental implants, Dr. Kleiger provides family and cosmetic dentistry for patients in Thousand Oaks.</p>
+        <p class="hero__sub" data-c="hero.lede">Advanced cosmetic, restorative, and family dentistry serving Thousand Oaks with a patient-first approach.</p>
 
         <div class="hero__actions">
           <a href="#book" class="btn-pill btn-pill--teal" id="hero-book-btn" data-cursor="Book">
@@ -3196,40 +3330,101 @@
       <aside class="hero-atelier" aria-label="Practice Sanctuary &amp; Clinical Philosophy">
         <div class="hero-atelier__mat">
           <div class="hero-atelier__top">
-            <span>Biocompatible &amp; Whole-Body Sanctuary</span>
-            <span class="hero-atelier__top-tag">Calm 1-on-1 Care</span>
+            <span>Precision Restorative &amp; Aesthetic Studio</span>
+            <span class="hero-atelier__top-tag">1.618 &phi; &middot; 1-on-1 Care</span>
           </div>
 
           <div class="hero-atelier__stage">
-            <svg class="hero-atelier__svg" viewBox="0 0 480 250" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural botanical and biocompatible harmony illustration">
-              <!-- Outer Golden Ratio Architectural Frame -->
-              <rect x="16" y="12" width="448" height="226" rx="12" stroke="var(--border-warm)" stroke-width="1"/>
-              <line x1="16" y1="125" x2="464" y2="125" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 6"/>
-              <line x1="240" y1="12" x2="240" y2="238" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 6"/>
+            <svg class="hero-atelier__svg" viewBox="0 0 480 264" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural CAD/CAM dental arch topography and golden-ratio harmony system">
+              <!-- Outer Blueprint Frame & Registration Ticks -->
+              <rect x="12" y="10" width="456" height="244" rx="14" fill="var(--bg-cream)" fill-opacity="0.55" stroke="var(--border-warm)" stroke-width="1"/>
+              <rect x="20" y="18" width="440" height="228" rx="10" stroke="var(--border-warm)" stroke-width="0.65" stroke-dasharray="2 4"/>
+              <path d="M28 34 V24 H38 M452 34 V24 H442 M28 230 V240 H38 M452 230 V240 H442" stroke="var(--accent-terracotta)" stroke-width="1.35" stroke-linecap="round"/>
 
-              <!-- Animated Harmonic Meridian Ring -->
-              <g class="hero-atelier__orbit">
-                <circle cx="240" cy="125" r="92" stroke="var(--terracotta-border)" stroke-width="1.2" stroke-dasharray="6 8"/>
-                <circle cx="240" cy="33" r="3.5" fill="var(--accent-terracotta)"/>
-                <circle cx="240" cy="217" r="3.5" fill="var(--accent-teal)"/>
+              <!-- Golden-Ratio 1.618 Grid & Horizon -->
+              <line x1="20" y1="132" x2="460" y2="132" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <line x1="240" y1="18" x2="240" y2="246" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <line x1="158" y1="26" x2="158" y2="238" stroke="var(--terracotta-border)" stroke-width="0.65" stroke-dasharray="2 4"/>
+              <line x1="322" y1="26" x2="322" y2="238" stroke="var(--terracotta-border)" stroke-width="0.65" stroke-dasharray="2 4"/>
+
+              <!-- Top Telemetry Readouts -->
+              <text x="32" y="34" fill="var(--accent-teal)" font-size="7.5" font-weight="700" font-family="monospace" letter-spacing="1.2">ARCH CAD · 24μm</text>
+              <text x="240" y="32" text-anchor="middle" fill="var(--text-muted)" font-size="7" font-family="monospace" letter-spacing="1.4">1.618 φ HARMONIC AXIS</text>
+              <text x="448" y="34" text-anchor="end" fill="var(--accent-terracotta)" font-size="7.5" font-weight="700" font-family="monospace" letter-spacing="1.1">5500K DAYLIGHT</text>
+
+              <!-- Outer Clockwise Orbital Calibration Ring -->
+              <g class="hero-atelier__orbit" style="transform-origin:240px 132px">
+                <circle cx="240" cy="132" r="98" stroke="var(--terracotta-border)" stroke-width="1.15" stroke-dasharray="8 6 2 6"/>
+                <circle cx="240" cy="34" r="4" fill="var(--accent-terracotta)"/>
+                <circle cx="240" cy="230" r="3.5" fill="var(--accent-teal)"/>
+                <circle cx="142" cy="132" r="3" fill="var(--accent-teal)"/>
+                <circle cx="338" cy="132" r="3" fill="var(--accent-terracotta)"/>
               </g>
 
-              <circle cx="240" cy="125" r="68" fill="var(--surface-card)" stroke="var(--teal-border)" stroke-width="1.25"/>
-              <circle cx="240" cy="125" r="52" stroke="var(--terracotta-border)" stroke-width="1"/>
+              <!-- Inner Counter-Rotating Precision Ring -->
+              <g class="hero-atelier__orbit-rev" style="transform-origin:240px 132px">
+                <circle cx="240" cy="132" r="78" stroke="var(--teal-border)" stroke-width="1.1" stroke-dasharray="4 7"/>
+                <circle cx="185" cy="77" r="3" fill="var(--accent-terracotta)"/>
+                <circle cx="295" cy="187" r="3" fill="var(--accent-teal)"/>
+              </g>
 
-              <!-- Left & Right Organic Botanical Sage Branches -->
-              <path d="M88 188 C122 152, 152 132, 188 122" stroke="var(--accent-teal)" stroke-width="1.4" stroke-linecap="round"/>
-              <path d="M118 162 C110 144, 124 130, 142 138 C134 152, 124 158, 118 162 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.2"/>
-              <path d="M148 140 C144 122, 158 110, 174 120 C166 132, 156 138, 148 140 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.2"/>
+              <!-- Static Medallion Stage & Radial Biometric Vectors -->
+              <circle cx="240" cy="132" r="64" fill="var(--surface-card)" stroke="var(--border-strong)" stroke-width="1.2"/>
+              <path d="M240 168 L194 94 M240 168 L216 82 M240 168 L240 76 M240 168 L264 82 M240 168 L286 94" stroke="var(--terracotta-border)" stroke-width="0.85" stroke-dasharray="2 2"/>
+              <path d="M180 156 C192 78, 288 78, 300 156" stroke="var(--accent-terracotta)" stroke-width="1.2" stroke-dasharray="3 3"/>
 
-              <path d="M392 188 C358 152, 328 132, 292 122" stroke="var(--accent-teal)" stroke-width="1.4" stroke-linecap="round"/>
-              <path d="M362 162 C370 144, 356 130, 338 138 C346 152, 356 158, 362 162 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.2"/>
-              <path d="M332 140 C336 122, 322 110, 306 120 C314 132, 324 138, 332 140 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.2"/>
+              <!-- Anatomical 10-Unit Dental Arch Topography (#4–#13) + Central Focal Crown -->
+              <g class="hero-atelier__pulse" style="transform-origin:240px 132px">
+                <!-- Central Incisors #8 & #9 -->
+                <rect x="223" y="76" width="15" height="19" rx="6" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.5"/>
+                <rect x="242" y="76" width="15" height="19" rx="6" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.5"/>
+                <!-- Lateral Incisors #7 & #10 -->
+                <rect x="205" y="83" width="14" height="17" rx="5.5" transform="rotate(-16 205 83)" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <rect x="261" y="79" width="14" height="17" rx="5.5" transform="rotate(16 261 79)" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <!-- Canines #6 & #11 -->
+                <circle cx="196" cy="106" r="7.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <circle cx="284" cy="106" r="7.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <!-- Premolars #5, #4 & #12, #13 -->
+                <circle cx="187" cy="126" r="7.5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+                <circle cx="293" cy="126" r="7.5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+                <circle cx="183" cy="147" r="8" fill="var(--surface-warm)" stroke="var(--border-strong)" stroke-width="1.2"/>
+                <circle cx="297" cy="147" r="8" fill="var(--surface-warm)" stroke="var(--border-strong)" stroke-width="1.2"/>
 
-              <!-- Central Biocompatible Crown / Holistic Crest -->
-              <path d="M222 103 C228 95, 235 97, 240 102 C245 97, 252 95, 258 103 C265 113, 263 131, 256 147 C253 154, 248 154, 245 146 C243 140, 242 136, 240 136 C238 136, 237 140, 235 146 C232 154, 227 154, 224 147 C217 131, 215 113, 222 103 Z" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.6" stroke-linejoin="round"/>
-              <path d="M229 114 C235 119, 245 119, 251 114" stroke="var(--accent-terracotta)" stroke-width="1.3" stroke-linecap="round"/>
-              <circle cx="240" cy="84" r="3" fill="var(--accent-terracotta)"/>
+                <!-- Central Enamel Prism Crest -->
+                <path d="M226 118 C231 111, 236 113, 240 117 C244 113, 249 111, 254 118 C259 126, 257 141, 251 153 C248 158, 244 158, 242 152 C241 147, 240 144, 240 144 C240 144, 239 147, 238 152 C236 158, 232 158, 229 153 C223 141, 221 126, 226 118 Z" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M232 127 C237 131, 243 131, 248 127" stroke="var(--accent-terracotta)" stroke-width="1.25" stroke-linecap="round"/>
+                <circle cx="240" cy="168" r="3.5" fill="var(--accent-terracotta)"/>
+              </g>
+
+              <!-- Left & Right Flank Callout Modules -->
+              <g>
+                <rect x="28" y="96" width="92" height="54" rx="8" fill="var(--surface-card)" stroke="var(--border-warm)" stroke-width="1"/>
+                <text x="38" y="113" fill="var(--text-muted)" font-size="6.8" font-family="monospace" letter-spacing="0.8">ENAMEL PREP</text>
+                <text x="38" y="129" fill="var(--accent-teal)" font-size="11" font-weight="700" font-family="Georgia, serif">0.2 – 0.3 mm</text>
+                <text x="38" y="141" fill="var(--accent-terracotta)" font-size="6.5" font-family="monospace">MINIMAL INVASIVE</text>
+                <line x1="120" y1="123" x2="176" y2="123" stroke="var(--accent-teal)" stroke-width="1" stroke-dasharray="2 2"/>
+                <circle cx="176" cy="123" r="2.5" fill="var(--accent-teal)"/>
+              </g>
+
+              <g>
+                <rect x="360" y="96" width="92" height="54" rx="8" fill="var(--surface-card)" stroke="var(--border-warm)" stroke-width="1"/>
+                <text x="370" y="113" fill="var(--text-muted)" font-size="6.8" font-family="monospace" letter-spacing="0.8">SHADE MATCH</text>
+                <text x="370" y="129" fill="var(--accent-terracotta)" font-size="11" font-weight="700" font-family="Georgia, serif">VITA A1 · B1</text>
+                <text x="370" y="141" fill="var(--accent-teal)" font-size="6.5" font-family="monospace">NATURAL TRANSLUCENCY</text>
+                <line x1="304" y1="123" x2="360" y2="123" stroke="var(--accent-terracotta)" stroke-width="1" stroke-dasharray="2 2"/>
+                <circle cx="304" cy="123" r="2.5" fill="var(--accent-terracotta)"/>
+              </g>
+
+              <!-- Animated Optical Scan-Line -->
+              <g class="hero-atelier__scanline">
+                <line x1="136" y1="132" x2="344" y2="132" stroke="var(--accent-terracotta)" stroke-width="1.35" stroke-opacity="0.75"/>
+                <circle cx="136" cy="132" r="2.2" fill="var(--accent-terracotta)"/>
+                <circle cx="344" cy="132" r="2.2" fill="var(--accent-terracotta)"/>
+              </g>
+
+              <!-- Bottom Smile Line Curvature -->
+              <path d="M108 206 Q240 234 372 206" stroke="var(--teal-border)" stroke-width="1.15" fill="none"/>
+              <text x="240" y="236" text-anchor="middle" fill="var(--text-muted)" font-size="6.8" font-family="monospace" letter-spacing="1.2">CUSTOM OCCLUSAL &amp; FACIAL PROPORTION CALIBRATION</text>
             </svg>
 
             <div class="hero-atelier__pills">
@@ -3241,8 +3436,8 @@
 
           <div class="hero-atelier__foot">
             <div class="hero-atelier__doc">
-              <strong class="hero-atelier__name" id="hero-doc-name" data-monogram-name>Dr. Kleiger</strong>
-              <span class="hero-atelier__creds" id="hero-doc-creds" data-monogram-cred>Cosmetic Dentistry · Thousand Oaks</span>
+              <strong class="hero-atelier__name" id="hero-doc-name" data-monogram-name>Dr. Kleiger, DDS</strong>
+              <span class="hero-atelier__creds" id="hero-doc-creds" data-monogram-cred>DDS, USC School of Dentistry</span>
             </div>
             <a href="#doctor" class="hero-atelier__link" data-cursor="Bio">
               <span>Meet the Doctor</span>
@@ -3261,23 +3456,23 @@
     <div class="proof__grid">
       <div class="proof__cell reveal">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-terracotta)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><path d="M12 2L14.8 8.5L22 9.3L16.5 14L18.2 21L12 17.3L5.8 21L7.5 14L2 9.3L9.2 8.5L12 2Z"/></svg>
-        <div class="proof__num" data-c="proof.1.value">1-on-1</div>
-        <div class="proof__label" data-c="proof.1.label">Unrushed private care</div>
+        <div class="proof__num" data-c="proof.1.value">20+ Years</div>
+        <div class="proof__label" data-c="proof.1.label">Clinical experience</div>
       </div>
       <div class="proof__cell reveal">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><circle cx="12" cy="12" r="9"/><path d="M12 7V12L15.5 14"/></svg>
-        <div class="proof__num" data-c="proof.2.value">101+</div>
-        <div class="proof__label" data-c="proof.2.label">5-Star patient reviews</div>
+        <div class="proof__num" data-c="proof.2.value">CEREC</div>
+        <div class="proof__label" data-c="proof.2.label">Same-day custom crowns</div>
       </div>
       <div class="proof__cell reveal">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-terracotta)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><path d="M12 3L19 6.5V12.5C19 17 15.9 20.6 12 22C8.1 20.6 5 17 5 12.5V6.5L12 3Z"/><path d="M9 12.2L11 14.2L15.2 10"/></svg>
-        <div class="proof__num" data-c="proof.3.value">20+</div>
-        <div class="proof__label" data-c="proof.3.label">Years of experience</div>
+        <div class="proof__num" data-c="proof.3.value">Spear</div>
+        <div class="proof__label" data-c="proof.3.label">Study Group member</div>
       </div>
       <div class="proof__cell reveal">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><path d="M8 6.5C9.5 5 11 5.3 12 6.5C13 5.3 14.5 5 16 6.5C18 8.5 17.5 13.5 15.5 18C14.7 19.8 13.5 19.8 12.7 17.8C12.3 16.5 12 15.8 12 15.8C12 15.8 11.7 16.5 11.3 17.8C10.5 19.8 9.3 19.8 8.5 18C6.5 13.5 6 8.5 8 6.5Z"/></svg>
-        <div class="proof__num" data-c="proof.4.value">3D Scan</div>
-        <div class="proof__label" data-c="proof.4.label">Digital impression studio</div>
+        <div class="proof__num" data-c="proof.4.value">SureSmile®</div>
+        <div class="proof__label" data-c="proof.4.label">Clear aligner therapy</div>
       </div>
     </div>
   </section>
@@ -3302,9 +3497,9 @@
           <div class="portrait__tint" aria-hidden="true"></div>
           <div class="portrait__ph" hidden>
             <div class="portrait__monogram-badge" data-monogram-initials>K</div>
-            <div class="portrait__ph-title" data-monogram-name>Dr. Kleiger</div>
-            <div class="portrait__ph-cred" data-monogram-cred>Cosmetic Dentistry · Thousand Oaks</div>
-            <p class="portrait__ph-quote" data-monogram-quote>“At our practice, we put people first. Whether you are exploring your options for dental implants or restoring your smile, we are here to help you every step of the way.”</p>
+            <div class="portrait__ph-title" data-monogram-name>Dr. Kleiger, DDS</div>
+            <div class="portrait__ph-cred" data-monogram-cred>DDS, USC School of Dentistry</div>
+            <p class="portrait__ph-quote" data-monogram-quote>“I believe that when you treat people like family and focus on doing what’s right, patients stay for a lifetime.”</p>
           </div>
         </div>
         <figcaption class="portrait__caption">
@@ -3317,20 +3512,21 @@
         <h2 class="display-lg" id="doctor-h">
           <span data-c="doctor.name">Dr. Kleiger</span>
         </h2>
+        <p class="doctor__creds" data-c="doctor.creds">DDS, USC School of Dentistry</p>
 
-        <p class="doctor__bio" data-c="doctor.bio1">Dr. Ean Kleiger brings more than 20 years of experience to his Thousand Oaks practice. He has built a reputation for compassion, integrity, and a hands-on approach to family and cosmetic dentistry.</p>
-        <p class="doctor__bio" data-c="doctor.bio2">After earning his undergraduate degree from UC San Diego, Dr. Kleiger received his dental degree from the University of Southern California. He continues to expand his expertise through post-doctoral education and active involvement in leading dental organizations.</p>
+        <p class="doctor__bio" data-c="doctor.bio1">Dr. Ean Kleiger brings more than two decades of clinical experience to his Thousand Oaks practice. A graduate of UC San Diego and the USC School of Dentistry, he is known for his integrity and a hands-on approach to modern oral healthcare.</p>
+        <p class="doctor__bio" data-c="doctor.bio2">Dedicated to continuous learning, Dr. Kleiger is an active member of the Spear Study Group. He focuses on minimally invasive techniques and advanced preventive care, ensuring every patient is treated like family in a welcoming environment.</p>
 
-        <blockquote class="doctor__quote" data-c="doctor.quote">At our practice, we put people first. Whether you are exploring your options for dental implants or restoring your smile, we are here to help you every step of the way.</blockquote>
+        <blockquote class="doctor__quote" data-c="doctor.quote">I believe that when you treat people like family and focus on doing what’s right, patients stay for a lifetime.</blockquote>
 
         <div class="schools">
           <div class="school__row">
             <svg class="school__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M2.5 7.5L10 3.5L17.5 7.5L10 11.5L2.5 7.5Z"/><path d="M5.5 9.5V14.2C5.5 15.5 7.5 16.5 10 16.5C12.5 16.5 14.5 15.5 14.5 14.2V9.5"/></svg><span class="school__k" data-c="doctor.school1.k">Doctorate</span>
-            <span class="school__v" data-c="doctor.school1.v">DDS · University of Southern California</span>
+            <span class="school__v" data-c="doctor.school1.v">DDS · USC School of Dentistry</span>
           </div>
           <div class="school__row">
             <svg class="school__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M10 2.5L16 5V9.8C16 13.6 13.4 16.4 10 17.5C6.6 16.4 4 13.6 4 9.8V5L10 2.5Z"/><path d="M7.5 10.2L9.2 11.9L12.8 8.3"/></svg><span class="school__k" data-c="doctor.school2.k">Undergraduate</span>
-            <span class="school__v" data-c="doctor.school2.v">UC San Diego</span>
+            <span class="school__v" data-c="doctor.school2.v">BS · UC San Diego</span>
           </div>
           <div class="school__row">
             <svg class="school__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><circle cx="7.5" cy="7" r="2.5"/><circle cx="13" cy="7.5" r="2"/><path d="M3.5 15.5C3.5 13.3 5.3 11.8 7.5 11.8C9.7 11.8 11.5 13.3 11.5 15.5"/><path d="M11.5 15.5C11.7 13.7 13 12.5 14.8 12.5C16.2 12.5 17.2 13.3 17.5 14.8"/></svg><span class="school__k" data-c="doctor.school3.k">Membership</span>
@@ -3367,8 +3563,8 @@
         <div class="sec-head__left reveal">
           <span class="kicker">02 · Approach</span>
           <h2 class="display-lg" id="ap-h">
-            <span data-c="approach.head1">A hands-on</span><br>
-            <span data-c="approach.head2"><em>approach</em></span>
+            <span data-c="approach.head1">A philosophy of</span><br>
+            <span data-c="approach.head2"><em>compassion</em></span>
           </h2>
         </div>
         <p class="sec-head__right reveal">
@@ -3484,28 +3680,28 @@
         </p>
       </div>
 
-      <div class="words__grid words__grid--equal">
+      <div class="words__grid words__grid--stack">
         <figure class="word reveal">
-          <blockquote class="word__q" data-c="words.1.quote">This is the best dentist office in the United States. The team works together to give you a great experience. Dr Kleiger is an excellent dentist. All the people that do the cleaning are great. Orfa the dental hygienist is my favorite. Trish the office manager is professional and easy to talk to. She is great at her job. The whole team is kind and gives great service and support. I highly, highly recommend going here for all your dental needs.</blockquote>
+          <blockquote class="word__q" data-c="words.1.quote">Dr Kleiger and his office are terrific. I had a crown fallout over the weekend. I came in first thing Monday morning. The office took me in Made time for me. Dr. Kleiger was awesome as always did a full exam replaced the crown and I was on my way by 9:30 AM. They are always professional. They have great customer service and Dr. Kleiger is great at what he does.</blockquote>
           <figcaption class="word__by">
-            <b data-c="words.1.name">Amy C.</b>
-            <span data-c="words.1.detail">Hygiene</span>
+            <b data-c="words.1.name">Mark K.</b>
+            <span data-c="words.1.detail">Emergency Restorative Care</span>
           </figcaption>
         </figure>
 
         <figure class="word reveal">
-          <blockquote class="word__q" data-c="words.2.quote">Best dental office in Thousand Oaks! Dr Kleiger is the best dentist in the Conejo Valley! We have been with him since we moved here several decades ago. He is very knowledgeable and professional. He will provide the best advice for your dental health. Our entire family love this dental office! Thank you Dr Kleiger and your team!</blockquote>
+          <blockquote class="word__q" data-c="words.2.quote">Absolutely delightful experience from start to finish. Which is a fairly odd way to describe a dental visit! The people are great, all of them, the office is cozy, decorated for Halloween resplendent with good smelling candles, the bathroom clean! Oh, yeah, the hygienist and dentist both very good at their jobs and have a light touch.</blockquote>
           <figcaption class="word__by">
-            <b data-c="words.2.name">Bull D.</b>
-            <span data-c="words.2.detail">Family patient</span>
+            <b data-c="words.2.name">Waverley R.</b>
+            <span data-c="words.2.detail">Gentle Preventive Care</span>
           </figcaption>
         </figure>
 
         <figure class="word reveal">
-          <blockquote class="word__q" data-c="words.3.quote">Our entire family has been going to Dr. Kleiger for 20 years. He is exceptional and sets the tone for the entire office - they are all great. Had a crown put on today and he wouldn't stop until it fit perfectly. Highly recommend!</blockquote>
+          <blockquote class="word__q" data-c="words.3.quote">Best dental office in Thousand Oaks! Dr Kleiger is the best dentist in the Conejo Valley! We have been with him since we moved here several decades ago. He is very knowledgeable and professional. He will provide the best advice for your dental health. Our entire family love this dental office! Thank you Dr Kleiger and your team!</blockquote>
           <figcaption class="word__by">
-            <b data-c="words.3.name">Don S.</b>
-            <span data-c="words.3.detail">Crown</span>
+            <b data-c="words.3.name">Bull D.</b>
+            <span data-c="words.3.detail">Long-Term Family Care</span>
           </figcaption>
         </figure>
       </div>
@@ -3561,13 +3757,13 @@
   <section class="trust-sec" id="trust" aria-labelledby="trust-h">
     <div class="wrap">
       <span class="kicker">04 · Family &amp; Clinical Standards</span>
-      <h2 class="display-lg" id="trust-h" data-c="words.kicker">Built on precision.</h2>
+      <h2 class="display-lg" id="trust-h" data-c="words.kicker">04 · Clinical & Patient Standards</h2>
 
       <div class="trust-grid">
         <article class="trust reveal">
           <div class="trust__top">
             <span class="trust__idx">Standard I</span>
-            <span class="trust__spec">Bio-Safe Enamel Architecture</span>
+            <span class="trust__spec">Digital Case Architecture</span>
           </div>
           <div class="trust__canvas" aria-hidden="true">
             <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3577,7 +3773,17 @@
               <path d="M54 42 H42 V102 H54 M266 42 H278 V102 H266" stroke="var(--teal-border)" stroke-width="1.15"/>
               <text x="46" y="36" fill="var(--text-muted)" font-size="7.5" font-family="monospace" letter-spacing="1">0.3MM PREP</text>
               <text x="230" y="36" fill="var(--accent-terracotta)" font-size="7.5" font-family="monospace" letter-spacing="1">ENAMEL SEAL</text>
-              <g class="trust__center">
+              <g class="trust__orbit" style="transform-origin:160px 68px">
+                <circle cx="160" cy="68" r="46" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="6 5"/>
+                <circle cx="160" cy="22" r="3" fill="var(--accent-terracotta)"/>
+                <circle cx="160" cy="114" r="3" fill="var(--accent-teal)"/>
+              </g>
+              <g class="trust__orbit-inner" style="transform-origin:160px 68px">
+                <circle cx="160" cy="68" r="35" stroke="var(--teal-border)" stroke-width="0.95" stroke-dasharray="3 5"/>
+                <circle cx="125" cy="68" r="2.2" fill="var(--accent-teal)"/>
+                <circle cx="195" cy="68" r="2.2" fill="var(--accent-terracotta)"/>
+              </g>
+              <g class="trust__center" style="transform-origin:160px 68px">
                 <path d="M126 36 C138 24, 151 26, 160 32 C169 26, 182 24, 194 36 C204 48, 202 74, 191 96" stroke="var(--accent-terracotta)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 2"/>
                 <path d="M132 42 C142 32, 152 34, 160 39 C168 34, 178 32, 188 42 C197 52, 195 75, 185 95 C180 105, 172 105, 168 94 C165 86, 163 82, 160 82 C157 82, 155 86, 152 94 C148 105, 140 105, 135 95 C125 75, 123 52, 132 42 Z" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.5" stroke-linejoin="round"/>
                 <path d="M141 54 C150 47, 170 47, 179 54" stroke="var(--accent-terracotta)" stroke-width="1.2" stroke-linecap="round"/>
@@ -3595,8 +3801,8 @@
               </g>
             </svg>
           </div>
-          <h3 class="trust__t" data-c="words.trust.1.t">Digital planning</h3>
-          <p class="trust__p" data-c="words.trust.1.p">Every case starts on screen, not in the mouth. A digital scan shows the plan before a single tool touches a tooth.</p>
+          <h3 class="trust__t" data-c="words.trust.1.t">Minimally Invasive Care</h3>
+          <p class="trust__p" data-c="words.trust.1.p">We prioritize conservative techniques that preserve your natural tooth structure, ensuring long-term oral health and comfort.</p>
         </article>
 
         <article class="trust reveal">
@@ -3610,7 +3816,12 @@
               <path d="M26 116 L76 28 M294 116 L244 28 M26 88 H294 M42 58 H278" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="2 4"/>
               <line x1="160" y1="16" x2="160" y2="128" stroke="var(--border-warm)" stroke-width="0.85" stroke-dasharray="3 3"/>
               <path d="M68 114 C76 44, 244 44, 252 114" stroke="var(--accent-terracotta)" stroke-width="1.35" stroke-dasharray="4 3"/>
-              <g class="trust__center">
+              <g class="trust__orbit" style="transform-origin:160px 98px">
+                <circle cx="160" cy="98" r="22" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="4 4"/>
+                <circle cx="160" cy="76" r="2.5" fill="var(--accent-terracotta)"/>
+                <circle cx="160" cy="120" r="2.5" fill="var(--accent-teal)"/>
+              </g>
+              <g class="trust__center" style="transform-origin:160px 72px">
                 <rect x="142" y="34" width="16" height="12" rx="5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.4"/>
                 <rect x="162" y="34" width="16" height="12" rx="5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.4"/>
                 <rect x="121" y="41" width="15" height="12" rx="5" transform="rotate(-18 121 41)" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.3"/>
@@ -3627,11 +3838,16 @@
                 <circle cx="160" cy="98" r="4" fill="var(--accent-terracotta)"/>
                 <circle cx="160" cy="98" r="9" stroke="var(--accent-teal)" stroke-width="0.95" stroke-dasharray="2 2"/>
               </g>
+              <g class="trust__scan-y">
+                <line x1="72" y1="68" x2="248" y2="68" stroke="var(--accent-terracotta)" stroke-width="1.35"/>
+                <circle cx="72" cy="68" r="2" fill="var(--accent-terracotta)"/>
+                <circle cx="248" cy="68" r="2" fill="var(--accent-terracotta)"/>
+              </g>
               <text x="24" y="26" fill="var(--text-muted)" font-size="7.5" font-family="monospace" letter-spacing="1">ARCH SCAN · 24μm</text>
             </svg>
           </div>
-          <h3 class="trust__t" data-c="words.trust.2.t">Precision over guesswork</h3>
-          <p class="trust__p" data-c="words.trust.2.p">Measurements come from the scan, not from memory. What is proposed is what gets made, without chairside improvising.</p>
+          <h3 class="trust__t" data-c="words.trust.2.t">Advanced Technology</h3>
+          <p class="trust__p" data-c="words.trust.2.p">From digital impressions to CEREC same-day crowns, our practice utilizes modern tools for precise, efficient, and comfortable treatments.</p>
         </article>
 
         <article class="trust reveal">
@@ -3647,8 +3863,11 @@
               <line x1="194" y1="18" x2="194" y2="126" stroke="var(--terracotta-border)" stroke-width="0.9" stroke-dasharray="2 3"/>
               <line x1="246" y1="18" x2="246" y2="126" stroke="var(--border-warm)" stroke-width="0.9" stroke-dasharray="2 3"/>
               <path d="M96 46 A64 64 0 0 1 224 46" stroke="var(--accent-terracotta)" stroke-width="1.15" stroke-dasharray="3 4"/>
-              <circle cx="160" cy="26" r="4" fill="var(--accent-terracotta)"/>
-              <g class="trust__center">
+              <g class="trust__scan-x">
+                <circle cx="160" cy="26" r="4.5" fill="var(--accent-terracotta)"/>
+                <line x1="160" y1="30" x2="160" y2="108" stroke="var(--accent-terracotta)" stroke-width="1.15" stroke-dasharray="2 2"/>
+              </g>
+              <g class="trust__center" style="transform-origin:160px 76px">
                 <rect x="82" y="54" width="24" height="52" rx="12" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.2"/>
                 <text x="94" y="121" text-anchor="middle" fill="var(--text-muted)" font-size="7.5" font-family="monospace">B1</text>
 
@@ -3669,8 +3888,8 @@
               <text x="218" y="26" fill="var(--text-muted)" font-size="7.5" font-family="monospace" letter-spacing="1">5500K DAYLIGHT</text>
             </svg>
           </div>
-          <h3 class="trust__t" data-c="words.trust.3.t">Records that last</h3>
-          <p class="trust__p" data-c="words.trust.3.p">Your scan, photographs, and plan stay on file, so a future visit builds on what is already known about your bite.</p>
+          <h3 class="trust__t" data-c="words.trust.3.t">Patient-First Pacing</h3>
+          <p class="trust__p" data-c="words.trust.3.p">Every appointment is unhurried. We take the time to understand your needs, explain your options, and build a foundation of lasting trust.</p>
         </article>
       </div>
     </div>
@@ -3834,11 +4053,11 @@
       </div>
 
       <div class="revs" style="margin-top:2rem">
-        <div class="words__grid">
+        <div class="words__grid words__grid--stack">
           <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.1.quote">I can't say enough great things about Dr. Ean Kleiger and his amazing team! Every visit feels like a truly personalized experience, and I always leave feeling well taken care of. The entire staff is not only incredibly professional but also warm, welcoming, and attentive-they genuinely make an effort to ensure my comfort. Dr. Kleiger is exceptionally knowledgeable and takes the time to explain everything in detail. His expertise and care give me complete confidence in the quality of service I'm receiving. If you're looking for a dentist who truly prioritizes your well-being and provides top-notch care, look no further. Highly recommend!</blockquote>
+            <blockquote class="word__q" data-c="review.1.quote">Dr. Kleiger and his staff are friendly and excellent. A friend of mine who owns a dental lab steered me to this office because of the high quality products that Dr. Kleiger demands. Apparently that's unusual these days; most dentists primarily want the cheapest crowns, etc., so that they can mark them up for a better profit.</blockquote>
             <figcaption class="word__by">
-              <b data-c="review.1.name">Jennifer P.</b>
+              <b data-c="review.1.name">Barry D.</b>
               <span class="stars" role="img" aria-label="Rated 5 out of 5">
                 <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
               </span>
@@ -3846,15 +4065,24 @@
           </figure>
 
           <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.2.quote">Dr Kleiger is amazing. I'm so nervous about dental work but this dentist has 3 key attributes. He nums properly, very precise and fast. Amazing!!!</blockquote>
+            <blockquote class="word__q" data-c="review.2.quote">Dr. Kleiger and his staff are amazing. Greeted by friendly staff members. My dental hygienist spent time discussing my medical problems, as well as my dental problems and was very gentle and knowledgeable. Dr. Kleiger is always knowledgeable, informative, and gentle. I couldn't ask for a better experience.</blockquote>
             <figcaption class="word__by">
-              <b data-c="review.2.name">Liz S.</b>
+              <b data-c="review.2.name">Denise D.</b>
               <span class="stars" role="img" aria-label="Rated 5 out of 5">
                 <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
               </span>
             </figcaption>
           </figure>
 
+          <figure class="word reveal">
+            <blockquote class="word__q" data-c="review.3.quote">Our entire family has been going to Dr. Kleiger for 20 years. He is exceptional and sets the tone for the entire office - they are all great. Had a crown put on today and he wouldn't stop until it fit perfectly. Highly recommend!</blockquote>
+            <figcaption class="word__by">
+              <b data-c="review.3.name">Don S.</b>
+              <span class="stars" role="img" aria-label="Rated 5 out of 5">
+                <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -3869,7 +4097,7 @@
   <div class="footer__inner">
     <div>
       <strong class="footer__brand" data-c="brand.name">Dr. Kleiger</strong>
-      <span data-c="brand.tagline">Cosmetic Dentistry · Thousand Oaks</span>
+      <span data-c="brand.tagline">Cosmetic & Family Dentistry · Thousand Oaks</span>
       <div style="margin-top:0.35rem" data-c="footer.address">319 S Moorpark Rd, Thousand Oaks, CA 91361</div>
     </div>
     <div class="footer__links">

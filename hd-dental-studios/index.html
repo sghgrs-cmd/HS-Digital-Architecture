@@ -44,11 +44,11 @@
 -->
 
 <title>HD Dental Studios</title>
-<meta name="description" content="Dr. Delano Hankins provides safe, comfortable dentistry in Culver City, offering Invisalign and treatments for painful overbites. Cosmetic Dentistry · Culver ">
+<meta name="description" content="Comprehensive cosmetic, restorative, and family dentistry tailored to your unique smile in Culver City. Cosmetic &amp; Restorative Dentistry · Culver City">
 <link rel="canonical" href="https://hddentalstudios.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HD Dental Studios">
-<meta property="og:description" content="Dr. Delano Hankins provides safe, comfortable dentistry in Culver City, offering Invisalign and treatments for painful overbites. Cosmetic Dentistry · Culver ">
+<meta property="og:description" content="Comprehensive cosmetic, restorative, and family dentistry tailored to your unique smile in Culver City. Cosmetic &amp; Restorative Dentistry · Culver City">
 <meta property="og:url" content="https://hddentalstudios.com">
 <meta name="twitter:card" content="summary">
 
@@ -935,7 +935,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 /* Ultra-Luxury Meditative Micro-Animations for Clinical Standards */
 .trust__orbit{
   transform-origin:160px 72px;
-  animation:trustOrbit 30s linear infinite;
+  animation:trustOrbit 28s linear infinite;
 }
 @keyframes trustOrbit{
   from{transform:rotate(0deg);}
@@ -958,26 +958,68 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 @keyframes trustPulse{
   0%,100%{transform:scale(1);}
-  50%{transform:scale(1.035);}
+  50%{transform:scale(1.045);}
 }
 
 .trust__leaf{
   transform-origin:88px 84px;
-  animation:trustFloat 4.8s ease-in-out infinite alternate;
+  animation:trustFloat 5.5s ease-in-out infinite alternate;
 }
 .trust__leaf--alt{
   transform-origin:232px 84px;
-  animation:trustFloatAlt 5.4s ease-in-out infinite alternate;
+  animation:trustFloatAlt 6.2s ease-in-out infinite alternate;
+}
+.trust__scan-y{
+  animation:trustScanY 6.5s ease-in-out infinite alternate;
+}
+.trust__scan-x{
+  animation:trustScanX 7.0s ease-in-out infinite alternate;
+}
+/* Dual-Doctor Separate Portraits Layout (.portrait--dual) */
+.portrait--dual .portrait__dual-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.25rem;
+}
+@media (max-width:540px){
+  .portrait--dual .portrait__dual-grid{grid-template-columns:1fr;}
+}
+.portrait__dual-card{display:flex;flex-direction:column;gap:.75rem;}
+.portrait__dual-meta{
+  padding-top:.65rem;
+  border-top:1px solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  gap:.2rem;
+}
+.portrait__dual-name{
+  font-family:var(--font-display);
+  font-size:1.05rem;
+  color:var(--ink);
+}
+.portrait__dual-role{
+  font-size:var(--fs-micro);
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
 }
 @keyframes trustFloat{
-  0%{transform:translateY(0px) rotate(0deg);}
-  50%{transform:translateY(-3px) rotate(1.5deg);}
-  100%{transform:translateY(0px) rotate(0deg);}
+  0%{transform:translate(0px, 0px) rotate(0deg);}
+  100%{transform:translate(6px, -4px) rotate(3deg);}
 }
 @keyframes trustFloatAlt{
-  0%{transform:translateY(0px) rotate(0deg);}
-  50%{transform:translateY(-2.5px) rotate(-1.5deg);}
-  100%{transform:translateY(0px) rotate(0deg);}
+  0%{transform:translate(0px, 0px) rotate(0deg);}
+  100%{transform:translate(-6px, -4px) rotate(-3deg);}
+}
+@keyframes trustScanY{
+  0%{transform:translateY(-24px);opacity:0.35;}
+  50%{opacity:0.95;}
+  100%{transform:translateY(24px);opacity:0.35;}
+}
+@keyframes trustScanX{
+  0%{transform:translateX(-52px);}
+  100%{transform:translateX(52px);}
 }
 .trust__t{
   font-family:var(--font-display);font-weight:400;font-variation-settings:'opsz' 40;
@@ -1518,11 +1560,10 @@ textarea::-webkit-resizer{cursor:none!important}
   font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
 }
 .hero__stars{
-  position:relative;display:inline-block;line-height:1;letter-spacing:.08em;font-size:.88rem;
+  position:relative;display:inline-block;line-height:1;letter-spacing:.08em;font-size:.88rem;color:var(--accent);
 }
-.hero__stars-bg{color:var(--rule)}
 .hero__stars-fill{
-  position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:var(--accent);
+  display:inline-block;white-space:nowrap;color:var(--accent);
 }
 
 @media (max-width: 899px) {
@@ -1597,7 +1638,7 @@ textarea::-webkit-resizer{cursor:none!important}
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Dr. Delano Hankins, home">
     <span class="brand__name" data-c="brand.name">Dr. Delano Hankins</span>
-    <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Culver City</span>
+    <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Restorative Dentistry · Culver City</span>
   </a>
 
   <nav class="nav__links" aria-label="Primary">
@@ -1622,7 +1663,7 @@ textarea::-webkit-resizer{cursor:none!important}
   <div class="menu__top">
     <span class="brand">
       <span class="brand__name" data-c="brand.name">Dr. Delano Hankins</span>
-      <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Culver City</span>
+      <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Restorative Dentistry · Culver City</span>
     </span>
     <button class="menu-btn" id="menu-close">Close</button>
   </div>
@@ -1672,12 +1713,12 @@ textarea::-webkit-resizer{cursor:none!important}
          the largest text on the page no longer waits for app.js to download,
          parse and run before it is allowed to become visible. -->
     <h1 class="hero__head d-xl" data-hero="lines">
-      <span class="ln"><span class="ln__i"><span data-c="hero.line1">We make dental visits</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line2">a safe and comfortable</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line3"><em>experience</em></span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line1">Advanced dentistry,</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line2">designed for</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line3">absolute <em>comfort</em></span></span></span>
     </h1>
 
-    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Dr. Delano Hankins provides safe, comfortable dentistry in Culver City, offering Invisalign and treatments for painful overbites.</p>
+    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Comprehensive cosmetic, restorative, and family dentistry tailored to your unique smile in Culver City.</p>
 
     <div class="hero__actions" data-hero data-delay="3">
       <a class="btn btn--book" href="#book" data-magnetic data-cursor="Book">
@@ -1695,8 +1736,7 @@ textarea::-webkit-resizer{cursor:none!important}
         <p class="hero__trust-name" id="hero-trust-name">Dr. Delano Hankins</p>
         <p class="hero__trust-meta" id="hero-trust-meta">
           <span class="hero__stars" id="hero-trust-stars" aria-label="Rated 5 out of 5">
-            <span class="hero__stars-bg" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="hero__stars-fill" id="hero-stars-fill" aria-hidden="true" style="width:100.0%">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="hero__stars-fill" id="hero-stars-fill" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           </span>
           <span id="hero-trust-rating">5 &middot; 303 Google reviews</span>
         </p>
@@ -1709,7 +1749,7 @@ textarea::-webkit-resizer{cursor:none!important}
       <span class="rule" data-hero="rule" data-delay="4" aria-hidden="true"></span>
       <p class="hero__meta" data-hero data-delay="4">
         <span data-c="hero.meta1">Consultations by appointment</span>
-        <span data-c="hero.meta2">Mon: 7:00 AM – 3:00 PM | Tue: 9:00 AM – 5:00 PM | Wed: 9:00 AM – 5:00 PM | Thu: 9:00 AM – 5:00 PM</span>
+        <span data-c="hero.meta2">Mon: 7:00 AM – 3:00 PM · Tue–Thu: 9:00 AM – 5:00 PM</span>
       </p>
     </div>
 
@@ -1728,24 +1768,24 @@ textarea::-webkit-resizer{cursor:none!important}
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.1.value">1-on-1</p>
-        <p class="proof__lab" data-c="proof.1.label">Unrushed private care</p>
+        <p class="proof__val" data-c="proof.1.value">Culver City</p>
+        <p class="proof__lab" data-c="proof.1.label">Bespoke dental studio</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="1">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="10" cy="10" r="7"/><path d="M10 5.5 V10 L13.2 12"/>
         </svg>
-        <p class="proof__val" data-c="proof.2.value">303+</p>
-        <p class="proof__lab" data-c="proof.2.label">Happy patients</p>
+        <p class="proof__val" data-c="proof.2.value">Digital</p>
+        <p class="proof__lab" data-c="proof.2.label">Modern diagnostic imaging</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="2">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="10" cy="7.5" r="5.2"/><path d="M6.6 12.1 V18 L10 16.2 L13.4 18 V12.1"/>
         </svg>
-        <p class="proof__val" data-c="proof.3.value">0</p>
-        <p class="proof__lab" data-c="proof.3.label">Deposit requirement</p>
+        <p class="proof__val" data-c="proof.3.value">Invisalign</p>
+        <p class="proof__lab" data-c="proof.3.label">Clear aligner therapy</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="3">
@@ -1753,8 +1793,8 @@ textarea::-webkit-resizer{cursor:none!important}
           <circle cx="4.5" cy="6" r="2"/><circle cx="15.5" cy="6" r="2"/><circle cx="10" cy="15" r="2"/>
           <path d="M6.2 7.2 8.6 13.2 M13.8 7.2 11.4 13.2 M6.5 6 H13.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.4.value">5 ★</p>
-        <p class="proof__lab" data-c="proof.4.label">Verified patient rating</p>
+        <p class="proof__val" data-c="proof.4.value">Zero Deposit</p>
+        <p class="proof__lab" data-c="proof.4.label">LendingPoint financing options</p>
       </div>
 
     </div>
@@ -1809,12 +1849,13 @@ textarea::-webkit-resizer{cursor:none!important}
           <span data-c="doctor.name">Dr. Delano Hankins</span>
         </h2>
 
+        <p class="doctor__creds" data-reveal data-delay="1" data-c="doctor.creds">Lead Clinician</p>
 
-        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Many people wonder how Invisalign works to correct an overbite. When upper teeth overlap the lower teeth, a deep bite can be painful and cause problems. Our Culver City practice focuses on resolving these issues safely.</p>
+        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Dr. Delano Hankins leads clinical care at HD Dental Studios, providing comprehensive cosmetic, restorative, and family dentistry to the Culver City community. He focuses on conservative treatment planning and precise aesthetic outcomes.</p>
 
-        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">We believe going to the dentist should feel like a safe and comfortable experience. Patients can also make arrangements to pay regular dental bills with a LendingPoint Virtual card, a third-party option with a zero deposit requirement.</p>
+        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">From custom porcelain veneers and Invisalign to full-mouth implant restorations, Dr. Hankins utilizes modern digital diagnostics to ensure every procedure is meticulously planned. His approach prioritizes patient comfort and long-term oral health.</p>
 
-        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">A deep bite can be painful and cause problems. We provide treatments like Invisalign to ensure your dental care is a safe and comfortable experience.</blockquote>
+        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">I believe in delivering precise, conservative care that enhances both the function and natural beauty of your smile.</blockquote>
 
         <div class="school">
           <!-- At these fees the patient is buying the laboratory as much as the
@@ -1852,8 +1893,8 @@ textarea::-webkit-resizer{cursor:none!important}
 
     <div class="approach__head">
       <h2 class="d-l" id="ap-h" data-reveal="lines">
-        <span data-c="approach.head1">A zero deposit</span><br>
-        <span data-c="approach.head2"><em>requirement</em></span>
+        <span data-c="approach.head1">Our clinical</span><br>
+        <span data-c="approach.head2">care <em>philosophy</em></span>
       </h2>
     </div>
 
@@ -1998,30 +2039,30 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- Slot 1 -->
       <figure class="word" data-reveal>
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.1.quote">I can tell you one thing. I'm not a fan of the dentist. I hadn't visited the dentist in 8 years. Not that I had a bad experience, but I didn't have a pleasant one In the past. Going to HD Dental Studios, was the best experience I ever had of any dentist. I'm Not just saying that because I got a few people that were nice. They were all amazing. Front Desk friendly made me feel At home. The x-ray tech that took care of me amazing made me feel comfortable. And the hygienist Chefs kiss Not sure if I can say that because it's not a restaurant lol. She was very gentle while cleaning my teeth. I barely felt a thing. The doctor was relatable didn't make me feel uncomfortable. He was amazing. Overall, five stars is not enough. But that's all that Google will allow .</blockquote>
+        <blockquote class="word__q" data-c="words.1.quote">Dr Delano Hankins did a yeoman's job. He never stopped till he got it right. Did I also tell how ergonomic and beautiful the office is with a staff (like Maribel) that absolutely matches it? I will always come here - I found my tribe !! I see why it is called a dental studio with a first time performance like that! Live the dream like I did; you won't be disappointed! 😍</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.1.name">Sylvia E.</b>
-          <span data-c="words.1.detail">Hygiene</span>
+          <b data-c="words.1.name">Melody L.</b>
+          <span data-c="words.1.detail">Dedicated Restorative Care</span>
         </figcaption>
       </figure>
 
       <!-- Slot 2 -->
       <figure class="word" data-reveal data-delay="1">
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.2.quote">I love Dr. Hankin. He took really good care of me when I needed my teeth fixed after years of neglect. He never judged me and was very kind and gentle. The technology and tools are state of the art and Dr. Hankin doesn't believe in patients suffering needlessly. The hygienists are great and the front desk is so cheery. They send me happy birthday texts and remember my life milestones. Genuinely the best dentist I have ever had. I also love supporting Black Owned Business! There aren't many Black dentists in LA and it was so nice getting treated by someone in the community.</blockquote>
+        <blockquote class="word__q" data-c="words.2.quote">I haven't had dental work done yet. The staff was very friendly. Jacob went the extra mile by checking to make sure my dental work would be covered by my insurance. He also sent appointment reminders. All the staff was professional. Office was clean and the equipment was modern. The doctor explained everything and answered my questions. I feel like I'm in good hands. 😊</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.2.name">Chaunti H.</b>
-          <span data-c="words.2.detail">Hygiene</span>
+          <b data-c="words.2.name">Laderra</b>
+          <span data-c="words.2.detail">Consultation & Planning</span>
         </figcaption>
       </figure>
 
       <!-- Slot 3 -->
       <figure class="word" data-reveal data-delay="2">
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.3.quote">HD Dental is the BEST Dental experience I've ever had! From the check in process, high end medical equipment to the informative staff - I truly felt a close knit family vibe. Love that doc is HBCU alum and super relatable as far as breaking down my veneer as well as my Invisalign process. I've never felt so confident & comfortable with a dentist. The facility was top notch - like never have I ever heard music playing throughout a dentist office & two screens to watch tv while you're getting dental work done. 10 out of 5 stars</blockquote>
+        <blockquote class="word__q" data-c="words.3.quote">I don't particularly enjoy dentist visits but this office and Dr. Hankins changed my mind! The techs were engaging and respectful. Dr. Hankins was very comforting and professional. I usually leave the dentist sore and irritated but that is not how I left this visit.<br>I would have loved if I would have been notified about the $16 parking charge prior to my visit.</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.3.name">Pretty C.</b>
-          <span data-c="words.3.detail">Veneers</span>
+          <b data-c="words.3.name">Toshira A.</b>
+          <span data-c="words.3.detail">Gentle Chairside Care</span>
         </figcaption>
       </figure>
     </div>
@@ -2086,13 +2127,13 @@ textarea::-webkit-resizer{cursor:none!important}
       <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
     </div>
 
-    <h2 class="d-l trust__head" id="trust-h" data-reveal="lines" data-c="words.kicker">What to expect.</h2>
+    <h2 class="d-l trust__head" id="trust-h" data-reveal="lines" data-c="words.kicker">04 · Clinical Standards</h2>
 
     <div class="trust-grid">
       <article class="trust" data-reveal>
         <div class="trust__top">
           <span class="trust__idx">Standard I</span>
-          <span class="trust__spec">Bio-Safe Enamel Architecture</span>
+          <span class="trust__spec">Digital Case Architecture</span>
         </div>
         <div class="trust__canvas" aria-hidden="true">
           <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2104,8 +2145,18 @@ textarea::-webkit-resizer{cursor:none!important}
             <path d="M54 42 H42 V102 H54 M266 42 H278 V102 H266" stroke="var(--rule)" stroke-width="1.1"/>
             <text x="46" y="36" fill="var(--stone)" font-size="7.5" font-family="monospace" letter-spacing="1">0.3MM PREP</text>
             <text x="232" y="36" fill="var(--accent)" font-size="7.5" font-family="monospace" letter-spacing="1">ENAMEL SEAL</text>
+            <g class="trust__orbit" style="transform-origin:160px 68px">
+              <circle cx="160" cy="68" r="46" stroke="var(--rule)" stroke-width="1.05" stroke-dasharray="6 5"/>
+              <circle cx="160" cy="22" r="2.8" fill="var(--accent)"/>
+              <circle cx="160" cy="114" r="2.8" fill="var(--ink)"/>
+            </g>
+            <g class="trust__orbit-inner" style="transform-origin:160px 68px">
+              <circle cx="160" cy="68" r="35" stroke="var(--rule-soft)" stroke-width="0.95" stroke-dasharray="3 5"/>
+              <circle cx="125" cy="68" r="2.2" fill="var(--ink)"/>
+              <circle cx="195" cy="68" r="2.2" fill="var(--accent)"/>
+            </g>
             <!-- Layered Anatomical Crown & Veneer Laminate Cross-Section -->
-            <g class="trust__center">
+            <g class="trust__center" style="transform-origin:160px 68px">
               <!-- Outer Translucent Porcelain Veneer Shell (floating micro-layer) -->
               <path d="M126 36 C138 24, 151 26, 160 32 C169 26, 182 24, 194 36 C204 48, 202 74, 191 96" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 2"/>
               <!-- Natural Tooth Crown Contour -->
@@ -2127,8 +2178,8 @@ textarea::-webkit-resizer{cursor:none!important}
             </g>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.1.t">Paced to you</h3>
-        <p class="trust__p" data-c="words.trust.1.p">Appointments run on your tolerance, not the clock. If something needs a pause, it pauses.</p>
+        <h3 class="trust__t" data-c="words.trust.1.t">Digital Diagnostics</h3>
+        <p class="trust__p" data-c="words.trust.1.p">We utilize modern imaging to precisely plan treatments, from routine checkups to complex implant restorations.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="1">
@@ -2162,16 +2213,26 @@ textarea::-webkit-resizer{cursor:none!important}
               <circle cx="237" cy="101" r="8.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
             </g>
             <!-- Active Optical Triangulation Vectors -->
+            <g class="trust__orbit" style="transform-origin:160px 98px">
+              <circle cx="160" cy="98" r="22" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 4"/>
+              <circle cx="160" cy="76" r="2.5" fill="var(--accent)"/>
+              <circle cx="160" cy="120" r="2.5" fill="var(--ink)"/>
+            </g>
             <g class="trust__leaf">
               <path d="M160 98 L106 59 M160 98 L150 40 M160 98 L170 40 M160 98 L214 59" stroke="var(--accent)" stroke-width="0.9" stroke-opacity="0.7"/>
               <circle cx="160" cy="98" r="4" fill="var(--accent)"/>
               <circle cx="160" cy="98" r="9" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="2 2"/>
             </g>
+            <g class="trust__scan-y">
+              <line x1="72" y1="68" x2="248" y2="68" stroke="var(--accent)" stroke-width="1.3"/>
+              <circle cx="72" cy="68" r="2" fill="var(--accent)"/>
+              <circle cx="248" cy="68" r="2" fill="var(--accent)"/>
+            </g>
             <text x="24" y="26" fill="var(--stone)" font-size="7.5" font-family="monospace" letter-spacing="1">ARCH SCAN · 24μm</text>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.2.t">Explained before it's done</h3>
-        <p class="trust__p" data-c="words.trust.2.p">Every step is described in plain terms first, including what you will feel, so nothing arrives as a surprise.</p>
+        <h3 class="trust__t" data-c="words.trust.2.t">Conservative Planning</h3>
+        <p class="trust__p" data-c="words.trust.2.p">Our approach focuses on preserving your natural tooth structure while achieving optimal functional and aesthetic results.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="2">
@@ -2189,9 +2250,12 @@ textarea::-webkit-resizer{cursor:none!important}
             <line x1="246" y1="18" x2="246" y2="126" stroke="var(--rule)" stroke-width="0.9" stroke-dasharray="2 3"/>
             <!-- Daylight 5500K Sunburst Arc -->
             <path d="M96 46 A64 64 0 0 1 224 46" stroke="var(--accent)" stroke-width="1.1" stroke-dasharray="3 4"/>
-            <circle cx="160" cy="26" r="4" fill="var(--accent)"/>
+            <g class="trust__scan-x">
+              <circle cx="160" cy="26" r="4.5" fill="var(--accent)"/>
+              <line x1="160" y1="30" x2="160" y2="108" stroke="var(--accent)" stroke-width="1.1" stroke-dasharray="2 2"/>
+            </g>
             <!-- 5 Vita Shade Ceramic Tabs with Graduated Luminance -->
-            <g class="trust__center">
+            <g class="trust__center" style="transform-origin:160px 76px">
               <rect x="82" y="54" width="24" height="52" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
               <text x="94" y="121" text-anchor="middle" fill="var(--stone)" font-size="7.5" font-family="monospace">B1</text>
 
@@ -2213,8 +2277,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <text x="218" y="26" fill="var(--stone)" font-size="7.5" font-family="monospace" letter-spacing="1">5500K DAYLIGHT</text>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.3.t">One patient at a time</h3>
-        <p class="trust__p" data-c="words.trust.3.p">No two procedures are booked into the same slot. One visit gets the full length of its appointment.</p>
+        <h3 class="trust__t" data-c="words.trust.3.t">Patient-Centered Pacing</h3>
+        <p class="trust__p" data-c="words.trust.3.p">Every step is explained clearly before treatment begins, ensuring you feel comfortable and informed throughout your visit.</p>
       </article>
     </div>
 
@@ -2267,7 +2331,7 @@ textarea::-webkit-resizer{cursor:none!important}
             <circle cx="9" cy="9" r="6.4"/><path d="M9 5 V9 L11.9 10.8"/>
           </svg>
           <span class="info__k">Hours</span>
-          <span class="info__v" data-c="book.hours">Mon: 7:00 AM – 3:00 PM | Tue: 9:00 AM – 5:00 PM | Wed: 9:00 AM – 5:00 PM | Thu: 9:00 AM – 5:00 PM</span>
+          <span class="info__v" data-c="book.hours">Mon: 7:00 AM – 3:00 PM · Tue–Thu: 9:00 AM – 5:00 PM</span>
         </div>
       </div>
 
@@ -2440,9 +2504,9 @@ textarea::-webkit-resizer{cursor:none!important}
     <!-- Reviews are pasted in per clinic, real and verbatim. These are slots. -->
     <div class="revs">
       <figure class="word" data-reveal>
-        <blockquote class="word__q" data-c="review.1.quote">Such an incredible team! Everyone is genuinely kind, caring, and welcoming, and you can tell they really care about their patients. The entire staff goes above and beyond to make you feel comfortable, informed, and confident in your care. I especially appreciate how friendly and transparent everyone is. Dr. Hankins runs a fantastic practice, and it really shows in every interaction. Highly recommend!</blockquote>
+        <blockquote class="word__q" data-c="review.1.quote">That was the best dentist<br>experience I've ever had in my life!<br>WHATTT! I moved here from across the country by myself and was in need of a dentist. I found a great one here!! The place was gorgeous all the staff were so nice and they have a rocking playlist. My teeth look exceptionally good and they are all very knowledgeable. So glad i found this place</blockquote>
         <figcaption class="word__by">
-          <b data-c="review.1.name">Rebecca T.</b>
+          <b data-c="review.1.name">Jewel G.</b>
           <span class="stars" role="img" aria-label="Rated 5 out of 5">
             <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
             <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
@@ -2453,7 +2517,33 @@ textarea::-webkit-resizer{cursor:none!important}
         </figcaption>
       </figure>
 
+      <figure class="word" data-reveal data-delay="1">
+        <blockquote class="word__q" data-c="review.2.quote">HD Dental Studios is such a great environment. All the staff are professionals and display kind and very friendly attitudes. Today I met with Dr. Hank, Maribel, Luisa and Marilyn. I HIGHLY recommend for anyone having negative experiences at dental offices. I promise you will have a different outlook after a visit to HD Dental.</blockquote>
+        <figcaption class="word__by">
+          <b data-c="review.2.name">K E.</b>
+          <span class="stars" role="img" aria-label="Rated 5 out of 5">
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+          </span>
+        </figcaption>
+      </figure>
 
+      <figure class="word" data-reveal data-delay="2">
+        <blockquote class="word__q" data-c="review.3.quote">The best cleaning and amazing staff! Also a great customer experience. There is great music and tv's to watch when you get your cleaning. Staff is so nice</blockquote>
+        <figcaption class="word__by">
+          <b data-c="review.3.name">CHRISTIANNE J.</b>
+          <span class="stars" role="img" aria-label="Rated 5 out of 5">
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+          </span>
+        </figcaption>
+      </figure>
     </div>
 
   </div>
@@ -2480,7 +2570,7 @@ textarea::-webkit-resizer{cursor:none!important}
       <div class="foot__col foot__brand">
         <span class="brand">
           <span class="brand__name" data-c="brand.name">Dr. Delano Hankins</span>
-          <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Culver City</span>
+          <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Restorative Dentistry · Culver City</span>
         </span>
       </div>
       <div class="foot__col">

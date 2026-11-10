@@ -44,11 +44,11 @@
 -->
 
 <title>Ean Kleiger, DDS Family &amp; Cosmetic Dentistry</title>
-<meta name="description" content="Whether you need SureSmile® or dental implants, Dr. Kleiger provides family and cosmetic dentistry for patients in Thousand Oaks. Cosmetic Dentistry · Thousan">
+<meta name="description" content="Advanced cosmetic, restorative, and family dentistry serving Thousand Oaks with a patient-first approach. Cosmetic &amp; Family Dentistry · Thousand Oaks">
 <link rel="canonical" href="https://kleigerdentistry.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ean Kleiger, DDS Family &amp; Cosmetic Dentistry">
-<meta property="og:description" content="Whether you need SureSmile® or dental implants, Dr. Kleiger provides family and cosmetic dentistry for patients in Thousand Oaks. Cosmetic Dentistry · Thousan">
+<meta property="og:description" content="Advanced cosmetic, restorative, and family dentistry serving Thousand Oaks with a patient-first approach. Cosmetic &amp; Family Dentistry · Thousand Oaks">
 <meta property="og:url" content="https://kleigerdentistry.com">
 <meta name="twitter:card" content="summary">
 
@@ -935,7 +935,7 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 /* Ultra-Luxury Meditative Micro-Animations for Clinical Standards */
 .trust__orbit{
   transform-origin:160px 72px;
-  animation:trustOrbit 30s linear infinite;
+  animation:trustOrbit 28s linear infinite;
 }
 @keyframes trustOrbit{
   from{transform:rotate(0deg);}
@@ -958,26 +958,68 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 @keyframes trustPulse{
   0%,100%{transform:scale(1);}
-  50%{transform:scale(1.035);}
+  50%{transform:scale(1.045);}
 }
 
 .trust__leaf{
   transform-origin:88px 84px;
-  animation:trustFloat 4.8s ease-in-out infinite alternate;
+  animation:trustFloat 5.5s ease-in-out infinite alternate;
 }
 .trust__leaf--alt{
   transform-origin:232px 84px;
-  animation:trustFloatAlt 5.4s ease-in-out infinite alternate;
+  animation:trustFloatAlt 6.2s ease-in-out infinite alternate;
+}
+.trust__scan-y{
+  animation:trustScanY 6.5s ease-in-out infinite alternate;
+}
+.trust__scan-x{
+  animation:trustScanX 7.0s ease-in-out infinite alternate;
+}
+/* Dual-Doctor Separate Portraits Layout (.portrait--dual) */
+.portrait--dual .portrait__dual-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.25rem;
+}
+@media (max-width:540px){
+  .portrait--dual .portrait__dual-grid{grid-template-columns:1fr;}
+}
+.portrait__dual-card{display:flex;flex-direction:column;gap:.75rem;}
+.portrait__dual-meta{
+  padding-top:.65rem;
+  border-top:1px solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  gap:.2rem;
+}
+.portrait__dual-name{
+  font-family:var(--font-display);
+  font-size:1.05rem;
+  color:var(--ink);
+}
+.portrait__dual-role{
+  font-size:var(--fs-micro);
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
 }
 @keyframes trustFloat{
-  0%{transform:translateY(0px) rotate(0deg);}
-  50%{transform:translateY(-3px) rotate(1.5deg);}
-  100%{transform:translateY(0px) rotate(0deg);}
+  0%{transform:translate(0px, 0px) rotate(0deg);}
+  100%{transform:translate(6px, -4px) rotate(3deg);}
 }
 @keyframes trustFloatAlt{
-  0%{transform:translateY(0px) rotate(0deg);}
-  50%{transform:translateY(-2.5px) rotate(-1.5deg);}
-  100%{transform:translateY(0px) rotate(0deg);}
+  0%{transform:translate(0px, 0px) rotate(0deg);}
+  100%{transform:translate(-6px, -4px) rotate(-3deg);}
+}
+@keyframes trustScanY{
+  0%{transform:translateY(-24px);opacity:0.35;}
+  50%{opacity:0.95;}
+  100%{transform:translateY(24px);opacity:0.35;}
+}
+@keyframes trustScanX{
+  0%{transform:translateX(-52px);}
+  100%{transform:translateX(52px);}
 }
 .trust__t{
   font-family:var(--font-display);font-weight:400;font-variation-settings:'opsz' 40;
@@ -1518,11 +1560,10 @@ textarea::-webkit-resizer{cursor:none!important}
   font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
 }
 .hero__stars{
-  position:relative;display:inline-block;line-height:1;letter-spacing:.08em;font-size:.88rem;
+  position:relative;display:inline-block;line-height:1;letter-spacing:.08em;font-size:.88rem;color:var(--accent);
 }
-.hero__stars-bg{color:var(--rule)}
 .hero__stars-fill{
-  position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:var(--accent);
+  display:inline-block;white-space:nowrap;color:var(--accent);
 }
 
 @media (max-width: 899px) {
@@ -1597,7 +1638,7 @@ textarea::-webkit-resizer{cursor:none!important}
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Dr. Kleiger, home">
     <span class="brand__name" data-c="brand.name">Dr. Kleiger</span>
-    <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Thousand Oaks</span>
+    <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Family Dentistry · Thousand Oaks</span>
   </a>
 
   <nav class="nav__links" aria-label="Primary">
@@ -1622,7 +1663,7 @@ textarea::-webkit-resizer{cursor:none!important}
   <div class="menu__top">
     <span class="brand">
       <span class="brand__name" data-c="brand.name">Dr. Kleiger</span>
-      <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Thousand Oaks</span>
+      <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Family Dentistry · Thousand Oaks</span>
     </span>
     <button class="menu-btn" id="menu-close">Close</button>
   </div>
@@ -1672,12 +1713,12 @@ textarea::-webkit-resizer{cursor:none!important}
          the largest text on the page no longer waits for app.js to download,
          parse and run before it is allowed to become visible. -->
     <h1 class="hero__head d-xl" data-hero="lines">
-      <span class="ln"><span class="ln__i"><span data-c="hero.line1">Family and cosmetic</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line2">dentistry that puts</span></span></span>
-      <span class="ln"><span class="ln__i"><span data-c="hero.line3">people <em>first</em></span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line1">Compassionate care</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line2">driven by clinical</span></span></span>
+      <span class="ln"><span class="ln__i"><span data-c="hero.line3"><em>excellence</em></span></span></span>
     </h1>
 
-    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Whether you need SureSmile® or dental implants, Dr. Kleiger provides family and cosmetic dentistry for patients in Thousand Oaks.</p>
+    <p class="hero__lede lede" data-hero data-delay="2" data-c="hero.lede">Advanced cosmetic, restorative, and family dentistry serving Thousand Oaks with a patient-first approach.</p>
 
     <div class="hero__actions" data-hero data-delay="3">
       <a class="btn btn--book" href="#book" data-magnetic data-cursor="Book">
@@ -1692,11 +1733,10 @@ textarea::-webkit-resizer{cursor:none!important}
     <div class="hero__trust" id="hero-trust-card" data-hero data-delay="3">
       <span class="hero__avatar is-monogram" id="hero-trust-avatar" aria-hidden="true"><span id="hero-trust-ini">K</span></span>
       <div>
-        <p class="hero__trust-name" id="hero-trust-name">Dr. Kleiger</p>
+        <p class="hero__trust-name" id="hero-trust-name">Dr. Kleiger, DDS</p>
         <p class="hero__trust-meta" id="hero-trust-meta">
           <span class="hero__stars" id="hero-trust-stars" aria-label="Rated 5 out of 5">
-            <span class="hero__stars-bg" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="hero__stars-fill" id="hero-stars-fill" aria-hidden="true" style="width:100.0%">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="hero__stars-fill" id="hero-stars-fill" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           </span>
           <span id="hero-trust-rating">5 &middot; 101 Google reviews</span>
         </p>
@@ -1728,24 +1768,24 @@ textarea::-webkit-resizer{cursor:none!important}
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.1.value">1-on-1</p>
-        <p class="proof__lab" data-c="proof.1.label">Unrushed private care</p>
+        <p class="proof__val" data-c="proof.1.value">20+ Years</p>
+        <p class="proof__lab" data-c="proof.1.label">Clinical experience</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="1">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="10" cy="10" r="7"/><path d="M10 5.5 V10 L13.2 12"/>
         </svg>
-        <p class="proof__val" data-c="proof.2.value">5 ★</p>
-        <p class="proof__lab" data-c="proof.2.label">Verified patient rating</p>
+        <p class="proof__val" data-c="proof.2.value">CEREC</p>
+        <p class="proof__lab" data-c="proof.2.label">Same-day custom crowns</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="2">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="10" cy="7.5" r="5.2"/><path d="M6.6 12.1 V18 L10 16.2 L13.4 18 V12.1"/>
         </svg>
-        <p class="proof__val" data-c="proof.3.value">20+</p>
-        <p class="proof__lab" data-c="proof.3.label">Years of experience</p>
+        <p class="proof__val" data-c="proof.3.value">Spear</p>
+        <p class="proof__lab" data-c="proof.3.label">Study Group member</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="3">
@@ -1753,8 +1793,8 @@ textarea::-webkit-resizer{cursor:none!important}
           <circle cx="4.5" cy="6" r="2"/><circle cx="15.5" cy="6" r="2"/><circle cx="10" cy="15" r="2"/>
           <path d="M6.2 7.2 8.6 13.2 M13.8 7.2 11.4 13.2 M6.5 6 H13.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.4.value">3D Scan</p>
-        <p class="proof__lab" data-c="proof.4.label">Digital impression studio</p>
+        <p class="proof__val" data-c="proof.4.value">SureSmile®</p>
+        <p class="proof__lab" data-c="proof.4.label">Clear aligner therapy</p>
       </div>
 
     </div>
@@ -1809,12 +1849,13 @@ textarea::-webkit-resizer{cursor:none!important}
           <span data-c="doctor.name">Dr. Kleiger</span>
         </h2>
 
+        <p class="doctor__creds" data-reveal data-delay="1" data-c="doctor.creds">DDS, USC School of Dentistry</p>
 
-        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Dr. Ean Kleiger brings more than 20 years of experience to his Thousand Oaks practice. He has built a reputation for compassion, integrity, and a hands-on approach to family and cosmetic dentistry.</p>
+        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Dr. Ean Kleiger brings more than two decades of clinical experience to his Thousand Oaks practice. A graduate of UC San Diego and the USC School of Dentistry, he is known for his integrity and a hands-on approach to modern oral healthcare.</p>
 
-        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">After earning his undergraduate degree from UC San Diego, Dr. Kleiger received his dental degree from the University of Southern California. He continues to expand his expertise through post-doctoral education and active involvement in leading dental organizations.</p>
+        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">Dedicated to continuous learning, Dr. Kleiger is an active member of the Spear Study Group. He focuses on minimally invasive techniques and advanced preventive care, ensuring every patient is treated like family in a welcoming environment.</p>
 
-        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">At our practice, we put people first. Whether you are exploring your options for dental implants or restoring your smile, we are here to help you every step of the way.</blockquote>
+        <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">I believe that when you treat people like family and focus on doing what’s right, patients stay for a lifetime.</blockquote>
 
         <div class="school">
           <div class="school__row" data-reveal>
@@ -1822,14 +1863,14 @@ textarea::-webkit-resizer{cursor:none!important}
               <path d="M9 5 V14.5"/><path d="M9 5 Q5.5 3.2 2.5 4 V13 Q5.5 12.2 9 14.5 Q12.5 12.2 15.5 13 V4 Q12.5 3.2 9 5"/>
             </svg>
             <span class="school__k" data-c="doctor.school1.k">Doctorate</span>
-            <span class="school__v" data-c="doctor.school1.v">DDS · University of Southern California</span>
+            <span class="school__v" data-c="doctor.school1.v">DDS · USC School of Dentistry</span>
           </div>
           <div class="school__row" data-reveal data-delay="1">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M9 2.2 15 5.6 V12.4 L9 15.8 3 12.4 V5.6 Z"/><circle cx="9" cy="9" r="2.1"/>
             </svg>
             <span class="school__k" data-c="doctor.school2.k">Undergraduate</span>
-            <span class="school__v" data-c="doctor.school2.v">UC San Diego</span>
+            <span class="school__v" data-c="doctor.school2.v">BS · UC San Diego</span>
           </div>
           <div class="school__row" data-reveal data-delay="2">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -1880,8 +1921,8 @@ textarea::-webkit-resizer{cursor:none!important}
 
     <div class="approach__head">
       <h2 class="d-l" id="ap-h" data-reveal="lines">
-        <span data-c="approach.head1">A hands-on</span><br>
-        <span data-c="approach.head2"><em>approach</em></span>
+        <span data-c="approach.head1">A philosophy of</span><br>
+        <span data-c="approach.head2"><em>compassion</em></span>
       </h2>
     </div>
 
@@ -2026,30 +2067,30 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- Slot 1 -->
       <figure class="word" data-reveal>
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.1.quote">This is the best dentist office in the United States. The team works together to give you a great experience. Dr Kleiger is an excellent dentist. All the people that do the cleaning are great. Orfa the dental hygienist is my favorite. Trish the office manager is professional and easy to talk to. She is great at her job. The whole team is kind and gives great service and support. I highly, highly recommend going here for all your dental needs.</blockquote>
+        <blockquote class="word__q" data-c="words.1.quote">Dr Kleiger and his office are terrific. I had a crown fallout over the weekend. I came in first thing Monday morning. The office took me in Made time for me. Dr. Kleiger was awesome as always did a full exam replaced the crown and I was on my way by 9:30 AM. They are always professional. They have great customer service and Dr. Kleiger is great at what he does.</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.1.name">Amy C.</b>
-          <span data-c="words.1.detail">Hygiene</span>
+          <b data-c="words.1.name">Mark K.</b>
+          <span data-c="words.1.detail">Emergency Restorative Care</span>
         </figcaption>
       </figure>
 
       <!-- Slot 2 -->
       <figure class="word" data-reveal data-delay="1">
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.2.quote">Best dental office in Thousand Oaks! Dr Kleiger is the best dentist in the Conejo Valley! We have been with him since we moved here several decades ago. He is very knowledgeable and professional. He will provide the best advice for your dental health. Our entire family love this dental office! Thank you Dr Kleiger and your team!</blockquote>
+        <blockquote class="word__q" data-c="words.2.quote">Absolutely delightful experience from start to finish. Which is a fairly odd way to describe a dental visit! The people are great, all of them, the office is cozy, decorated for Halloween resplendent with good smelling candles, the bathroom clean! Oh, yeah, the hygienist and dentist both very good at their jobs and have a light touch.</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.2.name">Bull D.</b>
-          <span data-c="words.2.detail">Family patient</span>
+          <b data-c="words.2.name">Waverley R.</b>
+          <span data-c="words.2.detail">Gentle Preventive Care</span>
         </figcaption>
       </figure>
 
       <!-- Slot 3 -->
       <figure class="word" data-reveal data-delay="2">
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.3.quote">Our entire family has been going to Dr. Kleiger for 20 years. He is exceptional and sets the tone for the entire office - they are all great. Had a crown put on today and he wouldn't stop until it fit perfectly. Highly recommend!</blockquote>
+        <blockquote class="word__q" data-c="words.3.quote">Best dental office in Thousand Oaks! Dr Kleiger is the best dentist in the Conejo Valley! We have been with him since we moved here several decades ago. He is very knowledgeable and professional. He will provide the best advice for your dental health. Our entire family love this dental office! Thank you Dr Kleiger and your team!</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.3.name">Don S.</b>
-          <span data-c="words.3.detail">Crown</span>
+          <b data-c="words.3.name">Bull D.</b>
+          <span data-c="words.3.detail">Long-Term Family Care</span>
         </figcaption>
       </figure>
     </div>
@@ -2114,13 +2155,13 @@ textarea::-webkit-resizer{cursor:none!important}
       <span class="smark__rule" data-reveal="rule" aria-hidden="true"></span>
     </div>
 
-    <h2 class="d-l trust__head" id="trust-h" data-reveal="lines" data-c="words.kicker">Built on precision.</h2>
+    <h2 class="d-l trust__head" id="trust-h" data-reveal="lines" data-c="words.kicker">04 · Clinical & Patient Standards</h2>
 
     <div class="trust-grid">
       <article class="trust" data-reveal>
         <div class="trust__top">
           <span class="trust__idx">Standard I</span>
-          <span class="trust__spec">Bio-Safe Enamel Architecture</span>
+          <span class="trust__spec">Digital Case Architecture</span>
         </div>
         <div class="trust__canvas" aria-hidden="true">
           <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2132,8 +2173,18 @@ textarea::-webkit-resizer{cursor:none!important}
             <path d="M54 42 H42 V102 H54 M266 42 H278 V102 H266" stroke="var(--rule)" stroke-width="1.1"/>
             <text x="46" y="36" fill="var(--stone)" font-size="7.5" font-family="monospace" letter-spacing="1">0.3MM PREP</text>
             <text x="232" y="36" fill="var(--accent)" font-size="7.5" font-family="monospace" letter-spacing="1">ENAMEL SEAL</text>
+            <g class="trust__orbit" style="transform-origin:160px 68px">
+              <circle cx="160" cy="68" r="46" stroke="var(--rule)" stroke-width="1.05" stroke-dasharray="6 5"/>
+              <circle cx="160" cy="22" r="2.8" fill="var(--accent)"/>
+              <circle cx="160" cy="114" r="2.8" fill="var(--ink)"/>
+            </g>
+            <g class="trust__orbit-inner" style="transform-origin:160px 68px">
+              <circle cx="160" cy="68" r="35" stroke="var(--rule-soft)" stroke-width="0.95" stroke-dasharray="3 5"/>
+              <circle cx="125" cy="68" r="2.2" fill="var(--ink)"/>
+              <circle cx="195" cy="68" r="2.2" fill="var(--accent)"/>
+            </g>
             <!-- Layered Anatomical Crown & Veneer Laminate Cross-Section -->
-            <g class="trust__center">
+            <g class="trust__center" style="transform-origin:160px 68px">
               <!-- Outer Translucent Porcelain Veneer Shell (floating micro-layer) -->
               <path d="M126 36 C138 24, 151 26, 160 32 C169 26, 182 24, 194 36 C204 48, 202 74, 191 96" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 2"/>
               <!-- Natural Tooth Crown Contour -->
@@ -2155,8 +2206,8 @@ textarea::-webkit-resizer{cursor:none!important}
             </g>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.1.t">Digital planning</h3>
-        <p class="trust__p" data-c="words.trust.1.p">Every case starts on screen, not in the mouth. A digital scan shows the plan before a single tool touches a tooth.</p>
+        <h3 class="trust__t" data-c="words.trust.1.t">Minimally Invasive Care</h3>
+        <p class="trust__p" data-c="words.trust.1.p">We prioritize conservative techniques that preserve your natural tooth structure, ensuring long-term oral health and comfort.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="1">
@@ -2190,16 +2241,26 @@ textarea::-webkit-resizer{cursor:none!important}
               <circle cx="237" cy="101" r="8.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
             </g>
             <!-- Active Optical Triangulation Vectors -->
+            <g class="trust__orbit" style="transform-origin:160px 98px">
+              <circle cx="160" cy="98" r="22" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 4"/>
+              <circle cx="160" cy="76" r="2.5" fill="var(--accent)"/>
+              <circle cx="160" cy="120" r="2.5" fill="var(--ink)"/>
+            </g>
             <g class="trust__leaf">
               <path d="M160 98 L106 59 M160 98 L150 40 M160 98 L170 40 M160 98 L214 59" stroke="var(--accent)" stroke-width="0.9" stroke-opacity="0.7"/>
               <circle cx="160" cy="98" r="4" fill="var(--accent)"/>
               <circle cx="160" cy="98" r="9" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="2 2"/>
             </g>
+            <g class="trust__scan-y">
+              <line x1="72" y1="68" x2="248" y2="68" stroke="var(--accent)" stroke-width="1.3"/>
+              <circle cx="72" cy="68" r="2" fill="var(--accent)"/>
+              <circle cx="248" cy="68" r="2" fill="var(--accent)"/>
+            </g>
             <text x="24" y="26" fill="var(--stone)" font-size="7.5" font-family="monospace" letter-spacing="1">ARCH SCAN · 24μm</text>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.2.t">Precision over guesswork</h3>
-        <p class="trust__p" data-c="words.trust.2.p">Measurements come from the scan, not from memory. What is proposed is what gets made, without chairside improvising.</p>
+        <h3 class="trust__t" data-c="words.trust.2.t">Advanced Technology</h3>
+        <p class="trust__p" data-c="words.trust.2.p">From digital impressions to CEREC same-day crowns, our practice utilizes modern tools for precise, efficient, and comfortable treatments.</p>
       </article>
 
       <article class="trust" data-reveal data-delay="2">
@@ -2217,9 +2278,12 @@ textarea::-webkit-resizer{cursor:none!important}
             <line x1="246" y1="18" x2="246" y2="126" stroke="var(--rule)" stroke-width="0.9" stroke-dasharray="2 3"/>
             <!-- Daylight 5500K Sunburst Arc -->
             <path d="M96 46 A64 64 0 0 1 224 46" stroke="var(--accent)" stroke-width="1.1" stroke-dasharray="3 4"/>
-            <circle cx="160" cy="26" r="4" fill="var(--accent)"/>
+            <g class="trust__scan-x">
+              <circle cx="160" cy="26" r="4.5" fill="var(--accent)"/>
+              <line x1="160" y1="30" x2="160" y2="108" stroke="var(--accent)" stroke-width="1.1" stroke-dasharray="2 2"/>
+            </g>
             <!-- 5 Vita Shade Ceramic Tabs with Graduated Luminance -->
-            <g class="trust__center">
+            <g class="trust__center" style="transform-origin:160px 76px">
               <rect x="82" y="54" width="24" height="52" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
               <text x="94" y="121" text-anchor="middle" fill="var(--stone)" font-size="7.5" font-family="monospace">B1</text>
 
@@ -2241,8 +2305,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <text x="218" y="26" fill="var(--stone)" font-size="7.5" font-family="monospace" letter-spacing="1">5500K DAYLIGHT</text>
           </svg>
         </div>
-        <h3 class="trust__t" data-c="words.trust.3.t">Records that last</h3>
-        <p class="trust__p" data-c="words.trust.3.p">Your scan, photographs, and plan stay on file, so a future visit builds on what is already known about your bite.</p>
+        <h3 class="trust__t" data-c="words.trust.3.t">Patient-First Pacing</h3>
+        <p class="trust__p" data-c="words.trust.3.p">Every appointment is unhurried. We take the time to understand your needs, explain your options, and build a foundation of lasting trust.</p>
       </article>
     </div>
 
@@ -2468,9 +2532,9 @@ textarea::-webkit-resizer{cursor:none!important}
     <!-- Reviews are pasted in per clinic, real and verbatim. These are slots. -->
     <div class="revs">
       <figure class="word" data-reveal>
-        <blockquote class="word__q" data-c="review.1.quote">I can't say enough great things about Dr. Ean Kleiger and his amazing team! Every visit feels like a truly personalized experience, and I always leave feeling well taken care of. The entire staff is not only incredibly professional but also warm, welcoming, and attentive-they genuinely make an effort to ensure my comfort. Dr. Kleiger is exceptionally knowledgeable and takes the time to explain everything in detail. His expertise and care give me complete confidence in the quality of service I'm receiving. If you're looking for a dentist who truly prioritizes your well-being and provides top-notch care, look no further. Highly recommend!</blockquote>
+        <blockquote class="word__q" data-c="review.1.quote">Dr. Kleiger and his staff are friendly and excellent. A friend of mine who owns a dental lab steered me to this office because of the high quality products that Dr. Kleiger demands. Apparently that's unusual these days; most dentists primarily want the cheapest crowns, etc., so that they can mark them up for a better profit.</blockquote>
         <figcaption class="word__by">
-          <b data-c="review.1.name">Jennifer P.</b>
+          <b data-c="review.1.name">Barry D.</b>
           <span class="stars" role="img" aria-label="Rated 5 out of 5">
             <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
             <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
@@ -2482,9 +2546,9 @@ textarea::-webkit-resizer{cursor:none!important}
       </figure>
 
       <figure class="word" data-reveal data-delay="1">
-        <blockquote class="word__q" data-c="review.2.quote">Dr Kleiger is amazing. I'm so nervous about dental work but this dentist has 3 key attributes. He nums properly, very precise and fast. Amazing!!!</blockquote>
+        <blockquote class="word__q" data-c="review.2.quote">Dr. Kleiger and his staff are amazing. Greeted by friendly staff members. My dental hygienist spent time discussing my medical problems, as well as my dental problems and was very gentle and knowledgeable. Dr. Kleiger is always knowledgeable, informative, and gentle. I couldn't ask for a better experience.</blockquote>
         <figcaption class="word__by">
-          <b data-c="review.2.name">Liz S.</b>
+          <b data-c="review.2.name">Denise D.</b>
           <span class="stars" role="img" aria-label="Rated 5 out of 5">
             <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
             <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
@@ -2495,6 +2559,19 @@ textarea::-webkit-resizer{cursor:none!important}
         </figcaption>
       </figure>
 
+      <figure class="word" data-reveal data-delay="2">
+        <blockquote class="word__q" data-c="review.3.quote">Our entire family has been going to Dr. Kleiger for 20 years. He is exceptional and sets the tone for the entire office - they are all great. Had a crown put on today and he wouldn't stop until it fit perfectly. Highly recommend!</blockquote>
+        <figcaption class="word__by">
+          <b data-c="review.3.name">Don S.</b>
+          <span class="stars" role="img" aria-label="Rated 5 out of 5">
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
+          </span>
+        </figcaption>
+      </figure>
     </div>
 
   </div>
@@ -2521,7 +2598,7 @@ textarea::-webkit-resizer{cursor:none!important}
       <div class="foot__col foot__brand">
         <span class="brand">
           <span class="brand__name" data-c="brand.name">Dr. Kleiger</span>
-          <span class="brand__tag" data-c="brand.tagline">Cosmetic Dentistry · Thousand Oaks</span>
+          <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Family Dentistry · Thousand Oaks</span>
         </span>
       </div>
       <div class="foot__col">

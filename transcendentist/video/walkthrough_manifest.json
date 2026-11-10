@@ -1,0 +1,22 @@
+{
+  "slug": "transcendentist",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 19,
+  "recorded_at": "2026-11-10T08:35:33Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist\\video\\walkthrough-warm.mp4",
+      "size_mb": 14.75,
+      "elapsed_sec": 66.2
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist\\video\\walkthrough.mp4",
+      "size_mb": 13.59,
+      "elapsed_sec": 65.4
+    }
+  ]
+}
