@@ -6,6 +6,15 @@
    ============================================================================= */
 'use strict';
 
+/* Self-healing guard: if index-warm.html (Warm template) accidentally loaded app.js
+   instead of app-warm.js, immediately load app-warm.js so the Warm luxury cursor (.cursor)
+   and Warm interactive controls never disappear. */
+if (typeof document !== 'undefined' && document.querySelector('.cursor') && !document.getElementById('cur-dot')) {
+  const warmScript = document.createElement('script');
+  warmScript.src = 'app-warm.js';
+  document.head.appendChild(warmScript);
+}
+
 /* -----------------------------------------------------------------------------
    CONSTANTS — behaviour only.
    Copy lives in index.html, where search engines and screen readers reach it.
