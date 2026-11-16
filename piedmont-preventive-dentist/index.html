@@ -838,15 +838,15 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .shade__col:focus-visible .shade__chip{outline:2px solid var(--accent-inv);outline-offset:2px}
 .js .shade__chip{transform:scaleY(.4);opacity:0}
 .js .shade.is-in .shade__chip{transform:scaleY(1);opacity:1}
-.shade__col:nth-child(1) .shade__chip{transition-delay:.00s,.00s,0s;background:#F8F6F2}
-.shade__col:nth-child(2) .shade__chip{transition-delay:.05s,.05s,0s;background:#F4F0EB}
-.shade__col:nth-child(3) .shade__chip{transition-delay:.10s,.10s,0s;background:#F0EBE4}
-.shade__col:nth-child(4) .shade__chip{transition-delay:.15s,.15s,0s;background:#ECE6DE}
-.shade__col:nth-child(5) .shade__chip{transition-delay:.20s,.20s,0s;background:#E8E1D7}
-.shade__col:nth-child(6) .shade__chip{transition-delay:.25s,.25s,0s;background:#E3DCD1}
-.shade__col:nth-child(7) .shade__chip{transition-delay:.30s,.30s,0s;background:#DFD7CB}
-.shade__col:nth-child(8) .shade__chip{transition-delay:.35s,.35s,0s;background:#DAD2C4}
-.shade__col:nth-child(9) .shade__chip{transition-delay:.40s,.40s,0s;background:#D6CDBE}
+.shade__col:nth-child(1) .shade__chip{transition-delay:.00s,.00s,0s;background:#FBF8F3}
+.shade__col:nth-child(2) .shade__chip{transition-delay:.05s,.05s,0s;background:#F7F2E8}
+.shade__col:nth-child(3) .shade__chip{transition-delay:.10s,.10s,0s;background:#F3ECDF}
+.shade__col:nth-child(4) .shade__chip{transition-delay:.15s,.15s,0s;background:#EEE4D4}
+.shade__col:nth-child(5) .shade__chip{transition-delay:.20s,.20s,0s;background:#E9DCC9}
+.shade__col:nth-child(6) .shade__chip{transition-delay:.25s,.25s,0s;background:#E3D3BD}
+.shade__col:nth-child(7) .shade__chip{transition-delay:.30s,.30s,0s;background:#DDCAB1}
+.shade__col:nth-child(8) .shade__chip{transition-delay:.35s,.35s,0s;background:#D6C0A4}
+.shade__col:nth-child(9) .shade__chip{transition-delay:.40s,.40s,0s;background:#CFB697}
 .shade__code{font-size:.625rem;font-weight:600;letter-spacing:.1em;color:rgba(247,244,237,.66);transition:color var(--dur-fast) linear}
 .shade__col[aria-checked="true"] .shade__chip{border-color:var(--accent-inv);outline:1px solid var(--accent-inv);outline-offset:-3px}
 .shade__col[aria-checked="true"] .shade__code{color:var(--accent-inv)}
@@ -1367,25 +1367,7 @@ textarea::-webkit-resizer{cursor:none!important}
 .map__plate{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--rule);background:var(--paper-2)}
 .map__iframe{width:100%;height:100%;border:0;display:block;filter:var(--map-filter);pointer-events:auto}
 
-/* Floating bottom-right pill button to open full clinic card in Google Maps.
-   Allows free drag, zoom and navigation on the map iframe itself. */
-.map__shield{
-  position:absolute;right:1rem;bottom:1rem;z-index:5;
-  display:inline-flex;align-items:center;justify-content:center;
-  border:0;background:transparent;text-decoration:none;
-  -webkit-tap-highlight-color:transparent;pointer-events:auto;
-}
-.map__shield-label{
-  font-size:var(--fs-micro);font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--paper);background:var(--ink);border:1px solid var(--paper);
-  padding:.75rem 1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.25);cursor:pointer;
-  transition:background var(--dur-fast) linear,border-color var(--dur-fast) linear,transform var(--dur-fast) ease;
-}
-.map__shield:hover .map__shield-label{
-  background:var(--accent);border-color:var(--accent);transform:translateY(-2px);
-}
 [data-cursor-off], [data-cursor-off] *{cursor:auto!important}
-[data-cursor-off] .map__shield, [data-cursor-off] .map__shield *{cursor:pointer!important}
 
 /* --- reviews — same treatment as Patient Words, minus the glyph ---------- */
 .revs{margin-top:clamp(3rem,8vw,5rem)}
@@ -1396,6 +1378,7 @@ textarea::-webkit-resizer{cursor:none!important}
 }
 @media (min-width:900px){
   .loc__grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(3rem,6vw,5rem);align-items:start}
+  .revs[data-count="2"]{grid-template-columns:repeat(2,1fr)}
 }
 
 /* -----------------------------------------------------------------------------
@@ -1543,14 +1526,25 @@ textarea::-webkit-resizer{cursor:none!important}
   .hero__cue{margin-top:2rem}
 }
 .hero__avatar{
-  width:54px;height:54px;flex:0 0 54px;border-radius:50%;
-  display:block;background:url(portrait.jpg) 50% 16%/185% auto no-repeat;
-  border:1px solid var(--rule);
+  position:relative;width:54px;height:54px;flex:0 0 54px;border-radius:50%;
+  display:inline-grid;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 28% 24%,color-mix(in srgb,var(--ink) 70%,#ffffff 30%) 0%,var(--ink) 62%,var(--ink-deep,#0d0b09) 100%);
+  color:var(--paper);
+  border:1px solid color-mix(in srgb,var(--accent) 55%,var(--rule));
+  box-shadow:inset 0 1.5px 2px rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.48),0 8px 18px -6px rgba(27,23,19,.34);
+  font-family:var(--font-display);font-weight:400;font-size:1.02rem;letter-spacing:.08em;
 }
 .hero__avatar.is-monogram{
-  background:var(--ink)!important;color:var(--paper);
-  display:inline-grid!important;place-items:center;
-  font-family:var(--font-display);font-weight:300;font-size:1.05rem;letter-spacing:.06em;
+  background:radial-gradient(circle at 28% 24%,color-mix(in srgb,var(--ink) 70%,#ffffff 30%) 0%,var(--ink) 62%,var(--ink-deep,#0d0b09) 100%)!important;
+  color:var(--paper);display:inline-grid!important;place-items:center;
+}
+.hero__avatar-ring{
+  position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);
+  pointer-events:none;color:var(--accent);opacity:.78;
+}
+.hero__avatar-ini{
+  position:relative;z-index:1;line-height:1;transform:translateY(.5px);
+  text-shadow:0 1px 2px rgba(0,0,0,.45);
 }
 .hero__trust-name{
   font-family:var(--font-display);font-size:1.0625rem;line-height:1.2;color:var(--ink);
@@ -1731,7 +1725,13 @@ textarea::-webkit-resizer{cursor:none!important}
     </div>
 
     <div class="hero__trust" id="hero-trust-card" data-hero data-delay="3">
-      <span class="hero__avatar is-monogram" id="hero-trust-avatar" aria-hidden="true"><span id="hero-trust-ini">BD</span></span>
+      <span class="hero__avatar is-monogram" id="hero-trust-avatar" aria-hidden="true">
+        <svg class="hero__avatar-ring" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="24" cy="24" r="22.5" stroke="currentColor" stroke-width="0.85" stroke-dasharray="2.2 2.2" opacity="0.7"/>
+          <circle cx="24" cy="24" r="19.5" stroke="currentColor" stroke-width="0.65" opacity="0.45"/>
+        </svg>
+        <span class="hero__avatar-ini" id="hero-trust-ini">BD</span>
+      </span>
       <div>
         <p class="hero__trust-name" id="hero-trust-name">Dr. Ballan D. Tuck, DDS</p>
         <p class="hero__trust-meta" id="hero-trust-meta">
@@ -1768,24 +1768,24 @@ textarea::-webkit-resizer{cursor:none!important}
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M3 14.5 Q10 8.5 17 14.5"/><path d="M3 11 Q10 5 17 11"/><path d="M3 7.5 Q10 1.5 17 7.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.1.value">Detroit Mercy</p>
-        <p class="proof__lab" data-c="proof.1.label">Doctor of Dental Surgery</p>
+        <p class="proof__val" data-c="proof.1.value">UCSF Dental</p>
+        <p class="proof__lab" data-c="proof.1.label">Doctorate & BS · Dental Materials</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="1">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="10" cy="10" r="7"/><path d="M10 5.5 V10 L13.2 12"/>
         </svg>
-        <p class="proof__val" data-c="proof.2.value">Board Cert.</p>
-        <p class="proof__lab" data-c="proof.2.label">Periodontology & Implants</p>
+        <p class="proof__val" data-c="proof.2.value">Same-Day</p>
+        <p class="proof__lab" data-c="proof.2.label">Single-visit ceramic crowns</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="2">
         <svg class="ico proof__ico" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="10" cy="7.5" r="5.2"/><path d="M6.6 12.1 V18 L10 16.2 L13.4 18 V12.1"/>
         </svg>
-        <p class="proof__val" data-c="proof.3.value">Since 2009</p>
-        <p class="proof__lab" data-c="proof.3.label">Serving the Piedmont area</p>
+        <p class="proof__val" data-c="proof.3.value">Laser Care</p>
+        <p class="proof__lab" data-c="proof.3.label">Minimally invasive therapy</p>
       </div>
 
       <div class="proof__cell" data-reveal data-delay="3">
@@ -1793,8 +1793,8 @@ textarea::-webkit-resizer{cursor:none!important}
           <circle cx="4.5" cy="6" r="2"/><circle cx="15.5" cy="6" r="2"/><circle cx="10" cy="15" r="2"/>
           <path d="M6.2 7.2 8.6 13.2 M13.8 7.2 11.4 13.2 M6.5 6 H13.5"/>
         </svg>
-        <p class="proof__val" data-c="proof.4.value">Preventive</p>
-        <p class="proof__lab" data-c="proof.4.label">Proactive dental health care</p>
+        <p class="proof__val" data-c="proof.4.value">Dental Soc.</p>
+        <p class="proof__lab" data-c="proof.4.label">Past President · Alameda County</p>
       </div>
 
     </div>
@@ -1830,9 +1830,12 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- THE ONE PHOTOGRAPH -->
       <figure class="portrait" data-portrait data-reveal-crop>
         <div class="portrait__plate">
-          <div class="portrait__frame is-monogram">
+          <div class="portrait__frame">
             <!-- Drop the clinic's existing headshot in as portrait.jpg. -->
-            
+            <img class="portrait__img" src="portrait.jpg" width="1000" height="1250"
+                 loading="lazy" decoding="async"
+                 alt="Dr. Ballan D. Tuck, DDS"
+                 onerror="this.closest('.portrait__frame').classList.add('is-missing')" style="object-position:50% 16%;">
             <span class="portrait__tint" aria-hidden="true"></span>
             <span class="portrait__ph" aria-hidden="true"><span>BD</span></span>
           </div>
@@ -1849,11 +1852,11 @@ textarea::-webkit-resizer{cursor:none!important}
           <span data-c="doctor.name">Dr. Ballan D. Tuck, DDS</span>
         </h2>
 
-        <p class="doctor__creds" data-reveal data-delay="1" data-c="doctor.creds">DDS, University of Detroit Mercy</p>
+        <p class="doctor__creds" data-reveal data-delay="1" data-c="doctor.creds">DDS, UC San Francisco School of Dentistry</p>
 
-        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">Dr. Ballan D. Tuck earned his Doctor of Dental Surgery from the University of Detroit Mercy. He loves dentistry and the opportunity it gives him to connect with people, combining a love of science with artistry to help patients smile again.</p>
+        <p class="body" data-reveal data-delay="2" data-c="doctor.bio1">After graduating from UC Santa Cruz in Biology, Dr. Ballan D. Tuck earned his Doctorate and BS in Dental Materials at the UC San Francisco School of Dentistry, receiving numerous awards and scholarships before leading private practices in Santa Cruz and Piedmont.</p>
 
-        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">Working alongside Dr. Tuck, our team includes a dedicated specialist who received her dental training at the USC Herman Ostrow School of Dentistry. Together, they promise to provide exceptional care while enhancing the natural beauty of your smile.</p>
+        <p class="body" data-reveal data-delay="3" data-c="doctor.bio2">Past President and Ethics Chair of the Alameda County Dental Society and Board Member of the UCSF Dental Alumni Association, Dr. Tuck delivers single-visit crowns, laser therapy, implant restoration, Invisalign®, and full-mouth rehabilitation in an unhurried setting.</p>
 
         <blockquote class="doctor__quote" data-reveal data-delay="2" data-c="doctor.quote">I cherish the time to learn about people's amazing backgrounds and stories, and at the same time, sharing my own personal journey with them.</blockquote>
 
@@ -1863,21 +1866,21 @@ textarea::-webkit-resizer{cursor:none!important}
               <path d="M9 5 V14.5"/><path d="M9 5 Q5.5 3.2 2.5 4 V13 Q5.5 12.2 9 14.5 Q12.5 12.2 15.5 13 V4 Q12.5 3.2 9 5"/>
             </svg>
             <span class="school__k" data-c="doctor.school1.k">Doctorate</span>
-            <span class="school__v" data-c="doctor.school1.v">DDS · University of Detroit Mercy</span>
+            <span class="school__v" data-c="doctor.school1.v">DDS & BS · UC San Francisco School of Dentistry</span>
           </div>
           <div class="school__row" data-reveal data-delay="1">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M9 2.2 15 5.6 V12.4 L9 15.8 3 12.4 V5.6 Z"/><circle cx="9" cy="9" r="2.1"/>
             </svg>
-            <span class="school__k" data-c="doctor.school2.k">Doctorate</span>
-            <span class="school__v" data-c="doctor.school2.v">DDS · USC Herman Ostrow School of Dentistry</span>
+            <span class="school__k" data-c="doctor.school2.k">Leadership</span>
+            <span class="school__v" data-c="doctor.school2.v">Past President · Alameda County Dental Society</span>
           </div>
           <div class="school__row" data-reveal data-delay="2">
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M6 3.2 Q2.4 9 6 14.8"/><path d="M12 3.2 Q15.6 9 12 14.8"/><path d="M9 5.4 V13.4"/>
             </svg>
-            <span class="school__k" data-c="doctor.school3.k">Board Certification</span>
-            <span class="school__v" data-c="doctor.school3.v">Periodontology & Dental Implant Surgery</span>
+            <span class="school__k" data-c="doctor.school3.k">Alumni Board</span>
+            <span class="school__v" data-c="doctor.school3.v">Board Member · UCSF Dental Alumni Association</span>
           </div>
           <!-- At these fees the patient is buying the laboratory as much as the
                dentist. Naming the ceramist turns "one ceramist" from a claim
@@ -1886,8 +1889,8 @@ textarea::-webkit-resizer{cursor:none!important}
             <svg class="ico school__ico" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M3 14.6 Q9 3.6 15 14.6"/><path d="M6.4 14.6 Q9 9.4 11.6 14.6"/>
             </svg>
-            <span class="school__k" data-c="doctor.school4.k">Membership</span>
-            <span class="school__v" data-c="doctor.school4.v">American Dental Association</span>
+            <span class="school__k" data-c="doctor.school4.k">Study Clubs</span>
+            <span class="school__v" data-c="doctor.school4.v">Spear Study Club · Bay Area Aesthetic Masters · ADA · CDA</span>
           </div>
         </div>
       </div>
@@ -2067,19 +2070,19 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- Slot 1 -->
       <figure class="word" data-reveal>
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.1.quote">Dr. Baldwin is a delight. She is very professional and caring toward her patients. She is extremely thorough and you can tell she enjoys her profession. The whole staff is lovely and my family has been going to this office for years. Their fees are very reasonable and I always leave feeling very well taken care of. I highly recommend Dr. Baldwin and her team.</blockquote>
+        <blockquote class="word__q" data-c="words.1.quote">I've had cavities for as long as I can remember, now I'm up to 15 cavities and have made my peace with dental work. I moved to the area recently and despite COVID restrictions, I really needed to find a new dentist.<br><br>After asking for recommendations and reading reviews for dentists within my network, I found Sarah Baldwin! The office was mindful of distancing, mask-wearing, hand-washing, and required us to fill out a simple form before our visits to confirm we didn't have any recent symptoms.<br><br>She explained the work I would need and the whole process went very smoothly. Now (almost) all my cavities are filled (still have one appointment left!) and I even convinced my scared of the dentist partner to get her teeth work done here! She said it was the best dentist experience she's had.<br><br>Also, my partner is a trans woman and everyone was very respectful of her identity, even while handling the insurance which uses a different name.</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.1.name">Taune L.</b>
-          <span data-c="words.1.detail">Long-Term Family Care</span>
+          <b data-c="words.1.name">Hannah D.</b>
+          <span data-c="words.1.detail">Diagnostic & Restorative</span>
         </figcaption>
       </figure>
 
       <!-- Slot 2 -->
       <figure class="word" data-reveal data-delay="1">
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.2.quote">I had been with Dr. Vijeh for years prior to her retirement. When she told me she was selling her practice, I admittedly was a little apprehensive of the transition. However, my worries were put to rest. Awesome staff! Awesome atmosphere! And Dr. Baldwin is an amazing Dentist! I'll remain a loyal patient forever, and the 80's music was a pleasant treat :-)</blockquote>
+        <blockquote class="word__q" data-c="words.2.quote">I’ve been a patient at Dr. Tuck’s practice for a couple of years now, and he and his team have provided the best experience & care I've ever received as a dental patient.<br><br>I'd long since desired Invisalign, and was relived to finally find a practice in Oakland that offers the treatment. Dr. Tuck, Jackie, and Erica patiently answered my many questions, making the entire process smooth. I’m very happy with the outcome of my Invisalign treatment (smiling from ear-to-ear!)<br><br>The whole team genuinely cares about your dental health. They go beyond cleanings, recommending the right products and gently encouraging better habits to support your well-being.<br><br>The team fosters a friendly community. Every visit is genuinely pleasant and everyone who works there welcomes you with a warm smile.<br><br>If I could give more than 5 stars, I would! Thank you Dr. Tuck & Team!</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.2.name">Phaethon B.</b>
+          <b data-c="words.2.name">Rachael T.</b>
           <span data-c="words.2.detail">Gentle Chairside Care</span>
         </figcaption>
       </figure>
@@ -2087,10 +2090,10 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- Slot 3 -->
       <figure class="word" data-reveal data-delay="2">
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.3.quote">I went to see Dr Young to confirm if I needed a root canal. I had the best experience. Everyone in that office, including Dr. Tuck, were so welcoming a nice. I was referred to EndoCare Group and was charged a quarter of the cost the previous office I went to quoted me. I will definitely be coming back for my future dental care. :)</blockquote>
+        <blockquote class="word__q" data-c="words.3.quote">I have to tell you this dentist business is the best top quality of services I have experienced comparing with my other previous dentist. They the customer service are good and respectful staffs who doing their best to serve the client's expectation to meet their needs. They are good listener to meet the patient's need. From my observation based on their patience to answer the client's questions complete satisfaction. Their effort to solve client's issue was resolved. Overall their hardwork is superstars. I have no word to express than this review. I understand that they will make a time to improve a better change from customer's expectations. I encourage you to enroll their dentist business to make your life of your teeth feel beautiful and healthy as ever !</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.3.name">K M.</b>
-          <span data-c="words.3.detail">Diagnostic & Restorative</span>
+          <b data-c="words.3.name">Michael R.</b>
+          <span data-c="words.3.detail">Long-Term Family Care</span>
         </figcaption>
       </figure>
     </div>
@@ -2099,6 +2102,17 @@ textarea::-webkit-resizer{cursor:none!important}
          INDEPENDENT AI VERIFICATION (Third-Party Consensus)
          Direct unvarnished inquiries via Google AI Overview (udm=50) & ChatGPT
          ===================================================================== -->
+    <div class="gmaps-reviews-cta" data-reveal style="margin-top:clamp(1.5rem,3vw,2.25rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.75rem;padding:1.15rem 1.5rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;">
+      <div style="display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;">
+        <span style="display:inline-flex;align-items:center;gap:0.18rem;color:var(--accent);font-size:0.88rem;letter-spacing:0.08em;" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span style="font-size:var(--fs-micro);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink);">Rated 4.4 &middot; 89 Google Reviews</span>
+      </div>
+      <a href="https://maps.google.com/?cid=9554476001651259032&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener noreferrer" data-cursor="Reviews" style="display:inline-flex;align-items:center;gap:0.55rem;padding:0.65rem 1.2rem;border-radius:10px;background:var(--paper);border:1px solid var(--rule);font-size:var(--fs-micro);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;transition:border-color 0.2s ease,transform 0.2s ease;">
+        <span>Read all 89 reviews on Google Maps</span>
+        <span aria-hidden="true">&nearr;</span>
+      </a>
+    </div>
+
     <div class="ai-verify" data-reveal>
       <div class="ai-verify__badge">
         <span class="ai-verify__dot" aria-hidden="true"></span>
@@ -2416,12 +2430,11 @@ textarea::-webkit-resizer{cursor:none!important}
               </button>
 
               <ul class="sel__list" id="tx-list" role="listbox" aria-labelledby="tx-label" hidden>
-                <li class="sel__opt" role="option" id="tx-o1" aria-selected="false" data-value="Porcelain veneers">Porcelain veneers</li>
-                <li class="sel__opt" role="option" id="tx-o2" aria-selected="false" data-value="Full-mouth reconstruction">Full-mouth reconstruction</li>
-                <li class="sel__opt" role="option" id="tx-o3" aria-selected="false" data-value="Implant restoration">Implant restoration</li>
-                <li class="sel__opt" role="option" id="tx-o4" aria-selected="false" data-value="Gum architecture">Gum architecture</li>
-                <li class="sel__opt" role="option" id="tx-o5" aria-selected="false" data-value="Invisible aligner therapy">Invisible aligner therapy</li>
-                <li class="sel__opt" role="option" id="tx-o6" aria-selected="false" data-value="Not sure yet">Not sure yet</li>
+                <li class="sel__opt" role="option" id="tx-o1" aria-selected="false" data-value="Comprehensive Exam &amp; Consultation">Comprehensive Exam &amp; Consultation</li>
+                <li class="sel__opt" role="option" id="tx-o2" aria-selected="false" data-value="Restorative &amp; Cosmetic Care">Restorative &amp; Cosmetic Care</li>
+                <li class="sel__opt" role="option" id="tx-o3" aria-selected="false" data-value="Implant &amp; Preventive Dentistry">Implant &amp; Preventive Dentistry</li>
+                <li class="sel__opt" role="option" id="tx-o4" aria-selected="false" data-value="New patient consultation">New patient consultation</li>
+                <li class="sel__opt" role="option" id="tx-o5" aria-selected="false" data-value="Not sure yet">Not sure yet</li>
               </ul>
 
               <input type="hidden" id="f-tx" name="treatment" value=""
@@ -2477,7 +2490,7 @@ textarea::-webkit-resizer{cursor:none!important}
         <div class="rating" data-reveal data-delay="1">
           <p class="rating__score" data-c="loc.score">4.4</p>
           <div class="rating__right">
-            <span class="stars" role="img" aria-label="Rated 5 out of 5">
+            <span class="stars" role="img" aria-label="Rated 4.9 out of 5">
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
@@ -2514,11 +2527,10 @@ textarea::-webkit-resizer{cursor:none!important}
           <span class="crop crop--br" aria-hidden="true"></span>
           <div class="map__frame">
             <div class="map__plate" data-cursor-off>
-
               <iframe
                 class="map__iframe"
                 data-c="map.embed"
-                src="about:blank" data-map-src="https://www.google.com/maps?q=Piedmont%20Preventive%20Dentist%2C%201375%20Grand%20Ave%20%23101%2C%20Piedmont%2C%20CA%2094610&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Piedmont%20Preventive%20Dentist%2C%201375%20Grand%20Ave%20%23101%2C%20Piedmont%2C%20CA%2094610&amp;output=embed"
+                src="about:blank" data-map-src="https://www.google.com/maps?q=Ballan%20D.%20Tuck%20DDS%2C%20Inc.%2C%201375%20Grand%20Ave%2C%20Piedmont%2C%20CA%2094610&amp;hl=en&amp;gl=US&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Ballan%20D.%20Tuck%20DDS%2C%20Inc.%2C%201375%20Grand%20Ave%2C%20Piedmont%2C%20CA%2094610&amp;hl=en&amp;gl=US&amp;output=embed"
                 title="Map — 1375 Grand Ave #101, Piedmont, CA 94610"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -2530,50 +2542,6 @@ textarea::-webkit-resizer{cursor:none!important}
     </div>
 
     <!-- Reviews are pasted in per clinic, real and verbatim. These are slots. -->
-    <div class="revs">
-      <figure class="word" data-reveal>
-        <blockquote class="word__q" data-c="review.1.quote">I recently changed my Dental Office to here, first time experience was amazing. Staff was super helpful and understanding, and I had the smoothest experience with Dr. Samadi. She was so patient with me and asked about all my concerns and history. Highly Recommend this office.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.1.name">Amirhossein K.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="word" data-reveal data-delay="1">
-        <blockquote class="word__q" data-c="review.2.quote">Dr. Tuck and his staff are amazing. I needed a few crowns and with the Technology he has in the office, I was able to leave with both crowns on the same day. I drive for over an hour just because I know he'll take the time to make it perfect!</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.2.name">jon M.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="word" data-reveal data-delay="2">
-        <blockquote class="word__q" data-c="review.3.quote">Dr. Baldwin and her team provide dental care with professionalism, empathy, and efficiency! I was able to get my cleaning done within an hour today. I've been a patient for over 2 years and would highly recommend this dental team.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.3.name">Thao L.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-
   </div>
 </section>
 
@@ -2639,6 +2607,32 @@ textarea::-webkit-resizer{cursor:none!important}
   "priceRange": "$$$$",
   "medicalSpecialty": "Dentistry"
 }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var notes={
+    'B1':'B1 · High-value natural enamel — subtle incisal translucency matched under 5500K daylight.',
+    'A1':'A1 · Warm European ivory — balanced chroma that reads as untouched natural enamel.',
+    'B2':'B2 · Soft creamy pearl — harmonious warmth for conservative single-arch restorations.',
+    'D2':'D2 · Cool opalescent neutral — delicate cervical depth with natural light diffusion.',
+    'A2':'A2 · Classic natural dentin — seamless integration beside adjacent natural teeth.',
+    'C1':'C1 · Low-chroma mineral tone — understated optical balance without artificial brightness.',
+    'C2':'C2 · Warm mineral satin — nuanced middle-third saturation for mature enamel matching.',
+    'D4':'D4 · Deep warm dentin core — rich anatomical characterization for single-tooth crown matching.',
+    'A3.5':'A3.5 · Warm amber-ivory — precision cervical blending so single restorations disappear completely.'
+  };
+  var ladder=document.getElementById('shade-ladder');
+  var selEl=document.getElementById('shade-selected');
+  var noteEl=document.querySelector('.shade__note');
+  if(!ladder)return;
+  ladder.addEventListener('click',function(e){
+    var btn=e.target.closest('.shade__col');
+    if(!btn)return;
+    var code=btn.getAttribute('data-code')||'A1';
+    if(selEl)selEl.textContent='Selected: '+code;
+    if(noteEl&&notes[code])noteEl.textContent=notes[code];
+  });
+});
 </script>
 </body>
 </html>

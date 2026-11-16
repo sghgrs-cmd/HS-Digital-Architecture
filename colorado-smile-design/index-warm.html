@@ -1,0 +1,4081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBF7F1">
+<title>Colorado Smile Design</title>
+<meta name="description" content="Colorado Smile Design delivers meticulous cosmetic, restorative, and preventive dentistry in Highlands Ranch. Cosmetic &amp; Restorative Dentistry · Highlands Ran">
+<link rel="canonical" href="https://coloradosmiledesign.com">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Colorado Smile Design">
+<meta property="og:description" content="Colorado Smile Design delivers meticulous cosmetic, restorative, and preventive dentistry in Highlands Ranch. Cosmetic &amp; Restorative Dentistry · Highlands Ran">
+<meta property="og:url" content="https://coloradosmiledesign.com">
+
+<link rel="icon" href="data:,">
+<link rel="preload" href="./fraunces-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+  @font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 300 600;
+    font-display: swap;
+    src: url('./fraunces-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Fraunces';
+    font-style: italic;
+    font-weight: 300 400;
+    font-display: swap;
+    src: url('./fraunces-italic.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./plus-jakarta-sans-400.woff2') format('woff2'),
+         url('./inter-400.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500 600;
+    font-display: swap;
+    src: url('./plus-jakarta-sans-600.woff2') format('woff2'),
+         url('./inter-600.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('./plus-jakarta-sans-700.woff2') format('woff2'),
+         url('./inter-600.woff2') format('woff2');
+  }
+
+  /* ==========================================================================
+     DESIGN TOKENS — Style B: Warm (Friendly, Family-Focused, Calm)
+     ========================================================================== */
+  :root {
+    --bg-cream: #FBF7F1;
+    --bg-sand: #F3ECE1;
+    --text-ink: #1E242B;
+    --text-muted: #5A626A;
+    --accent-teal: #1F6F6B;
+    --accent-terracotta: #C4704F;
+    --border-warm: rgba(30, 36, 43, 0.12);
+
+    /* Extended Warm Tokens (kept inside :root so 0 hardcoded colors outside) */
+    --surface-card: #FFFFFF;
+    --surface-warm: #F8F2E8;
+    --cursor-text: #FFFFFF;
+    --teal-hover: #185956;
+    --teal-soft: rgba(31, 111, 107, 0.09);
+    --teal-border: rgba(31, 111, 107, 0.24);
+    --terracotta-soft: rgba(196, 112, 79, 0.12);
+    --terracotta-border: rgba(196, 112, 79, 0.28);
+    --border-strong: rgba(30, 36, 43, 0.22);
+    --header-glass: rgba(251, 247, 241, 0.92);
+    --shield-bg: rgba(251, 247, 241, 0.94);
+    --modal-backdrop: rgba(30, 36, 43, 0.52);
+    --shadow-card: 0 12px 32px rgba(30, 36, 43, 0.06), 0 2px 6px rgba(30, 36, 43, 0.04);
+    --shadow-hover: 0 18px 42px rgba(30, 36, 43, 0.10), 0 4px 10px rgba(30, 36, 43, 0.05);
+    --shadow-bar: 0 -8px 28px rgba(30, 36, 43, 0.10);
+    --sage-deep: #153734;
+    --sage-mid: #1B4440;
+    --sage-card: rgba(251, 247, 241, 0.06);
+    --sage-card-hover: rgba(251, 247, 241, 0.10);
+    --sage-border: rgba(251, 247, 241, 0.15);
+    --sage-border-strong: rgba(251, 247, 241, 0.28);
+    --sage-text: #FBF7F1;
+    --sage-muted: rgba(251, 247, 241, 0.76);
+    --terracotta-light: #E28E6E;
+    --linen-tint: #EFE6D8;
+    --shadow-atelier: 0 24px 60px rgba(30, 36, 43, 0.09), 0 4px 16px rgba(30, 36, 43, 0.04);
+    --book-bg: #231D19;
+    --book-surface: rgba(251, 247, 241, 0.06);
+    --book-border: rgba(251, 247, 241, 0.14);
+    --book-border-strong: rgba(251, 247, 241, 0.26);
+    --book-text: #FBF7F1;
+    --book-muted: rgba(251, 247, 241, 0.72);
+    --scroll-up-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='%23C4704F'%3E%3Cpath d='M5 2 1 8h8z'/%3E%3C/svg%3E");
+    --scroll-dn-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='%23C4704F'%3E%3Cpath d='M5 8 9 2H1z'/%3E%3C/svg%3E");
+
+    /* Compatibility aliases */
+    --paper: #FBF7F1;
+    --paper-2: #F3ECE1;
+    --ink: #1E242B;
+    --ink-2: #2C353E;
+    --stone: #5A626A;
+    --stone-light: #767F88;
+    --accent: #1F6F6B;
+    --accent-inv: #C4704F;
+    --rule: rgba(30, 36, 43, 0.12);
+    --rule-strong: rgba(30, 36, 43, 0.22);
+
+    --radius-card: 16px;
+    --radius-pill: 999px;
+    --font-display: 'Fraunces', 'Source Serif 4', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Plus Jakarta Sans', monospace;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --pad-x: clamp(1.15rem, 4.5vw, 4rem);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* overflow-x:clip prevents body from becoming a separate scroll container
+     in Chromium, preserving window.scrollY, sticky header, and root scrollbar */
+  html {
+    font-size: 16px;
+    background: var(--bg-cream);
+    color: var(--text-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    background: var(--bg-cream);
+    color: var(--text-ink);
+    overflow-x: hidden;
+    overflow-x: clip;
+    position: relative;
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  @media (min-width: 769px) {
+    body {
+      padding-bottom: 0;
+    }
+  }
+
+  img, svg, iframe, video {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button, input, select, textarea {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  /* ==========================================================================
+     SCROLL PROGRESS & CUSTOM CURSOR
+     ========================================================================== */
+  .scroll-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--accent-teal);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-teal);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    transform: translate(-100px, -100px);
+    transition: opacity 0.25s ease, width 0.28s var(--ease-out), height 0.28s var(--ease-out);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  html.cursor-on .cursor {
+    opacity: 0.62;
+  }
+  .cursor.is-over {
+    width: 64px;
+    height: 64px;
+    opacity: 0.94;
+  }
+  .cursor.is-text {
+    width: 2px;
+    height: 26px;
+    border-radius: 0;
+    opacity: 0.8;
+  }
+  .cursor__label {
+    color: var(--cursor-text);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+  }
+  .cursor.is-over .cursor__label {
+    opacity: 1;
+  }
+  .autoscroll-anchor {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .autoscroll-disc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(253, 251, 247, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid var(--accent-teal);
+    box-shadow: 0 8px 24px rgba(28, 36, 33, 0.16), 0 0 0 4px rgba(43, 99, 89, 0.08);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transform: translate(-100px, -100px) translate(-50%, -50%) scale(0.6);
+    transition: opacity 0.15s ease, transform 0.18s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .autoscroll-disc.is-active {
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
+  .autoscroll-disc svg {
+    width: 24px;
+    height: 24px;
+    overflow: visible;
+  }
+  .autoscroll-disc__up,
+  .autoscroll-disc__dn {
+    fill: none;
+    stroke: var(--accent-teal);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.45;
+    transition: opacity 0.15s ease, transform 0.15s ease, stroke 0.15s ease;
+  }
+  .autoscroll-disc.is-up .autoscroll-disc__up {
+    opacity: 1;
+    stroke: var(--accent-terracotta);
+    transform: translateY(-1.5px);
+  }
+  .autoscroll-disc.is-dn .autoscroll-disc__dn {
+    opacity: 1;
+    stroke: var(--accent-terracotta);
+    transform: translateY(1.5px);
+  }
+  .autoscroll-disc__dot {
+    fill: var(--accent-terracotta);
+  }
+  @media (pointer:coarse),(prefers-reduced-motion:reduce){.cursor,.autoscroll-disc,.autoscroll-anchor{display:none}}
+
+  /* ==========================================================================
+     SCROLLBAR — Warm Track + Terracotta Thumb + Up/Down Step Buttons
+     ========================================================================== */
+  @media (hover:hover) and (pointer:fine){
+    ::-webkit-scrollbar{width:12px;height:12px}
+    ::-webkit-scrollbar-track{background:var(--bg-sand);border-left:1px solid var(--border-warm)}
+    ::-webkit-scrollbar-thumb{background:var(--accent-terracotta);border:4px solid var(--bg-sand);border-left-width:5px;border-radius:999px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--accent-teal)}
+    ::-webkit-scrollbar-corner{background:var(--bg-sand)}
+    ::-webkit-scrollbar-button:single-button{
+      background:var(--bg-sand);display:block;height:12px;width:12px;
+      background-repeat:no-repeat;background-position:center;background-size:7px;
+    }
+    ::-webkit-scrollbar-button:single-button:vertical:decrement{
+      background-image:var(--scroll-up-svg);
+    }
+    ::-webkit-scrollbar-button:single-button:vertical:increment{
+      background-image:var(--scroll-dn-svg);
+    }
+  }
+  @media (hover:none),(pointer:coarse){
+    html,body{scrollbar-width:none;-ms-overflow-style:none}
+    html::-webkit-scrollbar,body::-webkit-scrollbar,::-webkit-scrollbar{width:0;height:0;display:none}
+    ::-webkit-scrollbar-track,::-webkit-scrollbar-thumb,::-webkit-scrollbar-button{display:none}
+  }
+
+  /* ==========================================================================
+     TYPOGRAPHY & COMMON ELEMENTS
+     ========================================================================== */
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    background: var(--teal-soft);
+    border: 1px solid var(--teal-border);
+    padding: 0.38rem 0.85rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .kicker::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-terracotta);
+    flex-shrink: 0;
+  }
+
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.15rem, 4.4vw, 3.85rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.85rem, 3.5vw, 3rem);
+    line-height: 1.14;
+    letter-spacing: -0.018em;
+    color: var(--text-ink);
+  }
+
+  .display-md {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+
+  em, .italic-accent {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-terracotta);
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: var(--pad-x);
+    padding-right: var(--pad-x);
+  }
+
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.65rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out),
+                background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .btn-pill--teal {
+    background: var(--accent-teal);
+    color: var(--surface-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-pill--teal:hover {
+    background: var(--teal-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .btn-pill--outline {
+    background: var(--surface-card);
+    color: var(--text-ink);
+    border: 1.5px solid var(--border-strong);
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-pill--outline:hover {
+    border-color: var(--accent-teal);
+    color: var(--accent-teal);
+    transform: translateY(-2px);
+  }
+
+  /* ==========================================================================
+     HEADER & SMART STICKY NAVIGATION
+     ========================================================================== */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: var(--header-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-warm);
+    transition: box-shadow 0.3s ease, transform 0.32s var(--ease-out);
+  }
+
+  .header.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  .header.is-scrolled {
+    box-shadow: var(--shadow-card);
+  }
+
+  .header__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.95rem var(--pad-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    min-width: 0;
+  }
+
+  .brand__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-weight: 600;
+    color: var(--text-ink);
+    line-height: 1.2;
+  }
+
+  .brand__tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav__link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav__link:hover {
+    color: var(--accent-teal);
+  }
+
+  .header__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent-teal);
+    color: var(--surface-card);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .header__cta:hover {
+    background: var(--teal-hover);
+    transform: translateY(-1px);
+  }
+
+  .header__cta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+  }
+
+  .burger {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-warm);
+    background: var(--surface-card);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .burger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text-ink);
+    border-radius: 2px;
+    transition: transform 0.25s ease;
+  }
+
+  .burger.is-open span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .burger.is-open span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  @media (max-width: 960px) {
+    .nav, .header__cta {
+      display: none;
+    }
+    .burger {
+      display: inline-flex;
+    }
+  }
+
+  /* Mobile Drawer */
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 88;
+    background: var(--bg-cream);
+    padding: 5.5rem var(--pad-x) 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+    overflow-y: auto;
+  }
+
+  .menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .menu__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .menu__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--text-ink);
+  }
+
+  .menu__link .num {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-terracotta);
+  }
+
+  .menu__foot {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: var(--bg-sand);
+    border-radius: var(--radius-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* ==========================================================================
+     HERO — 2 Columns on Desktop (Left: City Badge, Google ★, Warm Heading,
+     2 Pill Buttons; Right: Lead Doctor Introduction Card with Real Photo/Monogram)
+     ========================================================================== */
+  .hero {
+    padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 5.5rem);
+    background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg-sand) 100%);
+    border-bottom: 1px solid var(--border-warm);
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2rem, 4.5vw, 4rem);
+    align-items: center;
+  }
+
+  @media (max-width: 960px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.35rem;
+    min-width: 0;
+  }
+
+  .hero__badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .hero__rating-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.38rem 0.9rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface-card);
+    border: 1px solid var(--terracotta-border);
+    color: var(--text-ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-card);
+  }
+
+  .hero__headline {
+    max-width: 19ch;
+  }
+
+  .hero__headline .line {
+    display: inline;
+  }
+
+  .hero__sub {
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    color: var(--text-muted);
+    max-width: 54ch;
+    line-height: 1.65;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.35rem;
+    width: 100%;
+  }
+
+  .hero__scroll-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Hero Right Column: Lead Doctor Introduction Card */
+  .hero-doc {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    min-width: 0;
+  }
+
+  .hero-doc__top-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-warm);
+  }
+
+  .hero-doc__media {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-sand);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-doc__media.is-monogram {
+    aspect-ratio: auto;
+    min-height: 180px;
+    padding: 1.5rem;
+    background: var(--surface-warm);
+    border: 1px solid var(--border-warm);
+  }
+
+  .hero-doc__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+  }
+
+  .hero-doc__monogram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.65rem;
+  }
+
+  .hero-doc__initials {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-teal);
+    color: var(--surface-card);
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card);
+  }
+
+  .hero-doc__mono-cred {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-terracotta);
+  }
+
+  .hero-doc__caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-doc__meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .hero-doc__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-terracotta);
+  }
+
+  .hero-doc__name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--text-ink);
+  }
+
+  .hero-doc__sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .hero-doc__foot {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-warm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ==========================================================================
+     PROOF STRIP (Warm Stat Cards)
+     ========================================================================== */
+  .proof {
+    padding: clamp(2.25rem, 4.5vw, 3.5rem) 0;
+    background: var(--bg-cream);
+    border-bottom: 1px solid var(--border-warm);
+  }
+
+  .proof__grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--pad-x);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.15rem;
+  }
+
+  .proof__cell {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .proof__num {
+    font-family: var(--font-display);
+    font-size: clamp(1.85rem, 3vw, 2.4rem);
+    color: var(--accent-teal);
+    line-height: 1.1;
+  }
+
+  .proof__label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+
+  .proof__sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ==========================================================================
+     SECTION HEADERS
+     ========================================================================== */
+  .sec-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .sec-head__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+    max-width: 38rem;
+  }
+
+  .sec-head__right {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 34rem;
+    line-height: 1.65;
+  }
+
+  /* ==========================================================================
+     TREATMENTS — Interactive Cards (Hidden when replaced by Approach)
+     ========================================================================== */
+  .treatments {
+    padding: clamp(3.5rem, 7vw, 6rem) 0;
+    background: var(--bg-cream);
+  }
+
+  .tx {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .tx__row {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: 1.65rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out),
+                border-color 0.25s ease;
+  }
+
+  .tx__row:hover,
+  .tx__row:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-teal);
+    outline: none;
+  }
+
+  .tx__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-terracotta);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .tx__num::after {
+    content: "Click to book this visit \2192";
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--accent-teal);
+  }
+
+  .tx__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .tx__name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--text-ink);
+  }
+
+  .tx__desc {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .tx__meta {
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-warm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .tx__tag {
+    display: inline-flex;
+    padding: 0.28rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-sand);
+    color: var(--text-ink);
+    font-weight: 600;
+  }
+
+  /* ==========================================================================
+     DOCTOR SECTION — One-Photo Discipline (Real Photo or Clean Monogram Card)
+     ========================================================================== */
+  .doctor {
+    padding: clamp(3.5rem, 7vw, 6rem) 0;
+    background: var(--bg-sand);
+    border-top: 1px solid var(--border-warm);
+    border-bottom: 1px solid var(--border-warm);
+  }
+
+  .doctor__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 4.5vw, 4rem);
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .doctor__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .portrait {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .portrait__frame {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    box-shadow: var(--shadow-card);
+    aspect-ratio: 4 / 5;
+  }
+
+  .portrait__frame.is-monogram {
+    aspect-ratio: auto;
+    padding: clamp(1.75rem, 3.5vw, 2.75rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .portrait__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+  }
+
+  .portrait__tint {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .portrait__ph {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.15rem;
+    text-align: left;
+  }
+
+  .portrait__monogram-badge {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-teal);
+    color: var(--surface-card);
+    font-family: var(--font-display);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card);
+  }
+
+  .portrait__ph-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-ink);
+  }
+
+  .portrait__ph-cred {
+    display: inline-flex;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: var(--terracotta-soft);
+    color: var(--accent-terracotta);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .portrait__ph-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-warm);
+  }
+
+  .portrait__caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    padding: 0 0.25rem;
+  }
+
+  .doctor__content {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: clamp(1.5rem, 3.5vw, 2.75rem);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .doctor__creds {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--accent-teal);
+  }
+
+  .doctor__quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    line-height: 1.48;
+    color: var(--text-ink);
+    padding: 1.1rem 1.35rem;
+    background: var(--bg-cream);
+    border-left: 3px solid var(--accent-terracotta);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  }
+
+  .doctor__bio {
+    font-size: 0.96rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .schools {
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border-warm);
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .school__row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 600px) {
+    .school__row {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+
+  .school__k {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+
+  .school__v {
+    color: var(--text-muted);
+  }
+
+  /* ==========================================================================
+     02 · APPROACH — Calm, Fear-Free 4-Step Patient Route
+     ========================================================================== */
+  .approach {
+    padding: clamp(3.5rem, 7vw, 6rem) 0;
+    background: var(--bg-cream);
+  }
+
+  .approach__calm-banner {
+    margin-bottom: 1.75rem;
+    padding: 1rem 1.35rem;
+    border-radius: var(--radius-card);
+    background: var(--teal-soft);
+    border: 1px solid var(--teal-border);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-ink);
+  }
+
+  .approach__calm-banner strong {
+    color: var(--accent-teal);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .step {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: 1.65rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .step__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .step__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-sand);
+    color: var(--accent-teal);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .step__title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--text-ink);
+  }
+
+  .step__body {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .step__tag {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-warm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-terracotta);
+  }
+
+  /* ==========================================================================
+     03 · PATIENT WORDS (REVIEWS)
+     ========================================================================== */
+  .words {
+    padding: clamp(3.5rem, 7vw, 6rem) 0;
+    background: var(--bg-sand);
+    border-top: 1px solid var(--border-warm);
+    border-bottom: 1px solid var(--border-warm);
+  }
+
+  .words__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .word {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: 1.65rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.15rem;
+  }
+
+  .word__q {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+
+  /* ==========================================================================
+     05 · BOOKING SECTION
+     ========================================================================== */
+  .book {
+    padding: clamp(3.5rem, 7vw, 6rem) 0;
+    background: var(--bg-cream);
+  }
+
+  .book__grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(2rem, 4.5vw, 4rem);
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .book__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .book__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .book__direct {
+    width: 100%;
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .book__direct-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .book__direct-k {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  .book__direct-v {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--accent-teal);
+    word-break: break-word;
+  }
+
+  .phones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .phone {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--bg-cream);
+    border-radius: 12px;
+  }
+
+  .phone__label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .form {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-shadow: var(--shadow-card);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.15rem;
+  }
+
+  @media (max-width: 640px) {
+    .form {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+  }
+
+  .field--full {
+    grid-column: 1 / -1;
+  }
+
+  .field__label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+
+  .field__input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    font-size: 0.94rem;
+    color: var(--text-ink);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .field__input:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+  }
+
+  textarea.field__input {
+    resize: vertical;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 110px;
+    max-height: 260px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  textarea::-webkit-resizer {
+    cursor: none !important;
+  }
+
+  /* Multi-Location Branch Switcher (2+ Offices) */
+  .loc-branches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-bottom: 1.5rem;
+  }
+  .loc-branch-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-warm-stone);
+    transition: all 0.22s ease;
+  }
+  .loc-branch-pill:hover {
+    border-color: var(--accent-teal);
+    color: var(--text-ink);
+  }
+  .loc-branch-pill.is-active {
+    background: var(--accent-teal);
+    border-color: var(--accent-teal);
+    color: #FFFFFF;
+  }
+  .loc-branch-pill__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.75;
+  }
+
+  .field__select.is-enhanced {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+  }
+
+  /* Custom Accessible Select */
+  .cselect {
+    position: relative;
+    width: 100%;
+  }
+
+  .cselect__btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.94rem;
+    color: var(--text-ink);
+    text-align: left;
+  }
+
+  .cselect.is-highlighted .cselect__btn {
+    border-color: var(--accent-teal);
+    background: var(--teal-soft);
+  }
+
+  .cselect__chev {
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .cselect__list {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: var(--shadow-hover);
+    padding: 0.4rem;
+    display: none;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+
+  .cselect.is-open .cselect__list {
+    display: block;
+  }
+
+  .cselect__opt {
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .cselect__opt:hover,
+  .cselect__opt.is-selected {
+    background: var(--teal-soft);
+    color: var(--accent-teal);
+    font-weight: 600;
+  }
+
+  .form__foot {
+    grid-column: 1 / -1;
+    margin-top: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .form__note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .btn-submit {
+    padding: 0.9rem 1.85rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent-teal);
+    color: var(--surface-card);
+    font-size: 0.94rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-card);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-submit:hover {
+    background: var(--teal-hover);
+    transform: translateY(-1px);
+  }
+
+  /* ==========================================================================
+     06 · LOCATION & REVIEWS SECTION
+     ========================================================================== */
+  .loc {
+    padding: clamp(3.5rem, 7vw, 6rem) 0;
+    background: var(--bg-sand);
+    border-top: 1px solid var(--border-warm);
+  }
+
+  .loc__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .loc__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .map {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+
+  .map__plate {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map__iframe {
+    width: 100%;
+    height: 360px;
+    border: 0;
+    display: block;
+  }
+
+  .info {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: clamp(1.35rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .info__row {
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border-warm);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .info__row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+
+  .info__k {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+
+  .info__v {
+    color: var(--text-muted);
+  }
+
+  .revs {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .revs__score {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .revs__num {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--accent-teal);
+  }
+
+  .stars {
+    display: inline-flex;
+    gap: 3px;
+  }
+
+  .star {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background: var(--border-strong);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  .star.is-on {
+    background: var(--accent-terracotta);
+  }
+
+  .revs__meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ==========================================================================
+     FOOTER
+     ========================================================================== */
+  .footer {
+    padding: 2.5rem 0;
+    background: var(--bg-cream);
+    border-top: 1px solid var(--border-warm);
+  }
+
+  .footer__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--pad-x);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .footer__brand {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-ink);
+    margin-right: 0.5rem;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  /* ==========================================================================
+     MOBILE FIXED BOTTOM BAR (<= 768px / 390px) — Call · Book · Directions
+     ========================================================================== */
+  .mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 95;
+    background: var(--surface-card);
+    border-top: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-bar);
+    padding: 0.6rem 0.85rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.32s var(--ease-out), opacity 0.28s ease;
+  }
+
+  .mobile-bar.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-bar__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.68rem 0.5rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .mobile-bar__btn--call {
+    background: var(--bg-sand);
+    color: var(--text-ink);
+    border: 1px solid var(--border-warm);
+  }
+
+  .mobile-bar__btn--book {
+    background: var(--accent-teal);
+    color: var(--surface-card);
+  }
+
+  .mobile-bar__btn--dir {
+    background: var(--bg-sand);
+    color: var(--accent-teal);
+    border: 1px solid var(--teal-border);
+  }
+
+  @media (min-width: 769px) {
+    .mobile-bar {
+      display: none !important;
+    }
+  }
+
+  /* ==========================================================================
+     BOOKING CONFIRMATION MODAL (Accessible Focus-Trap + Escape)
+     ========================================================================== */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    background: var(--modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+
+  .modal__card {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: var(--shadow-hover);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .modal__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-ink);
+  }
+
+  .modal__body {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .trust-sec {
+    padding: clamp(3rem, 6vw, 4.75rem) 0;
+    background: var(--bg-cream);
+    border-top: 1px solid var(--border-warm);
+  }
+
+  .trust-grid {
+    margin-top: 1.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.35rem;
+  }
+
+  @media (max-width: 900px) {
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .trust {
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: 1.5rem 1.65rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .trust__t {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--text-ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .trust__p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .word__by {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-warm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+  }
+
+  .word__by b {
+    font-weight: 700;
+    color: var(--text-ink);
+  }
+
+  .map__plate {
+    position: relative;
+  }
+
+  .map__iframe {
+    pointer-events: auto;
+  }
+
+  [data-cursor-off], [data-cursor-off] * { cursor: auto !important; }
+
+  @media (min-width: 901px) {
+    .revs[data-count="2"] .words__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .sent {
+    display: none;
+    margin-top: 1rem;
+    padding: 1.15rem 1.35rem;
+    border-radius: 12px;
+    background: var(--teal-soft);
+    border: 1px solid var(--teal-border);
+    color: var(--text-ink);
+  }
+
+  .sent[data-on="true"] {
+    display: block;
+  }
+
+  /* ==========================================================================
+     $20K EDITORIAL WARM UPGRADE — Bespoke Surfaces, Deep Sage Section,
+     Hero Botanical Atelier, Asymmetric Bento Reviews & One-Line Select
+     ========================================================================== */
+  .menu {
+    visibility: hidden;
+  }
+  .menu.is-open {
+    visibility: visible;
+  }
+  .mobile-bar {
+    visibility: hidden;
+  }
+  .mobile-bar.is-visible {
+    visibility: visible;
+  }
+
+  /* Subtle Fixed Organic Watermark Lines */
+  .warm-watermark {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0.55;
+  }
+  .warm-watermark svg {
+    position: absolute;
+    right: -6vw;
+    top: 8vh;
+    width: clamp(420px, 52vw, 760px);
+    height: auto;
+    color: var(--terracotta-border);
+  }
+  main, .footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HERO ATELIER — Bespoke Framed Botanical & Biocompatible Artwork */
+  .hero {
+    padding: clamp(2.5rem, 5.5vw, 4.75rem) 0 clamp(3rem, 6vw, 5.25rem);
+    background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg-sand) 100%);
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .hero__grid {
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: clamp(2rem, 4vw, 3.75rem);
+  }
+  .hero__sub {
+    padding-left: 1rem;
+    border-left: 2px solid var(--terracotta-border);
+  }
+  .hero-atelier {
+    background: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 22px;
+    padding: 0.8rem;
+    box-shadow: var(--shadow-atelier);
+    position: relative;
+  }
+  .hero-atelier__mat {
+    background: var(--bg-cream);
+    border: 1px solid var(--terracotta-border);
+    border-radius: 16px;
+    padding: clamp(1.15rem, 2.2vw, 1.65rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-atelier__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-warm);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+  }
+  .hero-atelier__top-tag {
+    color: var(--accent-terracotta);
+    font-weight: 600;
+  }
+  .hero-atelier__stage {
+    position: relative;
+    border-radius: 14px;
+    background: radial-gradient(circle at 50% 42%, var(--surface-card) 0%, var(--surface-warm) 62%, var(--linen-tint) 100%);
+    border: 1px solid var(--border-warm);
+    padding: 1.15rem 1rem 0.95rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    overflow: hidden;
+  }
+  .hero-atelier__svg {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    transition: transform 0.35s var(--ease-out);
+  }
+  .hero-atelier__orbit {
+    transform-origin: 240px 132px;
+    animation: warmOrbitSpin 32s linear infinite;
+  }
+  .hero-atelier__orbit-rev {
+    transform-origin: 240px 132px;
+    animation: warmOrbitSpinRev 26s linear infinite;
+  }
+  .hero-atelier__scanline {
+    animation: warmScanSweep 8.5s ease-in-out infinite alternate;
+  }
+  .hero-atelier__pulse {
+    transform-origin: 240px 132px;
+    animation: warmCorePulse 5.2s ease-in-out infinite;
+  }
+  @keyframes warmOrbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes warmOrbitSpinRev {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+  @keyframes warmScanSweep {
+    0% { transform: translateY(-48px); opacity: 0.35; }
+    50% { opacity: 0.92; }
+    100% { transform: translateY(52px); opacity: 0.35; }
+  }
+  @keyframes warmCorePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.045); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-atelier__orbit,
+    .hero-atelier__orbit-rev,
+    .hero-atelier__scanline,
+    .hero-atelier__pulse { animation: none; }
+  }
+  .hero-atelier__pills {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem;
+    z-index: 2;
+  }
+  .hero-atelier__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.34rem 0.72rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--text-ink);
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+  .hero-atelier__pill:hover {
+    border-color: var(--accent-teal);
+    color: var(--accent-teal);
+    transform: translateY(-1px);
+  }
+  .hero-atelier__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-warm);
+  }
+  .hero-atelier__doc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .hero-atelier__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--text-ink);
+    line-height: 1.2;
+  }
+  .hero-atelier__creds {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .hero-atelier__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: var(--teal-soft);
+    border: 1px solid var(--teal-border);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .hero-atelier__link:hover {
+    background: var(--accent-teal);
+    color: var(--surface-card);
+  }
+
+  /* PROOF STRIP — Architectural Ledger Ribbon (No 4 White SaaS Boxes) */
+  .proof {
+    padding: 0;
+    background: var(--bg-cream);
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .proof__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    counter-reset: proof-idx;
+  }
+  .proof__cell {
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border-warm);
+    border-radius: 0;
+    padding: clamp(1.5rem, 3vw, 2.35rem) clamp(1.1rem, 2.2vw, 1.85rem);
+    box-shadow: none;
+    position: relative;
+    counter-increment: proof-idx;
+  }
+  .proof__cell:last-child {
+    border-right: none;
+  }
+  .proof__cell::before {
+    content: "0" counter(proof-idx);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--accent-terracotta);
+    margin-bottom: 0.2rem;
+  }
+  @media (max-width: 900px) {
+    .proof__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .proof__cell:nth-child(2) {
+      border-right: none;
+    }
+    .proof__cell:nth-child(1),
+    .proof__cell:nth-child(2) {
+      border-bottom: 1px solid var(--border-warm);
+    }
+  }
+  @media (max-width: 520px) {
+    .proof__grid {
+      grid-template-columns: 1fr;
+    }
+    .proof__cell {
+      border-right: none !important;
+      border-bottom: 1px solid var(--border-warm);
+    }
+    .proof__cell:last-child {
+      border-bottom: none;
+    }
+  }
+
+  /* 01 · DOCTOR SECTION — Open Magazine Spread + Offset Plinth Frame */
+  .doctor {
+    background: var(--bg-sand);
+    border-top: none;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .doctor__grid {
+    grid-template-columns: 0.86fr 1.14fr;
+    gap: clamp(2.25rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+  .portrait__frame {
+    border-radius: 20px;
+    border: 1px solid var(--border-strong);
+    box-shadow: -14px 14px 0 var(--linen-tint), var(--shadow-atelier);
+  }
+  .doctor__content {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0.25rem 0;
+    box-shadow: none;
+    gap: 1.35rem;
+  }
+  .doctor__creds {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 0.32rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    font-size: 0.84rem;
+    color: var(--accent-teal);
+  }
+  .doctor__quote {
+    font-size: clamp(1.18rem, 1.65vw, 1.42rem);
+    line-height: 1.45;
+    color: var(--text-ink);
+    padding: 0.4rem 0 0.4rem 1.35rem;
+    background: transparent;
+    border-left: 3px solid var(--accent-terracotta);
+    border-radius: 0;
+  }
+  .schools {
+    margin-top: 0.35rem;
+    border-top: 1px solid var(--border-strong);
+    padding-top: 0;
+    gap: 0;
+  }
+  .school__row {
+    grid-template-columns: 155px 1fr;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border-warm);
+  }
+  .school__k {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-teal);
+  }
+  .school__icon {
+    width: 18px;
+    height: 18px;
+    color: var(--accent-terracotta);
+    flex-shrink: 0;
+  }
+
+  /* 02 · APPROACH — Deep Warm Sage-Cypress Contrast Section */
+  .approach {
+    background: var(--sage-deep);
+    color: var(--sage-text);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .approach .kicker {
+    background: var(--sage-card);
+    border-color: var(--sage-border-strong);
+    color: var(--sage-text);
+  }
+  .approach .kicker::before {
+    background: var(--terracotta-light);
+  }
+  .approach .display-lg {
+    color: var(--sage-text);
+  }
+  .approach .display-lg em {
+    color: var(--terracotta-light);
+  }
+  .approach .sec-head__right {
+    color: var(--sage-muted);
+  }
+  .approach__calm-banner {
+    background: var(--sage-card);
+    border: 1px solid var(--sage-border-strong);
+    color: var(--sage-text);
+    padding: 1.1rem 1.5rem;
+  }
+  .approach__calm-banner strong {
+    color: var(--terracotta-light);
+  }
+  .step {
+    background: var(--sage-card);
+    border: 1px solid var(--sage-border);
+    border-radius: 18px;
+    padding: 1.75rem;
+    box-shadow: none;
+    transition: transform 0.25s var(--ease-out), background-color 0.25s ease, border-color 0.25s ease;
+  }
+  .step:hover {
+    transform: translateY(-3px);
+    background: var(--sage-card-hover);
+    border-color: var(--sage-border-strong);
+  }
+  .step__num {
+    background: var(--sage-mid);
+    color: var(--terracotta-light);
+    border: 1px solid var(--sage-border);
+  }
+  .step__icon {
+    width: 24px;
+    height: 24px;
+    color: var(--terracotta-light);
+    opacity: 0.9;
+  }
+  .step__title {
+    color: var(--sage-text);
+  }
+  .step__body {
+    color: var(--sage-muted);
+  }
+  .step__tag {
+    border-top: 1px solid var(--sage-border);
+    color: var(--terracotta-light);
+  }
+
+  /* 03 · PATIENT STORIES & 06 · MAP REVIEWS — Luxury Editorial Vertical Stack (Zero Bottom Gap) */
+  .words {
+    background: var(--bg-cream);
+  }
+  .words__grid,
+  .words__grid--bento,
+  .words__grid--equal,
+  .words__grid--stack {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    gap: 1.25rem !important;
+    counter-reset: word-idx;
+  }
+  .words .word,
+  .revs .word {
+    background: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    border-left: 4px solid var(--accent-teal);
+    border-radius: 18px;
+    padding: clamp(1.4rem, 2.4vw, 1.95rem) clamp(1.5rem, 2.8vw, 2.35rem);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+    align-items: center;
+    box-shadow: var(--shadow-card);
+    counter-increment: word-idx;
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), border-color 0.25s ease;
+  }
+  .words .word:hover,
+  .revs .word:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+  }
+  .words .word:first-child {
+    background: linear-gradient(135deg, var(--surface-warm) 0%, var(--surface-card) 100%);
+    border-color: var(--terracotta-border);
+    border-left: 4px solid var(--accent-terracotta);
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .words .word:nth-child(2),
+  .words .word:nth-child(3) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .words .word:nth-child(3),
+  .revs .word:nth-child(2) {
+    border-left-color: var(--accent-terracotta);
+  }
+  .words .word::before,
+  .revs .word::before {
+    content: "\201C";
+    font-family: var(--font-display);
+    font-size: 5.5rem;
+    line-height: 0.75;
+    color: var(--terracotta-soft);
+    position: absolute;
+    top: 0.85rem;
+    right: 1.25rem;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .words .word .word__q,
+  .revs .word .word__q {
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: var(--text-ink);
+    position: relative;
+    z-index: 1;
+    margin: 0;
+  }
+  .words .word .word__q::before {
+    content: "0" counter(word-idx) " \00B7  PATIENT STORY";
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-terracotta);
+    margin-bottom: 0.55rem;
+  }
+  .revs .word .word__q::before {
+    content: "GOOGLE REVIEW \00B7  5.0 \2605";
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: 0.5rem;
+  }
+  .words .word .word__by,
+  .revs .word .word__by {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border-warm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .words .word .word__by b,
+  .revs .word .word__by b {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-ink);
+    letter-spacing: -0.01em;
+  }
+  .words .word .word__by span[data-c$=".detail"] {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.72rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--accent-teal);
+  }
+  .words .word .word__by::after {
+    content: "\2605\2605\2605\2605\2605";
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-terracotta);
+  }
+  @media (min-width: 840px) {
+    .words .word,
+    .revs .word {
+      grid-template-columns: minmax(0, 1fr) 230px;
+      gap: 2.25rem;
+    }
+    .words .word .word__by,
+    .revs .word .word__by {
+      border-top: none;
+      border-left: 1px solid var(--border-warm);
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+      padding-left: 1.65rem;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+  }
+
+  /* 04 · CLINICAL STANDARDS — Unified Architectural Specification Ledger */
+  .trust-sec {
+    background: var(--bg-sand);
+    border-top: 1px solid var(--border-warm);
+    border-bottom: 1px solid var(--border-warm);
+  }
+  .trust-grid {
+    margin-top: 2rem;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    overflow: hidden;
+    gap: 0;
+    box-shadow: var(--shadow-card);
+  }
+  .trust {
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border-warm);
+    border-radius: 0;
+    padding: clamp(1.65rem, 2.8vw, 2.35rem);
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .trust:last-child {
+    border-right: none;
+  }
+  @media (max-width: 900px) {
+    .trust {
+      border-right: none;
+      border-bottom: 1px solid var(--border-warm);
+    }
+    .trust:last-child {
+      border-bottom: none;
+    }
+  }
+  .trust__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .trust__icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--terracotta-soft);
+    border: 1px solid var(--terracotta-border);
+    color: var(--accent-terracotta);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .trust__idx {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--accent-teal);
+  }
+
+  /* 05 · BOOKING — Open Editorial Contact Column + Flagship Form + One-Line Select Fix */
+  .book__grid {
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: clamp(2rem, 4vw, 3.75rem);
+  }
+  @media (max-width: 960px) {
+    .book__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .book__direct {
+    background: transparent;
+    border: none;
+    border-top: 1px solid var(--border-strong);
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    gap: 0;
+  }
+  .book__direct-row {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding: 1.05rem 0;
+    border-bottom: 1px solid var(--border-warm);
+  }
+  .book__icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: var(--surface-warm);
+    border: 1px solid var(--border-strong);
+    color: var(--accent-teal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+  .book__direct-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.22rem;
+    min-width: 0;
+  }
+  .form {
+    border-top: 3px solid var(--accent-terracotta);
+    box-shadow: var(--shadow-atelier);
+    grid-template-columns: 0.86fr 1.14fr;
+  }
+  @media (max-width: 680px) {
+    .form {
+      grid-template-columns: 1fr;
+    }
+  }
+  .cselect__btn {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.88rem;
+    min-width: 0;
+  }
+  .cselect__val {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    min-width: 0;
+  }
+
+
+  @media (max-width: 960px) {
+    .hero__grid,
+    .doctor__grid,
+    .book__grid,
+    .loc__grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  @media (max-width: 900px) {
+    .words__grid--bento {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .school__row,
+    .info__row {
+      grid-template-columns: 1fr !important;
+      gap: 0.25rem !important;
+    }
+  }
+
+
+  /* ==========================================================================
+     POLISH UPGRADE — 3-Column Credentials, Contrast Booking Sanctuary &
+     Scroll-Assembled Corner Geometric Circles (.warm-figmark)
+     ========================================================================== */
+  .doctor, .approach, .words, .trust-sec, .book, .loc {
+    position: relative;
+    overflow: hidden;
+  }
+  .doctor > .wrap,
+  .approach > .wrap,
+  .words > .wrap,
+  .trust-sec > .wrap,
+  .book > .wrap,
+  .loc > .wrap {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* 1. Fixed 3-Column Credential Rows (Icon Medallion + Label + Straight Value) */
+  .schools {
+    margin-top: 0.65rem !important;
+    border-top: none !important;
+    padding-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+  .school__row:not([hidden]) {
+    display: grid !important;
+    grid-template-columns: 38px 130px 1fr !important;
+    align-items: center !important;
+    gap: 0.9rem !important;
+    padding: 0.85rem 1.15rem !important;
+    background: var(--bg-cream) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 14px !important;
+    box-shadow: var(--shadow-card);
+  }
+  .school__icon {
+    width: 38px !important;
+    height: 38px !important;
+    padding: 8px !important;
+    border-radius: 10px !important;
+    background: var(--terracotta-soft) !important;
+    border: 1px solid var(--terracotta-border) !important;
+    color: var(--accent-terracotta) !important;
+    flex-shrink: 0 !important;
+  }
+  .school__k {
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: var(--accent-teal) !important;
+    line-height: 1.2 !important;
+  }
+  .school__v {
+    font-size: 0.93rem !important;
+    font-weight: 500 !important;
+    color: var(--text-ink) !important;
+    line-height: 1.45 !important;
+  }
+  @media (max-width: 640px) {
+    .school__row:not([hidden]) {
+      grid-template-columns: 38px 1fr !important;
+      gap: 0.2rem 0.8rem !important;
+      padding: 0.8rem 0.95rem !important;
+    }
+    .school__icon {
+      grid-row: 1 / span 2 !important;
+    }
+  }
+
+  /* 2. Section 05 · Booking — Rich Warm Espresso-Terracotta Sanctuary */
+  .book {
+    background: var(--book-bg) !important;
+    color: var(--book-text) !important;
+    border-top: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .book .kicker {
+    background: var(--book-surface) !important;
+    border-color: var(--book-border-strong) !important;
+    color: var(--book-text) !important;
+  }
+  .book .kicker::before {
+    background: var(--terracotta-light) !important;
+  }
+  .book .display-lg {
+    color: var(--book-text) !important;
+  }
+  .book .display-lg em {
+    color: var(--terracotta-light) !important;
+  }
+  .book__direct {
+    border-top: 1px solid var(--book-border-strong) !important;
+    margin-top: 0.5rem;
+  }
+  .book__direct-row {
+    border-bottom: 1px solid var(--book-border) !important;
+    padding: 1.1rem 0 !important;
+  }
+  .book__icon {
+    background: var(--book-surface) !important;
+    border: 1px solid var(--book-border-strong) !important;
+    color: var(--terracotta-light) !important;
+  }
+  .book .book__direct-k {
+    color: var(--book-muted) !important;
+  }
+  .book .book__direct-v {
+    color: var(--book-text) !important;
+    transition: color 0.2s ease;
+  }
+  .book a.book__direct-v:hover {
+    color: var(--terracotta-light) !important;
+  }
+  .book .book__direct-row:last-child .book__direct-v {
+    color: var(--book-muted) !important;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  .form {
+    background: var(--surface-card) !important;
+    color: var(--text-ink) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-top: 4px solid var(--accent-terracotta) !important;
+    border-radius: 20px !important;
+  }
+
+  /* 3. Scroll-Assembled Corner Geometric Circles & Arcs (.warm-figmark) */
+  .warm-figmark {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: clamp(260px, 34vw, 460px);
+    height: clamp(260px, 34vw, 460px);
+    opacity: 0.9;
+  }
+  .warm-figmark--tr {
+    top: -65px;
+    right: -65px;
+  }
+  .warm-figmark--bl {
+    bottom: -75px;
+    left: -75px;
+  }
+  .warm-figmark svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .warm-figmark [data-warm-draw] {
+    fill: none;
+    stroke: var(--terracotta-border);
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.14s linear;
+  }
+  .warm-figmark [data-warm-draw="teal"] {
+    stroke: var(--teal-border);
+  }
+  .approach .warm-figmark [data-warm-draw],
+  .book .warm-figmark [data-warm-draw] {
+    stroke: var(--sage-border-strong);
+  }
+  .approach .warm-figmark [data-warm-draw="teal"],
+  .book .warm-figmark [data-warm-draw="teal"] {
+    stroke: var(--terracotta-border);
+  }
+
+
+  /* Header stays above mobile menu (z-index: 92 > 88) + Explicit Close Bar inside Drawer */
+  .header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 92 !important;
+  }
+  .menu {
+    z-index: 88 !important;
+    padding: 1.15rem var(--pad-x) 2.25rem !important;
+  }
+  .menu__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .menu__top-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .menu__close {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.48rem 0.95rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-ink);
+    box-shadow: var(--shadow-card);
+  }
+  .menu__close:hover {
+    border-color: var(--accent-terracotta);
+    color: var(--accent-terracotta);
+  }
+
+  /* Bespoke Architectural Framed Atelier Canvases in Section 04 (Standards) */
+  .trust__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--border-warm);
+  }
+  .trust__spec {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-terracotta);
+  }
+  .trust__canvas {
+    background: var(--surface-warm);
+    border: 1px solid var(--border-warm);
+    border-radius: 16px;
+    padding: 0.65rem;
+    margin: 0.25rem 0 0.45rem;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .trust:hover .trust__canvas {
+    border-color: var(--terracotta-border);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px -6px rgba(41, 37, 36, 0.07);
+  }
+  .trust__canvas svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Ultra-Luxury Meditative Micro-Animations for Clinical Standards */
+  .trust__orbit {
+    transform-origin: 160px 72px;
+    animation: trustOrbit 28s linear infinite;
+  }
+  @keyframes trustOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .trust__orbit-inner {
+    transform-origin: 160px 72px;
+    animation: trustOrbitCounter 22s linear infinite;
+  }
+  @keyframes trustOrbitCounter {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+
+  .trust__center {
+    transform-origin: 160px 72px;
+    animation: trustPulse 4.8s ease-in-out infinite;
+    transition: filter 0.3s ease;
+  }
+  @keyframes trustPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.045); }
+  }
+
+  .trust__leaf {
+    transform-origin: 88px 84px;
+    animation: trustFloat 5.5s ease-in-out infinite alternate;
+  }
+  .trust__leaf--alt {
+    transform-origin: 232px 84px;
+    animation: trustFloatAlt 6.2s ease-in-out infinite alternate;
+  }
+  .trust__scan-y {
+    animation: trustScanY 6.5s ease-in-out infinite alternate;
+  }
+  .trust__scan-x {
+    animation: trustScanX 7.0s ease-in-out infinite alternate;
+  }
+  /* Dual-Doctor Separate Portraits Layout (.portrait--dual) */
+  .portrait--dual .portrait__dual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+  @media (max-width: 540px) {
+    .portrait--dual .portrait__dual-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .portrait__dual-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .portrait__dual-card .portrait__frame {
+    aspect-ratio: 4 / 5;
+    box-shadow: -8px 8px 0 var(--linen-tint), var(--shadow-card);
+  }
+  .portrait__dual-meta {
+    padding: 0.65rem 0.85rem;
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .portrait__dual-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .portrait__dual-role {
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+  }
+  @keyframes trustFloat {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    100% { transform: translate(6px, -4px) rotate(3deg); }
+  }
+  @keyframes trustFloatAlt {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    100% { transform: translate(-6px, -4px) rotate(-3deg); }
+  }
+  @keyframes trustScanY {
+    0% { transform: translateY(-24px); opacity: 0.35; }
+    50% { opacity: 0.95; }
+    100% { transform: translateY(24px); opacity: 0.35; }
+  }
+  @keyframes trustScanX {
+    0% { transform: translateX(-52px); }
+    100% { transform: translateX(52px); }
+  }
+
+  /* --- Warm Independent AI Verification Card --- */
+  .warm-ai-verify {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    background: var(--surface-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-card);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .warm-ai-verify:hover {
+    border-color: var(--terracotta-border);
+    box-shadow: 0 12px 28px -6px rgba(41, 37, 36, 0.08);
+  }
+  .warm-ai-verify__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: var(--terracotta-soft);
+    border: 1px solid var(--terracotta-border);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-terracotta);
+    margin-bottom: 0.85rem;
+  }
+  .warm-ai-verify__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-terracotta);
+  }
+  .warm-ai-verify__title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--text-ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .warm-ai-verify__desc {
+    font-size: 0.92rem;
+    color: var(--text-warm-stone);
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+    max-width: 58ch;
+  }
+  .warm-ai-verify__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  @media (min-width: 640px) {
+    .warm-ai-verify__actions {
+      flex-direction: row;
+    }
+  }
+  .warm-ai-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1.25rem;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-warm);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text-ink);
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .warm-ai-btn:hover {
+    border-color: var(--terracotta-border);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px -3px rgba(194, 109, 80, 0.15);
+  }
+  .warm-ai-btn__icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: var(--accent-terracotta);
+  }
+  .warm-ai-btn--gpt .warm-ai-btn__icon {
+    color: var(--accent-teal);
+  }
+  .warm-ai-btn__meta {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .warm-ai-btn__label {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-ink);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .warm-ai-btn:hover .warm-ai-btn__label {
+    color: var(--accent-terracotta);
+  }
+  .warm-ai-btn--gpt:hover .warm-ai-btn__label {
+    color: var(--accent-teal);
+  }
+  .warm-ai-btn__arrow {
+    font-size: 0.9rem;
+    transition: transform 0.25s ease;
+  }
+  .warm-ai-btn:hover .warm-ai-btn__arrow {
+    transform: translate(2px, -2px);
+  }
+  .warm-ai-btn__sub {
+    font-size: 0.68rem;
+    color: var(--text-warm-stone);
+  }
+  .step__icon {
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0;
+  }
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Colorado Smile Design",
+  "url": "https://coloradosmiledesign.com",
+  "telephone": "+13039792900",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9135 Ridgeline Blvd",
+    "addressLocality": "Highlands Ranch",
+    "addressRegion": "CO",
+    "postalCode": "80129",
+    "addressCountry": "US"
+  },
+  "priceRange": "$$$$",
+  "medicalSpecialty": "Dentistry"
+}
+</script>
+</head>
+
+<body>
+
+<div class="scroll-bar" aria-hidden="true"></div>
+<div class="warm-watermark" aria-hidden="true">
+  <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="320" cy="280" r="240" stroke="currentColor" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle cx="320" cy="280" r="175" stroke="currentColor" stroke-width="1"/>
+    <path d="M120 460 C210 320, 340 220, 500 120" stroke="currentColor" stroke-width="1.15"/>
+  </svg>
+</div>
+<!-- cursor (desktop, fine pointer only — created here, activated from app.js) -->
+<div class="cursor" aria-hidden="true">
+  <span class="cursor__label" data-cursor-label></span>
+</div>
+
+<!-- ==========================================================================
+     HEADER (Keys 1-3)
+     ========================================================================== -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="brand" aria-label="Dr. Philip Wimpee, home">
+      <span class="brand__name" data-c="brand.name">Dr. Philip Wimpee</span>
+      <span class="brand__tag" data-c="brand.tagline">Cosmetic &amp; Restorative Dentistry · Highlands Ranch</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#doctor" class="nav__link">Meet the Doctor</a>
+      <a href="#approach" class="nav__link">Approach</a>
+      <a href="#words" class="nav__link">Patient Stories</a>
+      <a href="#location" class="nav__link">Hours &amp; Directions</a>
+    </nav>
+
+    <a href="#book" class="header__cta" data-cursor="Book">
+      <span class="header__cta-dot" aria-hidden="true"></span>
+      <span data-c="hero.cta">Schedule a consultation</span>
+    </a>
+
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Drawer (Keys 4-7) -->
+<aside class="menu" id="mobile-menu" aria-hidden="true" inert>
+  <div class="menu__top">
+    <span class="menu__top-title">Menu</span>
+    <button type="button" class="menu__close" data-menu-close aria-label="Close menu">&#10005; Close</button>
+  </div>
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#doctor" class="menu__link" data-nav><span class="num">01</span><span>Meet the Doctor</span></a>
+    <a href="#approach" class="menu__link" data-nav><span class="num">02</span><span>Approach</span></a>
+    <a href="#words" class="menu__link" data-nav><span class="num">03</span><span>Patient Stories</span></a>
+    <a href="#trust" class="menu__link" data-nav><span class="num">04</span><span>Clinical Standards</span></a>
+    <a href="#book" class="menu__link" data-nav><span class="num">05</span><span>Book a Visit</span></a>
+    <a href="#location" class="menu__link" data-nav><span class="num">06</span><span>Location &amp; Hours</span></a>
+  </nav>
+  <div class="menu__foot">
+    <div>
+      <strong data-c="brand.name">Dr. Philip Wimpee</strong> · <span data-c="brand.tagline">Cosmetic & Restorative Dentistry · Highlands Ranch</span>
+    </div>
+    <div>
+      <a href="tel:+13039792900" data-c="book.phone" data-c-href="book.phoneHref">(303) 979-2900</a> ·
+      <a href="mailto:office@coloradosmiledesign.com" data-c="book.email" data-c-href="book.emailHref">office@coloradosmiledesign.com</a>
+    </div>
+  </div>
+</aside>
+
+<main id="top">
+
+  <!-- ========================================================================
+       HERO — 2 Columns on Desktop (Keys 8-14)
+       Left: City Badge, Google ★ Rating from proof, Warm Heading,
+             2 Pill Buttons: Book a Visit & Call (XXX) XXX-XXXX
+       Right: Lead Doctor Introduction Card with Real Photo / Monogram Fallback
+       ======================================================================== -->
+  <section class="hero" aria-label="Introduction" data-c-bg="hero.bg">
+    <div class="wrap hero__grid">
+      <div class="hero__left">
+        <div class="hero__badges">
+          <span class="kicker" data-c="hero.eyebrow">Highlands Ranch</span>
+          <a href="#location" class="hero__rating-pill" id="hero-proof-rating">&#9733; 4.9 Google Rating · Local Family Practice</a>
+        </div>
+
+        <h1 class="display-xl hero__headline">
+          <span class="line"><span class="line__inner" data-c="hero.line1">Enduring dentistry,</span></span>
+          <span class="line"><span class="line__inner" data-c="hero.line2">crafted to last</span></span>
+          <span class="line"><span class="line__inner" data-c="hero.line3">for <em>decades</em></span></span>
+        </h1>
+
+        <p class="hero__sub" data-c="hero.lede">Colorado Smile Design delivers meticulous cosmetic, restorative, and preventive dentistry in Highlands Ranch.</p>
+
+        <div class="hero__actions">
+          <a href="#book" class="btn-pill btn-pill--teal" id="hero-book-btn" data-cursor="Book">
+            <span>Book a Visit</span>
+            <span aria-hidden="true">&#8594;</span>
+          </a>
+          <a href="tel:+13039792900" class="btn-pill btn-pill--outline" id="hero-call-btn" data-c-href="book.phoneHref" data-cursor="Call">
+            <span>Call <span id="hero-call-num" data-c="book.phone">(303) 979-2900</span></span>
+          </a>
+        </div>
+
+        <p class="hero__scroll-note">
+          <span data-c="hero.meta1">Consultations by appointment</span> ·
+          <span data-c="hero.meta2">Mon: 8:00 AM – 4:00 PM · Tue: 7:00 AM – 3:30 PM · Wed: 8:00 AM – 5:00 PM · Thu: 7:00 AM – 3:30 PM</span>
+        </p>
+      </div>
+
+      <aside class="hero-atelier" aria-label="Practice Sanctuary &amp; Clinical Philosophy">
+        <div class="hero-atelier__mat">
+          <div class="hero-atelier__top">
+            <span>Precision Restorative &amp; Aesthetic Studio</span>
+            <span class="hero-atelier__top-tag">1.618 &phi; &middot; 1-on-1 Care</span>
+          </div>
+
+          <div class="hero-atelier__stage">
+            <svg class="hero-atelier__svg" viewBox="0 0 480 264" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural CAD/CAM dental arch topography and golden-ratio harmony system">
+              <!-- Outer Blueprint Frame & Registration Ticks -->
+              <rect x="12" y="10" width="456" height="244" rx="14" fill="var(--bg-cream)" fill-opacity="0.55" stroke="var(--border-warm)" stroke-width="1"/>
+              <rect x="20" y="18" width="440" height="228" rx="10" stroke="var(--border-warm)" stroke-width="0.65" stroke-dasharray="2 4"/>
+              <path d="M28 34 V24 H38 M452 34 V24 H442 M28 230 V240 H38 M452 230 V240 H442" stroke="var(--accent-terracotta)" stroke-width="1.35" stroke-linecap="round"/>
+
+              <!-- Golden-Ratio 1.618 Grid & Horizon -->
+              <line x1="20" y1="132" x2="460" y2="132" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <line x1="240" y1="18" x2="240" y2="246" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="3 5"/>
+              <line x1="158" y1="26" x2="158" y2="238" stroke="var(--terracotta-border)" stroke-width="0.65" stroke-dasharray="2 4"/>
+              <line x1="322" y1="26" x2="322" y2="238" stroke="var(--terracotta-border)" stroke-width="0.65" stroke-dasharray="2 4"/>
+
+              <!-- Top Telemetry Readouts -->
+              <text x="32" y="34" fill="var(--accent-teal)" font-size="7.5" font-weight="700" font-family="monospace" letter-spacing="1.2">ARCH CAD · 24μm</text>
+              <text x="240" y="32" text-anchor="middle" fill="var(--text-muted)" font-size="7" font-family="monospace" letter-spacing="1.4">1.618 φ HARMONIC AXIS</text>
+              <text x="448" y="34" text-anchor="end" fill="var(--accent-terracotta)" font-size="7.5" font-weight="700" font-family="monospace" letter-spacing="1.1">5500K DAYLIGHT</text>
+
+              <!-- Outer Clockwise Orbital Calibration Ring -->
+              <g class="hero-atelier__orbit" style="transform-origin:240px 132px">
+                <circle cx="240" cy="132" r="98" stroke="var(--terracotta-border)" stroke-width="1.15" stroke-dasharray="8 6 2 6"/>
+                <circle cx="240" cy="34" r="4" fill="var(--accent-terracotta)"/>
+                <circle cx="240" cy="230" r="3.5" fill="var(--accent-teal)"/>
+                <circle cx="142" cy="132" r="3" fill="var(--accent-teal)"/>
+                <circle cx="338" cy="132" r="3" fill="var(--accent-terracotta)"/>
+              </g>
+
+              <!-- Inner Counter-Rotating Precision Ring -->
+              <g class="hero-atelier__orbit-rev" style="transform-origin:240px 132px">
+                <circle cx="240" cy="132" r="78" stroke="var(--teal-border)" stroke-width="1.1" stroke-dasharray="4 7"/>
+                <circle cx="185" cy="77" r="3" fill="var(--accent-terracotta)"/>
+                <circle cx="295" cy="187" r="3" fill="var(--accent-teal)"/>
+              </g>
+
+              <!-- Static Medallion Stage & Radial Biometric Vectors -->
+              <circle cx="240" cy="132" r="64" fill="var(--surface-card)" stroke="var(--border-strong)" stroke-width="1.2"/>
+              <path d="M240 168 L194 94 M240 168 L216 82 M240 168 L240 76 M240 168 L264 82 M240 168 L286 94" stroke="var(--terracotta-border)" stroke-width="0.85" stroke-dasharray="2 2"/>
+              <path d="M180 156 C192 78, 288 78, 300 156" stroke="var(--accent-terracotta)" stroke-width="1.2" stroke-dasharray="3 3"/>
+
+              <!-- Anatomical 10-Unit Dental Arch Topography (#4–#13) + Central Focal Crown -->
+              <g class="hero-atelier__pulse" style="transform-origin:240px 132px">
+                <!-- Central Incisors #8 & #9 -->
+                <rect x="223" y="76" width="15" height="19" rx="6" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.5"/>
+                <rect x="242" y="76" width="15" height="19" rx="6" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.5"/>
+                <!-- Lateral Incisors #7 & #10 -->
+                <rect x="205" y="83" width="14" height="17" rx="5.5" transform="rotate(-16 205 83)" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <rect x="261" y="79" width="14" height="17" rx="5.5" transform="rotate(16 261 79)" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <!-- Canines #6 & #11 -->
+                <circle cx="196" cy="106" r="7.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <circle cx="284" cy="106" r="7.5" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.35"/>
+                <!-- Premolars #5, #4 & #12, #13 -->
+                <circle cx="187" cy="126" r="7.5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+                <circle cx="293" cy="126" r="7.5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+                <circle cx="183" cy="147" r="8" fill="var(--surface-warm)" stroke="var(--border-strong)" stroke-width="1.2"/>
+                <circle cx="297" cy="147" r="8" fill="var(--surface-warm)" stroke="var(--border-strong)" stroke-width="1.2"/>
+
+                <!-- Central Enamel Prism Crest -->
+                <path d="M226 118 C231 111, 236 113, 240 117 C244 113, 249 111, 254 118 C259 126, 257 141, 251 153 C248 158, 244 158, 242 152 C241 147, 240 144, 240 144 C240 144, 239 147, 238 152 C236 158, 232 158, 229 153 C223 141, 221 126, 226 118 Z" fill="var(--bg-cream)" stroke="var(--accent-teal)" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M232 127 C237 131, 243 131, 248 127" stroke="var(--accent-terracotta)" stroke-width="1.25" stroke-linecap="round"/>
+                <circle cx="240" cy="168" r="3.5" fill="var(--accent-terracotta)"/>
+              </g>
+
+              <!-- Left & Right Flank Callout Modules -->
+              <g>
+                <rect x="28" y="96" width="92" height="54" rx="8" fill="var(--surface-card)" stroke="var(--border-warm)" stroke-width="1"/>
+                <text x="38" y="113" fill="var(--text-muted)" font-size="6.8" font-family="monospace" letter-spacing="0.8">ENAMEL PREP</text>
+                <text x="38" y="129" fill="var(--accent-teal)" font-size="11" font-weight="700" font-family="Georgia, serif">0.2 – 0.3 mm</text>
+                <text x="38" y="141" fill="var(--accent-terracotta)" font-size="6.5" font-family="monospace">MINIMAL INVASIVE</text>
+                <line x1="120" y1="123" x2="176" y2="123" stroke="var(--accent-teal)" stroke-width="1" stroke-dasharray="2 2"/>
+                <circle cx="176" cy="123" r="2.5" fill="var(--accent-teal)"/>
+              </g>
+
+              <g>
+                <rect x="360" y="96" width="92" height="54" rx="8" fill="var(--surface-card)" stroke="var(--border-warm)" stroke-width="1"/>
+                <text x="370" y="113" fill="var(--text-muted)" font-size="6.8" font-family="monospace" letter-spacing="0.8">SHADE MATCH</text>
+                <text x="370" y="129" fill="var(--accent-terracotta)" font-size="11" font-weight="700" font-family="Georgia, serif">VITA A1 · B1</text>
+                <text x="370" y="141" fill="var(--accent-teal)" font-size="6.5" font-family="monospace">NATURAL TRANSLUCENCY</text>
+                <line x1="304" y1="123" x2="360" y2="123" stroke="var(--accent-terracotta)" stroke-width="1" stroke-dasharray="2 2"/>
+                <circle cx="304" cy="123" r="2.5" fill="var(--accent-terracotta)"/>
+              </g>
+
+              <!-- Animated Optical Scan-Line -->
+              <g class="hero-atelier__scanline">
+                <line x1="136" y1="132" x2="344" y2="132" stroke="var(--accent-terracotta)" stroke-width="1.35" stroke-opacity="0.75"/>
+                <circle cx="136" cy="132" r="2.2" fill="var(--accent-terracotta)"/>
+                <circle cx="344" cy="132" r="2.2" fill="var(--accent-terracotta)"/>
+              </g>
+
+              <!-- Bottom Smile Line Curvature -->
+              <path d="M108 206 Q240 234 372 206" stroke="var(--teal-border)" stroke-width="1.15" fill="none"/>
+              <text x="240" y="236" text-anchor="middle" fill="var(--text-muted)" font-size="6.8" font-family="monospace" letter-spacing="1.2">CUSTOM OCCLUSAL &amp; FACIAL PROPORTION CALIBRATION</text>
+            </svg>
+
+            <div class="hero-atelier__pills">
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-1" data-pick-treatment data-cursor="Select">01 · Comprehensive Exam &amp; Consultation</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-2" data-pick-treatment data-cursor="Select">02 · Restorative &amp; Cosmetic Care</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-3" data-pick-treatment data-cursor="Select">03 · Implant &amp; Preventive Dentistry</button>
+            </div>
+          </div>
+
+          <div class="hero-atelier__foot">
+            <div class="hero-atelier__doc">
+              <strong class="hero-atelier__name" id="hero-doc-name" data-monogram-name>Dr. Philip Wimpee, DDS</strong>
+              <span class="hero-atelier__creds" id="hero-doc-creds" data-monogram-cred>DDS</span>
+            </div>
+            <a href="#doctor" class="hero-atelier__link" data-cursor="Bio">
+              <span>Meet the Doctor</span>
+              <span aria-hidden="true">&#8594;</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PROOF STRIP (Keys 15-22)
+       ======================================================================== -->
+  <section class="proof" aria-label="Practice figures">
+    <div class="proof__grid">
+      <div class="proof__cell reveal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-terracotta)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><path d="M12 2L14.8 8.5L22 9.3L16.5 14L18.2 21L12 17.3L5.8 21L7.5 14L2 9.3L9.2 8.5L12 2Z"/></svg>
+        <div class="proof__num" data-c="proof.1.value">35+ Years</div>
+        <div class="proof__label" data-c="proof.1.label">Trusted clinical experience</div>
+      </div>
+      <div class="proof__cell reveal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><circle cx="12" cy="12" r="9"/><path d="M12 7V12L15.5 14"/></svg>
+        <div class="proof__num" data-c="proof.2.value">Veneers</div>
+        <div class="proof__label" data-c="proof.2.label">Custom aesthetic smile design</div>
+      </div>
+      <div class="proof__cell reveal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-terracotta)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><path d="M12 3L19 6.5V12.5C19 17 15.9 20.6 12 22C8.1 20.6 5 17 5 12.5V6.5L12 3Z"/><path d="M9 12.2L11 14.2L15.2 10"/></svg>
+        <div class="proof__num" data-c="proof.3.value">Restorative</div>
+        <div class="proof__label" data-c="proof.3.label">Long-lasting crowns & repair</div>
+      </div>
+      <div class="proof__cell reveal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><path d="M8 6.5C9.5 5 11 5.3 12 6.5C13 5.3 14.5 5 16 6.5C18 8.5 17.5 13.5 15.5 18C14.7 19.8 13.5 19.8 12.7 17.8C12.3 16.5 12 15.8 12 15.8C12 15.8 11.7 16.5 11.3 17.8C10.5 19.8 9.3 19.8 8.5 18C6.5 13.5 6 8.5 8 6.5Z"/></svg>
+        <div class="proof__num" data-c="proof.4.value">1-on-1 Care</div>
+        <div class="proof__label" data-c="proof.4.label">Unhurried, attentive visits</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       01 · DOCTOR SECTION — One-Photo Discipline (Keys 23-36)
+       ======================================================================== -->
+  <section class="doctor" id="doctor" aria-labelledby="doctor-h">
+  <div class="warm-figmark warm-figmark--tr" data-warm-figmark aria-hidden="true">
+    <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <circle data-warm-draw pathLength="1" cx="240" cy="180" r="150"/>
+      <circle data-warm-draw="teal" pathLength="1" cx="240" cy="180" r="108"/>
+      <circle data-warm-draw pathLength="1" cx="240" cy="180" r="64"/>
+      <path data-warm-draw pathLength="1" d="M60,180 L400,180 M240,20 L240,340"/>
+      <path data-warm-draw="teal" pathLength="1" d="M120,280 Q240,110 360,280"/>
+    </svg>
+  </div>
+    <div class="wrap doctor__grid">
+      <figure class="portrait reveal" data-portrait>
+        <div class="portrait__frame">
+          <img class="portrait__img" data-c-src="doctor.photo" src="portrait.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Dr. Philip Wimpee" style="object-position:50.0% 31.4%;">
+          <div class="portrait__tint" aria-hidden="true"></div>
+          <div class="portrait__ph" hidden>
+            <div class="portrait__monogram-badge" data-monogram-initials>PW</div>
+            <div class="portrait__ph-title" data-monogram-name>Dr. Philip Wimpee, DDS</div>
+            <div class="portrait__ph-cred" data-monogram-cred>DDS</div>
+            <p class="portrait__ph-quote" data-monogram-quote>“I believe great dentistry means never rushing a conversation or a restoration—we take the time to get every detail right so your smile lasts.”</p>
+          </div>
+        </div>
+        <figcaption class="portrait__caption">
+          <span data-c="doctor.caption">Dr. Philip Wimpee · Highlands Ranch</span>
+        </figcaption>
+      </figure>
+
+      <div class="doctor__content">
+        <span class="kicker">01 · Meet Your Dentist</span>
+        <h2 class="display-lg" id="doctor-h">
+          <span data-c="doctor.name">Dr. Philip Wimpee</span>
+        </h2>
+        <p class="doctor__creds" data-c="doctor.creds">DDS</p>
+
+        <p class="doctor__bio" data-c="doctor.bio1">Dr. Philip Wimpee has spent over three decades at Colorado Smile Design helping Highlands Ranch patients achieve healthy, natural-looking smiles. Known for an exacting eye and an unhurried chairside manner, he approaches every crown, veneer, and restoration with uncompromising attention to detail.</p>
+        <p class="doctor__bio" data-c="doctor.bio2">Supported by his dedicated clinical and front-office team at our Ridgeline Boulevard studio, Dr. Wimpee pairs modern dental techniques with clear, open communication. His focus on structural longevity ensures that both routine preventive care and complex rehabilitations stand the test of time.</p>
+
+        <blockquote class="doctor__quote" data-c="doctor.quote">I believe great dentistry means never rushing a conversation or a restoration—we take the time to get every detail right so your smile lasts.</blockquote>
+
+        <div class="schools">
+          <div class="school__row">
+            <svg class="school__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M2.5 7.5L10 3.5L17.5 7.5L10 11.5L2.5 7.5Z"/><path d="M5.5 9.5V14.2C5.5 15.5 7.5 16.5 10 16.5C12.5 16.5 14.5 15.5 14.5 14.2V9.5"/></svg><span class="school__k" data-c="doctor.school1.k">Practice</span>
+            <span class="school__v" data-c="doctor.school1.v">Colorado Smile Design · Highlands Ranch</span>
+          </div>
+          <div class="school__row">
+            <svg class="school__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M10 2.5L16 5V9.8C16 13.6 13.4 16.4 10 17.5C6.6 16.4 4 13.6 4 9.8V5L10 2.5Z"/><path d="M7.5 10.2L9.2 11.9L12.8 8.3"/></svg><span class="school__k" data-c="doctor.school2.k">Experience</span>
+            <span class="school__v" data-c="doctor.school2.v">Over 35 Years in Clinical Practice</span>
+          </div>
+          <div class="school__row">
+            <svg class="school__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><circle cx="7.5" cy="7" r="2.5"/><circle cx="13" cy="7.5" r="2"/><path d="M3.5 15.5C3.5 13.3 5.3 11.8 7.5 11.8C9.7 11.8 11.5 13.3 11.5 15.5"/><path d="M11.5 15.5C11.7 13.7 13 12.5 14.8 12.5C16.2 12.5 17.2 13.3 17.5 14.8"/></svg><span class="school__k" data-c="doctor.school3.k">State License</span>
+            <span class="school__v" data-c="doctor.school3.v">Colorado Dental Board (Licensed DDS)</span>
+          </div>
+          <div class="school__row">
+            <svg class="school__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="2.5"/></svg><span class="school__k" data-c="doctor.school4.k">Clinical Focus</span>
+            <span class="school__v" data-c="doctor.school4.v">Cosmetic Veneers, Crowns & Trauma Restoration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TREATMENTS SLOTS — Hidden in DOM to preserve all 114 KEYS.md hooks (Keys 37-58)
+       ======================================================================== -->
+
+  <!-- ========================================================================
+       02 · APPROACH — Calm, Fear-Free 4-Step First Visit + Hidden Shade (Keys 59-72)
+       ======================================================================== -->
+  <section class="approach" id="approach" aria-labelledby="ap-h">
+  <div class="warm-figmark warm-figmark--bl" data-warm-figmark aria-hidden="true">
+    <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <circle data-warm-draw pathLength="1" cx="180" cy="240" r="150"/>
+      <circle data-warm-draw="teal" pathLength="1" cx="180" cy="240" r="104"/>
+      <circle data-warm-draw pathLength="1" cx="180" cy="240" r="58"/>
+      <path data-warm-draw pathLength="1" d="M20,240 L340,240 M180,80 L180,400"/>
+      <path data-warm-draw="teal" pathLength="1" d="M70,150 Q180,310 290,150"/>
+    </svg>
+  </div>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__left reveal">
+          <span class="kicker">02 · Approach</span>
+          <h2 class="display-lg" id="ap-h">
+            <span data-c="approach.head1">Precision work,</span><br>
+            <span data-c="approach.head2">built on <em>trust</em></span>
+          </h2>
+        </div>
+        <p class="sec-head__right reveal">
+          Nervous patients and families are always welcome here. We take things one step at a time, explain everything in plain language, and never rush your appointment.
+        </p>
+      </div>
+
+      <div class="approach__calm-banner reveal">
+        <span><strong>What awaits you on your first visit:</strong> A calm conversation first, gentle diagnostics, and zero pressure.</span>
+        <span>Comfort-first, judgment-free care</span>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step__top">
+            <span class="step__num">Step 01</span>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M18 22.5C18 19.5 20.7 17 24 17C27.3 17 30 19.5 30 22.5C30 25.2 27.8 27.4 24.8 27.9L21 30.5V27.6C19.2 26.7 18 24.8 18 22.5Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <circle cx="24" cy="9" r="2" fill="var(--terracotta-light)"/>
+            </svg>
+          </div>
+          <h3 class="step__title" data-c="approach.step1.t">Consultation</h3>
+          <p class="step__body" data-c="approach.step1.p">A full examination and an unhurried conversation about what you would change, before anything is decided.</p>
+          <span class="step__tag">Unhurried conversation · No surprise procedures</span>
+        </div>
+
+        <div class="step reveal">
+          <div class="step__top">
+            <span class="step__num">Step 02</span>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M24 15L30.5 18V23.8C30.5 28 27.7 31.3 24 32.8C20.3 31.3 17.5 28 17.5 23.8V18L24 15Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <path d="M21.5 24L23.3 25.8L27 22" stroke="var(--sage-text)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="step__title" data-c="approach.step2.t">Planning</h3>
+          <p class="step__body" data-c="approach.step2.p">Digital imaging maps the mouth so the result is designed before a single tooth is touched.</p>
+          <span class="step__tag">Clear options &amp; transparent written plan</span>
+        </div>
+
+        <div class="step reveal">
+          <div class="step__top">
+            <span class="step__num">Step 03</span>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M17 28C19.5 22 23 18 29 17C28 23 24.5 26.5 18.5 29Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <path d="M17 29L25 21" stroke="var(--sage-text)" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="31" cy="17" r="1.8" fill="var(--terracotta-light)"/>
+            </svg>
+          </div>
+          <h3 class="step__title" data-c="approach.step3.t">Preparation</h3>
+          <p class="step__body" data-c="approach.step3.p">Preparation is kept to the minimum the plan actually requires, preserving natural tooth structure.</p>
+          <span class="step__tag">Gentle, conservative care at your pace</span>
+        </div>
+
+        <div class="step reveal">
+          <div class="step__top">
+            <span class="step__num">Step 04</span>
+            <svg class="step__icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="var(--sage-border-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="24" cy="24" r="15" fill="var(--sage-mid)" stroke="var(--terracotta-border)" stroke-width="1.2"/>
+              <path d="M20 18.5C21.2 17.3 22.8 17.5 24 18.6C25.2 17.5 26.8 17.3 28 18.5C29.6 20.2 29.2 24.4 27.6 28C26.9 29.5 25.8 29.5 25.1 27.8C24.7 26.6 24.4 25.8 24 25.8C23.6 25.8 23.3 26.6 22.9 27.8C22.2 29.5 21.1 29.5 20.4 28C18.8 24.4 18.4 20.2 20 18.5Z" stroke="var(--terracotta-light)" stroke-width="1.35" stroke-linejoin="round"/>
+              <circle cx="24" cy="14.5" r="1.6" fill="var(--sage-text)"/>
+            </svg>
+          </div>
+          <h3 class="step__title" data-c="approach.step4.t">Seating</h3>
+          <p class="step__body" data-c="approach.step4.p">Restorations are fitted and shade-matched so the result reads as your own teeth, not new ones.</p>
+          <span class="step__tag">Lasting comfort &amp; easy follow-up</span>
+        </div>
+      </div>
+
+      <!-- Veneer Shade Ladder hidden in Warm style so it does not intimidate family patients,
+           while preserving all 4 shade.* keys in DOM for KEYS.md validation -->
+      <figure class="shade" data-shade hidden inert>
+        <figcaption class="shade__lab">
+          <span data-c="shade.title">Shade selection · daylight</span>
+          <span id="shade-selected" data-c="shade.selected">Selected: A1</span>
+        </figcaption>
+        <p class="shade__note" data-c="shade.note">Whiter is not the goal. The goal is a shade nobody notices changed at all.</p>
+        <p class="shade__hint" data-c="shade.hint">Tap a shade to compare</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       03 · PATIENT WORDS (Keys 73-83)
+       ======================================================================== -->
+  <section class="words section words-sec" id="words" aria-labelledby="w-h">
+  <div class="warm-figmark warm-figmark--tr" data-warm-figmark aria-hidden="true">
+    <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <circle data-warm-draw pathLength="1" cx="240" cy="180" r="150"/>
+      <circle data-warm-draw="teal" pathLength="1" cx="240" cy="180" r="108"/>
+      <circle data-warm-draw pathLength="1" cx="240" cy="180" r="64"/>
+      <path data-warm-draw pathLength="1" d="M60,180 L400,180 M240,20 L240,340"/>
+      <path data-warm-draw="teal" pathLength="1" d="M120,280 Q240,110 360,280"/>
+    </svg>
+  </div>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__left reveal">
+          <span class="kicker">03 · Patient Stories</span>
+          <h2 class="display-lg" id="w-h">
+            <span data-c="words.head1">In their</span>
+            <span data-c="words.head2">own <em>words</em></span>
+          </h2>
+        </div>
+        <p class="sec-head__right reveal">
+          Real notes from patients and families who trust our team with their care.
+        </p>
+      </div>
+
+      <div class="words__grid words__grid--stack">
+        <figure class="word reveal">
+          <blockquote class="word__q" data-c="words.1.quote">I have been going to Dr. Wimpee since he began practicing (35-40 years). He is an extremely talented dentist. He is a perfectionist when it comes to your smile and is not happy until it's perfect. He has a wonderful chair side manner. Very friendly, explains things to you, and is welcoming to your input or questions. His practice is on the cutting edge with their innovative techniques and technology. My first round of Veneers lasted 10 years longer than the norm. I'm on my second set and again am completely satisfied. I also have several crowns, the one I just broke was 20+ years old. His work has always been excellent and without fear of having to replace again in a few years! His team Ashley and Laura are always so helpful and make your visit a positive experience! Thanks Dr. Wimpee for all you do!</blockquote>
+          <figcaption class="word__by">
+            <b data-c="words.1.name">Michelle H.</b>
+            <span data-c="words.1.detail">Veneers & Crowns</span>
+          </figcaption>
+        </figure>
+
+        <figure class="word reveal">
+          <blockquote class="word__q" data-c="words.2.quote">Dr. Wimpee and his incredible team helped restore my teeth following a car accident, and one year later, I'm happy to say everything is still perfect. From being warmly greeted by the incredibly friendly Laura to receiving care from knowledgeable and highly skilled professionals, the entire experience has been exceptional from start to finish. I couldn't be more grateful for the quality of care, attention to detail, and professionalism this team provides. I would highly recommend Dr. Wimpee and his team to anyone looking for outstanding dental care, a welcoming staff, and truly exceptional results!</blockquote>
+          <figcaption class="word__by">
+            <b data-c="words.2.name">Jacek R.</b>
+            <span data-c="words.2.detail">Trauma & Restorative</span>
+          </figcaption>
+        </figure>
+
+        <figure class="word reveal">
+          <blockquote class="word__q" data-c="words.3.quote">I've been going to Dr. Wimpee for 25 years, and that should tell you everything you need to know! He and his team are outstanding. Sophie did an excellent job cleaning my teeth during my last visit-thorough, professional, and friendly. So gentle she had me at a "floss" for words. Laura at the front desk is always responsive, helpful, and a pleasure to deal with even when letting me know what I owe. After 25 years, they've earned my trust and loyalty. I drive past a lot of dentists to get there. If you're looking for a great dentist and an excellent team, look no further. Highly recommended!</blockquote>
+          <figcaption class="word__by">
+            <b data-c="words.3.name">Kipp K.</b>
+            <span data-c="words.3.detail">Preventive & Hygiene</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- =====================================================================
+           INDEPENDENT AI VERIFICATION (Third-Party Consensus)
+           Direct unvarnished inquiries via Google AI Overview (udm=50) & ChatGPT
+           ===================================================================== -->
+      <div class="gmaps-reviews-cta reveal" style="margin-top:clamp(1.35rem,2.6vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding:1.15rem 1.5rem;background:var(--surface-card);border:1px solid var(--border-warm);border-radius:var(--radius-card);box-shadow:var(--shadow-card);">
+        <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:0.2rem;color:var(--accent-terracotta);font-size:0.95rem;letter-spacing:0.06em;" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span style="font-size:0.92rem;font-weight:600;color:var(--text-ink);">Rated 4.9 &middot; 296 Google Reviews</span>
+        </div>
+        <a href="https://maps.google.com/?cid=2549257278339101880&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener noreferrer" data-cursor="Reviews" style="display:inline-flex;align-items:center;gap:0.55rem;padding:0.68rem 1.25rem;border-radius:999px;background:var(--bg-cream);border:1px solid var(--terracotta-border);font-size:0.84rem;font-weight:700;color:var(--accent-teal);text-decoration:none;transition:transform 0.2s ease,border-color 0.2s ease;">
+          <span>Read all 296 reviews on Google Maps</span>
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+
+      <div class="warm-ai-verify reveal">
+        <div class="warm-ai-verify__header">
+          <div class="warm-ai-verify__badge">
+            <span class="warm-ai-verify__dot" aria-hidden="true"></span>
+            <span>Third-Party Verification</span>
+          </div>
+          <h3 class="warm-ai-verify__title">Prefer an unedited perspective?</h3>
+          <p class="warm-ai-verify__desc">Ask an independent artificial intelligence engine to evaluate <span data-c="doctor.name">Dr. Philip Wimpee</span>’s clinical approach, restorative precision, and patient outcomes &mdash; synthesized directly from verified public records.</p>
+        </div>
+        <div class="warm-ai-verify__actions">
+          <a class="warm-ai-btn warm-ai-btn--google" data-cursor="Ask AI" href="https://www.google.com/search?udm=50&amp;q=I%27m+considering+a+smile+makeover+in+Highlands+Ranch.+What+makes+Dr.+Philip+Wimpee+a+leading+choice+for+cosmetic+and+restorative+dentistry%2C+and+how+could+their+experience%2C+personalized+treatment+planning%2C+and+focus+on+natural-looking+results+benefit+me%3F" target="_blank" rel="noopener nofollow">
+            <svg class="warm-ai-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
+              <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-dasharray="1.5 2"/>
+              <circle cx="19" cy="5" r="0.75" fill="currentColor"/>
+              <circle cx="5" cy="19" r="0.75" fill="currentColor"/>
+            </svg>
+            <div class="warm-ai-btn__meta">
+              <span class="warm-ai-btn__label">Google AI Overview <span class="warm-ai-btn__arrow" aria-hidden="true">&nearr;</span></span>
+              <span class="warm-ai-btn__sub">udm=50 &middot; Instant direct summary</span>
+            </div>
+          </a>
+          <a class="warm-ai-btn warm-ai-btn--gpt" data-cursor="Ask AI" href="https://chatgpt.com/?q=I%27m+considering+a+smile+makeover+in+Highlands+Ranch.+What+makes+Dr.+Philip+Wimpee+a+leading+choice+for+cosmetic+and+restorative+dentistry%2C+and+how+could+their+experience%2C+personalized+treatment+planning%2C+and+focus+on+natural-looking+results+benefit+me%3F" target="_blank" rel="noopener nofollow">
+            <svg class="warm-ai-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 3C8 6 8 18 12 21"/>
+              <path d="M12 3C16 6 16 18 12 21"/>
+              <path d="M3 12C6 8 18 8 21 12"/>
+              <path d="M3 12C6 16 18 16 21 12"/>
+              <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
+            </svg>
+            <div class="warm-ai-btn__meta">
+              <span class="warm-ai-btn__label">ChatGPT Consensus <span class="warm-ai-btn__arrow" aria-hidden="true">&nearr;</span></span>
+              <span class="warm-ai-btn__sub">Live dialogue &middot; Zero login needed</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       04 · STANDARDS / OUR PROMISE (Keys 84-90)
+       ======================================================================== -->
+  <section class="trust-sec" id="trust" aria-labelledby="trust-h">
+    <div class="wrap">
+      <span class="kicker">04 · Family &amp; Clinical Standards</span>
+      <h2 class="display-lg" id="trust-h" data-c="words.kicker">04 · Clinical & Patient Standards</h2>
+
+      <div class="trust-grid">
+        <article class="trust reveal">
+          <div class="trust__top">
+            <span class="trust__idx">Standard I</span>
+            <span class="trust__spec">Long-Term Continuity</span>
+          </div>
+          <div class="trust__canvas" aria-hidden="true">
+            <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
+              <path d="M36 14 V22 M68 14 V19 M100 14 V22 M132 14 V19 M160 14 V24 M188 14 V19 M220 14 V22 M252 14 V19 M284 14 V22" stroke="var(--border-warm)" stroke-width="1"/>
+              <line x1="24" y1="112" x2="296" y2="112" stroke="var(--border-warm)" stroke-width="0.85" stroke-dasharray="3 4"/>
+              <path d="M54 42 H42 V102 H54 M266 42 H278 V102 H266" stroke="var(--teal-border)" stroke-width="1.15"/>
+              <text x="46" y="36" fill="var(--text-muted)" font-size="7.5" font-family="monospace" letter-spacing="1">0.3MM PREP</text>
+              <text x="230" y="36" fill="var(--accent-terracotta)" font-size="7.5" font-family="monospace" letter-spacing="1">ENAMEL SEAL</text>
+              <g class="trust__orbit" style="transform-origin:160px 68px">
+                <circle cx="160" cy="68" r="46" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="6 5"/>
+                <circle cx="160" cy="22" r="3" fill="var(--accent-terracotta)"/>
+                <circle cx="160" cy="114" r="3" fill="var(--accent-teal)"/>
+              </g>
+              <g class="trust__orbit-inner" style="transform-origin:160px 68px">
+                <circle cx="160" cy="68" r="35" stroke="var(--teal-border)" stroke-width="0.95" stroke-dasharray="3 5"/>
+                <circle cx="125" cy="68" r="2.2" fill="var(--accent-teal)"/>
+                <circle cx="195" cy="68" r="2.2" fill="var(--accent-terracotta)"/>
+              </g>
+              <g class="trust__center" style="transform-origin:160px 68px">
+                <path d="M126 36 C138 24, 151 26, 160 32 C169 26, 182 24, 194 36 C204 48, 202 74, 191 96" stroke="var(--accent-terracotta)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 2"/>
+                <path d="M132 42 C142 32, 152 34, 160 39 C168 34, 178 32, 188 42 C197 52, 195 75, 185 95 C180 105, 172 105, 168 94 C165 86, 163 82, 160 82 C157 82, 155 86, 152 94 C148 105, 140 105, 135 95 C125 75, 123 52, 132 42 Z" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M141 54 C150 47, 170 47, 179 54" stroke="var(--accent-terracotta)" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M145 66 C153 61, 167 61, 175 66" stroke="var(--teal-border)" stroke-width="1.1" stroke-linecap="round"/>
+              </g>
+              <g class="trust__leaf">
+                <path d="M74 90 C68 78, 78 68, 90 74 C84 84, 78 88, 74 90 Z" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.1"/>
+                <line x1="90" y1="74" x2="118" y2="74" stroke="var(--accent-teal)" stroke-width="1.1" stroke-dasharray="2 2"/>
+                <circle cx="118" cy="74" r="2.5" fill="var(--accent-terracotta)"/>
+              </g>
+              <g class="trust__leaf--alt">
+                <path d="M246 90 C252 78, 242 68, 230 74 C236 84, 242 88, 246 90 Z" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.1"/>
+                <line x1="202" y1="74" x2="230" y2="74" stroke="var(--accent-terracotta)" stroke-width="1.1" stroke-dasharray="2 2"/>
+                <circle cx="202" cy="74" r="2.5" fill="var(--accent-teal)"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="trust__t" data-c="words.trust.1.t">Built for multi-decade longevity</h3>
+          <p class="trust__p" data-c="words.trust.1.p">From custom porcelain veneers to full-coverage crowns, every restoration is engineered for structural durability that outlasts conventional timelines.</p>
+        </article>
+
+        <article class="trust reveal">
+          <div class="trust__top">
+            <span class="trust__idx">Standard II</span>
+            <span class="trust__spec">Biocompatible Durability</span>
+          </div>
+          <div class="trust__canvas" aria-hidden="true">
+            <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
+              <path d="M26 116 L76 28 M294 116 L244 28 M26 88 H294 M42 58 H278" stroke="var(--border-warm)" stroke-width="0.75" stroke-dasharray="2 4"/>
+              <line x1="160" y1="16" x2="160" y2="128" stroke="var(--border-warm)" stroke-width="0.85" stroke-dasharray="3 3"/>
+              <path d="M68 114 C76 44, 244 44, 252 114" stroke="var(--accent-terracotta)" stroke-width="1.35" stroke-dasharray="4 3"/>
+              <g class="trust__orbit" style="transform-origin:160px 98px">
+                <circle cx="160" cy="98" r="22" stroke="var(--terracotta-border)" stroke-width="1.1" stroke-dasharray="4 4"/>
+                <circle cx="160" cy="76" r="2.5" fill="var(--accent-terracotta)"/>
+                <circle cx="160" cy="120" r="2.5" fill="var(--accent-teal)"/>
+              </g>
+              <g class="trust__center" style="transform-origin:160px 72px">
+                <rect x="142" y="34" width="16" height="12" rx="5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+                <rect x="162" y="34" width="16" height="12" rx="5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+                <rect x="121" y="41" width="15" height="12" rx="5" transform="rotate(-18 121 41)" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.3"/>
+                <rect x="184" y="36" width="15" height="12" rx="5" transform="rotate(18 184 36)" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.3"/>
+                <circle cx="106" cy="59" r="7.5" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.35"/>
+                <circle cx="214" cy="59" r="7.5" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.35"/>
+                <circle cx="92" cy="79" r="8" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+                <circle cx="228" cy="79" r="8" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+                <circle cx="83" cy="101" r="8.5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+                <circle cx="237" cy="101" r="8.5" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.25"/>
+              </g>
+              <g class="trust__leaf">
+                <path d="M160 98 L106 59 M160 98 L150 40 M160 98 L170 40 M160 98 L214 59" stroke="var(--accent-terracotta)" stroke-width="0.95" stroke-opacity="0.75"/>
+                <circle cx="160" cy="98" r="4" fill="var(--accent-terracotta)"/>
+                <circle cx="160" cy="98" r="9" stroke="var(--accent-teal)" stroke-width="0.95" stroke-dasharray="2 2"/>
+              </g>
+              <g class="trust__scan-y">
+                <line x1="72" y1="68" x2="248" y2="68" stroke="var(--accent-terracotta)" stroke-width="1.35"/>
+                <circle cx="72" cy="68" r="2" fill="var(--accent-terracotta)"/>
+                <circle cx="248" cy="68" r="2" fill="var(--accent-terracotta)"/>
+              </g>
+              <text x="24" y="26" fill="var(--text-muted)" font-size="7.5" font-family="monospace" letter-spacing="1">ARCH SCAN · 24μm</text>
+            </svg>
+          </div>
+          <h3 class="trust__t" data-c="words.trust.2.t">Transparent, unhurried dialogue</h3>
+          <p class="trust__p" data-c="words.trust.2.p">Dr. Wimpee explains findings clearly and welcomes every question before treatment begins, ensuring you are an active partner in your care.</p>
+        </article>
+
+        <article class="trust reveal">
+          <div class="trust__top">
+            <span class="trust__idx">Standard III</span>
+            <span class="trust__spec">Preventive Early Detection</span>
+          </div>
+          <div class="trust__canvas" aria-hidden="true">
+            <svg viewBox="0 0 320 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="308" height="132" rx="10" fill="var(--bg-cream)" stroke="var(--border-warm)" stroke-width="1"/>
+              <line x1="74" y1="18" x2="74" y2="126" stroke="var(--border-warm)" stroke-width="0.9" stroke-dasharray="2 3"/>
+              <line x1="126" y1="18" x2="126" y2="126" stroke="var(--terracotta-border)" stroke-width="0.9" stroke-dasharray="2 3"/>
+              <line x1="194" y1="18" x2="194" y2="126" stroke="var(--terracotta-border)" stroke-width="0.9" stroke-dasharray="2 3"/>
+              <line x1="246" y1="18" x2="246" y2="126" stroke="var(--border-warm)" stroke-width="0.9" stroke-dasharray="2 3"/>
+              <path d="M96 46 A64 64 0 0 1 224 46" stroke="var(--accent-terracotta)" stroke-width="1.15" stroke-dasharray="3 4"/>
+              <g class="trust__scan-x">
+                <circle cx="160" cy="26" r="4.5" fill="var(--accent-terracotta)"/>
+                <line x1="160" y1="30" x2="160" y2="108" stroke="var(--accent-terracotta)" stroke-width="1.15" stroke-dasharray="2 2"/>
+              </g>
+              <g class="trust__center" style="transform-origin:160px 76px">
+                <rect x="82" y="54" width="24" height="52" rx="12" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.2"/>
+                <text x="94" y="121" text-anchor="middle" fill="var(--text-muted)" font-size="7.5" font-family="monospace">B1</text>
+
+                <rect x="114" y="48" width="26" height="58" rx="13" fill="var(--terracotta-soft)" stroke="var(--accent-terracotta)" stroke-width="1.6"/>
+                <circle cx="127" cy="60" r="2.2" fill="var(--accent-terracotta)"/>
+                <text x="127" y="121" text-anchor="middle" fill="var(--accent-terracotta)" font-size="7.5" font-weight="700" font-family="monospace">A1</text>
+
+                <rect x="147" y="44" width="26" height="62" rx="13" fill="var(--surface-card)" stroke="var(--accent-teal)" stroke-width="1.4"/>
+                <text x="160" y="121" text-anchor="middle" fill="var(--accent-teal)" font-size="7.5" font-family="monospace">A2</text>
+
+                <rect x="180" y="48" width="26" height="58" rx="13" fill="var(--teal-soft)" stroke="var(--accent-teal)" stroke-width="1.2"/>
+                <text x="193" y="121" text-anchor="middle" fill="var(--text-muted)" font-size="7.5" font-family="monospace">B2</text>
+
+                <rect x="214" y="54" width="24" height="52" rx="12" fill="var(--surface-card)" stroke="var(--border-warm)" stroke-width="1.2"/>
+                <text x="226" y="121" text-anchor="middle" fill="var(--text-muted)" font-size="7.5" font-family="monospace">C1</text>
+              </g>
+              <path d="M72 90 Q160 116 248 90" stroke="var(--accent-terracotta)" stroke-width="1.4" stroke-linecap="round"/>
+              <text x="218" y="26" fill="var(--text-muted)" font-size="7.5" font-family="monospace" letter-spacing="1">5500K DAYLIGHT</text>
+            </svg>
+          </div>
+          <h3 class="trust__t" data-c="words.trust.3.t">Continuity from a familiar team</h3>
+          <p class="trust__p" data-c="words.trust.3.p">From gentle hygiene appointments to seamless scheduling at the front desk, you are cared for by professionals who know your history.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       05 · BOOKING / CONSULTATION (Keys 91-99)
+       ======================================================================== -->
+  <section class="book" id="book" aria-labelledby="b-h">
+  <div class="warm-figmark warm-figmark--bl" data-warm-figmark aria-hidden="true">
+    <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <circle data-warm-draw pathLength="1" cx="180" cy="240" r="150"/>
+      <circle data-warm-draw="teal" pathLength="1" cx="180" cy="240" r="104"/>
+      <circle data-warm-draw pathLength="1" cx="180" cy="240" r="58"/>
+      <path data-warm-draw pathLength="1" d="M20,240 L340,240 M180,80 L180,400"/>
+      <path data-warm-draw="teal" pathLength="1" d="M70,150 Q180,310 290,150"/>
+    </svg>
+  </div>
+    <div class="wrap book__grid">
+      <div class="book__left">
+        <span class="kicker">05 · Request an Appointment</span>
+        <h2 class="display-lg" id="b-h">
+          <span data-c="book.head1">Begin with a</span>
+          <span data-c="book.head2"><em>conversation</em></span>
+        </h2>
+
+        <div class="book__direct">
+          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Telephone</span><a href="tel:+13039792900" class="book__direct-v" data-c="book.phone" data-c-href="book.phoneHref">(303) 979-2900</a></div></div>
+          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Email</span><a href="mailto:office@coloradosmiledesign.com" class="book__direct-v" data-c="book.email" data-c-href="book.emailHref">office@coloradosmiledesign.com</a></div></div>
+          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Practice Address</span><span class="book__direct-v" style="font-size:0.95rem" data-c="book.address">9135 Ridgeline Blvd, Highlands Ranch, CO 80129</span></div></div>
+          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Hours</span><span class="book__direct-v" style="font-size:0.95rem;color:var(--text-muted)" data-c="book.hours">Mon: 8:00 AM – 4:00 PM · Tue: 7:00 AM – 3:30 PM · Wed: 8:00 AM – 5:00 PM · Thu: 7:00 AM – 3:30 PM</span></div></div>
+        </div>
+      </div>
+
+      <div>
+        <form class="form" id="book-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="f-name">Full Name</label>
+            <input class="field__input" id="f-name" name="name" type="text" placeholder="Your full name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-phone">Telephone</label>
+            <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="(555) 000-0000" required autocomplete="tel">
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-email">Email Address</label>
+            <input class="field__input" id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-treat" id="f-treat-label">Service or Visit Type</label>
+            <select class="field__select" id="f-treat" name="treatment">
+              <option value="First Visit / Consultation">First Visit / Consultation</option>
+              <option value="Comprehensive Exam &amp; Consultation">Comprehensive Exam &amp; Consultation</option>
+              <option value="Restorative &amp; Cosmetic Care">Restorative &amp; Cosmetic Care</option>
+              <option value="Implant &amp; Preventive Dentistry">Implant &amp; Preventive Dentistry</option>
+              <option value="Not sure yet">Not sure yet — general consultation</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label class="field__label" for="f-notes">How can we help make your visit comfortable? (Optional)</label>
+            <textarea class="field__input" id="f-notes" name="notes" rows="2" placeholder="Preferred days, questions, or anything you'd like the doctor to know ahead of time..."></textarea>
+          </div>
+          <div class="form__foot">
+            <p class="form__note" data-c="book.note">We reply to every consultation request within two working days.</p>
+            <button class="btn-submit" type="submit" id="submit" data-cursor="Send">
+              <span id="submit-label">Book a Visit</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="sent" id="sent" role="status" aria-live="polite" data-on="false">
+          <p class="display-md" data-c="book.sentHead">Received.</p>
+          <p style="margin-top:0.5rem;color:var(--text-muted)" data-c="book.sentBody">Reception will call to arrange a time. If it is urgent, please call the practice directly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       06 · LOCATION & REVIEWS (Keys 100-119)
+       ======================================================================== -->
+  <section class="loc" id="location" aria-labelledby="loc-h">
+  <div class="warm-figmark warm-figmark--tr" data-warm-figmark aria-hidden="true">
+    <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <circle data-warm-draw pathLength="1" cx="240" cy="180" r="150"/>
+      <circle data-warm-draw="teal" pathLength="1" cx="240" cy="180" r="108"/>
+      <circle data-warm-draw pathLength="1" cx="240" cy="180" r="64"/>
+      <path data-warm-draw pathLength="1" d="M60,180 L400,180 M240,20 L240,340"/>
+      <path data-warm-draw="teal" pathLength="1" d="M120,280 Q240,110 360,280"/>
+    </svg>
+  </div>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__left reveal">
+          <span class="kicker">06 · Find Our Office</span>
+          <h2 class="display-lg" id="loc-h">
+            <span data-c="loc.head1">In Highlands Ranch,</span>
+            <span data-c="loc.head2">at <em>your service</em></span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="loc__grid">
+        <div class="info reveal">
+          <div class="info__row">
+            <div class="info__k">Address</div>
+            <address class="info__v" style="font-style:normal" data-c="loc.address">9135 Ridgeline Blvd, Highlands Ranch, CO 80129</address>
+          </div>
+
+          <div class="info__row">
+            <div class="info__k">Patient Rating</div>
+            <div class="info__v">
+              <div class="revs__score">
+                <span class="revs__num" data-c="loc.score">4.9</span>
+                <div>
+                  <div class="stars" role="img" aria-label="Rated 5 out of 5">
+                    <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
+                  </div>
+                  <div class="revs__meta" data-c="loc.source">296 reviews on Google</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info__row">
+            <div class="info__k">Direct Lines</div>
+            <div class="info__v">
+              <div class="phones">
+                <a class="phone" href="tel:+13039792900" data-c-href="book.phoneHref">
+                  <span class="phone__label" data-c="loc.phone1.label">Reception</span>
+                  <span class="book__direct-v" data-c="loc.phone1.value">(303) 979-2900</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <a class="btn-pill btn-pill--outline" data-c="map.directions"
+               href="https://maps.google.com/?cid=2549257278339101880&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+               target="_blank" rel="noopener noreferrer">
+              <span>Get directions</span>
+              <span aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="map reveal" data-map data-armed="false">
+          <div class="map__plate" data-cursor-off>
+            <iframe
+              class="map__iframe"
+              data-c="map.embed"
+              src="about:blank" data-map-src="https://www.google.com/maps?q=Colorado%20Smile%20Design%2C%209135%20Ridgeline%20Blvd%2C%20Highlands%20Ranch%2C%20CO%2080129&amp;hl=en&amp;gl=US&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Colorado%20Smile%20Design%2C%209135%20Ridgeline%20Blvd%2C%20Highlands%20Ranch%2C%20CO%2080129&amp;hl=en&amp;gl=US&amp;output=embed"
+              title="Map — 9135 Ridgeline Blvd, Highlands Ranch, CO 80129"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER (Keys 120-127)
+     ========================================================================== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <strong class="footer__brand" data-c="brand.name">Dr. Philip Wimpee</strong>
+      <span data-c="brand.tagline">Cosmetic & Restorative Dentistry · Highlands Ranch</span>
+      <div style="margin-top:0.35rem" data-c="footer.address">9135 Ridgeline Blvd, Highlands Ranch, CO 80129</div>
+    </div>
+    <div class="footer__links">
+      <a href="tel:+13039792900" data-c="book.phone" data-c-href="book.phoneHref">(303) 979-2900</a>
+      <a href="mailto:office@coloradosmiledesign.com" data-c="book.email" data-c-href="book.emailHref">office@coloradosmiledesign.com</a>
+    </div>
+    <div style="width:100%;padding-top:1rem;border-top:1px solid var(--border-warm);display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.75rem">
+      <span data-c="footer.legal">© 2026 Colorado Smile Design</span>
+      <a href="https://hs-frontend.online/" target="_blank" rel="noopener noreferrer" data-c="footer.credit">Site by hs-frontend.online</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     MOBILE FIXED BOTTOM BAR (<= 768px / 390px) — Call · Book · Directions
+     ========================================================================== -->
+<nav class="mobile-bar" id="mobile-bottom-bar" aria-label="Quick Mobile Actions" aria-hidden="true" inert>
+  <a href="tel:+13039792900" class="mobile-bar__btn mobile-bar__btn--call" id="mobile-bar-call">Call</a>
+  <a href="#book" class="mobile-bar__btn mobile-bar__btn--book" id="mobile-bar-book">Book</a>
+  <a href="https://maps.google.com/?cid=2549257278339101880&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" data-c-href="https://maps.google.com/?cid=2549257278339101880&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" class="mobile-bar__btn mobile-bar__btn--dir" id="mobile-bar-directions" target="_blank" rel="noopener">Directions</a>
+</nav>
+
+<!-- ==========================================================================
+     BOOKING CONFIRMATION MODAL
+     ========================================================================== -->
+<div class="modal" id="book-modal" role="dialog" aria-modal="true" aria-labelledby="book-modal-title" hidden inert>
+  <div class="modal__card">
+    <h3 class="modal__title" id="book-modal-title">Visit Request Received</h3>
+    <p class="modal__body" id="book-modal-summary">Thank you. Reception will call to arrange a time, usually the same day.</p>
+    <button type="button" class="btn-pill btn-pill--teal" id="book-modal-close">Done</button>
+  </div>
+</div>
+
+<script src="app-warm.js" defer></script>
+</body>
+</html>

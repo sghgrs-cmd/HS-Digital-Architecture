@@ -1,0 +1,22 @@
+{
+  "slug": "dr-john-buzza",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-john-buzza",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-john-buzza\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 24,
+  "recorded_at": "2026-11-16T21:28:00Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-john-buzza\\video\\walkthrough-warm.mp4",
+      "size_mb": 18.28,
+      "elapsed_sec": 590.1
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-john-buzza\\video\\walkthrough.mp4",
+      "size_mb": 22.75,
+      "elapsed_sec": 546.5
+    }
+  ]
+}

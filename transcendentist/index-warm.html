@@ -1651,12 +1651,19 @@
     border-radius: var(--radius-card);
     overflow: hidden;
     box-shadow: var(--shadow-card);
+    position: relative;
+  }
+
+  .map__plate {
+    position: relative;
+    overflow: hidden;
   }
 
   .map__iframe {
     width: 100%;
     height: 360px;
     border: 0;
+    display: block;
   }
 
   .info {
@@ -1940,49 +1947,12 @@
     pointer-events: auto;
   }
 
-  .map__shield {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background: transparent;
-    border: none;
-    text-decoration: none;
-    pointer-events: auto;
-  }
-
-  .map__shield-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 1.05rem;
-    border-radius: var(--radius-pill);
-    background: var(--shield-bg);
-    border: 1px solid var(--border-strong);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--accent-teal);
-    box-shadow: var(--shadow-card);
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-  }
-
   [data-cursor-off], [data-cursor-off] * { cursor: auto !important; }
-  [data-cursor-off] .map__shield, [data-cursor-off] .map__shield * { cursor: pointer !important; }
 
-  .map__shield-label::after {
-    content: "\2197";
-    font-size: 0.85em;
-  }
-
-  .map__shield:hover .map__shield-label {
-    background: var(--accent-teal);
-    color: var(--surface-card);
-    transform: translateY(-2px);
+  @media (min-width: 901px) {
+    .revs[data-count="2"] .words__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .sent {
@@ -3428,9 +3398,9 @@
             </svg>
 
             <div class="hero-atelier__pills">
-              <button type="button" class="hero-atelier__pill" id="hero-art-pill-1" data-pick-treatment data-cursor="Select">01 · Porcelain Veneers</button>
-              <button type="button" class="hero-atelier__pill" id="hero-art-pill-2" data-pick-treatment data-cursor="Select">02 · Full-Mouth Reconstruction</button>
-              <button type="button" class="hero-atelier__pill" id="hero-art-pill-3" data-pick-treatment data-cursor="Select">03 · Implant Restoration</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-1" data-pick-treatment data-cursor="Select">01 · Comprehensive Exam &amp; Consultation</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-2" data-pick-treatment data-cursor="Select">02 · Restorative &amp; Cosmetic Care</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-3" data-pick-treatment data-cursor="Select">03 · Implant &amp; Preventive Dentistry</button>
             </div>
           </div>
 
@@ -3718,6 +3688,17 @@
            INDEPENDENT AI VERIFICATION (Third-Party Consensus)
            Direct unvarnished inquiries via Google AI Overview (udm=50) & ChatGPT
            ===================================================================== -->
+      <div class="gmaps-reviews-cta reveal" style="margin-top:clamp(1.35rem,2.6vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding:1.15rem 1.5rem;background:var(--surface-card);border:1px solid var(--border-warm);border-radius:var(--radius-card);box-shadow:var(--shadow-card);">
+        <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:0.2rem;color:var(--accent-terracotta);font-size:0.95rem;letter-spacing:0.06em;" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span style="font-size:0.92rem;font-weight:600;color:var(--text-ink);">Rated 4.9 &middot; 437 Google Reviews</span>
+        </div>
+        <a href="https://maps.google.com/?cid=10699612858021184237&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener noreferrer" data-cursor="Reviews" style="display:inline-flex;align-items:center;gap:0.55rem;padding:0.68rem 1.25rem;border-radius:999px;background:var(--bg-cream);border:1px solid var(--terracotta-border);font-size:0.84rem;font-weight:700;color:var(--accent-teal);text-decoration:none;transition:transform 0.2s ease,border-color 0.2s ease;">
+          <span>Read all 437 reviews on Google Maps</span>
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+
       <div class="warm-ai-verify reveal">
         <div class="warm-ai-verify__header">
           <div class="warm-ai-verify__badge">
@@ -3940,7 +3921,7 @@
           </div>
           <div class="field">
             <label class="field__label" for="f-phone">Telephone</label>
-            <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="(510) 800-7660" required autocomplete="tel">
+            <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="(555) 000-0000" required autocomplete="tel">
           </div>
           <div class="field">
             <label class="field__label" for="f-email">Email Address</label>
@@ -3950,12 +3931,10 @@
             <label class="field__label" for="f-treat" id="f-treat-label">Service or Visit Type</label>
             <select class="field__select" id="f-treat" name="treatment">
               <option value="First Visit / Consultation">First Visit / Consultation</option>
-              <option value="Porcelain Veneers">Porcelain Veneers</option>
-              <option value="Full-Mouth Reconstruction">Full-Mouth Reconstruction</option>
-              <option value="Implant Restoration">Implant Restoration</option>
-              <option value="Gum Architecture">Gum Architecture</option>
-              <option value="Invisible Aligner Therapy">Invisible Aligner Therapy</option>
-              <option value="Not sure yet">Not sure yet — just a gentle checkup</option>
+              <option value="Comprehensive Exam &amp; Consultation">Comprehensive Exam &amp; Consultation</option>
+              <option value="Restorative &amp; Cosmetic Care">Restorative &amp; Cosmetic Care</option>
+              <option value="Implant &amp; Preventive Dentistry">Implant &amp; Preventive Dentistry</option>
+              <option value="Not sure yet">Not sure yet — general consultation</option>
             </select>
           </div>
           <div class="field field--full">
@@ -4051,46 +4030,12 @@
             <iframe
               class="map__iframe"
               data-c="map.embed"
-              src="about:blank" data-map-src="https://www.google.com/maps?q=Transcendentist%2C%203030%20Ashby%20Ave%20%23101%2C%20Berkeley%2C%20CA%2094705&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Transcendentist%2C%203030%20Ashby%20Ave%20%23101%2C%20Berkeley%2C%20CA%2094705&amp;output=embed"
+              src="about:blank" data-map-src="https://www.google.com/maps?q=Transcendentist%2C%203030%20Ashby%20Ave%2C%20Berkeley%2C%20CA%2094705&amp;hl=en&amp;gl=US&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Transcendentist%2C%203030%20Ashby%20Ave%2C%20Berkeley%2C%20CA%2094705&amp;hl=en&amp;gl=US&amp;output=embed"
               title="Map — 3030 Ashby Ave #101, Berkeley, CA 94705"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
-        </div>
-      </div>
-
-      <div class="revs" style="margin-top:2rem">
-        <div class="words__grid words__grid--stack">
-          <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.1.quote">Came for the laser dentistry (which is such a better experience for cavity filling and deep cleaning than the regular methods!) but the staff here is also the most pleasant and caring of any dentist I've ever been to.</blockquote>
-            <figcaption class="word__by">
-              <b data-c="review.1.name">Reets</b>
-              <span class="stars" role="img" aria-label="Rated 5 out of 5">
-                <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.2.quote">Good atmosphere! Everyone was warm and welcoming. They answered all my questions. First time having a 3-D model of my teeth, which was amazing! I enjoyed my visit and now have found my dentist!</blockquote>
-            <figcaption class="word__by">
-              <b data-c="review.2.name">Ian M.</b>
-              <span class="stars" role="img" aria-label="Rated 5 out of 5">
-                <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.3.quote">Detailed and thorough and pleasant. I've had a very good experience here after nearly 30 years with my previous dentist.</blockquote>
-            <figcaption class="word__by">
-              <b data-c="review.3.name">Jeremy G.</b>
-              <span class="stars" role="img" aria-label="Rated 5 out of 5">
-                <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
-              </span>
-            </figcaption>
-          </figure>
         </div>
       </div>
     </div>

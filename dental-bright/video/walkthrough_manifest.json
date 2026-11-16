@@ -1,0 +1,22 @@
+{
+  "slug": "dental-bright",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-bright",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-bright\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 24,
+  "recorded_at": "2026-11-16T20:34:34Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-bright\\video\\walkthrough-warm.mp4",
+      "size_mb": 7.14,
+      "elapsed_sec": 385.9
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-bright\\video\\walkthrough.mp4",
+      "size_mb": 15.23,
+      "elapsed_sec": 640.7
+    }
+  ]
+}

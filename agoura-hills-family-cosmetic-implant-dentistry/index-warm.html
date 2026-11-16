@@ -1651,12 +1651,19 @@
     border-radius: var(--radius-card);
     overflow: hidden;
     box-shadow: var(--shadow-card);
+    position: relative;
+  }
+
+  .map__plate {
+    position: relative;
+    overflow: hidden;
   }
 
   .map__iframe {
     width: 100%;
     height: 360px;
     border: 0;
+    display: block;
   }
 
   .info {
@@ -1940,49 +1947,12 @@
     pointer-events: auto;
   }
 
-  .map__shield {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background: transparent;
-    border: none;
-    text-decoration: none;
-    pointer-events: auto;
-  }
-
-  .map__shield-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 1.05rem;
-    border-radius: var(--radius-pill);
-    background: var(--shield-bg);
-    border: 1px solid var(--border-strong);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--accent-teal);
-    box-shadow: var(--shadow-card);
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-  }
-
   [data-cursor-off], [data-cursor-off] * { cursor: auto !important; }
-  [data-cursor-off] .map__shield, [data-cursor-off] .map__shield * { cursor: pointer !important; }
 
-  .map__shield-label::after {
-    content: "\2197";
-    font-size: 0.85em;
-  }
-
-  .map__shield:hover .map__shield-label {
-    background: var(--accent-teal);
-    color: var(--surface-card);
-    transform: translateY(-2px);
+  @media (min-width: 901px) {
+    .revs[data-count="2"] .words__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .sent {
@@ -3276,14 +3246,6 @@
     <a href="#book" class="menu__link" data-nav><span class="num">05</span><span>Book a Visit</span></a>
     <a href="#location" class="menu__link" data-nav><span class="num">06</span><span>Location &amp; Hours</span></a>
   </nav>
-  <div class="menu__foot">
-    <div>
-      <strong data-c="brand.name">Dr. Shindler</strong> · <span data-c="brand.tagline">Cosmetic, Implant & Family Dentistry · Agoura Hills</span>
-    </div>
-    <div>
-      <a href="tel:+18054950187" data-c="book.phone" data-c-href="book.phoneHref">(805) 495-0187</a> ·
-    </div>
-  </div>
 </aside>
 
 <main id="top">
@@ -3427,9 +3389,9 @@
             </svg>
 
             <div class="hero-atelier__pills">
-              <button type="button" class="hero-atelier__pill" id="hero-art-pill-1" data-pick-treatment data-cursor="Select">01 · Porcelain Veneers</button>
-              <button type="button" class="hero-atelier__pill" id="hero-art-pill-2" data-pick-treatment data-cursor="Select">02 · Full-Mouth Reconstruction</button>
-              <button type="button" class="hero-atelier__pill" id="hero-art-pill-3" data-pick-treatment data-cursor="Select">03 · Implant Restoration</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-1" data-pick-treatment data-cursor="Select">01 · Comprehensive Exam &amp; Consultation</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-2" data-pick-treatment data-cursor="Select">02 · Restorative &amp; Cosmetic Care</button>
+              <button type="button" class="hero-atelier__pill" id="hero-art-pill-3" data-pick-treatment data-cursor="Select">03 · Implant &amp; Preventive Dentistry</button>
             </div>
           </div>
 
@@ -3471,7 +3433,7 @@
       <div class="proof__cell reveal">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:0.2rem;opacity:0.85"><path d="M8 6.5C9.5 5 11 5.3 12 6.5C13 5.3 14.5 5 16 6.5C18 8.5 17.5 13.5 15.5 18C14.7 19.8 13.5 19.8 12.7 17.8C12.3 16.5 12 15.8 12 15.8C12 15.8 11.7 16.5 11.3 17.8C10.5 19.8 9.3 19.8 8.5 18C6.5 13.5 6 8.5 8 6.5Z"/></svg>
         <div class="proof__num" data-c="proof.4.value">ADA</div>
-        <div class="proof__label" data-c="proof.4.label">Membership · Verified</div>
+        <div class="proof__label" data-c="proof.4.label">CDA</div>
       </div>
     </div>
   </section>
@@ -3491,8 +3453,8 @@
   </div>
     <div class="wrap doctor__grid">
       <figure class="portrait reveal" data-portrait>
-        <div class="portrait__frame is-monogram">
-          
+        <div class="portrait__frame">
+          <img class="portrait__img" data-c-src="doctor.photo" src="portrait.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Dr. Shindler" style="object-position:50% 16%;">
           <div class="portrait__tint" aria-hidden="true"></div>
           <div class="portrait__ph" hidden>
             <div class="portrait__monogram-badge" data-monogram-initials>S</div>
@@ -3709,6 +3671,17 @@
            INDEPENDENT AI VERIFICATION (Third-Party Consensus)
            Direct unvarnished inquiries via Google AI Overview (udm=50) & ChatGPT
            ===================================================================== -->
+      <div class="gmaps-reviews-cta reveal" style="margin-top:clamp(1.35rem,2.6vw,2rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding:1.15rem 1.5rem;background:var(--surface-card);border:1px solid var(--border-warm);border-radius:var(--radius-card);box-shadow:var(--shadow-card);">
+        <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:0.2rem;color:var(--accent-terracotta);font-size:0.95rem;letter-spacing:0.06em;" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span style="font-size:0.92rem;font-weight:600;color:var(--text-ink);">Rated 4.9 &middot; 228 Google Reviews</span>
+        </div>
+        <a href="https://maps.google.com/?cid=13179438400828624081&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener noreferrer" data-cursor="Reviews" style="display:inline-flex;align-items:center;gap:0.55rem;padding:0.68rem 1.25rem;border-radius:999px;background:var(--bg-cream);border:1px solid var(--terracotta-border);font-size:0.84rem;font-weight:700;color:var(--accent-teal);text-decoration:none;transition:transform 0.2s ease,border-color 0.2s ease;">
+          <span>Read all 228 reviews on Google Maps</span>
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+
       <div class="warm-ai-verify reveal">
         <div class="warm-ai-verify__header">
           <div class="warm-ai-verify__badge">
@@ -3916,7 +3889,7 @@
         </h2>
 
         <div class="book__direct">
-          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Telephone</span><a href="tel:+18054950187" class="book__direct-v" data-c="book.phone" data-c-href="book.phoneHref">(805) 495-0187</a></div></div></div></div>
+          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Telephone</span><a href="tel:+18054950187" class="book__direct-v" data-c="book.phone" data-c-href="book.phoneHref">(805) 495-0187</a></div></div>
           <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Practice Address</span><span class="book__direct-v" style="font-size:0.95rem" data-c="book.address">30200 Agoura Rd, Agoura Hills, CA 91301</span></div></div>
           <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Hours</span><span class="book__direct-v" style="font-size:0.95rem;color:var(--text-muted)" data-c="book.hours">Mon-Fri: 9:00 AM – 5:00 PM | Sat: 8:00 AM – 4:30 PM</span></div></div>
         </div>
@@ -3930,7 +3903,7 @@
           </div>
           <div class="field">
             <label class="field__label" for="f-phone">Telephone</label>
-            <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="(805) 495-0187" required autocomplete="tel">
+            <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="(555) 000-0000" required autocomplete="tel">
           </div>
           <div class="field">
             <label class="field__label" for="f-email">Email Address</label>
@@ -3940,12 +3913,10 @@
             <label class="field__label" for="f-treat" id="f-treat-label">Service or Visit Type</label>
             <select class="field__select" id="f-treat" name="treatment">
               <option value="First Visit / Consultation">First Visit / Consultation</option>
-              <option value="Porcelain Veneers">Porcelain Veneers</option>
-              <option value="Full-Mouth Reconstruction">Full-Mouth Reconstruction</option>
-              <option value="Implant Restoration">Implant Restoration</option>
-              <option value="Gum Architecture">Gum Architecture</option>
-              <option value="Invisible Aligner Therapy">Invisible Aligner Therapy</option>
-              <option value="Not sure yet">Not sure yet — just a gentle checkup</option>
+              <option value="Comprehensive Exam &amp; Consultation">Comprehensive Exam &amp; Consultation</option>
+              <option value="Restorative &amp; Cosmetic Care">Restorative &amp; Cosmetic Care</option>
+              <option value="Implant &amp; Preventive Dentistry">Implant &amp; Preventive Dentistry</option>
+              <option value="Not sure yet">Not sure yet — general consultation</option>
             </select>
           </div>
           <div class="field field--full">
@@ -4041,46 +4012,12 @@
             <iframe
               class="map__iframe"
               data-c="map.embed"
-              src="about:blank" data-map-src="https://www.google.com/maps?q=Agoura%20Hills%20Family%2C%20Cosmetic%2C%20%26%20Implant%20Dentistry%2C%2030200%20Agoura%20Rd%2C%20Agoura%20Hills%2C%20CA%2091301&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Agoura%20Hills%20Family%2C%20Cosmetic%2C%20%26%20Implant%20Dentistry%2C%2030200%20Agoura%20Rd%2C%20Agoura%20Hills%2C%20CA%2091301&amp;output=embed"
+              src="about:blank" data-map-src="https://www.google.com/maps?q=Agoura%20Hills%20Family%2C%20Cosmetic%2C%20%26%20Implant%20Dentistry%2C%2030200%20Agoura%20Rd%2C%20Agoura%20Hills%2C%20CA%2091301&amp;hl=en&amp;gl=US&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Agoura%20Hills%20Family%2C%20Cosmetic%2C%20%26%20Implant%20Dentistry%2C%2030200%20Agoura%20Rd%2C%20Agoura%20Hills%2C%20CA%2091301&amp;hl=en&amp;gl=US&amp;output=embed"
               title="Map — 30200 Agoura Rd, Agoura Hills, CA 91301"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
-        </div>
-      </div>
-
-      <div class="revs" style="margin-top:2rem">
-        <div class="words__grid words__grid--stack">
-          <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.1.quote">Great experience for my root canal. I was super nervous going in but the dentist and staff were so patient with everything. The procedure was painless, appointments were very organized and the atmosphere was very calm and welcoming. I am happy with the care and results from Dr Philip.</blockquote>
-            <figcaption class="word__by">
-              <b data-c="review.1.name">Dylan J.</b>
-              <span class="stars" role="img" aria-label="Rated 5 out of 5">
-                <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.2.quote">We've been going to Dr Shindler for many years and he always makes time for you. In this case I broke a crown off on Wednesday night and by Thursday afternoon I had a new temporary one in place. He's never failed us. The whole office is friendly and helpful</blockquote>
-            <figcaption class="word__by">
-              <b data-c="review.2.name">Linda Q.</b>
-              <span class="stars" role="img" aria-label="Rated 5 out of 5">
-                <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="word reveal">
-            <blockquote class="word__q" data-c="review.3.quote">I'm a new patient. My tooth chipped and Dr. Schindler got me within a week. He and his staff were kind and explained everything thoroughly to me. I'm very happy with my new bioclear filling!</blockquote>
-            <figcaption class="word__by">
-              <b data-c="review.3.name">Julie C.</b>
-              <span class="stars" role="img" aria-label="Rated 5 out of 5">
-                <span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span><span class="star is-on"></span>
-              </span>
-            </figcaption>
-          </figure>
         </div>
       </div>
     </div>

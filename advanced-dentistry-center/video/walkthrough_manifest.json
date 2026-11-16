@@ -1,0 +1,22 @@
+{
+  "slug": "advanced-dentistry-center",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 24,
+  "recorded_at": "2026-11-16T21:27:58Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center\\video\\walkthrough-warm.mp4",
+      "size_mb": 18.79,
+      "elapsed_sec": 499.2
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center\\video\\walkthrough.mp4",
+      "size_mb": 9.37,
+      "elapsed_sec": 688.3
+    }
+  ]
+}

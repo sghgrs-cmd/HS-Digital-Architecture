@@ -269,8 +269,13 @@
         if (citySimple) city = citySimple[1].trim();
       }
 
+      const cleanBrand = rawBrand.replace(/^Dr\.?\s*/i, '').trim();
+      const isSameAsDoc = !rawBrand || rawBrand === 'DATA NOT FOUND' ||
+        cleanBrand.toLowerCase() === cleanDoc.toLowerCase() ||
+        cleanDoc.toLowerCase().includes(cleanBrand.toLowerCase()) ||
+        cleanBrand.toLowerCase().includes(cleanDoc.toLowerCase());
       const qRaw = "I'm considering a smile makeover in " + city + ". What makes Dr. " + cleanDoc +
-        (rawBrand && rawBrand !== 'DATA NOT FOUND' ? " and " + rawBrand : "") +
+        (!isSameAsDoc ? " and " + rawBrand : "") +
         " a leading choice for cosmetic and restorative dentistry, and how could their experience, personalized treatment planning, and focus on natural-looking results benefit me?";
       const qEnc = encodeURIComponent(qRaw);
 
@@ -969,8 +974,11 @@
     const mapIframe = document.querySelector('.map__iframe');
     if (!mapIframe) return;
     if (window.location.protocol === 'file:' && navigator.webdriver) return;
-    const src = mapIframe.getAttribute('data-map-src') || mapIframe.getAttribute('data-embed-src');
+    let src = mapIframe.getAttribute('data-map-src') || mapIframe.getAttribute('data-embed-src');
     if (src && src !== 'about:blank') {
+      if (src.includes('google.com/maps') && !/[?&]hl=/.test(src)) {
+        src += (src.includes('?') ? '&' : '?') + 'hl=en&gl=US';
+      }
       mapIframe.removeAttribute('loading');
       mapIframe.setAttribute('src', src);
       mapIframe.setAttribute('data-map-loaded', 'true');

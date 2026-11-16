@@ -1,0 +1,22 @@
+{
+  "slug": "hd-dental-studios",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hd-dental-studios",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hd-dental-studios\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 24,
+  "recorded_at": "2026-11-16T21:42:01Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hd-dental-studios\\video\\walkthrough-warm.mp4",
+      "size_mb": 14.17,
+      "elapsed_sec": 425.5
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hd-dental-studios\\video\\walkthrough.mp4",
+      "size_mb": 19.63,
+      "elapsed_sec": 414.5
+    }
+  ]
+}

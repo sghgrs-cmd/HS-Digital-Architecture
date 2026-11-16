@@ -1,0 +1,22 @@
+{
+  "slug": "john-j-myers",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 24,
+  "recorded_at": "2026-11-16T21:27:21Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers\\video\\walkthrough-warm.mp4",
+      "size_mb": 13.91,
+      "elapsed_sec": 392.2
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers\\video\\walkthrough.mp4",
+      "size_mb": 9.84,
+      "elapsed_sec": 622.2
+    }
+  ]
+}

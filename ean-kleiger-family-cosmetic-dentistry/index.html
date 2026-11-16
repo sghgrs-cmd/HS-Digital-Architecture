@@ -838,15 +838,15 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .shade__col:focus-visible .shade__chip{outline:2px solid var(--accent-inv);outline-offset:2px}
 .js .shade__chip{transform:scaleY(.4);opacity:0}
 .js .shade.is-in .shade__chip{transform:scaleY(1);opacity:1}
-.shade__col:nth-child(1) .shade__chip{transition-delay:.00s,.00s,0s;background:#F8F6F2}
-.shade__col:nth-child(2) .shade__chip{transition-delay:.05s,.05s,0s;background:#F4F0EB}
-.shade__col:nth-child(3) .shade__chip{transition-delay:.10s,.10s,0s;background:#F0EBE4}
-.shade__col:nth-child(4) .shade__chip{transition-delay:.15s,.15s,0s;background:#ECE6DE}
-.shade__col:nth-child(5) .shade__chip{transition-delay:.20s,.20s,0s;background:#E8E1D7}
-.shade__col:nth-child(6) .shade__chip{transition-delay:.25s,.25s,0s;background:#E3DCD1}
-.shade__col:nth-child(7) .shade__chip{transition-delay:.30s,.30s,0s;background:#DFD7CB}
-.shade__col:nth-child(8) .shade__chip{transition-delay:.35s,.35s,0s;background:#DAD2C4}
-.shade__col:nth-child(9) .shade__chip{transition-delay:.40s,.40s,0s;background:#D6CDBE}
+.shade__col:nth-child(1) .shade__chip{transition-delay:.00s,.00s,0s;background:#FBF8F3}
+.shade__col:nth-child(2) .shade__chip{transition-delay:.05s,.05s,0s;background:#F7F2E8}
+.shade__col:nth-child(3) .shade__chip{transition-delay:.10s,.10s,0s;background:#F3ECDF}
+.shade__col:nth-child(4) .shade__chip{transition-delay:.15s,.15s,0s;background:#EEE4D4}
+.shade__col:nth-child(5) .shade__chip{transition-delay:.20s,.20s,0s;background:#E9DCC9}
+.shade__col:nth-child(6) .shade__chip{transition-delay:.25s,.25s,0s;background:#E3D3BD}
+.shade__col:nth-child(7) .shade__chip{transition-delay:.30s,.30s,0s;background:#DDCAB1}
+.shade__col:nth-child(8) .shade__chip{transition-delay:.35s,.35s,0s;background:#D6C0A4}
+.shade__col:nth-child(9) .shade__chip{transition-delay:.40s,.40s,0s;background:#CFB697}
 .shade__code{font-size:.625rem;font-weight:600;letter-spacing:.1em;color:rgba(247,244,237,.66);transition:color var(--dur-fast) linear}
 .shade__col[aria-checked="true"] .shade__chip{border-color:var(--accent-inv);outline:1px solid var(--accent-inv);outline-offset:-3px}
 .shade__col[aria-checked="true"] .shade__code{color:var(--accent-inv)}
@@ -1367,25 +1367,7 @@ textarea::-webkit-resizer{cursor:none!important}
 .map__plate{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--rule);background:var(--paper-2)}
 .map__iframe{width:100%;height:100%;border:0;display:block;filter:var(--map-filter);pointer-events:auto}
 
-/* Floating bottom-right pill button to open full clinic card in Google Maps.
-   Allows free drag, zoom and navigation on the map iframe itself. */
-.map__shield{
-  position:absolute;right:1rem;bottom:1rem;z-index:5;
-  display:inline-flex;align-items:center;justify-content:center;
-  border:0;background:transparent;text-decoration:none;
-  -webkit-tap-highlight-color:transparent;pointer-events:auto;
-}
-.map__shield-label{
-  font-size:var(--fs-micro);font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--paper);background:var(--ink);border:1px solid var(--paper);
-  padding:.75rem 1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.25);cursor:pointer;
-  transition:background var(--dur-fast) linear,border-color var(--dur-fast) linear,transform var(--dur-fast) ease;
-}
-.map__shield:hover .map__shield-label{
-  background:var(--accent);border-color:var(--accent);transform:translateY(-2px);
-}
 [data-cursor-off], [data-cursor-off] *{cursor:auto!important}
-[data-cursor-off] .map__shield, [data-cursor-off] .map__shield *{cursor:pointer!important}
 
 /* --- reviews — same treatment as Patient Words, minus the glyph ---------- */
 .revs{margin-top:clamp(3rem,8vw,5rem)}
@@ -1396,6 +1378,7 @@ textarea::-webkit-resizer{cursor:none!important}
 }
 @media (min-width:900px){
   .loc__grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(3rem,6vw,5rem);align-items:start}
+  .revs[data-count="2"]{grid-template-columns:repeat(2,1fr)}
 }
 
 /* -----------------------------------------------------------------------------
@@ -1543,14 +1526,25 @@ textarea::-webkit-resizer{cursor:none!important}
   .hero__cue{margin-top:2rem}
 }
 .hero__avatar{
-  width:54px;height:54px;flex:0 0 54px;border-radius:50%;
-  display:block;background:url(portrait.jpg) 50% 16%/185% auto no-repeat;
-  border:1px solid var(--rule);
+  position:relative;width:54px;height:54px;flex:0 0 54px;border-radius:50%;
+  display:inline-grid;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 28% 24%,color-mix(in srgb,var(--ink) 70%,#ffffff 30%) 0%,var(--ink) 62%,var(--ink-deep,#0d0b09) 100%);
+  color:var(--paper);
+  border:1px solid color-mix(in srgb,var(--accent) 55%,var(--rule));
+  box-shadow:inset 0 1.5px 2px rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.48),0 8px 18px -6px rgba(27,23,19,.34);
+  font-family:var(--font-display);font-weight:400;font-size:1.02rem;letter-spacing:.08em;
 }
 .hero__avatar.is-monogram{
-  background:var(--ink)!important;color:var(--paper);
-  display:inline-grid!important;place-items:center;
-  font-family:var(--font-display);font-weight:300;font-size:1.05rem;letter-spacing:.06em;
+  background:radial-gradient(circle at 28% 24%,color-mix(in srgb,var(--ink) 70%,#ffffff 30%) 0%,var(--ink) 62%,var(--ink-deep,#0d0b09) 100%)!important;
+  color:var(--paper);display:inline-grid!important;place-items:center;
+}
+.hero__avatar-ring{
+  position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);
+  pointer-events:none;color:var(--accent);opacity:.78;
+}
+.hero__avatar-ini{
+  position:relative;z-index:1;line-height:1;transform:translateY(.5px);
+  text-shadow:0 1px 2px rgba(0,0,0,.45);
 }
 .hero__trust-name{
   font-family:var(--font-display);font-size:1.0625rem;line-height:1.2;color:var(--ink);
@@ -1731,7 +1725,13 @@ textarea::-webkit-resizer{cursor:none!important}
     </div>
 
     <div class="hero__trust" id="hero-trust-card" data-hero data-delay="3">
-      <span class="hero__avatar is-monogram" id="hero-trust-avatar" aria-hidden="true"><span id="hero-trust-ini">K</span></span>
+      <span class="hero__avatar is-monogram" id="hero-trust-avatar" aria-hidden="true">
+        <svg class="hero__avatar-ring" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="24" cy="24" r="22.5" stroke="currentColor" stroke-width="0.85" stroke-dasharray="2.2 2.2" opacity="0.7"/>
+          <circle cx="24" cy="24" r="19.5" stroke="currentColor" stroke-width="0.65" opacity="0.45"/>
+        </svg>
+        <span class="hero__avatar-ini" id="hero-trust-ini">K</span>
+      </span>
       <div>
         <p class="hero__trust-name" id="hero-trust-name">Dr. Kleiger, DDS</p>
         <p class="hero__trust-meta" id="hero-trust-meta">
@@ -1830,9 +1830,12 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- THE ONE PHOTOGRAPH -->
       <figure class="portrait" data-portrait data-reveal-crop>
         <div class="portrait__plate">
-          <div class="portrait__frame is-monogram">
+          <div class="portrait__frame">
             <!-- Drop the clinic's existing headshot in as portrait.jpg. -->
-            
+            <img class="portrait__img" src="portrait.jpg" width="1000" height="1250"
+                 loading="lazy" decoding="async"
+                 alt="Dr. Kleiger"
+                 onerror="this.closest('.portrait__frame').classList.add('is-missing')" style="object-position:44.8% 28.1%;">
             <span class="portrait__tint" aria-hidden="true"></span>
             <span class="portrait__ph" aria-hidden="true"><span>K</span></span>
           </div>
@@ -2067,19 +2070,19 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- Slot 1 -->
       <figure class="word" data-reveal>
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.1.quote">Dr Kleiger and his office are terrific. I had a crown fallout over the weekend. I came in first thing Monday morning. The office took me in Made time for me. Dr. Kleiger was awesome as always did a full exam replaced the crown and I was on my way by 9:30 AM. They are always professional. They have great customer service and Dr. Kleiger is great at what he does.</blockquote>
+        <blockquote class="word__q" data-c="words.1.quote">I can't say enough great things about Dr. Ean Kleiger and his amazing team! Every visit feels like a truly personalized experience, and I always leave feeling well taken care of. The entire staff is not only incredibly professional but also warm, welcoming, and attentive—they genuinely make an effort to ensure my comfort.<br><br>Dr. Kleiger is exceptionally knowledgeable and takes the time to explain everything in detail. His expertise and care give me complete confidence in the quality of service I’m receiving. If you're looking for a dentist who truly prioritizes your well-being and provides top-notch care, look no further. Highly recommend!</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.1.name">Mark K.</b>
-          <span data-c="words.1.detail">Emergency Restorative Care</span>
+          <b data-c="words.1.name">Jennifer P.</b>
+          <span data-c="words.1.detail">Long-Term Family Care</span>
         </figcaption>
       </figure>
 
       <!-- Slot 2 -->
       <figure class="word" data-reveal data-delay="1">
         <span class="word__glyph" aria-hidden="true">&ldquo;</span>
-        <blockquote class="word__q" data-c="words.2.quote">Absolutely delightful experience from start to finish. Which is a fairly odd way to describe a dental visit! The people are great, all of them, the office is cozy, decorated for Halloween resplendent with good smelling candles, the bathroom clean! Oh, yeah, the hygienist and dentist both very good at their jobs and have a light touch.</blockquote>
+        <blockquote class="word__q" data-c="words.2.quote">This is the best dentist office in the United States. The team works together to give you a great experience. Dr Kleiger is an excellent dentist. All the people that do the cleaning are great. Orfa the dental hygienist is my favorite. Trish the office manager is professional and easy to talk to. She is great at her job. The whole team is kind and gives great service and support. I highly, highly recommend going here for all your dental needs.</blockquote>
         <figcaption class="word__by">
-          <b data-c="words.2.name">Waverley R.</b>
+          <b data-c="words.2.name">Amy C.</b>
           <span data-c="words.2.detail">Gentle Preventive Care</span>
         </figcaption>
       </figure>
@@ -2099,6 +2102,17 @@ textarea::-webkit-resizer{cursor:none!important}
          INDEPENDENT AI VERIFICATION (Third-Party Consensus)
          Direct unvarnished inquiries via Google AI Overview (udm=50) & ChatGPT
          ===================================================================== -->
+    <div class="gmaps-reviews-cta" data-reveal style="margin-top:clamp(1.5rem,3vw,2.25rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.75rem;padding:1.15rem 1.5rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;">
+      <div style="display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;">
+        <span style="display:inline-flex;align-items:center;gap:0.18rem;color:var(--accent);font-size:0.88rem;letter-spacing:0.08em;" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span style="font-size:var(--fs-micro);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink);">Rated 5 &middot; 101 Google Reviews</span>
+      </div>
+      <a href="https://maps.google.com/?cid=11019887536709334029&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener noreferrer" data-cursor="Reviews" style="display:inline-flex;align-items:center;gap:0.55rem;padding:0.65rem 1.2rem;border-radius:10px;background:var(--paper);border:1px solid var(--rule);font-size:var(--fs-micro);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;transition:border-color 0.2s ease,transform 0.2s ease;">
+        <span>Read all 101 reviews on Google Maps</span>
+        <span aria-hidden="true">&nearr;</span>
+      </a>
+    </div>
+
     <div class="ai-verify" data-reveal>
       <div class="ai-verify__badge">
         <span class="ai-verify__dot" aria-hidden="true"></span>
@@ -2416,12 +2430,11 @@ textarea::-webkit-resizer{cursor:none!important}
               </button>
 
               <ul class="sel__list" id="tx-list" role="listbox" aria-labelledby="tx-label" hidden>
-                <li class="sel__opt" role="option" id="tx-o1" aria-selected="false" data-value="Porcelain veneers">Porcelain veneers</li>
-                <li class="sel__opt" role="option" id="tx-o2" aria-selected="false" data-value="Full-mouth reconstruction">Full-mouth reconstruction</li>
-                <li class="sel__opt" role="option" id="tx-o3" aria-selected="false" data-value="Implant restoration">Implant restoration</li>
-                <li class="sel__opt" role="option" id="tx-o4" aria-selected="false" data-value="Gum architecture">Gum architecture</li>
-                <li class="sel__opt" role="option" id="tx-o5" aria-selected="false" data-value="Invisible aligner therapy">Invisible aligner therapy</li>
-                <li class="sel__opt" role="option" id="tx-o6" aria-selected="false" data-value="Not sure yet">Not sure yet</li>
+                <li class="sel__opt" role="option" id="tx-o1" aria-selected="false" data-value="Comprehensive Exam &amp; Consultation">Comprehensive Exam &amp; Consultation</li>
+                <li class="sel__opt" role="option" id="tx-o2" aria-selected="false" data-value="Restorative &amp; Cosmetic Care">Restorative &amp; Cosmetic Care</li>
+                <li class="sel__opt" role="option" id="tx-o3" aria-selected="false" data-value="Implant &amp; Preventive Dentistry">Implant &amp; Preventive Dentistry</li>
+                <li class="sel__opt" role="option" id="tx-o4" aria-selected="false" data-value="New patient consultation">New patient consultation</li>
+                <li class="sel__opt" role="option" id="tx-o5" aria-selected="false" data-value="Not sure yet">Not sure yet</li>
               </ul>
 
               <input type="hidden" id="f-tx" name="treatment" value=""
@@ -2477,7 +2490,7 @@ textarea::-webkit-resizer{cursor:none!important}
         <div class="rating" data-reveal data-delay="1">
           <p class="rating__score" data-c="loc.score">5</p>
           <div class="rating__right">
-            <span class="stars" role="img" aria-label="Rated 5 out of 5">
+            <span class="stars" role="img" aria-label="Rated 4.9 out of 5">
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
               <svg class="star is-on" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
@@ -2514,11 +2527,10 @@ textarea::-webkit-resizer{cursor:none!important}
           <span class="crop crop--br" aria-hidden="true"></span>
           <div class="map__frame">
             <div class="map__plate" data-cursor-off>
-
               <iframe
                 class="map__iframe"
                 data-c="map.embed"
-                src="about:blank" data-map-src="https://www.google.com/maps?q=Ean%20Kleiger%2C%20DDS%20Family%20%26%20Cosmetic%20Dentistry%2C%20319%20S%20Moorpark%20Rd%2C%20Thousand%20Oaks%2C%20CA%2091361&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Ean%20Kleiger%2C%20DDS%20Family%20%26%20Cosmetic%20Dentistry%2C%20319%20S%20Moorpark%20Rd%2C%20Thousand%20Oaks%2C%20CA%2091361&amp;output=embed"
+                src="about:blank" data-map-src="https://www.google.com/maps?q=Ean%20Kleiger%2C%20DDS%20Family%20%26%20Cosmetic%20Dentistry%2C%20319%20S%20Moorpark%20Rd%2C%20Thousand%20Oaks%2C%20CA%2091361&amp;hl=en&amp;gl=US&amp;output=embed" data-embed-src="https://www.google.com/maps?q=Ean%20Kleiger%2C%20DDS%20Family%20%26%20Cosmetic%20Dentistry%2C%20319%20S%20Moorpark%20Rd%2C%20Thousand%20Oaks%2C%20CA%2091361&amp;hl=en&amp;gl=US&amp;output=embed"
                 title="Map — 319 S Moorpark Rd, Thousand Oaks, CA 91361"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -2530,50 +2542,6 @@ textarea::-webkit-resizer{cursor:none!important}
     </div>
 
     <!-- Reviews are pasted in per clinic, real and verbatim. These are slots. -->
-    <div class="revs">
-      <figure class="word" data-reveal>
-        <blockquote class="word__q" data-c="review.1.quote">Dr. Kleiger and his staff are friendly and excellent. A friend of mine who owns a dental lab steered me to this office because of the high quality products that Dr. Kleiger demands. Apparently that's unusual these days; most dentists primarily want the cheapest crowns, etc., so that they can mark them up for a better profit.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.1.name">Barry D.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="word" data-reveal data-delay="1">
-        <blockquote class="word__q" data-c="review.2.quote">Dr. Kleiger and his staff are amazing. Greeted by friendly staff members. My dental hygienist spent time discussing my medical problems, as well as my dental problems and was very gentle and knowledgeable. Dr. Kleiger is always knowledgeable, informative, and gentle. I couldn't ask for a better experience.</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.2.name">Denise D.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="word" data-reveal data-delay="2">
-        <blockquote class="word__q" data-c="review.3.quote">Our entire family has been going to Dr. Kleiger for 20 years. He is exceptional and sets the tone for the entire office - they are all great. Had a crown put on today and he wouldn't stop until it fit perfectly. Highly recommend!</blockquote>
-        <figcaption class="word__by">
-          <b data-c="review.3.name">Don S.</b>
-          <span class="stars" role="img" aria-label="Rated 5 out of 5">
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-            <svg class="star is-on" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.53 5.9 14.09 6.02 10.47 8.8 11.76 13.18 8 10.6 4.24 13.18 5.53 8.8 1.91 6.02 6.47 5.9Z"/></svg>
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-
   </div>
 </section>
 
@@ -2639,6 +2607,32 @@ textarea::-webkit-resizer{cursor:none!important}
   "priceRange": "$$$$",
   "medicalSpecialty": "Dentistry"
 }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var notes={
+    'B1':'B1 · High-value natural enamel — subtle incisal translucency matched under 5500K daylight.',
+    'A1':'A1 · Warm European ivory — balanced chroma that reads as untouched natural enamel.',
+    'B2':'B2 · Soft creamy pearl — harmonious warmth for conservative single-arch restorations.',
+    'D2':'D2 · Cool opalescent neutral — delicate cervical depth with natural light diffusion.',
+    'A2':'A2 · Classic natural dentin — seamless integration beside adjacent natural teeth.',
+    'C1':'C1 · Low-chroma mineral tone — understated optical balance without artificial brightness.',
+    'C2':'C2 · Warm mineral satin — nuanced middle-third saturation for mature enamel matching.',
+    'D4':'D4 · Deep warm dentin core — rich anatomical characterization for single-tooth crown matching.',
+    'A3.5':'A3.5 · Warm amber-ivory — precision cervical blending so single restorations disappear completely.'
+  };
+  var ladder=document.getElementById('shade-ladder');
+  var selEl=document.getElementById('shade-selected');
+  var noteEl=document.querySelector('.shade__note');
+  if(!ladder)return;
+  ladder.addEventListener('click',function(e){
+    var btn=e.target.closest('.shade__col');
+    if(!btn)return;
+    var code=btn.getAttribute('data-code')||'A1';
+    if(selEl)selEl.textContent='Selected: '+code;
+    if(noteEl&&notes[code])noteEl.textContent=notes[code];
+  });
+});
 </script>
 </body>
 </html>

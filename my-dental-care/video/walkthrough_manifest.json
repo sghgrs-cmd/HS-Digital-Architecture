@@ -1,0 +1,22 @@
+{
+  "slug": "my-dental-care",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\my-dental-care",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\my-dental-care\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 24,
+  "recorded_at": "2026-11-16T20:49:42Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\my-dental-care\\video\\walkthrough-warm.mp4",
+      "size_mb": 18.24,
+      "elapsed_sec": 534.4
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\my-dental-care\\video\\walkthrough.mp4",
+      "size_mb": 7.0,
+      "elapsed_sec": 515.6
+    }
+  ]
+}

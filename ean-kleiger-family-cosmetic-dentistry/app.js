@@ -545,8 +545,11 @@ function initMap(){
     const shield = map.querySelector('[data-map-shield]');
     const frame  = map.querySelector('iframe');
     if (frame && !(window.location.protocol === 'file:' && navigator.webdriver)){
-      const src = frame.getAttribute('data-map-src') || frame.getAttribute('data-embed-src');
+      let src = frame.getAttribute('data-map-src') || frame.getAttribute('data-embed-src');
       if (src && src !== 'about:blank'){
+        if (src.includes('google.com/maps') && !/[?&]hl=/.test(src)) {
+          src += (src.includes('?') ? '&' : '?') + 'hl=en&gl=US';
+        }
         frame.removeAttribute('loading');
         frame.setAttribute('src', src);
         frame.setAttribute('data-map-loaded', 'true');
@@ -563,13 +566,19 @@ function initMap(){
     };
     arm(false);
 
-    shield.addEventListener('click', () => {
+    shield.addEventListener('click', (e) => {
       if (CLINIC.MAP_TAP === 'open'){
+        const directHref = shield.getAttribute('href');
+        if (shield.tagName === 'A' && directHref && directHref.startsWith('http')){
+          return; // Native <a target="_blank"> opens exact CID/Place card cleanly in 1 tab
+        }
+        e.preventDefault();
         const link = map.closest('.loc__map, section')?.querySelector('a[data-c="map.directions"]');
         const href = link ? link.href : (frame ? (frame.getAttribute('data-map-src') || frame.src) : null);
         if (href) window.open(href, '_blank', 'noopener,noreferrer');
         return;
       }
+      e.preventDefault();
       arm(true);
     });
 
@@ -995,8 +1004,13 @@ function syncDynamicBindings() {
       if (citySimple) city = citySimple[1].trim();
     }
 
+    const cleanBrand = rawBrand.replace(/^Dr\.?\s*/i, '').trim();
+    const isSameAsDoc = !rawBrand || rawBrand === 'DATA NOT FOUND' ||
+      cleanBrand.toLowerCase() === cleanDoc.toLowerCase() ||
+      cleanDoc.toLowerCase().includes(cleanBrand.toLowerCase()) ||
+      cleanBrand.toLowerCase().includes(cleanDoc.toLowerCase());
     const qRaw = "I'm considering a smile makeover in " + city + ". What makes Dr. " + cleanDoc +
-      (rawBrand && rawBrand !== 'DATA NOT FOUND' ? " and " + rawBrand : "") +
+      (!isSameAsDoc ? " and " + rawBrand : "") +
       " a leading choice for cosmetic and restorative dentistry, and how could their experience, personalized treatment planning, and focus on natural-looking results benefit me?";
     const qEnc = encodeURIComponent(qRaw);
 
