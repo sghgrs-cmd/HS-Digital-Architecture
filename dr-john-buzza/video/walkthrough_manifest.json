@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-john-buzza\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T01:51:01Z",
+  "recorded_at": "2026-11-17T20:05:21Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-john-buzza\\video\\walkthrough-warm.mp4",
-      "size_mb": 22.35,
-      "elapsed_sec": 199.2
+      "size_mb": 36.93,
+      "elapsed_sec": 147.8
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-john-buzza\\video\\walkthrough.mp4",
-      "size_mb": 27.49,
-      "elapsed_sec": 255.2
+      "size_mb": 41.4,
+      "elapsed_sec": 176.7
     }
   ]
 }
