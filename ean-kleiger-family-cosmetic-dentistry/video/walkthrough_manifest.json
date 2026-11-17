@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\ean-kleiger-family-cosmetic-dentistry\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T10:04:02Z",
+  "recorded_at": "2026-11-17T20:00:19Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\ean-kleiger-family-cosmetic-dentistry\\video\\walkthrough-warm.mp4",
-      "size_mb": 35.8,
-      "elapsed_sec": 303.2
+      "size_mb": 19.17,
+      "elapsed_sec": 300.7
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\ean-kleiger-family-cosmetic-dentistry\\video\\walkthrough.mp4",
-      "size_mb": 41.39,
-      "elapsed_sec": 305.0
+      "size_mb": 42.3,
+      "elapsed_sec": 181.8
     }
   ]
 }
