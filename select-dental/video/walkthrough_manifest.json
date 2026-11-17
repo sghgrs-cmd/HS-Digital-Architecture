@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\select-dental\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T08:34:43Z",
+  "recorded_at": "2026-11-17T20:20:48Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\select-dental\\video\\walkthrough-warm.mp4",
-      "size_mb": 16.2,
-      "elapsed_sec": 129.1
+      "size_mb": 32.93,
+      "elapsed_sec": 109.1
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\select-dental\\video\\walkthrough.mp4",
-      "size_mb": 19.37,
-      "elapsed_sec": 202.5
+      "size_mb": 36.97,
+      "elapsed_sec": 122.1
     }
   ]
 }
