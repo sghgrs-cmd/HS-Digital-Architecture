@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T10:07:18Z",
+  "recorded_at": "2026-11-17T20:04:54Z",
   "videos": [
-    {
-      "variant": "luxe",
-      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center\\video\\walkthrough.mp4",
-      "size_mb": 38.11,
-      "elapsed_sec": 308.3
-    },
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center\\video\\walkthrough-warm.mp4",
-      "size_mb": 15.42,
-      "elapsed_sec": 202.1
+      "size_mb": 37.63,
+      "elapsed_sec": 154.1
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\advanced-dentistry-center\\video\\walkthrough.mp4",
+      "size_mb": 46.79,
+      "elapsed_sec": 192.6
     }
   ]
 }
