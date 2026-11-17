@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\colorado-smile-design\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T09:22:25Z",
+  "recorded_at": "2026-11-17T20:29:27Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\colorado-smile-design\\video\\walkthrough-warm.mp4",
-      "size_mb": 18.18,
-      "elapsed_sec": 158.5
+      "size_mb": 33.65,
+      "elapsed_sec": 103.3
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\colorado-smile-design\\video\\walkthrough.mp4",
-      "size_mb": 21.7,
-      "elapsed_sec": 200.7
+      "size_mb": 37.37,
+      "elapsed_sec": 193.0
     }
   ]
 }
