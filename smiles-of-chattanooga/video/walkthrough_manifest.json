@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\smiles-of-chattanooga\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T08:47:43Z",
+  "recorded_at": "2026-11-17T20:20:52Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\smiles-of-chattanooga\\video\\walkthrough-warm.mp4",
-      "size_mb": 19.88,
-      "elapsed_sec": 178.4
+      "size_mb": 34.88,
+      "elapsed_sec": 110.1
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\smiles-of-chattanooga\\video\\walkthrough.mp4",
-      "size_mb": 22.68,
-      "elapsed_sec": 220.7
+      "size_mb": 46.35,
+      "elapsed_sec": 125.0
     }
   ]
 }
