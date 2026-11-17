@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\ipi-implant-and-periodontal-institute-of-torranc\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T01:43:29Z",
+  "recorded_at": "2026-11-17T10:07:57Z",
   "videos": [
-    {
-      "variant": "warm",
-      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\ipi-implant-and-periodontal-institute-of-torranc\\video\\walkthrough-warm.mp4",
-      "size_mb": 22.11,
-      "elapsed_sec": 196.2
-    },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\ipi-implant-and-periodontal-institute-of-torranc\\video\\walkthrough.mp4",
-      "size_mb": 26.2,
-      "elapsed_sec": 249.8
+      "size_mb": 17.84,
+      "elapsed_sec": 235.8
+    },
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\ipi-implant-and-periodontal-institute-of-torranc\\video\\walkthrough-warm.mp4",
+      "size_mb": 16.93,
+      "elapsed_sec": 233.0
     }
   ]
 }
