@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\south-bay-oral-surgery-dental-implants\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T02:06:13Z",
+  "recorded_at": "2026-11-17T10:19:31Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\south-bay-oral-surgery-dental-implants\\video\\walkthrough-warm.mp4",
-      "size_mb": 21.52,
-      "elapsed_sec": 204.3
+      "size_mb": 24.41,
+      "elapsed_sec": 398.9
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\south-bay-oral-surgery-dental-implants\\video\\walkthrough.mp4",
-      "size_mb": 23.01,
-      "elapsed_sec": 253.6
+      "size_mb": 34.87,
+      "elapsed_sec": 436.5
     }
   ]
 }

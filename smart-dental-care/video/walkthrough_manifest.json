@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\smart-dental-care\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T00:57:19Z",
+  "recorded_at": "2026-11-17T09:10:43Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\smart-dental-care\\video\\walkthrough-warm.mp4",
-      "size_mb": 18.17,
-      "elapsed_sec": 203.8
+      "size_mb": 16.87,
+      "elapsed_sec": 152.5
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\smart-dental-care\\video\\walkthrough.mp4",
-      "size_mb": 27.41,
-      "elapsed_sec": 257.2
+      "size_mb": 22.0,
+      "elapsed_sec": 186.0
     }
   ]
 }
