@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\my-dental-care\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T09:05:04Z",
+  "recorded_at": "2026-11-17T20:24:32Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\my-dental-care\\video\\walkthrough-warm.mp4",
-      "size_mb": 15.6,
-      "elapsed_sec": 157.8
+      "size_mb": 36.32,
+      "elapsed_sec": 97.8
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\my-dental-care\\video\\walkthrough.mp4",
-      "size_mb": 18.94,
-      "elapsed_sec": 187.5
+      "size_mb": 41.52,
+      "elapsed_sec": 122.0
     }
   ]
 }
