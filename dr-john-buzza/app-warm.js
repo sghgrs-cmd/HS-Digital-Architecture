@@ -967,6 +967,47 @@
   }
   initCursor();
 
+  function initMagnetic() {
+    if (!finePointer || prefersReduced) return;
+    const STRENGTH = 0.18;
+    document.querySelectorAll('.btn-pill, .header__cta, .btn-submit, [data-magnetic]').forEach((el) => {
+      let rect = null;
+      let active = false;
+      let raf = null;
+      let tx = 0, ty = 0, cx = 0, cy = 0;
+
+      const render = () => {
+        cx = lerp(cx, tx, 0.22);
+        cy = lerp(cy, ty, 0.22);
+        if (!active && Math.abs(cx) < 0.08 && Math.abs(cy) < 0.08) {
+          el.style.transform = '';
+          raf = null;
+          return;
+        }
+        el.style.transform = `translate3d(${cx.toFixed(2)}px, ${cy.toFixed(2)}px, 0)`;
+        raf = requestAnimationFrame(render);
+      };
+
+      el.addEventListener('mouseenter', () => {
+        rect = el.getBoundingClientRect();
+        active = true;
+      });
+      el.addEventListener('mousemove', (e) => {
+        if (!rect) rect = el.getBoundingClientRect();
+        tx = (e.clientX - (rect.left + rect.width / 2)) * STRENGTH;
+        ty = (e.clientY - (rect.top + rect.height / 2)) * STRENGTH;
+        if (!raf) raf = requestAnimationFrame(render);
+      }, { passive: true });
+      el.addEventListener('mouseleave', () => {
+        active = false;
+        tx = 0;
+        ty = 0;
+        if (!raf) raf = requestAnimationFrame(render);
+      });
+    });
+  }
+  initMagnetic();
+
   /* ------------------------------------------------------------------------
      8. DEFERRED GOOGLE MAPS LOADER (Live Google Map in Browser & Video, Zero External Request in Offline File Audit)
      ------------------------------------------------------------------------ */
