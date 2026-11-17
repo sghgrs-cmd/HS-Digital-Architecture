@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\wigwam-creek-dental-care\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T10:20:46Z",
+  "recorded_at": "2026-11-17T20:11:30Z",
   "videos": [
-    {
-      "variant": "luxe",
-      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\wigwam-creek-dental-care\\video\\walkthrough.mp4",
-      "size_mb": 21.49,
-      "elapsed_sec": 463.5
-    },
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\wigwam-creek-dental-care\\video\\walkthrough-warm.mp4",
-      "size_mb": 27.54,
-      "elapsed_sec": 431.6
+      "size_mb": 36.54,
+      "elapsed_sec": 131.6
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\wigwam-creek-dental-care\\video\\walkthrough.mp4",
+      "size_mb": 47.22,
+      "elapsed_sec": 264.0
     }
   ]
 }
