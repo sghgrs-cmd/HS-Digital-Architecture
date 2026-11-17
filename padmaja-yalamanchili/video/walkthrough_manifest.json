@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\padmaja-yalamanchili",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\padmaja-yalamanchili\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T20:51:29Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T01:12:41Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\padmaja-yalamanchili\\video\\walkthrough-warm.mp4",
-      "size_mb": 14.27,
-      "elapsed_sec": 360.8
+      "size_mb": 20.8,
+      "elapsed_sec": 196.2
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\padmaja-yalamanchili\\video\\walkthrough.mp4",
-      "size_mb": 5.13,
-      "elapsed_sec": 489.6
+      "size_mb": 23.56,
+      "elapsed_sec": 262.5
     }
   ]
 }

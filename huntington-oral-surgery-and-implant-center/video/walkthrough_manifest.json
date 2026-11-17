@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\huntington-oral-surgery-and-implant-center",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\huntington-oral-surgery-and-implant-center\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T21:26:29Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T01:43:26Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\huntington-oral-surgery-and-implant-center\\video\\walkthrough-warm.mp4",
-      "size_mb": 12.61,
-      "elapsed_sec": 426.2
+      "size_mb": 20.99,
+      "elapsed_sec": 193.3
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\huntington-oral-surgery-and-implant-center\\video\\walkthrough.mp4",
-      "size_mb": 15.37,
-      "elapsed_sec": 641.8
+      "size_mb": 28.53,
+      "elapsed_sec": 250.7
     }
   ]
 }

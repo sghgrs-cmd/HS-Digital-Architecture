@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sparkle-family-dentistry-torrance",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sparkle-family-dentistry-torrance\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T20:51:30Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T00:57:41Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sparkle-family-dentistry-torrance\\video\\walkthrough-warm.mp4",
-      "size_mb": 9.11,
-      "elapsed_sec": 479.8
+      "size_mb": 21.53,
+      "elapsed_sec": 236.7
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sparkle-family-dentistry-torrance\\video\\walkthrough.mp4",
-      "size_mb": 6.81,
-      "elapsed_sec": 500.5
+      "size_mb": 27.8,
+      "elapsed_sec": 245.0
     }
   ]
 }

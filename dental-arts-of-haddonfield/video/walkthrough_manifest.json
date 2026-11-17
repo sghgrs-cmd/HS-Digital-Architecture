@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-arts-of-haddonfield",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-arts-of-haddonfield\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T20:32:09Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T00:49:37Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-arts-of-haddonfield\\video\\walkthrough-warm.mp4",
-      "size_mb": 6.61,
-      "elapsed_sec": 315.0
+      "size_mb": 19.7,
+      "elapsed_sec": 251.7
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-arts-of-haddonfield\\video\\walkthrough.mp4",
-      "size_mb": 17.21,
-      "elapsed_sec": 567.1
+      "size_mb": 22.31,
+      "elapsed_sec": 284.4
     }
   ]
 }

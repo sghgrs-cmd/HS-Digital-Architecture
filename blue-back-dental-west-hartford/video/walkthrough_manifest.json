@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\blue-back-dental-west-hartford",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\blue-back-dental-west-hartford\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 19,
-  "recorded_at": "2026-11-16T20:16:45Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T02:21:45Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\blue-back-dental-west-hartford\\video\\walkthrough-warm.mp4",
-      "size_mb": 26.42,
-      "elapsed_sec": 162.0
+      "size_mb": 23.78,
+      "elapsed_sec": 205.9
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\blue-back-dental-west-hartford\\video\\walkthrough.mp4",
-      "size_mb": 36.61,
-      "elapsed_sec": 167.2
+      "size_mb": 27.89,
+      "elapsed_sec": 254.1
     }
   ]
 }

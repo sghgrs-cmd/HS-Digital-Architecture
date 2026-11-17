@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\piedmont-preventive-dentist",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\piedmont-preventive-dentist\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T21:08:06Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T01:36:02Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\piedmont-preventive-dentist\\video\\walkthrough-warm.mp4",
-      "size_mb": 11.33,
-      "elapsed_sec": 440.6
+      "size_mb": 22.47,
+      "elapsed_sec": 199.8
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\piedmont-preventive-dentist\\video\\walkthrough.mp4",
-      "size_mb": 18.86,
-      "elapsed_sec": 555.3
+      "size_mb": 29.29,
+      "elapsed_sec": 251.3
     }
   ]
 }

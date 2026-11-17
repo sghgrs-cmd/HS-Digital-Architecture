@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\penrod-dental-care",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\penrod-dental-care\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T21:11:07Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T01:20:31Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\penrod-dental-care\\video\\walkthrough-warm.mp4",
-      "size_mb": 12.77,
-      "elapsed_sec": 601.8
+      "size_mb": 27.03,
+      "elapsed_sec": 212.3
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\penrod-dental-care\\video\\walkthrough.mp4",
-      "size_mb": 12.02,
-      "elapsed_sec": 579.5
+      "size_mb": 30.11,
+      "elapsed_sec": 250.3
     }
   ]
 }

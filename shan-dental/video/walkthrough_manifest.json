@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\shan-dental",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\shan-dental\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T20:35:06Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T00:40:40Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\shan-dental\\video\\walkthrough-warm.mp4",
-      "size_mb": 7.64,
-      "elapsed_sec": 410.3
+      "size_mb": 21.34,
+      "elapsed_sec": 220.6
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\shan-dental\\video\\walkthrough.mp4",
-      "size_mb": 13.97,
-      "elapsed_sec": 648.6
+      "size_mb": 24.8,
+      "elapsed_sec": 281.6
     }
   ]
 }

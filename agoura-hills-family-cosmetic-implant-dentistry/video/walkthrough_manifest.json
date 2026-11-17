@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\agoura-hills-family-cosmetic-implant-dentistry",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\agoura-hills-family-cosmetic-implant-dentistry\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T21:38:30Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T02:14:04Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\agoura-hills-family-cosmetic-implant-dentistry\\video\\walkthrough-warm.mp4",
-      "size_mb": 5.99,
-      "elapsed_sec": 399.0
+      "size_mb": 23.47,
+      "elapsed_sec": 210.2
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\agoura-hills-family-cosmetic-implant-dentistry\\video\\walkthrough.mp4",
-      "size_mb": 19.98,
-      "elapsed_sec": 229.7
+      "size_mb": 24.57,
+      "elapsed_sec": 254.7
     }
   ]
 }

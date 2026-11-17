@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\novi-oral-maxillofacial",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\novi-oral-maxillofacial\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 24,
-  "recorded_at": "2026-11-16T20:51:15Z",
+  "crf": 22,
+  "recorded_at": "2026-11-17T01:05:14Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\novi-oral-maxillofacial\\video\\walkthrough-warm.mp4",
-      "size_mb": 12.94,
-      "elapsed_sec": 464.0
+      "size_mb": 23.7,
+      "elapsed_sec": 203.9
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\novi-oral-maxillofacial\\video\\walkthrough.mp4",
-      "size_mb": 6.18,
-      "elapsed_sec": 485.6
+      "size_mb": 28.58,
+      "elapsed_sec": 248.6
     }
   ]
 }
