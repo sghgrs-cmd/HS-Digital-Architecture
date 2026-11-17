@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\paolucci-family-dentists\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T09:46:06Z",
+  "recorded_at": "2026-11-17T19:59:06Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\paolucci-family-dentists\\video\\walkthrough-warm.mp4",
-      "size_mb": 17.95,
-      "elapsed_sec": 170.2
+      "size_mb": 24.67,
+      "elapsed_sec": 225.0
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\paolucci-family-dentists\\video\\walkthrough.mp4",
-      "size_mb": 20.34,
-      "elapsed_sec": 207.6
+      "size_mb": 39.75,
+      "elapsed_sec": 216.6
     }
   ]
 }
