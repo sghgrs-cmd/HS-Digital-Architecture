@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\media-brite-smile\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T01:58:35Z",
+  "recorded_at": "2026-11-17T10:16:27Z",
   "videos": [
-    {
-      "variant": "warm",
-      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\media-brite-smile\\video\\walkthrough-warm.mp4",
-      "size_mb": 22.19,
-      "elapsed_sec": 202.6
-    },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\media-brite-smile\\video\\walkthrough.mp4",
-      "size_mb": 23.14,
-      "elapsed_sec": 247.3
+      "size_mb": 28.02,
+      "elapsed_sec": 337.5
+    },
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\media-brite-smile\\video\\walkthrough-warm.mp4",
+      "size_mb": 34.46,
+      "elapsed_sec": 353.5
     }
   ]
 }

@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\masterpiece-dentistry-copley\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T01:58:35Z",
+  "recorded_at": "2026-11-17T10:12:19Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\masterpiece-dentistry-copley\\video\\walkthrough-warm.mp4",
-      "size_mb": 22.89,
-      "elapsed_sec": 204.0
+      "size_mb": 28.87,
+      "elapsed_sec": 257.3
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\masterpiece-dentistry-copley\\video\\walkthrough.mp4",
-      "size_mb": 23.57,
-      "elapsed_sec": 249.6
+      "size_mb": 31.38,
+      "elapsed_sec": 285.2
     }
   ]
 }
