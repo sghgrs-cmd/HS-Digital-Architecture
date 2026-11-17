@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T10:12:45Z",
+  "recorded_at": "2026-11-17T20:05:22Z",
   "videos": [
-    {
-      "variant": "luxe",
-      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers\\video\\walkthrough.mp4",
-      "size_mb": 36.89,
-      "elapsed_sec": 240.4
-    },
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers\\video\\walkthrough-warm.mp4",
-      "size_mb": 47.92,
-      "elapsed_sec": 327.0
+      "size_mb": 29.32,
+      "elapsed_sec": 141.0
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\john-j-myers\\video\\walkthrough.mp4",
+      "size_mb": 43.63,
+      "elapsed_sec": 177.8
     }
   ]
 }
