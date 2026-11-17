@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\wellington-oral-surgery\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T09:55:49Z",
+  "recorded_at": "2026-11-17T19:59:20Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\wellington-oral-surgery\\video\\walkthrough-warm.mp4",
-      "size_mb": 16.58,
-      "elapsed_sec": 107.4
+      "size_mb": 20.35,
+      "elapsed_sec": 239.9
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\wellington-oral-surgery\\video\\walkthrough.mp4",
-      "size_mb": 20.42,
-      "elapsed_sec": 178.0
+      "size_mb": 40.91,
+      "elapsed_sec": 202.2
     }
   ]
 }

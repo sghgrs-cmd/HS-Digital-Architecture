@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T10:27:46Z",
+  "recorded_at": "2026-11-17T20:12:28Z",
   "videos": [
-    {
-      "variant": "luxe",
-      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist\\video\\walkthrough.mp4",
-      "size_mb": 30.87,
-      "elapsed_sec": 382.9
-    },
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist\\video\\walkthrough-warm.mp4",
-      "size_mb": 36.34,
-      "elapsed_sec": 258.0
+      "size_mb": 30.33,
+      "elapsed_sec": 168.5
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\transcendentist\\video\\walkthrough.mp4",
+      "size_mb": 28.96,
+      "elapsed_sec": 197.3
     }
   ]
 }
