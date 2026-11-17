@@ -4,19 +4,19 @@
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\palmetto-smile-center\\video",
   "viewport": "1536x864@1.25x->1920x1080",
   "crf": 22,
-  "recorded_at": "2026-11-17T01:12:48Z",
+  "recorded_at": "2026-11-17T09:39:46Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\palmetto-smile-center\\video\\walkthrough-warm.mp4",
-      "size_mb": 23.56,
-      "elapsed_sec": 203.0
+      "size_mb": 17.11,
+      "elapsed_sec": 136.0
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\palmetto-smile-center\\video\\walkthrough.mp4",
-      "size_mb": 26.94,
-      "elapsed_sec": 250.5
+      "size_mb": 21.0,
+      "elapsed_sec": 200.0
     }
   ]
 }
