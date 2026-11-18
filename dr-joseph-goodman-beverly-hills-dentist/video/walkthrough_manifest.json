@@ -1,0 +1,22 @@
+{
+  "slug": "dr-joseph-goodman-beverly-hills-dentist",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-joseph-goodman-beverly-hills-dentist",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-joseph-goodman-beverly-hills-dentist\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 19,
+  "recorded_at": "2026-11-18T03:21:45Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-joseph-goodman-beverly-hills-dentist\\video\\walkthrough-warm.mp4",
+      "size_mb": 52.29,
+      "elapsed_sec": 93.6
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dr-joseph-goodman-beverly-hills-dentist\\video\\walkthrough.mp4",
+      "size_mb": 65.05,
+      "elapsed_sec": 117.3
+    }
+  ]
+}

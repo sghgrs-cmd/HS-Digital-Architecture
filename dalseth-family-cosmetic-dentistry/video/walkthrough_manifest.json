@@ -1,0 +1,22 @@
+{
+  "slug": "dalseth-family-cosmetic-dentistry",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dalseth-family-cosmetic-dentistry",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dalseth-family-cosmetic-dentistry\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 19,
+  "recorded_at": "2026-11-18T03:21:45Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dalseth-family-cosmetic-dentistry\\video\\walkthrough-warm.mp4",
+      "size_mb": 53.6,
+      "elapsed_sec": 93.5
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dalseth-family-cosmetic-dentistry\\video\\walkthrough.mp4",
+      "size_mb": 57.75,
+      "elapsed_sec": 117.8
+    }
+  ]
+}
