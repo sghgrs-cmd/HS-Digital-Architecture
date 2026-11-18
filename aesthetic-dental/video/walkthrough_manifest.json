@@ -1,0 +1,22 @@
+{
+  "slug": "aesthetic-dental",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\aesthetic-dental",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\aesthetic-dental\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 19,
+  "recorded_at": "2026-11-18T03:18:14Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\aesthetic-dental\\video\\walkthrough-warm.mp4",
+      "size_mb": 46.19,
+      "elapsed_sec": 94.3
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\aesthetic-dental\\video\\walkthrough.mp4",
+      "size_mb": 57.69,
+      "elapsed_sec": 118.2
+    }
+  ]
+}
