@@ -1,0 +1,22 @@
+{
+  "slug": "virginia-dental-group",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\virginia-dental-group",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\virginia-dental-group\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 19,
+  "recorded_at": "2026-11-18T03:28:56Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\virginia-dental-group\\video\\walkthrough-warm.mp4",
+      "size_mb": 48.72,
+      "elapsed_sec": 95.9
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\virginia-dental-group\\video\\walkthrough.mp4",
+      "size_mb": 58.46,
+      "elapsed_sec": 119.8
+    }
+  ]
+}
