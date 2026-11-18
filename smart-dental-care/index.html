@@ -975,14 +975,23 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 .trust__scan-x{
   animation:trustScanX 7.0s ease-in-out infinite alternate;
 }
-/* Dual-Doctor Separate Portraits Layout (.portrait--dual) */
+/* Dual-Doctor & Trio-Doctor Separate Portraits Layout (.portrait--dual / .portrait--trio) */
 .portrait--dual .portrait__dual-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:1.25rem;
 }
+.portrait--trio .portrait__trio-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1rem;
+}
+@media (max-width:680px){
+  .portrait--trio .portrait__trio-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
 @media (max-width:540px){
-  .portrait--dual .portrait__dual-grid{grid-template-columns:1fr;}
+  .portrait--dual .portrait__dual-grid,
+  .portrait--trio .portrait__trio-grid{grid-template-columns:1fr;}
 }
 .portrait__dual-card{display:flex;flex-direction:column;gap:.75rem;}
 .portrait__dual-meta{
@@ -997,12 +1006,53 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
   font-size:1.05rem;
   color:var(--ink);
 }
+.portrait--trio .portrait__dual-name{
+  font-size:.96rem;
+}
 .portrait__dual-role{
   font-size:var(--fs-micro);
   font-weight:600;
   letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--accent);
+}
+/* Day-by-Day Working Hours Table in Consultation (#book) */
+.hours-list{
+  display:grid;
+  gap:.42rem;
+  width:100%;
+  max-width:24rem;
+  margin-top:.15rem;
+}
+.hours-row{
+  display:grid;
+  grid-template-columns:minmax(7.2rem,9.2rem) 1fr;
+  align-items:baseline;
+  gap:.85rem;
+  padding-bottom:.38rem;
+  border-bottom:1px solid rgba(247,244,237,.08);
+  font-size:.9375rem;
+  line-height:1.4;
+}
+.hours-row:last-child{
+  border-bottom:0;
+  padding-bottom:0;
+}
+.hours-day{
+  color:rgba(247,244,237,.64);
+  font-weight:400;
+}
+.hours-time{
+  color:var(--paper);
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.hours-row--appt .hours-time{
+  color:var(--accent-inv);
+}
+.hours-row--closed .hours-time{
+  color:rgba(247,244,237,.48);
+  font-weight:500;
 }
 @keyframes trustFloat{
   0%{transform:translate(0px, 0px) rotate(0deg);}
@@ -2362,7 +2412,7 @@ textarea::-webkit-resizer{cursor:none!important}
             <circle cx="9" cy="9" r="6.4"/><path d="M9 5 V9 L11.9 10.8"/>
           </svg>
           <span class="info__k">Hours</span>
-          <span class="info__v" data-c="book.hours">Mon–Tue: 7:30 AM – 4:00 PM · Wed: 9:00 AM – 6:00 PM · Thu: 7:30 AM – 4:00 PM</span>
+          <span class="info__v" data-c="book.hours"><div class="hours-list"><div class="hours-row hours-row--closed"><b class="hours-day">Monday:</b><em class="hours-time" style="font-style:normal">Closed</em></div><div class="hours-row hours-row--closed"><b class="hours-day">Tuesday:</b><em class="hours-time" style="font-style:normal">Closed</em></div><div class="hours-row"><b class="hours-day">Wednesday:</b><em class="hours-time" style="font-style:normal">9:00 AM – 6:00 PM</em></div><div class="hours-row"><b class="hours-day">Thursday:</b><em class="hours-time" style="font-style:normal">7:30 AM – 4:00 PM</em></div><div class="hours-row hours-row--closed"><b class="hours-day">Friday:</b><em class="hours-time" style="font-style:normal">Closed</em></div><div class="hours-row hours-row--closed"><b class="hours-day">Saturday–Sunday:</b><em class="hours-time" style="font-style:normal">Closed</em></div></div></span>
         </div>
       </div>
 

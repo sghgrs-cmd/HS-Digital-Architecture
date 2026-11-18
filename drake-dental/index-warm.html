@@ -2648,7 +2648,9 @@
   .form {
     border-top: 3px solid var(--accent-terracotta);
     box-shadow: var(--shadow-atelier);
-    grid-template-columns: 0.86fr 1.14fr;
+    grid-template-columns: 1fr 1fr;
+    padding: clamp(1.85rem, 3.4vw, 2.85rem);
+    gap: 1.3rem;
   }
   @media (max-width: 680px) {
     .form {
@@ -2987,14 +2989,25 @@
   .trust__scan-x {
     animation: trustScanX 7.0s ease-in-out infinite alternate;
   }
-  /* Dual-Doctor Separate Portraits Layout (.portrait--dual) */
+  /* Dual-Doctor & Trio-Doctor Separate Portraits Layout (.portrait--dual / .portrait--trio) */
   .portrait--dual .portrait__dual-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.15rem;
   }
+  .portrait--trio .portrait__trio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.95rem;
+  }
+  @media (max-width: 680px) {
+    .portrait--trio .portrait__trio-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   @media (max-width: 540px) {
-    .portrait--dual .portrait__dual-grid {
+    .portrait--dual .portrait__dual-grid,
+    .portrait--trio .portrait__trio-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -3022,12 +3035,54 @@
     font-weight: 600;
     color: var(--text-ink);
   }
+  .portrait--trio .portrait__dual-name {
+    font-size: 0.95rem;
+  }
   .portrait__dual-role {
     font-size: 0.74rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--accent-teal);
+  }
+  /* Day-by-Day Working Hours Table in Consultation (#book) */
+  .hours-list {
+    display: grid;
+    gap: 0.42rem;
+    width: 100%;
+    max-width: 25rem;
+    margin-top: 0.2rem;
+    font-family: var(--font-sans);
+  }
+  .hours-row {
+    display: grid;
+    grid-template-columns: minmax(7.2rem, 9.2rem) 1fr;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding-bottom: 0.36rem;
+    border-bottom: 1px solid rgba(255, 249, 242, 0.1);
+    font-size: 0.9rem;
+    line-height: 1.38;
+  }
+  .hours-row:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .hours-day {
+    color: var(--book-muted);
+    font-weight: 500;
+  }
+  .hours-time {
+    color: var(--book-text);
+    font-weight: 600;
+  }
+  .hours-row--appt .hours-time {
+    color: var(--terracotta-light);
+  }
+  .hours-row--closed .hours-time {
+    color: var(--book-muted);
+    opacity: 0.78;
+    font-weight: 500;
   }
   @keyframes trustFloat {
     0% { transform: translate(0px, 0px) rotate(0deg); }
@@ -3911,8 +3966,12 @@
       <div>
         <form class="form" id="book-form" novalidate>
           <div class="field">
-            <label class="field__label" for="f-name">Full Name</label>
-            <input class="field__input" id="f-name" name="name" type="text" placeholder="Your full name" required autocomplete="name">
+            <label class="field__label" for="f-name">First Name</label>
+            <input class="field__input" id="f-name" name="first_name" type="text" placeholder="First name" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-last">Last Name</label>
+            <input class="field__input" id="f-last" name="last_name" type="text" placeholder="Last name" required autocomplete="family-name">
           </div>
           <div class="field">
             <label class="field__label" for="f-phone">Telephone</label>
@@ -3922,7 +3981,7 @@
             <label class="field__label" for="f-email">Email Address</label>
             <input class="field__input" id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
           </div>
-          <div class="field">
+          <div class="field field--full">
             <label class="field__label" for="f-treat" id="f-treat-label">Service or Visit Type</label>
             <select class="field__select" id="f-treat" name="treatment">
               <option value="First Visit / Consultation">First Visit / Consultation</option>
@@ -3934,7 +3993,7 @@
           </div>
           <div class="field field--full">
             <label class="field__label" for="f-notes">How can we help make your visit comfortable? (Optional)</label>
-            <textarea class="field__input" id="f-notes" name="notes" rows="2" placeholder="Preferred days, questions, or anything you'd like the doctor to know ahead of time..."></textarea>
+            <textarea class="field__input" id="f-notes" name="notes" rows="3" placeholder="Preferred days, questions, or anything you'd like the doctor to know ahead of time..."></textarea>
           </div>
           <div class="form__foot">
             <p class="form__note" data-c="book.note">We reply to every consultation request within two working days.</p>

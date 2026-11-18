@@ -667,6 +667,7 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const nameInput = document.getElementById('f-name');
+      const lastInput = document.getElementById('f-last');
       const phoneInput = document.getElementById('f-phone');
       const valid = (!nameInput || nameInput.value.trim().length > 0) &&
                     (!phoneInput || phoneInput.value.trim().length > 0);
@@ -682,7 +683,9 @@
       const chosenService = nativeSelect && nativeSelect.options[nativeSelect.selectedIndex]
         ? nativeSelect.options[nativeSelect.selectedIndex].textContent
         : 'Dental Visit';
-      const patientName = nameInput ? nameInput.value.trim() : 'Friend';
+      const firstVal = nameInput ? nameInput.value.trim() : '';
+      const lastVal = lastInput ? lastInput.value.trim() : '';
+      const patientName = [firstVal, lastVal].filter(Boolean).join(' ') || 'Friend';
 
       form.classList.add('is-sent');
       if (sentBox) sentBox.setAttribute('data-on', 'true');

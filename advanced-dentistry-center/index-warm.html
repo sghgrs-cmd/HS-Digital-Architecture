@@ -2648,7 +2648,9 @@
   .form {
     border-top: 3px solid var(--accent-terracotta);
     box-shadow: var(--shadow-atelier);
-    grid-template-columns: 0.86fr 1.14fr;
+    grid-template-columns: 1fr 1fr;
+    padding: clamp(1.85rem, 3.4vw, 2.85rem);
+    gap: 1.3rem;
   }
   @media (max-width: 680px) {
     .form {
@@ -2987,14 +2989,25 @@
   .trust__scan-x {
     animation: trustScanX 7.0s ease-in-out infinite alternate;
   }
-  /* Dual-Doctor Separate Portraits Layout (.portrait--dual) */
+  /* Dual-Doctor & Trio-Doctor Separate Portraits Layout (.portrait--dual / .portrait--trio) */
   .portrait--dual .portrait__dual-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.15rem;
   }
+  .portrait--trio .portrait__trio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.95rem;
+  }
+  @media (max-width: 680px) {
+    .portrait--trio .portrait__trio-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   @media (max-width: 540px) {
-    .portrait--dual .portrait__dual-grid {
+    .portrait--dual .portrait__dual-grid,
+    .portrait--trio .portrait__trio-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -3022,12 +3035,54 @@
     font-weight: 600;
     color: var(--text-ink);
   }
+  .portrait--trio .portrait__dual-name {
+    font-size: 0.95rem;
+  }
   .portrait__dual-role {
     font-size: 0.74rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--accent-teal);
+  }
+  /* Day-by-Day Working Hours Table in Consultation (#book) */
+  .hours-list {
+    display: grid;
+    gap: 0.42rem;
+    width: 100%;
+    max-width: 25rem;
+    margin-top: 0.2rem;
+    font-family: var(--font-sans);
+  }
+  .hours-row {
+    display: grid;
+    grid-template-columns: minmax(7.2rem, 9.2rem) 1fr;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding-bottom: 0.36rem;
+    border-bottom: 1px solid rgba(255, 249, 242, 0.1);
+    font-size: 0.9rem;
+    line-height: 1.38;
+  }
+  .hours-row:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .hours-day {
+    color: var(--book-muted);
+    font-weight: 500;
+  }
+  .hours-time {
+    color: var(--book-text);
+    font-weight: 600;
+  }
+  .hours-row--appt .hours-time {
+    color: var(--terracotta-light);
+  }
+  .hours-row--closed .hours-time {
+    color: var(--book-muted);
+    opacity: 0.78;
+    font-weight: 500;
   }
   @keyframes trustFloat {
     0% { transform: translate(0px, 0px) rotate(0deg); }
@@ -3904,15 +3959,19 @@
           <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Telephone</span><a href="tel:+12485949592" class="book__direct-v" data-c="book.phone" data-c-href="book.phoneHref">(248) 594-9592</a></div></div>
           <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Email</span><a href="mailto:info@matidds.com" class="book__direct-v" data-c="book.email" data-c-href="book.emailHref">info@matidds.com</a></div></div>
           <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Practice Address</span><span class="book__direct-v" style="font-size:0.95rem" data-c="book.address">31350 Telegraph Rd #101, Bingham Farms, MI 48025</span></div></div>
-          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Hours</span><span class="book__direct-v" style="font-size:0.95rem;color:var(--text-muted)" data-c="book.hours">Mon: 8:00 AM – 5:00 PM · Tue: 9:00 AM – 4:00 PM · Wed: 9:00 AM – 6:00 PM · Thu: 9:00 AM – 4:00 PM · Fri: 8:00 AM – 5:00 PM · Sat: 9:00 AM – 3:00 PM</span></div></div>
+          <div class="book__direct-row"><span class="book__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div class="book__direct-body"><span class="book__direct-k">Hours</span><span class="book__direct-v" style="font-size:0.95rem;color:var(--text-muted)" data-c="book.hours"><div class="hours-list"><div class="hours-row"><b class="hours-day">Monday:</b><em class="hours-time" style="font-style:normal">8:00 AM – 5:00 PM</em></div><div class="hours-row"><b class="hours-day">Tuesday:</b><em class="hours-time" style="font-style:normal">9:00 AM – 4:00 PM</em></div><div class="hours-row"><b class="hours-day">Wednesday:</b><em class="hours-time" style="font-style:normal">9:00 AM – 6:00 PM</em></div><div class="hours-row"><b class="hours-day">Thursday:</b><em class="hours-time" style="font-style:normal">9:00 AM – 4:00 PM</em></div><div class="hours-row"><b class="hours-day">Friday:</b><em class="hours-time" style="font-style:normal">8:00 AM – 5:00 PM</em></div><div class="hours-row"><b class="hours-day">Saturday:</b><em class="hours-time" style="font-style:normal">9:00 AM – 3:00 PM</em></div><div class="hours-row hours-row--closed"><b class="hours-day">Sunday:</b><em class="hours-time" style="font-style:normal">Closed</em></div></div></span></div></div>
         </div>
       </div>
 
       <div>
         <form class="form" id="book-form" novalidate>
           <div class="field">
-            <label class="field__label" for="f-name">Full Name</label>
-            <input class="field__input" id="f-name" name="name" type="text" placeholder="Your full name" required autocomplete="name">
+            <label class="field__label" for="f-name">First Name</label>
+            <input class="field__input" id="f-name" name="first_name" type="text" placeholder="First name" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-last">Last Name</label>
+            <input class="field__input" id="f-last" name="last_name" type="text" placeholder="Last name" required autocomplete="family-name">
           </div>
           <div class="field">
             <label class="field__label" for="f-phone">Telephone</label>
@@ -3922,7 +3981,7 @@
             <label class="field__label" for="f-email">Email Address</label>
             <input class="field__input" id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
           </div>
-          <div class="field">
+          <div class="field field--full">
             <label class="field__label" for="f-treat" id="f-treat-label">Service or Visit Type</label>
             <select class="field__select" id="f-treat" name="treatment">
               <option value="First Visit / Consultation">First Visit / Consultation</option>
@@ -3934,7 +3993,7 @@
           </div>
           <div class="field field--full">
             <label class="field__label" for="f-notes">How can we help make your visit comfortable? (Optional)</label>
-            <textarea class="field__input" id="f-notes" name="notes" rows="2" placeholder="Preferred days, questions, or anything you'd like the doctor to know ahead of time..."></textarea>
+            <textarea class="field__input" id="f-notes" name="notes" rows="3" placeholder="Preferred days, questions, or anything you'd like the doctor to know ahead of time..."></textarea>
           </div>
           <div class="form__foot">
             <p class="form__note" data-c="book.note">We reply to every consultation request within two working days.</p>
