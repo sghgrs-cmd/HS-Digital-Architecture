@@ -1,0 +1,22 @@
+{
+  "slug": "samir-f-zakaria-d-d-s-m-s-d",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\samir-f-zakaria-d-d-s-m-s-d",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\samir-f-zakaria-d-d-s-m-s-d\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 19,
+  "recorded_at": "2026-11-18T03:28:56Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\samir-f-zakaria-d-d-s-m-s-d\\video\\walkthrough-warm.mp4",
+      "size_mb": 41.86,
+      "elapsed_sec": 96.0
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\samir-f-zakaria-d-d-s-m-s-d\\video\\walkthrough.mp4",
+      "size_mb": 60.34,
+      "elapsed_sec": 119.8
+    }
+  ]
+}

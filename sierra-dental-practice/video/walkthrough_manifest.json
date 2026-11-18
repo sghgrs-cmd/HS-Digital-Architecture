@@ -1,0 +1,22 @@
+{
+  "slug": "sierra-dental-practice",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sierra-dental-practice",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sierra-dental-practice\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 19,
+  "recorded_at": "2026-11-18T03:25:20Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sierra-dental-practice\\video\\walkthrough-warm.mp4",
+      "size_mb": 48.35,
+      "elapsed_sec": 94.1
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\sierra-dental-practice\\video\\walkthrough.mp4",
+      "size_mb": 60.12,
+      "elapsed_sec": 120.4
+    }
+  ]
+}
