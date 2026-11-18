@@ -1876,9 +1876,12 @@ textarea::-webkit-resizer{cursor:none!important}
       <!-- THE ONE PHOTOGRAPH -->
       <figure class="portrait" data-portrait data-reveal-crop>
         <div class="portrait__plate">
-          <div class="portrait__frame is-monogram">
+          <div class="portrait__frame">
             <!-- Drop the clinic's existing headshot in as portrait.jpg. -->
-            
+            <img class="portrait__img" src="portrait.jpg" width="1000" height="1250"
+                 loading="lazy" decoding="async"
+                 alt="Dr. Alex Balaban"
+                 onerror="this.closest('.portrait__frame').classList.add('is-missing')" style="object-position:50% 18%;">
             <span class="portrait__tint" aria-hidden="true"></span>
             <span class="portrait__ph" aria-hidden="true"><span>AB</span></span>
           </div>

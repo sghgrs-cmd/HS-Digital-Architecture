@@ -1,0 +1,22 @@
+{
+  "slug": "kaufman-dental-associates",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\kaufman-dental-associates",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\kaufman-dental-associates\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:29:37Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\kaufman-dental-associates\\video\\walkthrough-warm.mp4",
+      "size_mb": 29.55,
+      "elapsed_sec": 85.1
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\kaufman-dental-associates\\video\\walkthrough.mp4",
+      "size_mb": 37.35,
+      "elapsed_sec": 109.9
+    }
+  ]
+}

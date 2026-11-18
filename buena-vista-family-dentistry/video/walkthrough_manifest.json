@@ -1,0 +1,22 @@
+{
+  "slug": "buena-vista-family-dentistry",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\buena-vista-family-dentistry",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\buena-vista-family-dentistry\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:09:58Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\buena-vista-family-dentistry\\video\\walkthrough-warm.mp4",
+      "size_mb": 30.07,
+      "elapsed_sec": 84.8
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\buena-vista-family-dentistry\\video\\walkthrough.mp4",
+      "size_mb": 36.67,
+      "elapsed_sec": 106.2
+    }
+  ]
+}

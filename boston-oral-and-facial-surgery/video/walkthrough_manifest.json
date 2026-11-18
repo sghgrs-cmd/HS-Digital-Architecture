@@ -1,0 +1,22 @@
+{
+  "slug": "boston-oral-and-facial-surgery",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\boston-oral-and-facial-surgery",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\boston-oral-and-facial-surgery\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:13:14Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\boston-oral-and-facial-surgery\\video\\walkthrough-warm.mp4",
+      "size_mb": 29.2,
+      "elapsed_sec": 85.1
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\boston-oral-and-facial-surgery\\video\\walkthrough.mp4",
+      "size_mb": 37.53,
+      "elapsed_sec": 106.1
+    }
+  ]
+}

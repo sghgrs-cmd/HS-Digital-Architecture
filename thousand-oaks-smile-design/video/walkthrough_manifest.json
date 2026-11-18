@@ -1,0 +1,22 @@
+{
+  "slug": "thousand-oaks-smile-design",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\thousand-oaks-smile-design",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\thousand-oaks-smile-design\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:43:04Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\thousand-oaks-smile-design\\video\\walkthrough-warm.mp4",
+      "size_mb": 26.82,
+      "elapsed_sec": 87.4
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\thousand-oaks-smile-design\\video\\walkthrough.mp4",
+      "size_mb": 35.96,
+      "elapsed_sec": 109.8
+    }
+  ]
+}

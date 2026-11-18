@@ -1,0 +1,22 @@
+{
+  "slug": "downtown-dental",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\downtown-dental",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\downtown-dental\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:22:59Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\downtown-dental\\video\\walkthrough-warm.mp4",
+      "size_mb": 27.77,
+      "elapsed_sec": 85.0
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\downtown-dental\\video\\walkthrough.mp4",
+      "size_mb": 37.36,
+      "elapsed_sec": 105.9
+    }
+  ]
+}

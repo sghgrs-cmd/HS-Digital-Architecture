@@ -1,0 +1,22 @@
+{
+  "slug": "c-lee-row-gregory-a-pucel",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\c-lee-row-gregory-a-pucel",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\c-lee-row-gregory-a-pucel\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:06:40Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\c-lee-row-gregory-a-pucel\\video\\walkthrough-warm.mp4",
+      "size_mb": 28.48,
+      "elapsed_sec": 97.4
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\c-lee-row-gregory-a-pucel\\video\\walkthrough.mp4",
+      "size_mb": 37.59,
+      "elapsed_sec": 124.7
+    }
+  ]
+}

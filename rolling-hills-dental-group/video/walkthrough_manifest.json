@@ -1,0 +1,22 @@
+{
+  "slug": "rolling-hills-dental-group",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\rolling-hills-dental-group",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\rolling-hills-dental-group\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:36:21Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\rolling-hills-dental-group\\video\\walkthrough-warm.mp4",
+      "size_mb": 27.59,
+      "elapsed_sec": 87.0
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\rolling-hills-dental-group\\video\\walkthrough.mp4",
+      "size_mb": 37.39,
+      "elapsed_sec": 110.2
+    }
+  ]
+}

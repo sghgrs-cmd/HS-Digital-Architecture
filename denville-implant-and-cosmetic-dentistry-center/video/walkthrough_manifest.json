@@ -1,0 +1,22 @@
+{
+  "slug": "denville-implant-and-cosmetic-dentistry-center",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\denville-implant-and-cosmetic-dentistry-center",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\denville-implant-and-cosmetic-dentistry-center\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:19:44Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\denville-implant-and-cosmetic-dentistry-center\\video\\walkthrough-warm.mp4",
+      "size_mb": 27.4,
+      "elapsed_sec": 84.6
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\denville-implant-and-cosmetic-dentistry-center\\video\\walkthrough.mp4",
+      "size_mb": 37.31,
+      "elapsed_sec": 105.9
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "dentist-santa-monica-jason-ray",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dentist-santa-monica-jason-ray",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dentist-santa-monica-jason-ray\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:16:29Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dentist-santa-monica-jason-ray\\video\\walkthrough-warm.mp4",
+      "size_mb": 27.06,
+      "elapsed_sec": 84.6
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dentist-santa-monica-jason-ray\\video\\walkthrough.mp4",
+      "size_mb": 35.41,
+      "elapsed_sec": 106.0
+    }
+  ]
+}

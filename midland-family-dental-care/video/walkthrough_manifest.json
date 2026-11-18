@@ -1,0 +1,22 @@
+{
+  "slug": "midland-family-dental-care",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\midland-family-dental-care",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\midland-family-dental-care\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-18T12:33:00Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\midland-family-dental-care\\video\\walkthrough-warm.mp4",
+      "size_mb": 28.98,
+      "elapsed_sec": 87.8
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\midland-family-dental-care\\video\\walkthrough.mp4",
+      "size_mb": 37.57,
+      "elapsed_sec": 110.2
+    }
+  ]
+}
