@@ -320,13 +320,18 @@
   let scrollTicking = false;
 
   function updateScrollState() {
+    const drawerEl = document.getElementById('mobile-menu');
+    if (drawerEl && drawerEl.classList.contains('is-open')) {
+      scrollTicking = false;
+      return;
+    }
     const y = getScrollY();
     if (header) {
       header.classList.toggle('is-scrolled', y > 24);
 
       const drawer = document.getElementById('mobile-menu');
       const isDrawerOpen = drawer && drawer.classList.contains('is-open');
-      if (!isDrawerOpen) {
+      if (!isDrawerOpen && performance.now() >= (window.__suppressHeaderHideUntil || 0)) {
         if (y > lastY + 6 && y > 160) {
           header.classList.add('is-hidden');
         } else if (y < lastY - 4 || y <= 80) {
@@ -374,13 +379,16 @@
   const burger = document.querySelector('.burger');
   const drawer = document.getElementById('mobile-menu');
   let drawerOpen = false;
+  let savedScrollY = 0;
 
   if (drawer) {
     drawer.inert = true;
   }
 
-  function setDrawer(open) {
-    drawerOpen = Boolean(open);
+  function setDrawer(open, opts = {}) {
+    const nextOpen = Boolean(open);
+    if (nextOpen === drawerOpen && !opts.force) return;
+    drawerOpen = nextOpen;
     if (burger) {
       burger.classList.toggle('is-open', drawerOpen);
       burger.setAttribute('aria-expanded', String(drawerOpen));
@@ -389,16 +397,47 @@
       drawer.classList.toggle('is-open', drawerOpen);
       drawer.setAttribute('aria-hidden', String(!drawerOpen));
       drawer.inert = !drawerOpen;
+      if (drawerOpen) drawer.scrollTop = 0;
     }
-    document.body.style.overflow = drawerOpen ? 'hidden' : '';
+    if (drawerOpen) {
+      savedScrollY = getScrollY();
+      document.documentElement.classList.add('menu-open');
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      if (header) header.classList.remove('is-hidden');
+    } else {
+      window.__suppressHeaderHideUntil = performance.now() + 260;
+      document.documentElement.classList.remove('menu-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (!opts.skipRestore) {
+        window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+      }
+      if (header) header.classList.remove('is-hidden');
+      lastY = opts.skipRestore ? savedScrollY : getScrollY();
+    }
   }
 
   if (burger) {
     burger.addEventListener('click', () => setDrawer(!drawerOpen));
   }
   if (drawer) {
-    drawer.querySelectorAll('[data-nav], [data-menu-close], a').forEach((a) => {
-      a.addEventListener('click', () => setDrawer(false));
+    drawer.querySelectorAll('[data-menu-close]').forEach((btn) => {
+      btn.addEventListener('click', () => setDrawer(false));
+    });
+    drawer.querySelectorAll('[data-nav]').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (!href.startsWith('#')) {
+        a.addEventListener('click', () => setDrawer(false));
+      }
     });
   }
 
@@ -409,7 +448,10 @@
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      if (drawerOpen) setDrawer(false);
+      if (drawerOpen) {
+        setDrawer(false, { skipRestore: true });
+        window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+      }
       if (id === '#location') {
         const mapIframe = document.querySelector('.map__iframe');
         if (mapIframe && mapIframe.getAttribute('data-map-src') && mapIframe.getAttribute('data-map-loaded') !== 'true') {

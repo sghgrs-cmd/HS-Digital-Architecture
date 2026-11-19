@@ -598,7 +598,7 @@
     padding: 5.5rem var(--pad-x) 2.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-12px);
@@ -615,19 +615,20 @@
   .menu__links {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.72rem;
+    margin-bottom: 1.5rem;
   }
 
   .menu__link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.25rem;
+    padding: 0.98rem 1.25rem;
     background: var(--surface-card);
     border: 1px solid var(--border-warm);
     border-radius: var(--radius-card);
     font-family: var(--font-display);
-    font-size: 1.35rem;
+    font-size: 1.28rem;
     color: var(--text-ink);
   }
 
@@ -639,15 +640,24 @@
   }
 
   .menu__foot {
-    margin-top: 2rem;
-    padding: 1.25rem;
+    margin-top: auto;
+    padding: 1.15rem 1.25rem;
     background: var(--bg-sand);
+    border: 1px solid var(--border-warm);
     border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: 0.42rem;
+    font-size: 0.88rem;
+    line-height: 1.45;
     color: var(--text-muted);
+  }
+  .menu__foot strong {
+    color: var(--text-ink);
+  }
+  .menu__foot a {
+    color: var(--text-ink);
+    font-weight: 500;
   }
 
   /* ==========================================================================
@@ -2868,29 +2878,62 @@
   }
 
 
-  /* Header stays above mobile menu (z-index: 92 > 88) + Explicit Close Bar inside Drawer */
+  /* Mobile Drawer sits cleanly above header & mobile bar; zero background scroll when open */
+  html.menu-open {
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+  }
+  html.menu-open .mobile-bar {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(110%) !important;
+  }
   .header {
     position: sticky !important;
     top: 0 !important;
     z-index: 92 !important;
   }
   .menu {
-    z-index: 88 !important;
-    padding: 1.15rem var(--pad-x) 2.25rem !important;
+    z-index: 120 !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 var(--pad-x) calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
   }
   .menu__top {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg-cream);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.75rem;
+    padding: 1.05rem 0 0.95rem;
+    margin-bottom: 1.15rem;
     border-bottom: 1px solid var(--border-strong);
+  }
+  .menu__close {
+    flex-shrink: 0;
   }
   .menu__top-title {
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--text-ink);
+  }
+  .menu__arrow {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--accent-terracotta);
+    transition: transform 0.2s ease;
+  }
+  .menu__link:hover .menu__arrow,
+  .menu__link:active .menu__arrow {
+    transform: translateX(3px);
   }
   .menu__close {
     display: inline-flex;
@@ -3293,17 +3336,28 @@
 <!-- Mobile Drawer (Keys 4-7) -->
 <aside class="menu" id="mobile-menu" aria-hidden="true" inert>
   <div class="menu__top">
-    <span class="menu__top-title">Menu</span>
+    <div class="brand">
+      <span class="brand__name" data-c="brand.name">Agoura Hills Family, Cosmetic, &amp; Implant Dentistry</span>
+      <span class="brand__tag" data-c="brand.tagline">Cosmetic, Implant &amp; Family Dentistry · Agoura Hills</span>
+    </div>
     <button type="button" class="menu__close" data-menu-close aria-label="Close menu">&#10005; Close</button>
   </div>
   <nav class="menu__links" aria-label="Mobile">
-    <a href="#doctor" class="menu__link" data-nav><span class="num">01</span><span>Meet the Doctor</span></a>
-    <a href="#approach" class="menu__link" data-nav><span class="num">02</span><span>Approach</span></a>
-    <a href="#words" class="menu__link" data-nav><span class="num">03</span><span>Patient Stories</span></a>
-    <a href="#trust" class="menu__link" data-nav><span class="num">04</span><span>Clinical Standards</span></a>
-    <a href="#book" class="menu__link" data-nav><span class="num">05</span><span>Book a Visit</span></a>
-    <a href="#location" class="menu__link" data-nav><span class="num">06</span><span>Location &amp; Hours</span></a>
+    <a href="#doctor" class="menu__link" data-nav><span>Meet the Doctor</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a href="#approach" class="menu__link" data-nav><span>Approach</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a href="#words" class="menu__link" data-nav><span>Patient Stories</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a href="#trust" class="menu__link" data-nav><span>Clinical Standards</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a href="#book" class="menu__link" data-nav><span>Book a Visit</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a href="#location" class="menu__link" data-nav><span>Location &amp; Hours</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
   </nav>
+  <div class="menu__foot">
+    <div>
+      <strong data-c="brand.name">Agoura Hills Family, Cosmetic, & Implant Dentistry</strong> · <span data-c="brand.tagline">Cosmetic, Implant & Family Dentistry · Agoura Hills</span>
+    </div>
+    <div>
+      <a href="tel:+18054950187" data-c="book.phone" data-c-href="book.phoneHref">(805) 495-0187</a>
+    </div>
+  </div>
 </aside>
 
 <main id="top">
