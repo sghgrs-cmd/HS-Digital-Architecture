@@ -469,30 +469,46 @@ em,.em{font-style:italic;font-weight:inherit;color:var(--accent)}
 }
 
 /* full-screen menu */
+html.menu-open{overflow:hidden!important;overscroll-behavior:none!important}
 .menu{
-  position:fixed;inset:0;z-index:55;background:var(--paper);
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding:1.15rem var(--gutter) calc(2rem + env(safe-area-inset-bottom));
-  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  position:fixed;inset:0;z-index:120;background:var(--paper);
+  height:100dvh;max-height:100dvh;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding:0 var(--gutter) calc(1.75rem + env(safe-area-inset-bottom));
+  overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;
   clip-path:inset(0 0 100% 0);visibility:hidden;
   transition:clip-path var(--dur) var(--ease-out),visibility 0s linear var(--dur);
 }
 .menu[data-open="true"]{clip-path:inset(0 0 0 0);visibility:visible;transition:clip-path var(--dur) var(--ease-out),visibility 0s}
-.menu__top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.menu__links{margin-block:auto;padding-block:2rem}
+.menu__top{
+  position:sticky;top:0;z-index:5;background:var(--paper);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.05rem 0 .95rem;border-bottom:1px solid var(--rule);
+}
+.menu__links{margin-block:1rem auto;padding-block:.25rem 1.25rem}
 .menu__link{
-  display:block;font-family:var(--font-display);font-weight:300;
-  font-variation-settings:'opsz' 96;font-size:clamp(2.25rem,10vw,3.25rem);
-  line-height:1.22;letter-spacing:-.02em;opacity:0;transform:translateY(18px);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding-block:.9rem;border-top:1px solid var(--rule);
+  font-family:var(--font-display);font-weight:300;
+  font-variation-settings:'opsz' 96;font-size:clamp(1.65rem,7vw,2.45rem);
+  line-height:1.18;letter-spacing:-.02em;opacity:0;transform:translateY(14px);
   transition:opacity var(--dur) var(--ease-out),transform var(--dur) var(--ease-out),color var(--dur-fast) linear;
 }
+.menu__link:last-child{border-bottom:1px solid var(--rule)}
+.menu__arrow{
+  font-family:var(--font-sans);font-size:.95rem;font-weight:400;
+  color:var(--accent);opacity:.72;transition:transform .22s var(--ease-out),opacity .22s ease;
+}
+.menu__link:hover .menu__arrow,.menu__link:active .menu__arrow{transform:translateX(4px);opacity:1}
 .menu[data-open="true"] .menu__link{opacity:1;transform:none}
-.menu__link:nth-child(1){transition-delay:.06s}
-.menu__link:nth-child(2){transition-delay:.12s}
-.menu__link:nth-child(3){transition-delay:.18s}
-.menu__link:nth-child(4){transition-delay:.24s}
+.menu__link:nth-child(1){transition-delay:.05s}
+.menu__link:nth-child(2){transition-delay:.10s}
+.menu__link:nth-child(3){transition-delay:.15s}
+.menu__link:nth-child(4){transition-delay:.20s}
+.menu__link:nth-child(5){transition-delay:.25s}
+.menu__link:nth-child(6){transition-delay:.30s}
 .menu__link:hover{color:var(--accent)}
-.menu__foot{border-top:1px solid var(--rule);padding-top:1.5rem;display:grid;gap:.5rem}
+.menu__foot{border-top:1px solid var(--rule);padding-top:1.35rem;display:grid;gap:.5rem}
 .menu__foot a{font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
 
 /* -----------------------------------------------------------------------------
@@ -1713,15 +1729,17 @@ textarea::-webkit-resizer{cursor:none!important}
   </div>
 
   <nav class="menu__links" aria-label="Mobile">
-    <a class="menu__link" href="#doctor">The Dentist</a>
-    <a class="menu__link" href="#approach">Approach</a>
-    <a class="menu__link" href="#location">Location</a>
-    <a class="menu__link" href="#book">Contact</a>
+    <a class="menu__link" href="#doctor"><span>The Dentist</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a class="menu__link" href="#approach"><span>Approach</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a class="menu__link" href="#words"><span>Patient Stories</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a class="menu__link" href="#trust"><span>Clinical Standards</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a class="menu__link" href="#location"><span>Location &amp; Hours</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    <a class="menu__link" href="#book"><span>Book a Visit</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
   </nav>
 
   <div class="menu__foot">
     <a href="tel:+19524321101" data-c="book.phone">(952) 432-1101</a>
-    <a href="mailto:info@dalsethdental.com" data-c="book.email">info@dalsethdental.com</a>
+    <span class="menu__foot-email"><a href="mailto:info@dalsethdental.com" data-c="book.email">info@dalsethdental.com</a></span>
   </div>
 </div>
 

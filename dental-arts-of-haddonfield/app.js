@@ -678,10 +678,16 @@ function initNav(){
 
   const update = () => {
     const y = window.scrollY;
+    const menuOpen = menu && menu.dataset.open === 'true';
+    if (menuOpen) {
+      ticking = false;
+      return;
+    }
     nav.classList.toggle('is-stuck', y > 40);
 
-    const menuOpen = menu && menu.dataset.open === 'true';
-    if (!menuOpen){
+    if (performance.now() < (window.__suppressNavHideUntil || 0)) {
+      nav.classList.remove('is-hidden');
+    } else {
       if (y > last + 8 && y > 260) nav.classList.add('is-hidden');
       else if (y < last - 8 || y < 120) nav.classList.remove('is-hidden');
     }
@@ -712,23 +718,58 @@ function initMenu(){
   if (!menu || !open || !close) return;
 
   let lastFocus = null;
+  let savedScrollY = 0;
 
-  const setOpen = (state) => {
-    menu.dataset.open = String(state);
-    menu.setAttribute('aria-hidden', String(!state));
-    open.setAttribute('aria-expanded', String(state));
-    document.body.style.overflow = state ? 'hidden' : '';
-    if (state){
+  const setOpen = (state, opts = {}) => {
+    const next = Boolean(state);
+    const wasOpen = menu.dataset.open === 'true';
+    if (next === wasOpen && !opts.force) return;
+    menu.dataset.open = String(next);
+    menu.setAttribute('aria-hidden', String(!next));
+    open.setAttribute('aria-expanded', String(next));
+    if (next){
+      savedScrollY = window.scrollY || window.pageYOffset || 0;
+      document.documentElement.classList.add('menu-open');
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      menu.scrollTop = 0;
       lastFocus = document.activeElement;
       window.setTimeout(() => close.focus(), 60);
-    } else if (lastFocus){
-      lastFocus.focus();
+    } else {
+      window.__suppressNavHideUntil = performance.now() + 260;
+      document.documentElement.classList.remove('menu-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+      const navEl = document.getElementById('nav');
+      if (navEl) {
+        navEl.classList.remove('is-hidden');
+        navEl.classList.toggle('is-stuck', savedScrollY > 40);
+      }
+      if (!opts.skipFocus && lastFocus){
+        lastFocus.focus();
+      }
     }
+  };
+
+  window.__closeMobileMenuForAnchor = () => {
+    if (menu.dataset.open === 'true') setOpen(false, { skipFocus: true });
   };
 
   open.addEventListener('click', () => setOpen(true));
   close.addEventListener('click', () => setOpen(false));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    const href = a.getAttribute('href') || '';
+    setOpen(false, { skipFocus: href.startsWith('#') });
+  }));
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.dataset.open === 'true') setOpen(false);
@@ -905,6 +946,9 @@ function initAnchors(){
       const target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
+      if (typeof window.__closeMobileMenuForAnchor === 'function') {
+        window.__closeMobileMenuForAnchor();
+      }
       const top = target.getBoundingClientRect().top + window.scrollY - 24;
       window.scrollTo({ top: top, behavior: REDUCED ? 'auto' : 'smooth' });
       history.replaceState(null, '', '#' + id);
