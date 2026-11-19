@@ -3,20 +3,20 @@
   "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hillsborough-prime-dental",
   "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hillsborough-prime-dental\\video",
   "viewport": "1536x864@1.25x->1920x1080",
-  "crf": 22,
-  "recorded_at": "2026-11-18T12:26:17Z",
+  "crf": 19,
+  "recorded_at": "2026-11-18T22:46:39Z",
   "videos": [
     {
       "variant": "warm",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hillsborough-prime-dental\\video\\walkthrough-warm.mp4",
-      "size_mb": 25.29,
-      "elapsed_sec": 84.6
+      "size_mb": 46.02,
+      "elapsed_sec": 98.4
     },
     {
       "variant": "luxe",
       "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\hillsborough-prime-dental\\video\\walkthrough.mp4",
-      "size_mb": 33.0,
-      "elapsed_sec": 109.9
+      "size_mb": 57.11,
+      "elapsed_sec": 123.4
     }
   ]
 }
