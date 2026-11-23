@@ -45,6 +45,8 @@
       --radius-md: 16px;
       --radius-lg: 22px;
       --maxw: 1140px;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --pad-x: 24px;
     }
 
     *, *::before, *::after {
@@ -70,7 +72,7 @@
       font-size: 16px;
       line-height: 1.65;
       overflow-x: hidden;
-      cursor: auto;
+      position: relative;
     }
 
     img, svg {
@@ -81,7 +83,6 @@
     a {
       color: inherit;
       text-decoration: none;
-      cursor: pointer;
     }
 
     button {
@@ -99,118 +100,277 @@
       width: 100%;
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 var(--pad-x);
     }
 
     @media (max-width: 640px) {
-      .container {
-        padding: 0 18px;
+      :root {
+        --pad-x: 18px;
       }
     }
 
-    /* Delicate Editorial Cursor Ring (Desktop Only, Never Hides Native Cursor) */
-    .cursor-ring {
-      display: none;
-    }
-
+    /* Custom Scrollbar (from Signature Luxury template, styled in site palette) */
     @media (hover: hover) and (pointer: fine) {
-      .cursor-ring {
+      ::-webkit-scrollbar { width: 12px; height: 12px; }
+      ::-webkit-scrollbar-track { background: var(--bg-alt); border-left: 1px solid var(--border); }
+      ::-webkit-scrollbar-thumb { background: var(--accent); border: 4px solid var(--bg-alt); border-left-width: 5px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--ink); }
+      ::-webkit-scrollbar-corner { background: var(--bg-alt); }
+      ::-webkit-scrollbar-button:single-button {
+        background: var(--bg-alt);
         display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 1px solid rgba(154, 74, 48, 0.42);
-        background: rgba(197, 160, 89, 0.04);
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0;
-        will-change: transform, width, height, opacity;
-        transition: width 0.22s ease, height 0.22s ease, border-color 0.22s ease, background 0.22s ease, opacity 0.2s ease;
+        height: 12px;
+        width: 12px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 7px;
       }
-
-      .cursor-ring.is-visible {
-        opacity: 1;
+      ::-webkit-scrollbar-button:single-button:vertical:decrement {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='%239A4A30'%3E%3Cpath d='M5 2 1 8h8z'/%3E%3C/svg%3E");
       }
-
-      .cursor-ring.is-active {
-        width: 46px;
-        height: 46px;
-        border-color: rgba(197, 160, 89, 0.85);
-        background: rgba(197, 160, 89, 0.11);
+      ::-webkit-scrollbar-button:single-button:vertical:increment {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='%239A4A30'%3E%3Cpath d='M5 8 9 2H1z'/%3E%3C/svg%3E");
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .cursor-ring {
-        display: none !important;
-      }
-      .hero-orbit {
-        animation: none !important;
-      }
+    @media (hover: none), (pointer: coarse) {
+      html, body { scrollbar-width: none; -ms-overflow-style: none; }
+      html::-webkit-scrollbar, body::-webkit-scrollbar, ::-webkit-scrollbar { width: 0; height: 0; display: none; }
+      ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button { display: none; }
     }
 
-    /* Header */
-    .site-header {
+    /* Signature Luxury Cursor (dot + trailing ring + contextual label + middle-click autoscroll disc) */
+    #cur-dot, #cur-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      background: transparent;
+      pointer-events: none;
+      opacity: 0;
+      will-change: transform;
+      transform: translate(-100px, -100px);
+    }
+
+    #cur-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      z-index: 9999;
+      transition: width 0.28s var(--ease-out), height 0.28s var(--ease-out), background-color 0.2s ease;
+    }
+
+    #cur-ring {
+      width: 34px;
+      height: 34px;
+      border: 1.25px solid rgba(154, 74, 48, 0.70);
+      background: rgba(197, 160, 89, 0.05);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.45s var(--ease-out), height 0.45s var(--ease-out), border-radius 0.45s var(--ease-out), background-color 0.28s var(--ease-out), border-color 0.28s ease;
+    }
+
+    #cur-dot.is-on-dark {
+      background: #E8CFA0;
+    }
+
+    #cur-ring.is-on-dark {
+      border-color: rgba(232, 207, 160, 0.78);
+      background: rgba(232, 207, 160, 0.07);
+    }
+
+    #cur-label {
+      font-family: var(--font-body);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #F7F4EE;
+      opacity: 0;
+      transition: opacity 0.2s var(--ease-out);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    #cur-ring.is-over #cur-label { opacity: 1; }
+    #cur-ring.is-text #cur-label { opacity: 0; }
+
+    html.cursor-on #cur-dot {
+      opacity: 1;
+      transition: width 0.28s var(--ease-out), height 0.28s var(--ease-out), opacity 0.22s linear 0.03s, background-color 0.2s ease;
+    }
+
+    html.cursor-on #cur-ring {
+      opacity: 1;
+      transition: width 0.45s var(--ease-out), height 0.45s var(--ease-out), border-radius 0.45s var(--ease-out), opacity 0.22s linear 0.03s, background-color 0.28s var(--ease-out), border-color 0.28s ease;
+    }
+
+    #cur-dot.is-over { width: 0; height: 0; }
+    #cur-ring.is-over {
+      width: 62px;
+      height: 62px;
+      background: rgba(26, 21, 20, 0.94);
+      border-color: var(--gold);
+      box-shadow: 0 10px 28px rgba(22, 19, 17, 0.18);
+    }
+
+    #cur-ring.is-over.is-on-dark {
+      background: rgba(247, 244, 238, 0.96);
+      border-color: var(--gold);
+    }
+
+    #cur-ring.is-over.is-on-dark #cur-label {
+      color: var(--espresso);
+    }
+
+    #cur-dot.is-text { width: 0; height: 0; }
+    #cur-ring.is-text {
+      width: 2px;
+      height: 26px;
+      border-radius: 0;
+      border-width: 0;
+      background: var(--accent);
+    }
+
+    .autoscroll-anchor {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .autoscroll-disc {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(247, 244, 238, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 8px 24px rgba(22, 19, 17, 0.18), 0 0 0 4px rgba(154, 74, 48, 0.08);
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transform: translate(-100px, -100px) translate(-50%, -50%) scale(0.6);
+      transition: opacity 0.15s ease, transform 0.18s var(--ease-out);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .autoscroll-disc.is-active {
+      opacity: 1;
+      transition: opacity 0.15s ease;
+    }
+
+    .autoscroll-disc svg { width: 24px; height: 24px; overflow: visible; }
+    .autoscroll-disc__up, .autoscroll-disc__dn {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.42;
+      transition: opacity 0.15s ease, transform 0.15s ease, stroke 0.15s ease;
+    }
+    .autoscroll-disc.is-up .autoscroll-disc__up { opacity: 1; stroke: var(--accent); transform: translateY(-1.5px); }
+    .autoscroll-disc.is-dn .autoscroll-disc__dn { opacity: 1; stroke: var(--accent); transform: translateY(1.5px); }
+    .autoscroll-disc__dot { fill: var(--accent); }
+
+    @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+      #cur-dot, #cur-ring, .autoscroll-disc, .autoscroll-anchor { display: none !important; }
+      .hero-orbit { animation: none !important; }
+    }
+
+    /* Warm Template Scroll Progress Bar + Smart Sticky Header + Mobile Drawer */
+    .scroll-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 55%, var(--sage) 100%);
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      z-index: 105;
+      pointer-events: none;
+    }
+
+    .header {
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 92;
       background: rgba(247, 244, 238, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s ease, transform 0.32s var(--ease-out);
     }
 
-    .header-inner {
+    .header.is-hidden {
+      transform: translateY(-100%);
+    }
+
+    .header.is-scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header__inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0.92rem var(--pad-x);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      height: 74px;
+      gap: 1rem;
     }
 
     .brand {
       display: flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-shrink: 0;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
     }
 
-    .brand-mark {
+    .brand__name {
       font-family: var(--font-display);
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 500;
       letter-spacing: -0.02em;
       color: var(--ink);
+      line-height: 1.15;
     }
 
     .brand-dot {
       color: var(--accent);
     }
 
-    .brand-sub {
-      font-size: 12px;
+    .brand__tag {
+      font-size: 11.5px;
       font-weight: 500;
       color: var(--muted);
       letter-spacing: 0.02em;
     }
 
     @media (max-width: 480px) {
-      .brand-sub {
+      .brand__tag {
         display: none;
       }
     }
 
-    .nav-links {
+    .nav {
       display: flex;
       align-items: center;
-      gap: 22px;
-      list-style: none;
+      gap: 20px;
     }
 
-    .nav-links a {
+    .nav__link {
       font-size: 13.5px;
       font-weight: 500;
       color: var(--ink-soft);
@@ -218,31 +378,32 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--ink);
+    .nav__link:hover {
+      color: var(--accent);
     }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .status-pill {
+    .header__cta {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 14px;
+      padding: 8px 15px;
       border-radius: 999px;
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-strong);
+      color: var(--ink);
       font-size: 12px;
       font-weight: 600;
-      color: var(--ink);
       white-space: nowrap;
-      box-shadow: 0 2px 8px rgba(22, 19, 17, 0.03);
+      box-shadow: 0 2px 8px rgba(22, 19, 17, 0.04);
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
+    .header__cta:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .header__cta-dot,
     .status-dot {
       width: 7px;
       height: 7px;
@@ -251,74 +412,178 @@
       flex-shrink: 0;
     }
 
-    .menu-toggle {
+    .burger {
       display: none;
-      align-items: center;
-      justify-content: center;
       width: 42px;
       height: 42px;
-      border-radius: 10px;
+      border-radius: 999px;
       border: 1px solid var(--border-strong);
       background: var(--surface);
-      color: var(--ink);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
       flex-shrink: 0;
     }
 
-    @media (max-width: 1040px) {
-      .nav-links,
-      .header-status-desktop {
+    .burger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.25s ease;
+    }
+
+    .burger.is-open span:first-child {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+
+    .burger.is-open span:last-child {
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+
+    @media (max-width: 1060px) {
+      .nav, .header__cta {
         display: none;
       }
-      .menu-toggle {
+      .burger {
         display: inline-flex;
       }
     }
 
-    /* Mobile Drawer */
-    .mobile-drawer {
-      display: none;
+    html.menu-open {
+      overflow: hidden !important;
+      overscroll-behavior: none !important;
+    }
+
+    .menu {
       position: fixed;
       inset: 0;
-      z-index: 60;
-      background: rgba(247, 244, 238, 0.98);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 32px 24px;
-      gap: 18px;
-    }
-
-    .mobile-drawer.is-open {
+      z-index: 120;
+      height: 100dvh;
+      max-height: 100dvh;
+      background: var(--bg);
+      padding: 0 var(--pad-x) calc(2rem + env(safe-area-inset-bottom, 0px));
       display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-12px);
+      transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .drawer-close {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      border: 1px solid var(--border-strong);
-      background: var(--surface);
-      color: var(--ink);
+    .menu.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .menu__top {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 0 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .menu__close {
+      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-    }
-
-    .drawer-link {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 400;
+      gap: 6px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
       color: var(--ink);
-      line-height: 1.25;
+      box-shadow: var(--shadow-sm);
     }
 
-    .drawer-link:hover {
+    .menu__close:hover {
+      border-color: var(--accent);
       color: var(--accent);
+    }
+
+    .menu__links {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 22px;
+    }
+
+    .menu__link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--ink);
+      box-shadow: 0 2px 10px rgba(22, 19, 17, 0.03);
+    }
+
+    .menu__arrow {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--accent);
+      transition: transform 0.2s ease;
+    }
+
+    .menu__link:hover .menu__arrow,
+    .menu__link:active .menu__arrow {
+      transform: translateX(3px);
+    }
+
+    .menu__foot {
+      margin-top: auto;
+      padding: 16px 18px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    .menu__foot strong {
+      color: var(--ink);
+    }
+
+    .menu__foot a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .menu__status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
     }
 
     /* Hero */
@@ -1477,58 +1742,71 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container header-inner">
+  <div class="scroll-bar" aria-hidden="true"></div>
+  <!-- Signature Luxury Cursor (Desktop fine pointer only; activated from script) -->
+  <span id="cur-ring" aria-hidden="true"><span id="cur-label"></span></span>
+  <span id="cur-dot" aria-hidden="true"></span>
+
+  <header class="header" id="header">
+    <div class="header__inner">
       <a href="#top" class="brand" aria-label="HS Frontend Home">
-        <span class="brand-mark">HS Frontend<span class="brand-dot">.</span></span>
-        <span class="brand-sub">US Dental Web Architecture</span>
+        <span class="brand__name">HS Frontend<span class="brand-dot">.</span></span>
+        <span class="brand__tag">US Dental Web Architecture &middot; Hayk Shirinyan</span>
       </a>
 
-      <nav aria-label="Main navigation">
-        <ul class="nav-links">
-          <li><a href="#directions">Design Directions</a></li>
-          <li><a href="#standards">Engineering &amp; QA</a></li>
-          <li><a href="#process">Approval to Launch</a></li>
-          <li><a href="#guarantees">Guarantees</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#directions" class="nav__link">Design Directions</a>
+        <a href="#standards" class="nav__link">Engineering &amp; QA</a>
+        <a href="#process" class="nav__link">Approval to Launch</a>
+        <a href="#guarantees" class="nav__link">Guarantees</a>
+        <a href="#about" class="nav__link">About</a>
+        <a href="#contact" class="nav__link">Contact</a>
       </nav>
 
-      <div class="header-right">
-        <div class="status-pill header-status-desktop">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>Now booking &middot; December &amp; Q1 2027</span>
-        </div>
-        <button type="button" id="menu-open-btn" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <line x1="4" y1="7" x2="20" y2="7" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="17" x2="20" y2="17" />
-          </svg>
-        </button>
-      </div>
+      <a href="#contact" class="header__cta" data-magnetic data-cursor="Inquire">
+        <span class="header__cta-dot" aria-hidden="true"></span>
+        <span>Now booking &middot; December &amp; Q1 2027</span>
+      </a>
+
+      <button class="burger" id="menu-open-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <button type="button" id="menu-close-btn" class="drawer-close" aria-label="Close navigation menu">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
-        <line x1="6" y1="6" x2="18" y2="18" />
-        <line x1="18" y1="6" x2="6" y2="18" />
-      </svg>
-    </button>
-    <a href="#directions" class="drawer-link">Design Directions</a>
-    <a href="#standards" class="drawer-link">Engineering &amp; Clinical Standards</a>
-    <a href="#process" class="drawer-link">From Approval to Launch</a>
-    <a href="#guarantees" class="drawer-link">Zero-Risk Guarantees</a>
-    <a href="#about" class="drawer-link">About Studio</a>
-    <a href="#contact" class="drawer-link">Contact</a>
-    <div class="status-pill" style="margin-top:8px;">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span>Now booking &middot; December &amp; Q1 2027</span>
+  <!-- Warm Scrollable Card-Based Mobile Drawer -->
+  <aside class="menu" id="mobile-menu" aria-hidden="true" inert>
+    <div class="menu__top">
+      <div class="brand">
+        <span class="brand__name">HS Frontend<span class="brand-dot">.</span></span>
+        <span class="brand__tag">US Dental Web Architecture</span>
+      </div>
+      <button type="button" class="menu__close" id="menu-close-btn" data-menu-close aria-label="Close menu">&#10005; Close</button>
     </div>
-  </div>
+
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#directions" class="menu__link" data-nav><span>Design Directions</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="#standards" class="menu__link" data-nav><span>Engineering &amp; Clinical Standards</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="#process" class="menu__link" data-nav><span>From Approval to Launch</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="#guarantees" class="menu__link" data-nav><span>Zero-Risk Guarantees</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="#about" class="menu__link" data-nav><span>About Studio</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="#contact" class="menu__link" data-nav><span>Contact &amp; Direct Email</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    </nav>
+
+    <div class="menu__foot">
+      <div class="menu__status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Now booking &middot; December &amp; Q1 2027</span>
+      </div>
+      <div>
+        <strong>HS Frontend</strong> &middot; Led by Hayk Shirinyan &middot; Yerevan, Armenia
+      </div>
+      <div>
+        <a href="mailto:hayk@hs-frontend.online">hayk@hs-frontend.online</a> &middot; Reply by next morning US time
+      </div>
+    </div>
+  </aside>
 
   <main id="top">
     <!-- Hero -->
@@ -1544,8 +1822,8 @@
               When prospective cosmetic, implant, and family patients look up your practice on their phones, they judge your standard of care in seconds. We rebuild dated clinic websites end-to-end with zero burden on your front desk and full preservation of your existing Google search visibility.
             </p>
             <div class="cta-row">
-              <a href="#contact" class="btn-primary">Request a Private Practice Walkthrough &rarr;</a>
-              <a href="#directions" class="btn-secondary">Explore Design Directions</a>
+              <a href="#contact" class="btn-primary" data-magnetic data-cursor="Inquire">Request a Private Practice Walkthrough &rarr;</a>
+              <a href="#directions" class="btn-secondary" data-magnetic data-cursor="Explore">Explore Design Directions</a>
             </div>
           </div>
 
@@ -1681,7 +1959,7 @@
                 <li>Calm visual restraint that stands apart from template dental sites</li>
               </ul>
               <div class="direction-footer">
-                <a href="https://aurelia.hs-frontend.online" target="_blank" rel="noopener noreferrer" class="text-link">
+                <a href="https://aurelia.hs-frontend.online" target="_blank" rel="noopener noreferrer" class="text-link" data-cursor="Open">
                   Open Live Concept (Aurelia) &rarr;
                 </a>
                 <span class="note-muted">Fictional demonstration site</span>
@@ -1724,7 +2002,7 @@
                 <li>Accessible contrast and effortless thumb-friendly mobile navigation</li>
               </ul>
               <div class="direction-footer">
-                <a href="#contact" class="text-link text-link--sage">
+                <a href="#contact" class="text-link text-link--sage" data-cursor="Preview">
                   Request Custom Warm Preview for Your Practice &rarr;
                 </a>
                 <span class="note-muted">Built privately per clinic</span>
@@ -2105,14 +2383,14 @@
 
           <div class="email-box">
             <div class="email-meta">Direct Email &middot; Lead Developer</div>
-            <a href="mailto:hayk@hs-frontend.online" class="email-address-link" id="studio-email-value">
+            <a href="mailto:hayk@hs-frontend.online" class="email-address-link" id="studio-email-value" data-cursor="Email">
               hayk@hs-frontend.online
             </a>
             <div class="email-actions">
-              <button type="button" id="copy-email-btn" class="btn-copy" aria-label="Copy email address hayk@hs-frontend.online">
+              <button type="button" id="copy-email-btn" class="btn-copy" data-magnetic data-cursor="Copy" aria-label="Copy email address hayk@hs-frontend.online">
                 Copy Email Address
               </button>
-              <a href="mailto:hayk@hs-frontend.online?subject=Practice%20Website%20Inquiry" class="btn-mailto">
+              <a href="mailto:hayk@hs-frontend.online?subject=Practice%20Website%20Inquiry" class="btn-mailto" data-cursor="Email">
                 Open Email Client
               </a>
             </div>
@@ -2136,55 +2414,469 @@
     </div>
   </footer>
 
-  <!-- Delicate Desktop-Only Editorial Cursor Ring (System Cursor Preserved) -->
-  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
-
   <script>
     (function () {
+      'use strict';
+
+      var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var FINE = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+      var lerp = function (a, b, t) { return a + (b - a) * t; };
+
       var yearEl = document.getElementById('year-val');
       if (yearEl) {
         yearEl.textContent = String(new Date().getFullYear());
       }
 
-      var openBtn = document.getElementById('menu-open-btn');
-      var closeBtn = document.getElementById('menu-close-btn');
-      var drawer = document.getElementById('mobile-drawer');
-      var drawerLinks = document.querySelectorAll('.drawer-link');
+      /* --------------------------------------------------------------------
+         1. SIGNATURE LUXURY CURSOR (dot + trailing ring + labels + middle-click autoscroll disc)
+         -------------------------------------------------------------------- */
+      function initCursor() {
+        if (!FINE || REDUCED) return;
 
-      function openDrawer() {
-        if (!drawer) return;
-        drawer.classList.add('is-open');
-        if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-        if (closeBtn) closeBtn.focus();
+        var dot = document.getElementById('cur-dot');
+        var ring = document.getElementById('cur-ring');
+        var label = document.getElementById('cur-label');
+        if (!dot || !ring) return;
+
+        var root = document.documentElement;
+        var hide = document.createElement('style');
+        hide.textContent = 'html, html *{cursor:none!important} ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer{cursor:none!important} html.autoscroll-on #cur-dot, html.autoscroll-on #cur-ring{opacity:0!important;visibility:hidden!important}';
+        document.head.appendChild(hide);
+
+        /* Custom Luxury Middle-Click Autoscroll Disc with Up/Down Arrows */
+        var disc = document.createElement('div');
+        disc.className = 'autoscroll-disc';
+        disc.setAttribute('aria-hidden', 'true');
+        disc.innerHTML = '<svg viewBox="0 0 24 24"><path class="autoscroll-disc__up" d="M8 7l4-4 4 4"/><circle class="autoscroll-disc__dot" cx="12" cy="12" r="2.2"/><path class="autoscroll-disc__dn" d="M8 17l4 4 4-4"/></svg>';
+        document.body.appendChild(disc);
+
+        var autoScrollActive = false;
+        var autoOriginX = 0;
+        var autoOriginY = 0;
+        var autoCurX = 0;
+        var autoCurY = 0;
+        var autoDownTime = 0;
+        var autoRaf = null;
+
+        var live = false;
+        var off = false;
+        var blocked = false;
+
+        var show = function (state) {
+          var want = (off || blocked || autoScrollActive) ? false : state;
+          if (want === live) return;
+          live = want;
+          root.classList.toggle('cursor-on', want);
+        };
+
+        var edgeX = 0;
+        var edgeY = 0;
+        var measure = function () { edgeX = root.clientWidth; edgeY = root.clientHeight; };
+        measure();
+        window.addEventListener('resize', measure, { passive: true });
+
+        var EDGE = 3;
+        var inGutter = function (x, y) {
+          return (window.innerWidth > edgeX && x >= edgeX - EDGE) ||
+                 (window.innerHeight > edgeY && y >= edgeY - EDGE);
+        };
+
+        var m = { x: -100, y: -100 };
+        var d = { x: -100, y: -100 };
+        var r = { x: -100, y: -100 };
+        var raf = null;
+
+        var tick = function () {
+          measure();
+          d.x = lerp(d.x, m.x, 0.85);
+          d.y = lerp(d.y, m.y, 0.85);
+          r.x = lerp(r.x, m.x, 0.14);
+          r.y = lerp(r.y, m.y, 0.14);
+
+          dot.style.transform = 'translate(' + d.x.toFixed(2) + 'px, ' + d.y.toFixed(2) + 'px) translate(-50%,-50%)';
+          ring.style.transform = 'translate(' + r.x.toFixed(2) + 'px, ' + r.y.toFixed(2) + 'px) translate(-50%,-50%)';
+
+          var settled = Math.abs(m.x - r.x) < 0.1 && Math.abs(m.y - r.y) < 0.1;
+          raf = settled ? null : requestAnimationFrame(tick);
+        };
+
+        var stopAutoScroll = function (e) {
+          if (!autoScrollActive) return;
+          autoScrollActive = false;
+          root.classList.remove('autoscroll-on');
+          root.style.scrollBehavior = '';
+          disc.classList.remove('is-active', 'is-up', 'is-dn');
+          disc.style.transform = 'translate(' + autoCurX.toFixed(1) + 'px, ' + autoCurY.toFixed(1) + 'px) translate(-50%, -50%) scale(0.6)';
+          if (autoRaf) {
+            cancelAnimationFrame(autoRaf);
+            autoRaf = null;
+          }
+          var finalX = (e && typeof e.clientX === 'number') ? e.clientX : autoCurX;
+          var finalY = (e && typeof e.clientY === 'number') ? e.clientY : autoCurY;
+          m.x = finalX; m.y = finalY;
+          d.x = finalX; d.y = finalY;
+          r.x = finalX; r.y = finalY;
+          dot.style.transform = 'translate(' + finalX.toFixed(2) + 'px, ' + finalY.toFixed(2) + 'px) translate(-50%,-50%)';
+          ring.style.transform = 'translate(' + finalX.toFixed(2) + 'px, ' + finalY.toFixed(2) + 'px) translate(-50%,-50%)';
+          show(true);
+          if (!raf) raf = requestAnimationFrame(tick);
+        };
+
+        var tickAutoScroll = function () {
+          if (!autoScrollActive) return;
+          var dy = autoCurY - autoOriginY;
+          var absDy = Math.abs(dy);
+          var DEADZONE = 8;
+          if (absDy > DEADZONE) {
+            var sign = dy > 0 ? 1 : -1;
+            var speed = Math.min(48, Math.pow((absDy - DEADZONE) / 8.5, 1.35));
+            window.scrollBy({ top: sign * speed, left: 0, behavior: 'instant' });
+            disc.classList.toggle('is-dn', sign > 0);
+            disc.classList.toggle('is-up', sign < 0);
+          } else {
+            disc.classList.remove('is-up', 'is-dn');
+          }
+          autoRaf = requestAnimationFrame(tickAutoScroll);
+        };
+
+        window.addEventListener('mousedown', function (e) {
+          if (e.button === 1) {
+            e.preventDefault();
+            if (autoScrollActive) {
+              stopAutoScroll(e);
+            } else {
+              autoScrollActive = true;
+              autoOriginX = e.clientX;
+              autoOriginY = e.clientY;
+              autoCurX = e.clientX;
+              autoCurY = e.clientY;
+              m.x = e.clientX; m.y = e.clientY;
+              d.x = e.clientX; d.y = e.clientY;
+              r.x = e.clientX; r.y = e.clientY;
+              autoDownTime = performance.now();
+              root.classList.add('autoscroll-on');
+              root.style.scrollBehavior = 'auto';
+              show(false);
+              disc.style.transform = 'translate(' + autoCurX.toFixed(1) + 'px, ' + autoCurY.toFixed(1) + 'px) translate(-50%, -50%) scale(1)';
+              disc.classList.add('is-active');
+              disc.classList.remove('is-up', 'is-dn');
+              if (!autoRaf) autoRaf = requestAnimationFrame(tickAutoScroll);
+            }
+          } else if (autoScrollActive) {
+            e.preventDefault();
+            stopAutoScroll(e);
+          }
+        }, { passive: false });
+
+        window.addEventListener('mouseup', function (e) {
+          if (e.button === 1 && autoScrollActive) {
+            var heldMs = performance.now() - autoDownTime;
+            var movedPx = Math.hypot(e.clientX - autoOriginX, e.clientY - autoOriginY);
+            if (heldMs > 240 && movedPx > 18) {
+              stopAutoScroll(e);
+            }
+          }
+        }, { passive: true });
+
+        window.addEventListener('auxclick', function (e) {
+          if (e.button === 1) e.preventDefault();
+        }, { passive: false });
+
+        window.addEventListener('wheel', function () {
+          if (autoScrollActive) stopAutoScroll();
+        }, { passive: true });
+
+        window.addEventListener('keydown', function (e) {
+          if (autoScrollActive && (e.key === 'Escape' || e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+            stopAutoScroll();
+          }
+        });
+
+        window.addEventListener('mousemove', function (e) {
+          if (autoScrollActive) {
+            autoCurX = e.clientX;
+            autoCurY = e.clientY;
+            m.x = e.clientX; m.y = e.clientY;
+            d.x = e.clientX; d.y = e.clientY;
+            r.x = e.clientX; r.y = e.clientY;
+            disc.style.transform = 'translate(' + autoCurX.toFixed(1) + 'px, ' + autoCurY.toFixed(1) + 'px) translate(-50%, -50%) scale(1)';
+            return;
+          }
+          if (off) return;
+          if (inGutter(e.clientX, e.clientY)) {
+            show(false);
+            return;
+          }
+          m.x = e.clientX;
+          m.y = e.clientY;
+          show(true);
+          if (!raf) raf = requestAnimationFrame(tick);
+        }, { passive: true });
+
+        var CLICKY = 'a, button, [role="button"], [data-magnetic], [data-cursor]';
+        var TEXTY = 'input:not([type="hidden"]), textarea';
+
+        var setState = function (el) {
+          var onDark = Boolean(el && el.closest && el.closest('.contact-panel, .preview-frame--lux'));
+          var texty = el && el.closest ? el.closest(TEXTY) : null;
+          var clicky = !texty && el && el.closest ? el.closest(CLICKY) : null;
+
+          dot.classList.toggle('is-on-dark', onDark);
+          ring.classList.toggle('is-on-dark', onDark);
+          dot.classList.toggle('is-text', Boolean(texty));
+          ring.classList.toggle('is-text', Boolean(texty));
+          dot.classList.toggle('is-over', Boolean(clicky));
+          ring.classList.toggle('is-over', Boolean(clicky));
+          ring.classList.toggle('is-active', Boolean(clicky));
+
+          var cursorText = '';
+          if (clicky) {
+            if (clicky.hasAttribute('data-cursor')) {
+              cursorText = clicky.getAttribute('data-cursor') || '';
+            } else if (clicky.matches('a[href^="mailto:"]')) {
+              cursorText = 'Email';
+            }
+          }
+          if (label) label.textContent = cursorText;
+        };
+
+        var resetCursorState = function () {
+          setState(null);
+          show(false);
+          if (autoScrollActive) stopAutoScroll();
+        };
+
+        document.addEventListener('mouseover', function (e) {
+          blocked = false;
+          setState(e.target);
+          show(true);
+        });
+        document.addEventListener('mouseout', function (e) {
+          if (!e.relatedTarget) resetCursorState();
+        });
+        document.addEventListener('mouseleave', resetCursorState);
+        document.addEventListener('pointerleave', resetCursorState);
+        window.addEventListener('blur', resetCursorState);
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) resetCursorState();
+        });
+
+        window.addEventListener('touchstart', function () {
+          off = true;
+          show(false);
+          hide.remove();
+        }, { once: true, passive: true });
       }
 
-      function closeDrawer() {
-        if (!drawer) return;
-        drawer.classList.remove('is-open');
-        if (openBtn) {
-          openBtn.setAttribute('aria-expanded', 'false');
-          openBtn.focus();
+      /* Restrained Magnetic Pull on Key CTAs (from Signature Luxury template) */
+      function initMagnetic() {
+        if (!FINE || REDUCED) return;
+        var STRENGTH = 0.12;
+
+        document.querySelectorAll('[data-magnetic]').forEach(function (el) {
+          var tx = 0, ty = 0, cx = 0, cy = 0, mRaf = null, active = false;
+
+          var run = function () {
+            cx = lerp(cx, tx, 0.14);
+            cy = lerp(cy, ty, 0.14);
+            el.style.transform = 'translate(' + cx.toFixed(2) + 'px, ' + cy.toFixed(2) + 'px)';
+            if (active || Math.abs(cx) > 0.1 || Math.abs(cy) > 0.1) {
+              mRaf = requestAnimationFrame(run);
+            } else {
+              el.style.transform = '';
+              mRaf = null;
+            }
+          };
+
+          el.addEventListener('mouseenter', function () {
+            active = true;
+            if (!mRaf) mRaf = requestAnimationFrame(run);
+          });
+          el.addEventListener('mousemove', function (e) {
+            var r = el.getBoundingClientRect();
+            tx = (e.clientX - (r.left + r.width / 2)) * STRENGTH;
+            ty = (e.clientY - (r.top + r.height / 2)) * STRENGTH;
+          });
+          el.addEventListener('mouseleave', function () {
+            active = false;
+            tx = 0;
+            ty = 0;
+            if (!mRaf) mRaf = requestAnimationFrame(run);
+          });
+        });
+      }
+
+      /* --------------------------------------------------------------------
+         2. WARM TEMPLATE SMART HEADER + SCROLL PROGRESS + MOBILE DRAWER
+         -------------------------------------------------------------------- */
+      var header = document.getElementById('header');
+      var progressBar = document.querySelector('.scroll-bar');
+      var burger = document.querySelector('.burger');
+      var drawer = document.getElementById('mobile-menu');
+      var drawerOpen = false;
+      var savedScrollY = 0;
+      var lastFocus = null;
+
+      function getScrollY() {
+        return window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      }
+
+      var lastY = getScrollY();
+      var scrollTicking = false;
+
+      function updateScrollState() {
+        if (drawer && drawer.classList.contains('is-open')) {
+          scrollTicking = false;
+          return;
         }
-        document.body.style.overflow = '';
+        var y = getScrollY();
+        if (header) {
+          header.classList.toggle('is-scrolled', y > 24);
+          if (performance.now() >= (window.__suppressHeaderHideUntil || 0)) {
+            if (y > lastY + 6 && y > 160) {
+              header.classList.add('is-hidden');
+            } else if (y < lastY - 4 || y <= 80) {
+              header.classList.remove('is-hidden');
+            }
+          } else {
+            header.classList.remove('is-hidden');
+          }
+        }
+        if (progressBar) {
+          var docHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+          var max = Math.max(1, docHeight - window.innerHeight);
+          var p = Math.min(1, Math.max(0, y / max));
+          progressBar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        }
+        lastY = y;
+        scrollTicking = false;
       }
 
-      if (openBtn) openBtn.addEventListener('click', openDrawer);
-      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-      drawerLinks.forEach(function (lnk) {
-        lnk.addEventListener('click', function () {
-          if (drawer) drawer.classList.remove('is-open');
-          if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+      function onScroll() {
+        if (!scrollTicking) {
+          requestAnimationFrame(updateScrollState);
+          scrollTicking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      updateScrollState();
+
+      if (drawer) {
+        drawer.inert = true;
+      }
+
+      function setDrawer(open, opts) {
+        opts = opts || {};
+        var nextOpen = Boolean(open);
+        if (nextOpen === drawerOpen && !opts.force) return;
+        drawerOpen = nextOpen;
+
+        if (burger) {
+          burger.classList.toggle('is-open', drawerOpen);
+          burger.setAttribute('aria-expanded', String(drawerOpen));
+        }
+        if (drawer) {
+          drawer.classList.toggle('is-open', drawerOpen);
+          drawer.setAttribute('aria-hidden', String(!drawerOpen));
+          drawer.inert = !drawerOpen;
+          if (drawerOpen) drawer.scrollTop = 0;
+        }
+
+        if (drawerOpen) {
+          savedScrollY = getScrollY();
+          lastFocus = document.activeElement;
+          document.documentElement.classList.add('menu-open');
+          document.body.style.position = 'fixed';
+          document.body.style.top = '-' + savedScrollY + 'px';
+          document.body.style.left = '0';
+          document.body.style.right = '0';
+          document.body.style.width = '100%';
+          document.body.style.overflow = 'hidden';
+          if (header) header.classList.remove('is-hidden');
+          var closeBtn = document.getElementById('menu-close-btn');
+          if (closeBtn) {
+            window.setTimeout(function () { closeBtn.focus(); }, 60);
+          }
+        } else {
+          window.__suppressHeaderHideUntil = performance.now() + 260;
+          document.documentElement.classList.remove('menu-open');
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.left = '';
+          document.body.style.right = '';
+          document.body.style.width = '';
           document.body.style.overflow = '';
+          if (!opts.skipRestore) {
+            window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+          }
+          if (header) header.classList.remove('is-hidden');
+          lastY = opts.skipRestore ? savedScrollY : getScrollY();
+          if (!opts.skipFocus && lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+          }
+        }
+      }
+
+      if (burger) {
+        burger.addEventListener('click', function () {
+          setDrawer(!drawerOpen);
+        });
+      }
+      if (drawer) {
+        drawer.querySelectorAll('[data-menu-close]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            setDrawer(false);
+          });
+        });
+        drawer.querySelectorAll('[data-nav]').forEach(function (a) {
+          var href = a.getAttribute('href') || '';
+          if (!href.startsWith('#')) {
+            a.addEventListener('click', function () { setDrawer(false); });
+          }
+        });
+        drawer.addEventListener('keydown', function (e) {
+          if (e.key !== 'Tab' || !drawerOpen) return;
+          var f = drawer.querySelectorAll('a[href], button');
+          if (!f.length) return;
+          var first = f[0];
+          var lastEl = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            lastEl.focus();
+          } else if (!e.shiftKey && document.activeElement === lastEl) {
+            e.preventDefault();
+            first.focus();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawerOpen) {
+          setDrawer(false);
+        }
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = a.getAttribute('href');
+          if (!id || id === '#' || id.length < 2) return;
+          var target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          if (drawerOpen) {
+            setDrawer(false, { skipRestore: true, skipFocus: true });
+            window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+          }
+          var top = id === '#top' ? 0 : (target.getBoundingClientRect().top + getScrollY() - 76);
+          window.scrollTo({ top: Math.max(0, top), behavior: REDUCED ? 'auto' : 'smooth' });
         });
       });
 
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
-          closeDrawer();
-        }
-      });
-
+      /* --------------------------------------------------------------------
+         3. COPY EMAIL BUTTON & HERO ARCHITECTURAL PARALLAX
+         -------------------------------------------------------------------- */
       var copyBtn = document.getElementById('copy-email-btn');
       var statusEl = document.getElementById('copy-status');
       var EMAIL = 'hayk@hs-frontend.online';
@@ -2235,89 +2927,26 @@
         document.body.removeChild(ta);
       }
 
-      /* Delicate Desktop-Only Editorial Cursor Ring + Subtle Hero Blueprint Parallax */
-      var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var ring = document.getElementById('cursor-ring');
       var blueprintWrap = document.getElementById('hero-blueprint');
       var blueprintInner = blueprintWrap ? blueprintWrap.querySelector('.hero-blueprint-parallax') : null;
-
-      if (finePointer && !reduceMotion && ring) {
-        var tx = -100;
-        var ty = -100;
-        var cx = -100;
-        var cy = -100;
-        var visible = false;
-        var rafId = 0;
-
-        function stopLoop() {
-          if (rafId) {
-            cancelAnimationFrame(rafId);
-            rafId = 0;
-          }
-        }
-
-        function renderRing() {
-          cx += (tx - cx) * 0.24;
-          cy += (ty - cy) * 0.24;
-          var size = ring.classList.contains('is-active') ? 46 : 30;
-          ring.style.transform = 'translate3d(' + (cx - size / 2).toFixed(2) + 'px, ' + (cy - size / 2).toFixed(2) + 'px, 0)';
-          if (visible && (Math.abs(tx - cx) > 0.2 || Math.abs(ty - cy) > 0.2)) {
-            rafId = requestAnimationFrame(renderRing);
-          } else {
-            rafId = 0;
-          }
-        }
-
-        function resetRing() {
-          visible = false;
-          stopLoop();
-          ring.classList.remove('is-active');
-          ring.classList.remove('is-visible');
-        }
-
-        document.addEventListener('pointermove', function (e) {
-          if (e.pointerType && e.pointerType !== 'mouse') return;
-          tx = e.clientX;
-          ty = e.clientY;
-          if (!visible) {
-            cx = tx;
-            cy = ty;
-            visible = true;
-            ring.classList.add('is-visible');
-          }
-          var hitInteractive = Boolean(e.target && e.target.closest && e.target.closest('a, button, [role="button"]'));
-          ring.classList.toggle('is-active', hitInteractive);
-          if (!rafId) {
-            rafId = requestAnimationFrame(renderRing);
-          }
+      if (FINE && !REDUCED && blueprintWrap && blueprintInner) {
+        blueprintWrap.addEventListener('pointermove', function (e) {
+          var rect = blueprintWrap.getBoundingClientRect();
+          if (!rect.width || !rect.height) return;
+          var nx = ((e.clientX - rect.left) / rect.width) - 0.5;
+          var ny = ((e.clientY - rect.top) / rect.height) - 0.5;
+          blueprintInner.style.setProperty('--px', (nx * 10).toFixed(2) + 'px');
+          blueprintInner.style.setProperty('--py', (ny * 8).toFixed(2) + 'px');
         }, { passive: true });
 
-        document.addEventListener('pointerleave', resetRing);
-        document.addEventListener('mouseout', function (e) {
-          if (!e.relatedTarget) resetRing();
+        blueprintWrap.addEventListener('pointerleave', function () {
+          blueprintInner.style.setProperty('--px', '0px');
+          blueprintInner.style.setProperty('--py', '0px');
         });
-        window.addEventListener('blur', resetRing);
-        document.addEventListener('visibilitychange', function () {
-          if (document.hidden) resetRing();
-        });
-
-        if (blueprintWrap && blueprintInner) {
-          blueprintWrap.addEventListener('pointermove', function (e) {
-            var rect = blueprintWrap.getBoundingClientRect();
-            if (!rect.width || !rect.height) return;
-            var nx = ((e.clientX - rect.left) / rect.width) - 0.5;
-            var ny = ((e.clientY - rect.top) / rect.height) - 0.5;
-            blueprintInner.style.setProperty('--px', (nx * 10).toFixed(2) + 'px');
-            blueprintInner.style.setProperty('--py', (ny * 8).toFixed(2) + 'px');
-          }, { passive: true });
-
-          blueprintWrap.addEventListener('pointerleave', function () {
-            blueprintInner.style.setProperty('--px', '0px');
-            blueprintInner.style.setProperty('--py', '0px');
-          });
-        }
       }
+
+      initCursor();
+      initMagnetic();
     })();
   </script>
 </body>
