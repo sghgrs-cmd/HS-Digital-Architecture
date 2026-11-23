@@ -1,0 +1,22 @@
+{
+  "slug": "dental-tmj-pain-and-sleep-apnea",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-tmj-pain-and-sleep-apnea",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-tmj-pain-and-sleep-apnea\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-23T01:25:35Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-tmj-pain-and-sleep-apnea\\video\\walkthrough-warm.mp4",
+      "size_mb": 29.42,
+      "elapsed_sec": 89.6
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\dental-tmj-pain-and-sleep-apnea\\video\\walkthrough.mp4",
+      "size_mb": 37.75,
+      "elapsed_sec": 111.1
+    }
+  ]
+}

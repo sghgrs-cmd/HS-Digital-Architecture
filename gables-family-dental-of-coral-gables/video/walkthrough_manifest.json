@@ -1,0 +1,22 @@
+{
+  "slug": "gables-family-dental-of-coral-gables",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\gables-family-dental-of-coral-gables",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\gables-family-dental-of-coral-gables\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-23T01:18:51Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\gables-family-dental-of-coral-gables\\video\\walkthrough-warm.mp4",
+      "size_mb": 26.58,
+      "elapsed_sec": 88.6
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\gables-family-dental-of-coral-gables\\video\\walkthrough.mp4",
+      "size_mb": 35.42,
+      "elapsed_sec": 111.5
+    }
+  ]
+}

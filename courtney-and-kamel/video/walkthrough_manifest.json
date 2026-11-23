@@ -1,0 +1,22 @@
+{
+  "slug": "courtney-and-kamel",
+  "clinic_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\courtney-and-kamel",
+  "video_dir": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\courtney-and-kamel\\video",
+  "viewport": "1536x864@1.25x->1920x1080",
+  "crf": 22,
+  "recorded_at": "2026-11-23T01:31:18Z",
+  "videos": [
+    {
+      "variant": "warm",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\courtney-and-kamel\\video\\walkthrough-warm.mp4",
+      "size_mb": 27.16,
+      "elapsed_sec": 88.3
+    },
+    {
+      "variant": "luxe",
+      "output_mp4": "C:\\Users\\Gagik\\Desktop\\w\\HS-Digital-Architecture\\courtney-and-kamel\\video\\walkthrough.mp4",
+      "size_mb": 36.48,
+      "elapsed_sec": 111.3
+    }
+  ]
+}
