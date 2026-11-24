@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treatments &amp; Protocols — Aura MedSpa West Hollywood</title>
+  <meta name="description" content="Explore Aura MedSpa's 40+ evidence-based regenerative protocols: Morpheus8 RF, Exosomes, Precision Injectables, Fraxel Dual Laser, and NAD+ IV Longevity." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="stylesheet" href="css/dark-luxury.css" />
+</head>
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <span id="cur-ring" aria-hidden="true"><span id="cur-label"></span></span>
+  <span id="cur-dot" aria-hidden="true"></span>
+
+  <header class="site-nav" id="main-nav">
+    <a href="index.html" class="nav-logo" aria-label="Aura MedSpa — Home">
+      AURA
+      <span>Regenerative Aesthetics</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Atelier</a></li>
+      <li><a href="rejuvenation.html" class="active">Treatments</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="sanctuary.html">Sanctuary</a></li>
+      <li><a href="booking.html">Booking</a></li>
+    </ul>
+
+    <a href="booking.html" class="nav-cta" data-cursor="Book">Reserve Consultation</a>
+
+    <button class="burger" id="menu-open" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu" id="mobile-menu" data-open="false" aria-hidden="true">
+    <div class="menu__top">
+      <a href="index.html" class="nav-logo">AURA<span>Regenerative Aesthetics</span></a>
+      <button class="menu__close" id="menu-close" type="button" aria-label="Close navigation menu">&#10005; Close</button>
+    </div>
+    <nav class="menu__links" aria-label="Mobile navigation">
+      <a href="index.html" class="menu__link"><span>Atelier</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="rejuvenation.html" class="menu__link is-active"><span>Treatments</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="results.html" class="menu__link"><span>Clinical Results</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="sanctuary.html" class="menu__link"><span>The Sanctuary</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="booking.html" class="menu__link"><span>Private Booking</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    </nav>
+    <div class="menu__foot">
+      <div class="menu__foot-meta">8401 Sunset Boulevard, Suite 100 · West Hollywood</div>
+      <a href="tel:+13105550180" class="menu__foot-meta" style="color:var(--accent-mint);">+1 (310) 555-0180</a>
+      <a href="booking.html" class="menu__foot-cta">Reserve 90-Min Consultation</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="hero-sub">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="images/hero-rejuv.webp" alt="Aura architectural hydrotherapy and treatment sanctuary" width="1080" height="720" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="wrap hero-inner">
+        <span class="overline reveal" style="margin-bottom:1rem;"><span class="deco-line"></span>Clinical Menu</span>
+        <h1 class="heading-xl reveal" style="margin-bottom:1.15rem;">The Art of <span class="text-gradient">Rejuvenation.</span></h1>
+        <p class="body-lg reveal" style="max-width:52ch;">
+          Forty peer-reviewed regenerative modalities tailored to your cellular biomarkers, facial anatomy, and recovery calendar.
+        </p>
+      </div>
+    </section>
+
+    <!-- STICKY CATEGORY TABS -->
+    <div class="tabs-bar">
+      <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+        <div class="service-category-tabs" role="tablist" aria-label="Treatment categories">
+          <button class="tab-btn active" type="button" data-tab="regenerative" role="tab" aria-selected="true" data-cursor="Select">Regenerative</button>
+          <button class="tab-btn" type="button" data-tab="injectables" role="tab" aria-selected="false" data-cursor="Select">Injectables</button>
+          <button class="tab-btn" type="button" data-tab="laser" role="tab" aria-selected="false" data-cursor="Select">Laser &amp; Energy</button>
+          <button class="tab-btn" type="button" data-tab="iv" role="tab" aria-selected="false" data-cursor="Select">IV Longevity</button>
+          <button class="tab-btn" type="button" data-tab="facial" role="tab" aria-selected="false" data-cursor="Select">Bespoke Facials</button>
+        </div>
+        <a href="booking.html" class="btn-mint" style="padding:0.62rem 1.2rem; font-size:0.66rem; flex-shrink:0;" data-cursor="Book">Book Protocol</a>
+      </div>
+    </div>
+
+    <!-- PANELS -->
+    <section class="sec sec--void">
+      <div class="wrap">
+
+        <!-- 1. REGENERATIVE -->
+        <div class="treatment-panel active" id="panel-regenerative">
+          <div style="max-width:56ch; margin-bottom:2.5rem;">
+            <span class="overline" style="margin-bottom:0.75rem;"><span class="deco-line"></span>Cellular Remodeling</span>
+            <p class="body-lg">Biostimulatory protocols that activate autologous collagen, elastin, and dermal stem-cell signaling from within.</p>
+          </div>
+
+          <div class="grid-3">
+            <article class="xray-card" data-primary="images/card-morpheus.webp" data-xray="images/card-morpheus-alt.webp">
+              <div class="xray-bg"></div>
+              <div class="xray-overlay"></div>
+              <div class="xray-content">
+                <div class="num-tag">01 · Signature</div>
+                <h2 class="heading-md" style="margin-bottom:0.65rem;">Morpheus8 RF Microneedling</h2>
+                <p class="body-lg" style="font-size:0.88rem; margin-bottom:1.25rem;">Gold-coated micro-pins deliver fractional radiofrequency up to 4mm deep, remodeling subdermal adipose and collagen fibers.</p>
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                  <div><span class="price-from">Session</span><span class="price-tag">$1,200</span></div>
+                  <a href="booking.html?protocol=morpheus8" class="overline">Book &#8594;</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="xray-card" data-primary="images/card-prp.webp" data-xray="images/card-prp-alt.webp">
+              <div class="xray-bg"></div>
+              <div class="xray-overlay"></div>
+              <div class="xray-content">
+                <div class="num-tag">02 · Biologic</div>
+                <h2 class="heading-md" style="margin-bottom:0.65rem;">Autologous PRP Facial</h2>
+                <p class="body-lg" style="font-size:0.88rem; margin-bottom:1.25rem;">High-density platelet-rich plasma harvested in-suite and micro-channeled to restore dermal thickness and microcirculation.</p>
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                  <div><span class="price-from">Session</span><span class="price-tag">$850</span></div>
+                  <a href="booking.html?protocol=prp" class="overline">Book &#8594;</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="xray-card" data-primary="images/card-exosome.webp" data-xray="images/philosophy-serum.webp">
+              <div class="xray-bg"></div>
+              <div class="xray-overlay"></div>
+              <div class="xray-content">
+                <div class="num-tag">03 · mRNA</div>
+                <h2 class="heading-md" style="margin-bottom:0.65rem;">Exosome Regeneration</h2>
+                <p class="body-lg" style="font-size:0.88rem; margin-bottom:1.25rem;">5 billion purified stem-cell exosomes calm inflammation by 60% post-laser while tripling fibroblast collagen synthesis.</p>
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                  <div><span class="price-from">Session</span><span class="price-tag">$2,400</span></div>
+                  <a href="booking.html?protocol=exosome" class="overline">Book &#8594;</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 2. INJECTABLES -->
+        <div class="treatment-panel" id="panel-injectables">
+          <div style="max-width:56ch; margin-bottom:2rem;">
+            <span class="overline" style="margin-bottom:0.75rem;"><span class="deco-line"></span>Architectural Restraint</span>
+            <p class="body-lg">Micro-dosed injectables mapped to facial thirds and dynamic muscular vectors — preserving natural expression, never frozen.</p>
+          </div>
+
+          <div>
+            <div class="accordion-item open">
+              <button class="accordion-header" type="button">
+                <div>
+                  <h3 class="accordion-title">01 · Precision Neuromodulators (Botox / Dysport / Daxxify)</h3>
+                  <span style="font-size:0.78rem; color:var(--text-muted);">Dynamic Expression Balancing · $14 / unit</span>
+                </div>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body" style="max-height:260px;">
+                <div class="accordion-body-inner">
+                  Dr. Whitfield maps individual muscular pull across forehead, glabella, masseter, and platysmal bands before placing micro-droplets that soften tension while retaining effortless movement.
+                  <div style="margin-top:1rem;"><a href="booking.html?protocol=botox" class="overline">Reserve With Dr. Whitfield &#8594;</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" type="button">
+                <div>
+                  <h3 class="accordion-title">02 · Structural Hyaluronic Contouring</h3>
+                  <span style="font-size:0.78rem; color:var(--text-muted);">Deep Periosteal Support · From $750 / syringe</span>
+                </div>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-body-inner">
+                  Using blunt-tip micro-cannulas and rheology-matched hyaluronic gels, we restore lost malar, temple, and chin support with zero overfilled look.
+                  <div style="margin-top:1rem;"><a href="booking.html?protocol=filler" class="overline">Reserve Structural Assessment &#8594;</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" type="button">
+                <div>
+                  <h3 class="accordion-title">03 · Sculptra Poly-L-Lactic Biostimulation</h3>
+                  <span style="font-size:0.78rem; color:var(--text-muted);">Progressive Type-I Collagen Rebuild · From $1,600</span>
+                </div>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-body-inner">
+                  Rebuilds your own structural collagen framework gradually over 12–24 weeks with results lasting over two years.
+                  <div style="margin-top:1rem;"><a href="booking.html?protocol=sculptra" class="overline">Reserve Biostimulation Consult &#8594;</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. LASER -->
+        <div class="treatment-panel" id="panel-laser">
+          <div class="grid-2">
+            <div class="glass-card">
+              <div class="num-tag">01 · Dual Wavelength</div>
+              <h3 class="heading-md" style="margin-bottom:0.75rem;">Fraxel Dual 1550 / 1927nm</h3>
+              <p class="body-lg" style="font-size:0.9rem; margin-bottom:1.5rem;">Simultaneously addresses deep dermal scarring (1550nm) and superficial sun photodamage or melasma (1927nm) in a single calibrated session.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span class="price-tag">$1,800</span><a href="booking.html?protocol=fraxel" class="overline">Book &#8594;</a></div>
+            </div>
+            <div class="glass-card">
+              <div class="num-tag">02 · SMAS Lift</div>
+              <h3 class="heading-md" style="margin-bottom:0.75rem;">Ultherapy Micro-Focused Ultrasound</h3>
+              <p class="body-lg" style="font-size:0.9rem; margin-bottom:1.5rem;">Real-time ultrasound visualization delivers thermal focal points directly to the 4.5mm SMAS layer to lift brow, jawline, and neck non-invasively.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span class="price-tag">$3,200</span><a href="booking.html?protocol=ultherapy" class="overline">Book &#8594;</a></div>
+            </div>
+            <div class="glass-card">
+              <div class="num-tag">03 · Zero Downtime</div>
+              <h3 class="heading-md" style="margin-bottom:0.75rem;">ClearLift Q-Switched Laser</h3>
+              <p class="body-lg" style="font-size:0.9rem; margin-bottom:1.5rem;">Photoacoustic dermal remodeling beneath an intact epidermis — favored before red-carpet and camera engagements.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span class="price-tag">$600</span><a href="booking.html?protocol=clearlift" class="overline">Book &#8594;</a></div>
+            </div>
+            <div class="glass-card">
+              <div class="num-tag">04 · Vascular &amp; Tone</div>
+              <h3 class="heading-md" style="margin-bottom:0.75rem;">Lumenis Optima IPL</h3>
+              <p class="body-lg" style="font-size:0.9rem; margin-bottom:1.5rem;">Uniform pulse technology clears rosacea, broken capillaries, and solar lentigines across face, neck, and chest.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span class="price-tag">$550</span><a href="booking.html?protocol=ipl" class="overline">Book &#8594;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. IV LONGEVITY -->
+        <div class="treatment-panel" id="panel-iv">
+          <div class="grid-3">
+            <div class="glass-card" style="border-color:var(--accent-border);">
+              <span class="overline" style="margin-bottom:0.75rem;">Flagship Drip</span>
+              <h3 class="heading-md" style="margin-bottom:0.75rem;">NAD+ 500mg Cellular Repair</h3>
+              <p class="body-lg" style="font-size:0.88rem; margin-bottom:1.5rem;">Restores sirtuin activation, mental clarity, and mitochondrial ATP synthesis inside a private acoustic lounge suite.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span class="price-tag">$650</span><a href="booking.html?protocol=nad" class="overline">Book &#8594;</a></div>
+            </div>
+            <div class="glass-card">
+              <span class="overline" style="margin-bottom:0.75rem;">Antioxidant</span>
+              <h3 class="heading-md" style="margin-bottom:0.75rem;">Glutathione Luminosity IV</h3>
+              <p class="body-lg" style="font-size:0.88rem; margin-bottom:1.5rem;">High-dose master antioxidant paired with ascorbic acid for systemic detoxification and luminous skin clarity.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span class="price-tag">$280</span><a href="booking.html?protocol=glutathione" class="overline">Book &#8594;</a></div>
+            </div>
+            <div class="glass-card">
+              <span class="overline" style="margin-bottom:0.75rem;">Biomarker Guided</span>
+              <h3 class="heading-md" style="margin-bottom:0.75rem;">Quarterly Longevity Panel + IV</h3>
+              <p class="body-lg" style="font-size:0.88rem; margin-bottom:1.5rem;">Comprehensive micronutrient, hormone, and inflammatory blood panel followed by a physician-compounded infusion.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span class="price-tag">$1,200</span><a href="booking.html?protocol=bespoke-iv" class="overline">Book &#8594;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. BESPOKE FACIALS -->
+        <div class="treatment-panel" id="panel-facial">
+          <div class="grid-2">
+            <div class="media-plate" style="aspect-ratio:4/3;">
+              <img src="images/gallery-3.webp" alt="Private wood-lined facial sanctuary" width="900" height="506" loading="lazy" decoding="async" />
+            </div>
+            <div style="display:grid; gap:1rem;">
+              <div class="glass-card" style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;"><h3 class="heading-md">The Aura 120-Minute Ritual</h3><span class="price-tag">$380</span></div>
+                <p class="body-lg" style="font-size:0.88rem;">Custom enzymatic resurfacing, buccal sculptural massage, lymphatic drainage, and copper-peptide infusion.</p>
+              </div>
+              <div class="glass-card" style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;"><h3 class="heading-md">HydraFacial Elite MD + LED</h3><span class="price-tag">$300</span></div>
+                <p class="body-lg" style="font-size:0.88rem;">Vortex extraction, GHK-Cu peptide boosters, and 830nm near-infrared photobiomodulation.</p>
+              </div>
+              <div class="glass-card" style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;"><h3 class="heading-md">Fitzpatrick IV–VI Pigment Peel</h3><span class="price-tag">$250</span></div>
+                <p class="body-lg" style="font-size:0.88rem;">Melanin-safe tranexamic, mandelic, and azelaic acid protocol engineered by Senior Aesthetician Aria Santos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4-STEP JOURNEY -->
+    <section class="sec sec--surface sec--bordered">
+      <div class="wrap">
+        <div style="text-align:center; margin-bottom:3rem;" class="reveal">
+          <span class="overline" style="justify-content:center; margin-bottom:0.9rem;"><span class="deco-line"></span>Clinical Sequence<span class="deco-line"></span></span>
+          <h2 class="heading-lg">How Every Protocol Unfolds</h2>
+        </div>
+        <div class="grid-4">
+          <div class="glass-card reveal">
+            <div class="num-tag">Step 01</div>
+            <h3 class="heading-md" style="margin-bottom:0.5rem;">3D Dermal Visia Scan</h3>
+            <p class="body-lg" style="font-size:0.88rem;">Subsurface UV and vascular imaging quantifies pore density, collagen depth, and UV pigment before treatment.</p>
+          </div>
+          <div class="glass-card reveal">
+            <div class="num-tag">Step 02</div>
+            <h3 class="heading-md" style="margin-bottom:0.5rem;">90-Min Physician Review</h3>
+            <p class="body-lg" style="font-size:0.88rem;">Dr. Chen maps your 6-month regenerative roadmap around your travel, camera, and social schedule.</p>
+          </div>
+          <div class="glass-card reveal">
+            <div class="num-tag">Step 03</div>
+            <h3 class="heading-md" style="margin-bottom:0.5rem;">Pre-State Suite Calibration</h3>
+            <p class="body-lg" style="font-size:0.88rem;">Acoustic frequency, temperature, and topical anesthesia are prepared 30 minutes prior to your arrival.</p>
+          </div>
+          <div class="glass-card reveal">
+            <div class="num-tag">Step 04</div>
+            <h3 class="heading-md" style="margin-bottom:0.5rem;">90-Day Biomarker Re-Scan</h3>
+            <p class="body-lg" style="font-size:0.88rem;">Objective post-protocol imaging verifies measurable dermal thickening and elasticity gains.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-logo">AURA<span>Regenerative Aesthetics</span></a>
+          <p class="body-lg" style="font-size:0.85rem; max-width:34ch; margin-top:1rem;">8401 Sunset Boulevard, Suite 100, West Hollywood, CA 90069.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Architecture</p>
+          <a href="index.html" class="footer-link">Atelier</a>
+          <a href="rejuvenation.html" class="footer-link">Treatments</a>
+          <a href="results.html" class="footer-link">Clinical Results</a>
+          <a href="sanctuary.html" class="footer-link">The Sanctuary</a>
+          <a href="booking.html" class="footer-link">Private Booking</a>
+        </div>
+        <div>
+          <p class="footer-heading">Protocols</p>
+          <a href="rejuvenation.html" class="footer-link">Morpheus8 RF</a>
+          <a href="rejuvenation.html" class="footer-link">Exosome Therapy</a>
+          <a href="rejuvenation.html" class="footer-link">NAD+ Longevity IV</a>
+          <a href="rejuvenation.html" class="footer-link">Fraxel Dual Laser</a>
+        </div>
+        <div>
+          <p class="footer-heading">Concierge</p>
+          <a href="tel:+13105550180" class="footer-link">+1 (310) 555-0180</a>
+          <a href="mailto:concierge@auramedspa.com" class="footer-link">concierge@auramedspa.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Aura MedSpa &amp; Regenerative Aesthetics.</span>
+        <span class="showcase-note">Flagship Multi-Page Architecture Showcase · Engineered by <a href="https://hs-frontend.online" target="_blank" rel="noopener">HS Frontend</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/core.js" defer></script>
+</body>
+</html>

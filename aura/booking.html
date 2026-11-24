@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Consultation &amp; Booking — Aura MedSpa West Hollywood</title>
+  <meta name="description" content="Reserve your complimentary 90-minute private diagnostic consultation with Dr. Elena Chen at Aura MedSpa, 8401 Sunset Boulevard, West Hollywood." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="stylesheet" href="css/dark-luxury.css" />
+</head>
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <span id="cur-ring" aria-hidden="true"><span id="cur-label"></span></span>
+  <span id="cur-dot" aria-hidden="true"></span>
+
+  <header class="site-nav" id="main-nav">
+    <a href="index.html" class="nav-logo" aria-label="Aura MedSpa — Home">
+      AURA
+      <span>Regenerative Aesthetics</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Atelier</a></li>
+      <li><a href="rejuvenation.html">Treatments</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="sanctuary.html">Sanctuary</a></li>
+      <li><a href="booking.html" class="active">Booking</a></li>
+    </ul>
+
+    <a href="#booking-section" class="nav-cta" data-cursor="Book">Reserve Consultation</a>
+
+    <button class="burger" id="menu-open" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu" id="mobile-menu" data-open="false" aria-hidden="true">
+    <div class="menu__top">
+      <a href="index.html" class="nav-logo">AURA<span>Regenerative Aesthetics</span></a>
+      <button class="menu__close" id="menu-close" type="button" aria-label="Close navigation menu">&#10005; Close</button>
+    </div>
+    <nav class="menu__links" aria-label="Mobile navigation">
+      <a href="index.html" class="menu__link"><span>Atelier</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="rejuvenation.html" class="menu__link"><span>Treatments</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="results.html" class="menu__link"><span>Clinical Results</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="sanctuary.html" class="menu__link"><span>The Sanctuary</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a href="booking.html" class="menu__link is-active"><span>Private Booking</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    </nav>
+    <div class="menu__foot">
+      <div class="menu__foot-meta">8401 Sunset Boulevard, Suite 100 · West Hollywood</div>
+      <a href="tel:+13105550180" class="menu__foot-meta" style="color:var(--accent-mint);">+1 (310) 555-0180</a>
+      <a href="#booking-section" class="menu__foot-cta">Reserve 90-Min Consultation</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="hero-sub">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="images/hero-booking.webp" alt="Private black marble concierge suite" width="1080" height="720" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="wrap hero-inner">
+        <span class="overline reveal" style="margin-bottom:1rem;"><span class="deco-line"></span>Private Concierge</span>
+        <h1 class="heading-xl reveal" style="margin-bottom:1.15rem;">Reserve Your <span class="text-gradient">90 Minutes.</span></h1>
+        <p class="body-lg reveal" style="max-width:52ch;">
+          Every relationship at Aura begins with an unhurried, complimentary 90-minute diagnostic consultation with our Medical Director. No procedures are rushed on day one.
+        </p>
+      </div>
+    </section>
+
+    <!-- BOOKING FORM + LOCATION -->
+    <section class="sec sec--void" id="booking-section">
+      <div class="wrap">
+        <div class="grid-2 grid-2--top">
+
+          <!-- Left: Sanctuary Details & Map -->
+          <div class="reveal">
+            <span class="overline" style="margin-bottom:1rem;"><span class="deco-line"></span>Arrival &amp; Discretion</span>
+            <h2 class="heading-lg" style="margin-bottom:1.25rem;">Sunset Strip <span class="text-mint">Sanctuary.</span></h2>
+            <p class="body-lg" style="margin-bottom:1.75rem;">
+              Our concierge confirms all appointment requests within 4 business hours. Subterranean private elevator entry and mutual NDAs are available upon request at no extra charge.
+            </p>
+
+            <div class="glass-card" style="margin-bottom:1.5rem;">
+              <div style="display:grid; gap:1rem;">
+                <div>
+                  <span class="overline" style="font-size:0.6rem;">Address</span>
+                  <p style="color:var(--text-primary); margin-top:0.25rem;">8401 Sunset Boulevard, Suite 100 · West Hollywood, CA 90069</p>
+                </div>
+                <div>
+                  <span class="overline" style="font-size:0.6rem;">Direct Concierge</span>
+                  <p style="margin-top:0.25rem;"><a href="tel:+13105550180" class="text-mint">+1 (310) 555-0180</a> · <a href="mailto:concierge@auramedspa.com">concierge@auramedspa.com</a></p>
+                </div>
+                <div>
+                  <span class="overline" style="font-size:0.6rem;">Sanctuary Hours</span>
+                  <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:0.25rem;">Mon – Fri: 9:00 AM – 7:00 PM · Sat: 10:00 AM – 5:00 PM · Sun: Private Charter Only</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="map-box" data-cursor-off>
+              <iframe
+                src="https://www.google.com/maps?q=8401+Sunset+Blvd+West+Hollywood+CA+90069&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Aura MedSpa location at 8401 Sunset Boulevard, West Hollywood"></iframe>
+            </div>
+          </div>
+
+          <!-- Right: Private Consultation Form -->
+          <div class="glass-card reveal" style="border-color:var(--accent-border);">
+            <h3 class="heading-md" style="margin-bottom:0.4rem;">Private Consultation Request</h3>
+            <p class="body-lg" style="font-size:0.86rem; margin-bottom:1.75rem;">Protected under strict medical confidentiality.</p>
+
+            <form id="booking-form" novalidate autocomplete="off">
+              <div class="form-grid-2">
+                <div class="form-field">
+                  <label class="form-label" for="booking-fname">First Name</label>
+                  <input class="form-input" type="text" id="booking-fname" name="first_name" placeholder="Elena" required />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="booking-lname">Last Name</label>
+                  <input class="form-input" type="text" id="booking-lname" name="last_name" placeholder="Vance" required />
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-field">
+                  <label class="form-label" for="booking-email">Email Address</label>
+                  <input class="form-input" type="email" id="booking-email" name="email" placeholder="name@domain.com" required />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="booking-phone">Direct Phone</label>
+                  <input class="form-input" type="tel" id="booking-phone" name="phone" placeholder="+1 (310) 000-0000" required />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="booking-treatment">Primary Protocol Interest</label>
+                <select class="form-input" id="booking-treatment" name="treatment" required>
+                  <option value="" disabled selected>Select a clinical focus...</option>
+                  <option value="morpheus8">Morpheus8 RF Collagen Remodeling</option>
+                  <option value="prp">Autologous PRP Facial</option>
+                  <option value="exosome">Stem-Cell Exosome Regeneration</option>
+                  <option value="sculptra">Sculptra Biostimulation</option>
+                  <option value="botox">Precision Neuromodulators</option>
+                  <option value="filler">Structural Hyaluronic Contouring</option>
+                  <option value="fraxel">Fraxel Dual 1550/1927nm Laser</option>
+                  <option value="ultherapy">Ultherapy SMAS Ultrasound Lift</option>
+                  <option value="nad">NAD+ 500mg Longevity IV Suite</option>
+                  <option value="glutathione">Glutathione Luminosity Drip</option>
+                  <option value="bespoke-iv">Quarterly Biomarker Longevity Panel</option>
+                  <option value="consultation">Comprehensive 90-Min Diagnostic (Undecided)</option>
+                </select>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-field">
+                  <label class="form-label" for="booking-date">Preferred Date</label>
+                  <input class="form-input" type="date" id="booking-date" name="date" required />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="booking-arrival">Arrival Preference</label>
+                  <select class="form-input" id="booking-arrival" name="arrival">
+                    <option value="standard">Main Sunset Blvd Concierge Reception</option>
+                    <option value="private-garage">Private Subterranean Garage Elevator</option>
+                    <option value="nda">Private Garage + Mutual NDA Requested</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="booking-notes">Clinical Goals or Calendar Notes (Optional)</label>
+                <textarea class="form-input" id="booking-notes" name="notes" placeholder="Upcoming camera dates, skin sensitivities, or preferred time window..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-mint" style="width:100%;" data-cursor="Send">Request Private 90-Minute Consultation</button>
+              <p id="booking-status" hidden style="margin-top:1rem; font-size:0.86rem; color:var(--accent-mint); text-align:center;"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sec sec--surface sec--bordered">
+      <div class="wrap-narrow">
+        <div style="text-align:center; margin-bottom:2.5rem;" class="reveal">
+          <span class="overline" style="justify-content:center; margin-bottom:0.85rem;"><span class="deco-line"></span>Concierge FAQ<span class="deco-line"></span></span>
+          <h2 class="heading-lg">Before Your First Visit</h2>
+        </div>
+
+        <div class="reveal">
+          <div class="accordion-item open">
+            <button class="accordion-header" type="button">
+              <span class="accordion-title">Is the initial 90-minute consultation truly complimentary?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body" style="max-height:200px;">
+              <div class="accordion-body-inner">Yes. Your initial 90-minute diagnostic assessment and 3D Visia scan with Dr. Elena Chen carry no fee and zero obligation to proceed with treatment.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <span class="accordion-title">How is guest privacy handled for public figures and executives?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Guests selecting Subterranean Arrival transition directly from their vehicle into a private elevator opening inside their treatment suite, bypassing all shared spaces.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <span class="accordion-title">Are protocols safe for melanin-rich skin (Fitzpatrick IV–VI)?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Yes. Radiofrequency microneedling, ClearLift photoacoustic laser, PRP, exosomes, and our bespoke pigment peels are calibrated specifically for Fitzpatrick IV–VI skin tones.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-logo">AURA<span>Regenerative Aesthetics</span></a>
+          <p class="body-lg" style="font-size:0.85rem; max-width:34ch; margin-top:1rem;">8401 Sunset Boulevard, Suite 100, West Hollywood, CA 90069.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Architecture</p>
+          <a href="index.html" class="footer-link">Atelier</a>
+          <a href="rejuvenation.html" class="footer-link">Treatments</a>
+          <a href="results.html" class="footer-link">Clinical Results</a>
+          <a href="sanctuary.html" class="footer-link">The Sanctuary</a>
+          <a href="booking.html" class="footer-link">Private Booking</a>
+        </div>
+        <div>
+          <p class="footer-heading">Protocols</p>
+          <a href="rejuvenation.html" class="footer-link">Morpheus8 RF</a>
+          <a href="rejuvenation.html" class="footer-link">Exosome Therapy</a>
+          <a href="rejuvenation.html" class="footer-link">NAD+ Longevity IV</a>
+          <a href="rejuvenation.html" class="footer-link">Fraxel Dual Laser</a>
+        </div>
+        <div>
+          <p class="footer-heading">Concierge</p>
+          <a href="tel:+13105550180" class="footer-link">+1 (310) 555-0180</a>
+          <a href="mailto:concierge@auramedspa.com" class="footer-link">concierge@auramedspa.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Aura MedSpa &amp; Regenerative Aesthetics.</span>
+        <span class="showcase-note">Flagship Multi-Page Architecture Showcase · Engineered by <a href="https://hs-frontend.online" target="_blank" rel="noopener">HS Frontend</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/core.js" defer></script>
+</body>
+</html>
