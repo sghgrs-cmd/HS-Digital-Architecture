@@ -2346,103 +2346,55 @@
   var YANDEX_REVIEWS = [];
   var CLIENT_PHOTOS = [
   {
-    "src": "images/clients/mercedes-a.jpg",
-    "alt": "Client taking delivery of a Mercedes-Benz A-Class sedan in bright sunshine"
-  },
-  {
-    "src": "images/clients/bmw-5.jpg",
-    "alt": "Client receiving keys to a white BMW 5 Series executive sedan"
-  },
-  {
-    "src": "images/clients/bmw-black.jpg",
-    "alt": "Executive client accepting keys to a black BMW sports sedan"
-  },
-  {
-    "src": "images/clients/tiguan-white.jpg",
-    "alt": "White Volkswagen Tiguan presented with signature red delivery bow"
-  },
-  {
     "src": "images/clients/tiguan-blue.jpg",
-    "alt": "Metallic blue Volkswagen Tiguan prepared for turnkey client handover"
-  },
-  {
-    "src": "images/clients/tiguan-rline.jpg",
-    "alt": "Black Volkswagen Tiguan R-Line delivered with complete inspection dossier"
+    "alt": "Client handover presentation of a pearl-white Volkswagen SUV with signature red ribbon"
   },
   {
     "src": "images/clients/tiguan-family.webp",
-    "alt": "Family celebrating delivery of their white Volkswagen Tiguan SUV"
+    "alt": "Family taking delivery of their metallic blue Volkswagen Tiguan SUV"
   },
   {
     "src": "images/clients/kia-carnival.jpg",
-    "alt": "Luxury Kia Carnival minivan prepared for nationwide family delivery"
+    "alt": "Handshake at key presentation for a Kia Carnival executive family van"
   },
   {
     "src": "images/clients/kia-seltos-1.jpg",
-    "alt": "Compact Kia Seltos SUV presented to its new owner on handover day"
+    "alt": "Client handshake alongside a dark metallic Kia Seltos crossover"
   },
   {
     "src": "images/clients/kia-seltos-blonde.jpg",
-    "alt": "Client accepting keys to a white Kia Seltos with red delivery ribbon"
+    "alt": "Client celebrating handover of a white Kia Seltos SUV"
   },
   {
-    "src": "images/clients/mazda-cx5.jpg",
-    "alt": "Mazda CX-5 crossover handed over after 140-point inspection clearance"
-  },
-  {
-    "src": "images/clients/mazda-cx5-oksana.jpg",
-    "alt": "Client celebrating handover of a pearl-white Mazda CX-5 SUV"
-  },
-  {
-    "src": "images/clients/mazda-cx5-num.jpg",
-    "alt": "Dark metallic Mazda CX-5 delivered in front of modern glass showroom"
-  },
-  {
-    "src": "images/clients/toyota-rav4.webp",
-    "alt": "Toyota RAV4 AWD ready for enclosed carrier dispatch"
-  },
-  {
-    "src": "images/clients/hyundai-avante.webp",
-    "alt": "Hyundai Elantra sedan presented on delivery day"
-  },
-  {
-    "src": "images/clients/hyundai-sonata.jpg",
-    "alt": "Hyundai Sonata executive sedan handed over at dusk"
+    "src": "images/clients/bmw-black.jpg",
+    "alt": "Keys presented for a black BMW executive crossover"
   },
   {
     "src": "images/clients/skoda-superb.webp",
-    "alt": "Executive European fastback prepared in bright daylight"
+    "alt": "Sunny outdoor key presentation with signature red delivery bow"
   },
   {
-    "src": "images/clients/skoda-close.jpg",
-    "alt": "Detail shot of European fastback presentation bow and trim"
+    "src": "images/clients/toyota-rav4.webp",
+    "alt": "Handshake on delivery day in front of a black Toyota RAV4 AWD"
   },
   {
-    "src": "images/clients/skoda-white.jpg",
-    "alt": "Pearl white European sedan ready for client handover"
+    "src": "images/clients/mazda-cx5.jpg",
+    "alt": "Concierge key handover for a dark metallic Mazda CX-5 SUV"
   },
   {
-    "src": "images/clients/tayron-1.webp",
-    "alt": "Volkswagen Tayron SUV presented with red delivery ribbon"
-  },
-  {
-    "src": "images/clients/coolray-2.jpg",
-    "alt": "Sport crossover close-up on handover day with signature ribbon"
+    "src": "images/clients/tiguan-rline.jpg",
+    "alt": "Black R-Line SUV prepared with red bow on handover day"
   },
   {
     "src": "images/clients/jetour-t2.jpg",
-    "alt": "Off-road luxury SUV delivered to client at golden hour"
+    "alt": "Golden-hour handshake during off-road SUV delivery"
   },
   {
-    "src": "images/clients/jetour-x70s.jpg",
-    "alt": "Family 7-seat crossover prepared for client pickup"
-  },
-  {
-    "src": "images/clients/jetta-vs5.jpg",
-    "alt": "Compact German-engineered SUV handed over on delivery day"
+    "src": "images/clients/hyundai-sonata.jpg",
+    "alt": "Evening handover presentation of a black Hyundai Sonata sedan"
   }
 ];
-  var PROCESS_LAST_PHOTO = { src: 'images/clients/mercedes-a.jpg', alt: 'Client receiving turnkey vehicle handover with complete US title documentation', style: 'object-position: 50% 80%;' };
+  var PROCESS_LAST_PHOTO = { src: 'images/clients/tiguan-blue.jpg', alt: 'Client receiving turnkey vehicle handover with complete US title documentation', style: 'object-position: 50% 80%;' };
   var VIDEOS = [];
   var CLIPS = [];
   var FAQ = [
@@ -2460,7 +2412,7 @@
   },
   {
     "q": "How is payment structured and protected?",
-    "a": "Transactions are governed by a binding US commercial purchase agreement through CarZ3 Bespoke Motors LLC, with milestone escrow options available so pricing never changes mid-transit."
+    "a": "Transactions are governed by a binding US commercial purchase agreement through Vanguard Bespoke Motors LLC, with milestone escrow options available so pricing never changes mid-transit."
   },
   {
     "q": "Can you source a specific trim or rare spec not shown in the catalog?",
@@ -3399,7 +3351,7 @@
       : '';
     var mediaInner = review.photo
       ? '<img src="' + esc(review.photo) + '" alt="' +
-        esc(review.name ? review.name + ' —  CarZ3, ' + (review.car || '') : ' CarZ3   ') +
+        esc(review.name ? review.name + ' —  Vanguard, ' + (review.car || '') : ' Vanguard   ') +
         '" loading="lazy" decoding="async" width="640" height="400">' + playBadge
       : '';
     var media = '';
@@ -3530,7 +3482,7 @@
   function sendLead(payload) {
     if (!FORM_ENDPOINT) {
       if (window.console && console.info) {
-        console.info('CarZ3 Bespoke Motors concierge preview:', payload);
+        console.info('Vanguard Bespoke Motors concierge preview:', payload);
       }
       return Promise.resolve({ demo: true });
     }
@@ -3823,7 +3775,7 @@
       if (section) section.remove();
       return;
     }
-    var onReviewsPage = !!document.getElementById('clipGrid') && !document.getElementById('requestForm');
+    var onReviewsPage = !!document.querySelector('.gallery--mosaic');
     var BATCH = 12;
     var loaded = 0;
     function tileHtml(photo, i) {

@@ -54,11 +54,11 @@ html { color-scheme: dark; }
 input[type=search]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
 input[type=search]::-webkit-search-decoration { -webkit-appearance: none; }
 
-/* === CARZ3 LUXURY v2 UPGRADE === */
+/* === VANGUARD LUXURY v2 UPGRADE === */
 /* Hide legacy cursor classes */
 .cursor-dot, .cursor-ring { display: none !important; }
 
-/* 1:1 Signature Luxury Cursor in CarZ3 Gold & Obsidian */
+/* 1:1 Signature Luxury Cursor in Vanguard Gold & Obsidian */
 #cur-dot, #cur-ring {
   position: fixed;
   top: 0;
@@ -168,7 +168,7 @@ html.cursor-on #cur-ring { opacity: 1; }
   #cur-dot, #cur-ring, .autoscroll-disc { display: none !important; }
 }
 
-/* Agoura-Grade Luxury Plate & Custom ARIA Listbox (.sel) in CarZ3 Gold */
+/* Agoura-Grade Luxury Plate & Custom ARIA Listbox (.sel) in Vanguard Gold */
 .request-card.plate {
   position: relative;
   border-radius: 8px;
@@ -255,7 +255,7 @@ html.cursor-on #cur-ring { opacity: 1; }
 .sel__opt[aria-selected="true"] { color: var(--gold); font-weight: 600; }
 .sel__opt[aria-selected="true"]::before { background: var(--gold); border-color: var(--gold); }
 
-/* Architectural Luxury Footer for CarZ3 */
+/* Architectural Luxury Footer for Vanguard */
 .footer {
   background: radial-gradient(circle at 82% 0%, rgba(201, 169, 97, 0.08), transparent 50%), #070707;
   padding: clamp(48px, 7vw, 84px) 0 36px;

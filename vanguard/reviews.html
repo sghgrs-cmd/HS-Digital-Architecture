@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vehicle Inventory Catalog — CarZ3 Bespoke Motors</title>
-<meta name="description" content="Filter 84+ luxury and executive vehicles by origin hub, condition, and specification with transparent turnkey USD pricing.">
+<title>Client Handover Gallery — Vanguard Bespoke Motors</title>
+<meta name="description" content="Short candid handover moments and client delivery photography from Vanguard Bespoke Motors.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Vehicle Inventory Catalog — CarZ3 Bespoke Motors">
-<meta property="og:description" content="Filter 84+ luxury and executive vehicles by origin hub, condition, and specification with transparent turnkey USD pricing.">
+<meta property="og:title" content="Client Handover Gallery — Vanguard Bespoke Motors">
+<meta property="og:description" content="Short candid handover moments and client delivery photography from Vanguard Bespoke Motors.">
 <meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="CarZ3 Bespoke Motors">
+<meta property="og:site_name" content="Vanguard Bespoke Motors">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="images/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Manrope:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style.css?v=20261124_v4">
+<link rel="stylesheet" href="style.css?v=20261124_v5">
 </head><body>
 <header class="header">
   <div class="container header__inner">
-    <a href="index.html" class="logo">CarZ3</a>
+    <a href="index.html" class="logo">Vanguard</a>
     <nav class="header__nav" aria-label="Primary navigation">
       <a href="about.html">About</a>
-      <a href="catalog.html" class="is-current">Inventory</a>
+      <a href="catalog.html">Inventory</a>
       <a href="delivery.html">Global Logistics</a>
-      <a href="reviews.html">Gallery</a>
+      <a href="reviews.html" class="is-current">Gallery</a>
       <a href="index.html#faq">FAQ</a>
       <a href="index.html#office">Showroom</a>
       <a href="privacy.html" class="nav-minor">Privacy</a>
@@ -41,10 +41,10 @@
 <div class="menu" id="mobileMenu" data-menu>
   <nav class="menu__nav" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
-    <a href="about.html">About CarZ3</a>
+    <a href="about.html">About Vanguard</a>
     <a href="catalog.html">Inventory Catalog</a>
     <a href="delivery.html">Logistics &amp; Customs</a>
-    <a href="reviews.html">Delivery Moments</a>
+    <a href="reviews.html">Handover Gallery</a>
     <a href="index.html#pick">Source a Vehicle</a>
     <a href="index.html#faq">FAQ</a>
     <a href="index.html#office">Scottsdale Showroom</a>
@@ -52,7 +52,7 @@
   </nav>
   <div class="menu__foot">
     <a href="tel:+14805550194" class="menu__phone">+1 (480) 555-0194</a>
-    <a href="mailto:concierge@carz3motors.com" class="menu__mail">concierge@carz3motors.com</a>
+    <a href="mailto:concierge@vanguardmotors.com" class="menu__mail">concierge@vanguardmotors.com</a>
     <div class="menu__btns">
       <a href="catalog.html" class="btn btn--outline btn--sm">Browse Inventory</a>
       <a href="index.html#pick" class="btn btn--gold btn--sm">Custom Spec</a>
@@ -63,32 +63,18 @@
   <section class="page-head">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb">
-        <ol class="crumbs__list"><li><a href="index.html">Home</a></li><li class="crumbs__sep" aria-hidden="true">&middot;</li><li><span aria-current="page">Inventory</span></li></ol>
+        <ol class="crumbs__list"><li><a href="index.html">Home</a></li><li class="crumbs__sep" aria-hidden="true">&middot;</li><li><span aria-current="page">Handover Gallery</span></li></ol>
       </nav>
-      <p class="eyebrow" data-reveal>In-Stock &amp; Custom Allocations</p>
-      <h1 class="section-title" data-reveal>Vehicle Inventory</h1>
+      <p class="eyebrow" data-reveal>Photography</p>
+      <h1 class="section-title" data-reveal>Client Handover Gallery</h1>
       <p class="section-lead section-lead--wide" data-reveal>
-        Verified allocations across Germany, South Korea, Dubai, and US luxury fleets. Every figure reflects turnkey delivery, customs clearance, and full inspection.
+        Candid photographs from key presentations and turnkey vehicle deliveries. Click any photograph to inspect full-screen.
       </p>
     </div>
   </section>
   <section class="section section--flush-top">
     <div class="container">
-      <div class="filters" id="catalogFilters" role="group" aria-label="Filter inventory"></div>
-      <p class="catalog-count" id="catalogCount" aria-live="polite"></p>
-      <div class="cards-grid" id="catalogGrid"></div>
-    </div>
-  </section>
-  <section class="section divider-top">
-    <div class="container">
-      <div class="cta" data-reveal>
-        <h2 class="cta__title">Looking for a Specific Trim or Color?</h2>
-        <p class="cta__lead">Share your desired configuration and our sourcing desk will locate 3–5 verified options within 24 hours.</p>
-        <div class="cta__actions">
-          <a href="index.html#pick" class="btn btn--gold btn--lg">Launch Allocation Matcher</a>
-          <a href="index.html#request" class="btn btn--outline btn--lg">Request Custom Quote</a>
-        </div>
-      </div>
+      <div class="gallery gallery--mosaic" id="galleryGrid"></div>
     </div>
   </section>
 </main>
@@ -96,7 +82,7 @@
   <div class="container">
     <div class="footer-top">
       <div>
-        <a href="index.html" class="logo" data-cursor="Home">CarZ3</a>
+        <a href="index.html" class="logo" data-cursor="Home">Vanguard</a>
         <h2 class="footer-top__title">Bespoke global sourcing, delivered enclosed to your driveway.</h2>
       </div>
       <div class="footer-top__actions">
@@ -144,7 +130,7 @@
         <div class="footer__desk-row"><span>Mon – Fri</span><strong>9:00 AM – 7:00 PM</strong></div>
         <div class="footer__desk-row"><span>Saturday</span><strong>10:00 AM – 5:00 PM</strong></div>
         <div class="footer__desk-row"><span>Sunday</span><strong>By Appointment</strong></div>
-        <a href="mailto:concierge@carz3motors.com" style="display:inline-block; margin-top:14px; font-size:13.5px; color:var(--gold); font-weight:600;" data-cursor="Mail">concierge@carz3motors.com</a>
+        <a href="mailto:concierge@vanguardmotors.com" style="display:inline-block; margin-top:14px; font-size:13.5px; color:var(--gold); font-weight:600;" data-cursor="Mail">concierge@vanguardmotors.com</a>
       </div>
     </div>
 
@@ -161,7 +147,7 @@
     </div>
 
     <div class="footer__bottom">
-      <span>&copy; 2026 CarZ3 Bespoke Motors · Fictional Studio Reference Architecture (6-Page Showcase).</span>
+      <span>&copy; 2026 Vanguard Bespoke Motors · Fictional Studio Reference Architecture (6-Page Showcase).</span>
       <a href="privacy.html" data-cursor="Open">Privacy &amp; Data Protection</a>
     </div>
   </div>
@@ -183,7 +169,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <polygon points="5 3 19 12 5 21 5 3"/>
     </svg>
-    Moments
+    Gallery
   </a>
   <a class="dock__btn dock__btn--gold" href="catalog.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -193,6 +179,6 @@
     Inventory
   </a>
 </nav>
-<script src="app.js?v=20261124_v4" defer></script>
+<script src="app.js?v=20261124_v5" defer></script>
 </body>
 </html>
