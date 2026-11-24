@@ -2452,7 +2452,7 @@
   },
   {
     "q": "What is included in the turnkey price shown in the catalog?",
-    "a": "Every listed price is all-inclusive: vehicle acquisition, 140-point pre-purchase inspection, marine insurance, US customs & EPA/DOT clearance, port handling, and enclosed delivery to Miami, FL (with nationwide delivery available to all 50 states)."
+    "a": "Every listed price is all-inclusive: vehicle acquisition, 140-point pre-purchase inspection, marine insurance, US customs & EPA/DOT clearance, port handling, and enclosed delivery to Scottsdale, AZ (with nationwide delivery available to all 50 states)."
   },
   {
     "q": "Do I inspect the vehicle before funds are released?",
@@ -2468,7 +2468,7 @@
   },
   {
     "q": "Which states do you deliver to?",
-    "a": "Our flagship showroom and handover lounge is located on Brickell Avenue in Miami, Florida, and we arrange insured enclosed transport directly to your residence anywhere in the continental United States."
+    "a": "Our flagship showroom and handover lounge is located on Camelback Road in Scottsdale, Arizona, and we arrange insured enclosed transport directly to your residence anywhere in the continental United States."
   }
 ];
   var HERO_PHOTO = 'hero.webp';
@@ -3763,7 +3763,7 @@
       }
       sendLead(payload).then(function () {
         if (submit) submit.textContent = 'Request Received';
-        toast('Thank you, ' + name + '. Our Miami concierge will reach out shortly.', 'ok');
+        toast('Thank you, ' + name + '. Our Scottsdale concierge will reach out shortly.', 'ok');
         setTimeout(function () {
           form.reset();
           if (submit) {
@@ -3778,7 +3778,7 @@
           submit.textContent = submitLabel;
           submit.disabled = false;
         }
-        toast('Could not send online. Please call our Miami desk directly.', 'error');
+        toast('Could not send online. Please call our Scottsdale desk directly.', 'error');
       });
     });
   }
@@ -4122,7 +4122,7 @@
                 '<span class="phone-code__dial">+1</span>' +
                 '<svg class="phone-code__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' +
               '</button>' +
-              '<input class="field__input" type="tel" id="quizPhone" placeholder="(305) 555-0194">' +
+              '<input class="field__input" type="tel" id="quizPhone" placeholder="(480) 555-0194">' +
               '<div class="country-panel" data-country-panel hidden>' +
                 '<div class="country-panel__search"><input type="text" placeholder="Search country or code" aria-label="Search country"></div>' +
                 '<div class="country-panel__list" role="listbox"></div>' +
@@ -4152,7 +4152,7 @@
             '<circle cx="12" cy="12" r="9"/><path d="m8.3 12.2 2.6 2.6 4.8-5.2"/></svg>' +
           '</span>' +
           '<h3 class="quiz__q">Thank you' + (name ? ', ' + esc(name) : '') + '!</h3>' +
-          '<p class="quiz__picked">Our Miami sourcing desk is preparing 3–5 turnkey allocations for you.</p>' +
+          '<p class="quiz__picked">Our Scottsdale sourcing desk is preparing 3–5 turnkey allocations for you.</p>' +
         '</div>';
       if (bar) bar.style.transform = 'scaleX(1)';
       if (counter) counter.textContent = 'Complete';
@@ -4202,12 +4202,12 @@
         send.disabled = true;
         send.textContent = '…';
         sendLead(payload).then(function () {
-          toast('Thank you, ' + name + '. Our Miami concierge will reach out shortly.', 'ok');
+          toast('Thank you, ' + name + '. Our Scottsdale concierge will reach out shortly.', 'ok');
           renderDone(name);
         }).catch(function () {
           send.disabled = false;
           send.textContent = 'Receive 3–5 Verified Allocations';
-          toast('Could not send online. Please call our Miami desk directly.', 'error');
+          toast('Could not send online. Please call our Scottsdale desk directly.', 'error');
         });
       }
     });
