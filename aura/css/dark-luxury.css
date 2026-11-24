@@ -1511,3 +1511,139 @@ textarea.form-input {
   border-radius: 50%;
   background: var(--accent-mint);
 }
+
+/* === CUSTOM EMERALD LUXURY CALENDAR & DOT-ONLY CURSOR === */
+/* Inside calendar panel: big ring hides cleanly, leaving only crisp emerald dot */
+#cur-ring.is-dot-only {
+  opacity: 0 !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+#cur-dot.is-dot-only {
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--accent-mint) !important;
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.9) !important;
+}
+
+.cal { position: relative; }
+.cal__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.72rem 0;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+  text-align: left;
+  transition: border-color 0.22s ease;
+}
+.cal__btn:focus-visible,
+.cal[data-open="true"] .cal__btn {
+  outline: none;
+  border-bottom-color: var(--accent-mint);
+}
+.form-field[data-invalid="true"] .cal__btn { border-bottom-color: #f87171; }
+.cal__value[data-empty="true"] { color: rgba(236, 233, 226, 0.34); }
+.cal__icon { flex: none; color: var(--accent-mint); }
+
+.cal__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-width: 280px;
+  top: calc(100% + 6px);
+  z-index: 75;
+  background: #0a110d;
+  border: 1px solid var(--accent-mint);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.82), 0 0 0 1px rgba(52, 211, 153, 0.12);
+}
+.cal__panel[hidden] { display: none; }
+
+.cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(52, 211, 153, 0.16);
+}
+.cal__month {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.cal__nav {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  color: var(--accent-mint);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+.cal__nav:hover {
+  background: rgba(52, 211, 153, 0.15);
+  border-color: var(--accent-mint);
+}
+
+.cal__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 0.35rem;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cal__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.cal__day {
+  height: 34px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+}
+.cal__day:hover:not(:disabled) {
+  background: rgba(52, 211, 153, 0.16);
+  border-color: rgba(52, 211, 153, 0.5);
+  color: #ffffff;
+}
+.cal__day.is-today {
+  border-color: rgba(52, 211, 153, 0.45);
+  color: var(--accent-mint);
+}
+.cal__day.is-selected {
+  background: var(--accent-mint);
+  color: #04120c;
+  font-weight: 700;
+}
+.cal__day:disabled {
+  color: rgba(236, 233, 226, 0.18);
+  pointer-events: none;
+}
+.cal__day--pad { pointer-events: none; }

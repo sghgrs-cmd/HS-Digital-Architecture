@@ -6,7 +6,7 @@
   <title>Private Consultation &amp; Booking — Aura MedSpa West Hollywood</title>
   <meta name="description" content="Reserve your complimentary 90-minute private diagnostic consultation with Dr. Elena Chen at Aura MedSpa, 8401 Sunset Boulevard, West Hollywood." />
   <meta name="theme-color" content="#050505" />
-  <link rel="stylesheet" href="css/dark-luxury.css" />
+  <link rel="stylesheet" href="css/dark-luxury.css?v=20261124_v3" />
 </head>
 <body>
   <div id="scroll-progress" aria-hidden="true"></div>
@@ -174,8 +174,25 @@
 
               <div class="form-grid-2">
                 <div class="form-field">
-                  <label class="form-label" for="booking-date">Preferred Date</label>
-                  <input class="form-input" type="date" id="booking-date" name="date" required />
+                  <span class="sel__label" id="date-label">Preferred Date</span>
+                  <div class="cal" data-calendar data-open="false">
+                    <button type="button" class="cal__btn" id="cal-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="cal-panel" aria-labelledby="date-label cal-btn" data-cursor="Date">
+                      <span class="cal__value" id="cal-value" data-empty="true" data-placeholder="Select preferred date">Select preferred date</span>
+                      <svg class="cal__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </button>
+                    <div class="cal__panel" id="cal-panel" role="dialog" aria-label="Choose preferred consultation date" data-cursor-dot="true" hidden>
+                      <div class="cal__head">
+                        <button type="button" class="cal__nav" data-cal-prev aria-label="Previous month">&#8249;</button>
+                        <span class="cal__month" data-cal-month></span>
+                        <button type="button" class="cal__nav" data-cal-next aria-label="Next month">&#8250;</button>
+                      </div>
+                      <div class="cal__weekdays" aria-hidden="true">
+                        <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                      </div>
+                      <div class="cal__days" data-cal-days></div>
+                    </div>
+                    <input type="hidden" id="booking-date" name="date" value="" data-required />
+                  </div>
                   <p class="field__err">Please choose a preferred date.</p>
                 </div>
                 <div class="form-field">
@@ -333,6 +350,6 @@
     </div>
   </footer>
 
-  <script src="js/core.js" defer></script>
+  <script src="js/core.js?v=20261124_v3" defer></script>
 </body>
 </html>

@@ -188,6 +188,15 @@
     };
 
     const setState = (el) => {
+      const dotOnly = !!(el && el.closest && el.closest('[data-cursor-dot="true"]'));
+      dot.classList.toggle('is-dot-only', dotOnly);
+      ring.classList.toggle('is-dot-only', dotOnly);
+      if (dotOnly) {
+        dot.classList.remove('is-text', 'is-over');
+        ring.classList.remove('is-text', 'is-over', 'is-active', 'has-label');
+        if (label) label.textContent = '';
+        return;
+      }
       const texty = el && el.closest ? el.closest(TEXTY) : null;
       const clicky = !texty && el && el.closest ? el.closest(CLICKY) : null;
       dot.classList.toggle('is-text', !!texty);
@@ -481,6 +490,113 @@
   /* --------------------------------------------------------------------------
      5. REVEALS, COUNTERS, X-RAY CARDS, TABS, ACCORDIONS & BOOKING FORM
      -------------------------------------------------------------------------- */
+
+  /* --------------------------------------------------------------------------
+     4b. CUSTOM ENGLISH LUXURY CALENDAR (Always EN · Dot-Only Cursor Over Grid)
+     -------------------------------------------------------------------------- */
+  function initCalendars() {
+    const cals = Array.from(document.querySelectorAll('[data-calendar]'));
+    if (!cals.length) return;
+    const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const SHORT_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    cals.forEach((cal) => {
+      const btn = cal.querySelector('.cal__btn');
+      const valEl = cal.querySelector('.cal__value');
+      const panel = cal.querySelector('.cal__panel');
+      const monthEl = cal.querySelector('[data-cal-month]');
+      const daysEl = cal.querySelector('[data-cal-days]');
+      const prevBtn = cal.querySelector('[data-cal-prev]');
+      const nextBtn = cal.querySelector('[data-cal-next]');
+      const hiddenInput = cal.querySelector('input[type="hidden"]');
+      if (!btn || !panel || !daysEl) return;
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      let viewYear = today.getFullYear();
+      let viewMonth = today.getMonth();
+      let selectedIso = '';
+
+      const toIso = (y, m, d) =>
+        `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+
+      const render = () => {
+        if (monthEl) monthEl.textContent = `${MONTHS[viewMonth]} ${viewYear}`;
+        daysEl.innerHTML = '';
+        const firstDow = new Date(viewYear, viewMonth, 1).getDay();
+        const totalDays = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+        for (let i = 0; i < firstDow; i++) {
+          const pad = document.createElement('span');
+          pad.className = 'cal__day--pad';
+          daysEl.appendChild(pad);
+        }
+
+        for (let d = 1; d <= totalDays; d++) {
+          const cellDate = new Date(viewYear, viewMonth, d);
+          const iso = toIso(viewYear, viewMonth, d);
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'cal__day';
+          b.textContent = String(d);
+          if (cellDate < today) b.disabled = true;
+          if (cellDate.getTime() === today.getTime()) b.classList.add('is-today');
+          if (iso === selectedIso) b.classList.add('is-selected');
+          b.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectedIso = iso;
+            if (hiddenInput) hiddenInput.value = iso;
+            if (valEl) {
+              valEl.textContent = `${SHORT_MONTHS[viewMonth]} ${d}, ${viewYear}`;
+              valEl.dataset.empty = 'false';
+            }
+            const field = cal.closest('.form-field');
+            if (field) field.removeAttribute('data-invalid');
+            setOpen(false);
+            btn.focus();
+          });
+          daysEl.appendChild(b);
+        }
+      };
+
+      const setOpen = (state) => {
+        cal.dataset.open = String(state);
+        btn.setAttribute('aria-expanded', String(state));
+        panel.hidden = !state;
+        if (state) render();
+      };
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setOpen(cal.dataset.open !== 'true');
+      });
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          viewMonth--;
+          if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+          render();
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          viewMonth++;
+          if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+          render();
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('[data-calendar]')) setOpen(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    });
+  }
+
   function initReveals() {
     const els = document.querySelectorAll('.reveal');
     if (!els.length) return;
@@ -656,6 +772,7 @@
         }
         window.setTimeout(() => {
           form.reset();
+          form.querySelectorAll('[data-calendar]').forEach((c) => { const h=c.querySelector('input[type="hidden"]'); const v=c.querySelector('.cal__value'); if (h) h.value=''; if (v && v.dataset.placeholder) { v.textContent=v.dataset.placeholder; v.dataset.empty='true'; } });
           form.querySelectorAll('[data-select]').forEach((w) => {
             const h = w.querySelector('input[type="hidden"]');
             const v = w.querySelector('.sel__value');
@@ -685,6 +802,7 @@
     initNav();
     initMenu();
     initCustomSelects();
+    initCalendars();
     initMarquee();
     initXRayCards();
     initTabs();
