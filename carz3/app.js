@@ -2850,6 +2850,9 @@
       if (el.matches('.modal__nav--prev, .lightbox__nav--prev, .carousel__arrow--prev')) return 'Prev';
       if (el.matches('.modal__nav--next, .lightbox__nav--next, .carousel__arrow--next')) return 'Next';
       if (el.matches('.burger')) return 'Menu';
+      if (el.matches('.quiz__opt')) return 'Choose';
+      if (el.matches('.quiz__back')) return 'Back';
+      if (el.matches('.map-shield')) return 'Map';
       if (el.matches('.sel__btn, .sel__opt, .select-row, .country-row, .phone-code')) return 'Pick';
       if (el.matches('.filter')) return 'Filter';
       if (el.matches('.gallery__item')) return 'Zoom';
@@ -4091,7 +4094,7 @@
         '<div class="quiz__opts' + dense + '">' +
           data.opts.map(function (o) {
             var active = answers[data.key] === o ? ' is-picked' : '';
-            return '<button class="quiz__opt' + active + '" type="button" data-pick="' + esc(o) + '">' +
+            return '<button class="quiz__opt' + active + '" type="button" data-pick="' + esc(o) + '" data-cursor="Choose">' +
               esc(o) + '</button>';
           }).join('') +
         '</div>';
@@ -4434,6 +4437,8 @@
       });
     }
     widgets.forEach(function (w) {
+      if (w._selBound) return;
+      w._selBound = true;
       var btn = w.querySelector('.sel__btn');
       var valEl = w.querySelector('.sel__value');
       var list = w.querySelector('.sel__list');
@@ -4468,6 +4473,5 @@
       if (e.key === 'Escape') closeAll(null);
     });
   }
-  setupLuxurySelects();
 
 })();

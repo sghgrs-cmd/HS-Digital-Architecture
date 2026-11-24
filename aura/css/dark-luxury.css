@@ -1357,14 +1357,17 @@ textarea.form-input {
 .sel__list::-webkit-scrollbar-track { background: #0a110d; }
 .sel__list::-webkit-scrollbar-thumb { background: var(--accent-mint); border: 2px solid #0a110d; border-radius: 999px; }
 
-/* Map Frame */
+/* Map Frame — Balanced Compact Height on Desktop & Mobile */
 .map-box {
   position: relative;
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--rule-emerald);
-  height: 400px;
+  height: 300px;
   background: var(--bg-surface);
+}
+@media (min-width: 1024px) {
+  .map-box { height: 320px; }
 }
 .map-box iframe {
   width: 100%;

@@ -244,7 +244,7 @@ h1,h2,h3{font-family:var(--font-heading);color:var(--text-heading);font-weight:7
         <div class="quiz" id="quiz" data-reveal>
           <div class="quiz__head">
             <span class="quiz__counter">Step 1 of 5</span>
-            <button class="quiz__back" type="button" hidden>
+            <button class="quiz__back" type="button" hidden data-cursor="Back">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
               Back
             </button>
@@ -394,8 +394,7 @@ h1,h2,h3{font-family:var(--font-heading);color:var(--text-heading);font-weight:7
                 <li class="sel__opt" role="option" aria-selected="false" data-value="Private Showroom Consultation" data-cursor="Pick">Private Showroom Consultation</li>
               </ul>
               <input type="hidden" name="kind" value="In-Stock Allocation">
-            </div>
-          </div>
+              </div>
             </div>
             <div class="field">
               <label class="form-label" for="reqComment">Target Vehicle / Spec <span class="is-muted">— optional</span></label>
