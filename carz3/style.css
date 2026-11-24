@@ -53,3 +53,270 @@ html { color-scheme: dark; }
 .contacts__socials{display:flex;gap:12px;margin-top:24px;margin-bottom:24px}.contacts__social{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold-line);color:var(--text-main);transition:all .22s ease}.contacts__social:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}.contacts__social svg{width:22px;height:22px}
 input[type=search]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
 input[type=search]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/* === CARZ3 LUXURY v2 UPGRADE === */
+/* Hide legacy cursor classes */
+.cursor-dot, .cursor-ring { display: none !important; }
+
+/* 1:1 Signature Luxury Cursor in CarZ3 Gold & Obsidian */
+#cur-dot, #cur-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+  transform: translate(-100px, -100px);
+}
+
+#cur-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(201, 169, 97, 0.7);
+  z-index: 10002;
+  transition: width 0.26s cubic-bezier(0.22, 1, 0.36, 1), height 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#cur-ring {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(201, 169, 97, 0.72);
+  background: rgba(10, 10, 10, 0.18);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+              border-radius 0.42s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.24s ease, border-color 0.24s ease;
+}
+
+#cur-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-hover);
+  opacity: 0;
+  transition: opacity 0.16s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+#cur-ring.is-over.has-label #cur-label { opacity: 1; }
+#cur-ring.is-text #cur-label { opacity: 0; }
+
+html.cursor-on #cur-dot { opacity: 1; }
+html.cursor-on #cur-ring { opacity: 1; }
+
+#cur-dot.is-over { width: 0; height: 0; }
+#cur-ring.is-over {
+  width: 48px;
+  height: 48px;
+  background: rgba(201, 169, 97, 0.08);
+  border: 1.5px solid var(--gold);
+}
+#cur-ring.is-over.has-label {
+  width: 62px;
+  height: 62px;
+  background: rgba(12, 11, 9, 0.94);
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.55), 0 0 20px rgba(201, 169, 97, 0.22);
+}
+
+#cur-dot.is-text { width: 0; height: 0; }
+#cur-ring.is-text {
+  width: 2px;
+  height: 26px;
+  border-radius: 0;
+  border-width: 0;
+  background: var(--gold);
+}
+
+.autoscroll-disc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(12, 11, 9, 0.95);
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 0 4px rgba(201, 169, 97, 0.12);
+  pointer-events: none;
+  z-index: 10005;
+  opacity: 0;
+  transform: translate(-100px, -100px) translate(-50%, -50%) scale(0.6);
+  transition: opacity 0.15s ease, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.autoscroll-disc.is-active { opacity: 1; }
+.autoscroll-disc svg { width: 24px; height: 24px; overflow: visible; }
+.autoscroll-disc__up, .autoscroll-disc__dn {
+  fill: none; stroke: var(--text-main); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.45;
+}
+.autoscroll-disc.is-up .autoscroll-disc__up { opacity: 1; stroke: var(--gold); transform: translateY(-1.5px); }
+.autoscroll-disc.is-dn .autoscroll-disc__dn { opacity: 1; stroke: var(--gold); transform: translateY(1.5px); }
+.autoscroll-disc__dot { fill: var(--gold); }
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  #cur-dot, #cur-ring, .autoscroll-disc { display: none !important; }
+}
+
+/* Agoura-Grade Luxury Plate & Custom ARIA Listbox (.sel) in CarZ3 Gold */
+.request-card.plate {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid rgba(201, 169, 97, 0.34);
+}
+.crop {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+.crop--tl { top: -1px; left: -1px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.crop--tr { top: -1px; right: -1px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+.crop--bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.crop--br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+.sel { position: relative; width: 100%; }
+.sel__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding: 10px 2px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--gold-line);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  text-align: left;
+  transition: border-color 0.22s ease;
+}
+.sel__btn:hover,
+.sel[data-open="true"] .sel__btn { border-bottom-color: var(--gold); outline: none; }
+.sel__chev { flex: none; color: var(--gold); transition: transform 0.3s ease; }
+.sel[data-open="true"] .sel__chev { transform: rotate(180deg); }
+
+.sel__list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 60;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #141414;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.78);
+  max-height: min(17rem, 45vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.sel__list[hidden] { display: none; }
+.sel[data-open="true"] .sel__list { opacity: 1; transform: none; }
+
+.sel__opt {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  color: rgba(232, 232, 232, 0.84);
+  border-bottom: 1px solid rgba(201, 169, 97, 0.1);
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+.sel__opt:last-child { border-bottom: 0; }
+.sel__opt::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(201, 169, 97, 0.48);
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+.sel__opt:hover,
+.sel__opt.is-active { background: rgba(201, 169, 97, 0.12); color: #ffffff; }
+.sel__opt[aria-selected="true"] { color: var(--gold); font-weight: 600; }
+.sel__opt[aria-selected="true"]::before { background: var(--gold); border-color: var(--gold); }
+
+/* Architectural Luxury Footer for CarZ3 */
+.footer {
+  background: radial-gradient(circle at 82% 0%, rgba(201, 169, 97, 0.08), transparent 50%), #070707;
+  padding: clamp(48px, 7vw, 84px) 0 36px;
+}
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 34px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--gold-line);
+}
+.footer-top__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-top: 10px;
+  max-width: 24ch;
+  line-height: 1.15;
+}
+.footer-top__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--gold-line);
+}
+.footer__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 28px;
+}
+@media (min-width: 900px) {
+  .footer__grid {
+    grid-template-columns: 1.25fr 1.55fr 1.15fr;
+    gap: 44px;
+    align-items: start;
+  }
+}
+.footer__desk-card {
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.85) 0%, rgba(16, 16, 16, 0.95) 100%);
+  border: 1px solid var(--gold-line);
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.footer__desk-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13.5px;
+  padding-block: 7px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.1);
+  color: var(--text-muted);
+}
+.footer__desk-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.footer__desk-row strong { color: var(--text-heading); font-weight: 600; }

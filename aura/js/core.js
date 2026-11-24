@@ -1,9 +1,9 @@
 /* ============================================================================
-   AURA MEDSPA — ZERO-LAG CORE ENGINE
-   - Instant page navigation (zero transition overlay delay)
-   - Luxury Cursor ported 1:1 from Agoura Signature (with pointerleave reset,
-     scrollbar stand-down, iframe stand-down & middle-click autoscroll disc)
-   - Fullscreen Mobile Drawer with locked body scroll (position: fixed + savedScrollY)
+   AURA MEDSPA — ZERO-LAG CORE ENGINE v2
+   - Luxury Cursor with contextual labels on EVERY interactive button/link/select
+   - Exact nav height sync for sticky Treatments filter bar (zero top gap)
+   - ARIA 1.2 Custom Listbox (.sel) — luxury cursor stays alive over dropdowns
+   - Fullscreen Mobile Drawer with locked body scroll
    ============================================================================ */
 'use strict';
 
@@ -13,7 +13,7 @@
   const lerp = (a, b, t) => a + (b - a) * t;
 
   /* --------------------------------------------------------------------------
-     1. LUXURY CURSOR (1:1 Agoura Signature settings in Emerald-Black)
+     1. LUXURY CURSOR (Labeled on EVERY button, link, tab, card & custom select)
      -------------------------------------------------------------------------- */
   function initCursor() {
     if (!FINE || REDUCED) return;
@@ -166,8 +166,26 @@
       if (!raf) raf = requestAnimationFrame(tick);
     }, { passive: true });
 
-    const CLICKY = 'a, button, [role="tab"], [role="button"], select, label, .xray-card, [data-cursor]';
+    const CLICKY = 'a, button, [role="tab"], [role="button"], [role="option"], .sel__btn, .sel__opt, .xray-card, [data-cursor]';
     const TEXTY = 'input:not([type="hidden"]):not([type="checkbox"]), textarea';
+
+    const resolveLabel = (el) => {
+      if (!el) return '';
+      if (el.hasAttribute('data-cursor')) return el.getAttribute('data-cursor');
+      if (el.matches('.menu__close')) return 'Close';
+      if (el.matches('.burger')) return 'Menu';
+      if (el.matches('.sel__btn, .sel__opt')) return 'Pick';
+      if (el.matches('.tab-btn, .case-tab')) return 'Filter';
+      if (el.matches('.accordion-header')) return 'Read';
+      if (el.matches('a[href^="tel:"]')) return 'Call';
+      if (el.matches('a[href^="mailto:"]')) return 'Mail';
+      if (el.matches('a[href*="booking"], .nav-cta, .menu__foot-cta')) return 'Book';
+      if (el.matches('button[type="submit"]')) return 'Send';
+      if (el.matches('.xray-card')) return 'Explore';
+      if (el.matches('.nav-logo')) return 'Home';
+      if (el.matches('a, button')) return 'Open';
+      return 'View';
+    };
 
     const setState = (el) => {
       const texty = el && el.closest ? el.closest(TEXTY) : null;
@@ -178,14 +196,8 @@
       ring.classList.toggle('is-over', !!clicky);
       ring.classList.toggle('is-active', !!clicky);
 
-      let txt = '';
-      if (clicky) {
-        if (clicky.hasAttribute('data-cursor')) txt = clicky.getAttribute('data-cursor');
-        else if (clicky.matches('a[href^="tel:"]')) txt = 'Call';
-        else if (clicky.matches('a[href*="booking"]')) txt = 'Book';
-        else if (clicky.matches('button[type="submit"]')) txt = 'Send';
-        else if (clicky.matches('.xray-card')) txt = 'Explore';
-      }
+      const txt = clicky ? resolveLabel(clicky) : '';
+      ring.classList.toggle('has-label', Boolean(txt));
       if (label) label.textContent = txt;
     };
 
@@ -222,13 +234,20 @@
   }
 
   /* --------------------------------------------------------------------------
-     2. STICKY NAV & PROGRESS BAR
+     2. STICKY NAV, EXACT --nav-h SYNC & PROGRESS BAR
      -------------------------------------------------------------------------- */
   function initNav() {
     const nav = document.getElementById('main-nav');
     const bar = document.getElementById('scroll-progress');
     const menu = document.getElementById('mobile-menu');
     if (!nav) return;
+
+    const syncHeight = () => {
+      const h = Math.round(nav.getBoundingClientRect().height);
+      if (h > 0) document.documentElement.style.setProperty('--nav-h', h + 'px');
+    };
+    syncHeight();
+    window.addEventListener('resize', syncHeight, { passive: true });
 
     let lastY = 0;
     let ticking = false;
@@ -241,12 +260,17 @@
         return;
       }
       nav.classList.toggle('is-stuck', y > 36);
+      let hidden = nav.classList.contains('is-hidden');
       if (performance.now() < (window.__suppressNavHideUntil || 0)) {
-        nav.classList.remove('is-hidden');
+        hidden = false;
       } else {
-        if (y > lastY + 8 && y > 240) nav.classList.add('is-hidden');
-        else if (y < lastY - 8 || y < 120) nav.classList.remove('is-hidden');
+        if (y > lastY + 8 && y > 220) hidden = true;
+        else if (y < lastY - 8 || y < 110) hidden = false;
       }
+      nav.classList.toggle('is-hidden', hidden);
+      document.body.classList.toggle('nav-is-hidden', hidden);
+      syncHeight();
+
       if (bar) {
         const max = document.documentElement.scrollHeight - window.innerHeight;
         bar.style.transform = `scaleX(${max > 0 ? (y / max).toFixed(4) : 0})`;
@@ -262,7 +286,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     3. FULLSCREEN MOBILE MENU (Locks background scroll 100%, focus-trap, Escape)
+     3. FULLSCREEN MOBILE MENU (Locked background scroll + focus-trap)
      -------------------------------------------------------------------------- */
   function initMenu() {
     const menu = document.getElementById('mobile-menu');
@@ -308,6 +332,7 @@
         const nav = document.getElementById('main-nav');
         if (nav) {
           nav.classList.remove('is-hidden');
+          document.body.classList.remove('nav-is-hidden');
           nav.classList.toggle('is-stuck', savedScrollY > 36);
         }
         if (!opts.skipFocus && lastFocus && lastFocus.focus) lastFocus.focus();
@@ -346,7 +371,115 @@
   }
 
   /* --------------------------------------------------------------------------
-     4. SCROLL REVEALS, COUNTERS, X-RAY CARDS, TABS, ACCORDIONS & FORMS
+     4. CUSTOM ARIA 1.2 LISTBOX SELECT (Ported from Agoura Signature)
+     -------------------------------------------------------------------------- */
+  function initCustomSelects() {
+    const widgets = Array.from(document.querySelectorAll('[data-select]'));
+    if (!widgets.length) return;
+
+    const closeAll = (except) => {
+      widgets.forEach((w) => {
+        if (w === except) return;
+        w.dataset.open = 'false';
+        const btn = w.querySelector('.sel__btn');
+        const list = w.querySelector('.sel__list');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        if (list) list.hidden = true;
+      });
+    };
+
+    widgets.forEach((widget) => {
+      const btn = widget.querySelector('.sel__btn');
+      const valEl = widget.querySelector('.sel__value');
+      const list = widget.querySelector('.sel__list');
+      const hiddenInput = widget.querySelector('input[type="hidden"]');
+      const opts = Array.from(widget.querySelectorAll('.sel__opt'));
+      if (!btn || !list || !opts.length) return;
+
+      let activeIdx = opts.findIndex((o) => o.getAttribute('aria-selected') === 'true');
+
+      const setOpen = (state) => {
+        if (state) closeAll(widget);
+        widget.dataset.open = String(state);
+        btn.setAttribute('aria-expanded', String(state));
+        list.hidden = !state;
+        if (state) {
+          const idx = activeIdx >= 0 ? activeIdx : 0;
+          highlight(idx);
+        }
+      };
+
+      const highlight = (idx) => {
+        opts.forEach((o, i) => o.classList.toggle('is-active', i === idx));
+        activeIdx = idx;
+        if (opts[idx]) {
+          btn.setAttribute('aria-activedescendant', opts[idx].id || '');
+          opts[idx].scrollIntoView({ block: 'nearest' });
+        }
+      };
+
+      const selectOption = (opt) => {
+        const val = opt.dataset.value || opt.textContent.trim();
+        const labelText = opt.textContent.trim();
+        opts.forEach((o) => o.setAttribute('aria-selected', String(o === opt)));
+        if (valEl) {
+          valEl.textContent = labelText;
+          valEl.dataset.empty = 'false';
+        }
+        if (hiddenInput) hiddenInput.value = val;
+        const field = widget.closest('.form-field');
+        if (field) field.removeAttribute('data-invalid');
+        setOpen(false);
+        btn.focus();
+      };
+
+      widget._selectByValue = (val) => {
+        const found = opts.find((o) => (o.dataset.value || '').toLowerCase() === String(val).toLowerCase());
+        if (found) selectOption(found);
+      };
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setOpen(widget.dataset.open !== 'true');
+      });
+
+      btn.addEventListener('keydown', (e) => {
+        const open = widget.dataset.open === 'true';
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!open) { setOpen(true); return; }
+          const dir = e.key === 'ArrowDown' ? 1 : -1;
+          highlight((activeIdx + dir + opts.length) % opts.length);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          if (open && activeIdx >= 0) {
+            e.preventDefault();
+            selectOption(opts[activeIdx]);
+          }
+        } else if (e.key === 'Escape' && open) {
+          e.preventDefault();
+          setOpen(false);
+        }
+      });
+
+      opts.forEach((opt, i) => {
+        opt.addEventListener('mouseenter', () => highlight(i));
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectOption(opt);
+        });
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('[data-select]')) closeAll(null);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAll(null);
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     5. REVEALS, COUNTERS, X-RAY CARDS, TABS, ACCORDIONS & BOOKING FORM
      -------------------------------------------------------------------------- */
   function initReveals() {
     const els = document.querySelectorAll('.reveal');
@@ -489,21 +622,22 @@
 
     const params = new URLSearchParams(window.location.search);
     const preProtocol = params.get('protocol');
-    const sel = form.querySelector('#booking-treatment');
-    if (preProtocol && sel) {
-      Array.from(sel.options).forEach((opt) => {
-        if (opt.value === preProtocol) sel.value = preProtocol;
-      });
+    const protoSel = form.querySelector('[data-select="protocol"]');
+    if (preProtocol && protoSel && protoSel._selectByValue) {
+      protoSel._selectByValue(preProtocol);
     }
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       let valid = true;
-      form.querySelectorAll('[required]').forEach((f) => {
-        if (!f.value.trim()) {
-          f.style.borderColor = '#ef4444';
+      form.querySelectorAll('[required], [data-required]').forEach((f) => {
+        const field = f.closest('.form-field');
+        const empty = !String(f.value || '').trim();
+        if (empty) {
+          if (field) field.dataset.invalid = 'true';
           valid = false;
-          f.addEventListener('input', () => { f.style.borderColor = ''; }, { once: true });
+        } else if (field) {
+          field.removeAttribute('data-invalid');
         }
       });
       if (!valid) return;
@@ -522,10 +656,26 @@
         }
         window.setTimeout(() => {
           form.reset();
+          form.querySelectorAll('[data-select]').forEach((w) => {
+            const h = w.querySelector('input[type="hidden"]');
+            const v = w.querySelector('.sel__value');
+            if (h && !h.dataset.default) h.value = '';
+            if (v && v.dataset.placeholder) {
+              v.textContent = v.dataset.placeholder;
+              v.dataset.empty = 'true';
+            }
+          });
           btn.disabled = false;
           btn.textContent = orig;
         }, 4200);
-      }, 600);
+      }, 500);
+    });
+  }
+
+  function initNoopLinks() {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href="#"]');
+      if (a) e.preventDefault();
     });
   }
 
@@ -534,6 +684,7 @@
     initCursor();
     initNav();
     initMenu();
+    initCustomSelects();
     initMarquee();
     initXRayCards();
     initTabs();
@@ -541,6 +692,7 @@
     initAccordions();
     initCounters();
     initBookingForm();
+    initNoopLinks();
     initReveals();
   }
 

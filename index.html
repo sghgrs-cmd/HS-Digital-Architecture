@@ -1758,6 +1758,158 @@
       justify-content: space-between;
       gap: 12px;
     }
+  
+    /* === LIVE MULTI-PAGE PORTFOLIO SHOWCASE === */
+    .portfolio-showcase {
+      margin-top: 52px;
+      padding-top: 44px;
+      border-top: 1px solid var(--border);
+    }
+    .portfolio-showcase__head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .portfolio-showcase__title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .portfolio-showcase__sub {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      max-width: 48ch;
+    }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 860px) {
+      .showcase-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    .showcase-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out), border-color 0.24s ease;
+    }
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-strong);
+    }
+    .showcase-preview {
+      padding: 16px 18px 20px;
+      min-height: 178px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .showcase-preview--aurelia {
+      background: radial-gradient(circle at 85% 15%, rgba(197, 160, 89, 0.28), transparent 55%), #1A1514;
+      color: #F7F4EE;
+    }
+    .showcase-preview--aura {
+      background: radial-gradient(circle at 85% 15%, rgba(52, 211, 153, 0.24), transparent 55%), #070C09;
+      color: #ECE9E2;
+    }
+    .showcase-preview--carz3 {
+      background: radial-gradient(circle at 85% 15%, rgba(201, 169, 97, 0.24), transparent 55%), #0B0B0B;
+      color: #F1EFEA;
+    }
+    .showcase-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.68);
+    }
+    .showcase-bar__dots {
+      display: inline-flex;
+      gap: 5px;
+    }
+    .showcase-bar__dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.28);
+    }
+    .showcase-preview__kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+    .showcase-preview--aurelia .showcase-preview__kicker { color: #E8CFA0; }
+    .showcase-preview--aura .showcase-preview__kicker { color: #34D399; }
+    .showcase-preview--carz3 .showcase-preview__kicker { color: #C9A961; }
+    .showcase-preview__name {
+      font-family: var(--font-display);
+      font-size: 21px;
+      line-height: 1.18;
+      font-weight: 400;
+    }
+    .showcase-preview__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .showcase-pill {
+      font-size: 10.5px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.86);
+    }
+    .showcase-body {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .showcase-body p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+      flex: 1;
+    }
+    .showcase-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .showcase-pages {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    
   </style>
 </head>
 <body>
@@ -1950,7 +2102,7 @@
             <div class="preview-frame preview-frame--lux" aria-hidden="true">
               <div class="browser-bar browser-bar--lux">
                 <div class="dots"><span></span><span></span><span></span></div>
-                <span>aurelia.hs-frontend.online</span>
+                <span>hs-frontend.online/aurelia/</span>
               </div>
               <div class="concept-canvas concept-canvas--lux">
                 <div>
@@ -1979,7 +2131,7 @@
                 <li>Calm visual restraint that stands apart from template dental sites</li>
               </ul>
               <div class="direction-footer">
-                <a href="https://aurelia.hs-frontend.online" target="_blank" rel="noopener noreferrer" class="text-link" data-cursor="Open">
+                <a href="https://hs-frontend.online/aurelia/" target="_blank" rel="noopener noreferrer" class="text-link" data-cursor="Open">
                   Open Live Concept (Aurelia) &rarr;
                 </a>
                 <span class="note-muted">Fictional demonstration site</span>
@@ -2029,6 +2181,99 @@
               </div>
             </div>
           </article>
+        </div>
+
+        <!-- Live Multi-Page Studio Builds (3 Unified Builds) -->
+        <div class="portfolio-showcase" id="live-builds">
+          <div class="portfolio-showcase__head">
+            <div>
+              <div class="eyebrow" style="margin-bottom:8px;">Live Multi-Page Studio Builds</div>
+              <h3 class="portfolio-showcase__title">Inspect full navigation, speed &amp; mobile craft across industries.</h3>
+            </div>
+            <p class="portfolio-showcase__sub">
+              Every build below is hand-coded without WordPress bloat &mdash; click through inner pages, custom forms, filters, and mobile drawers on any screen.
+            </p>
+          </div>
+
+          <div class="showcase-grid">
+            <!-- 1. Aurelia Smile Atelier -->
+            <article class="showcase-card">
+              <div class="showcase-preview showcase-preview--aurelia" aria-hidden="true">
+                <div class="showcase-bar">
+                  <span class="showcase-bar__dots"><span></span><span></span><span></span></span>
+                  <span>hs-frontend.online/aurelia/</span>
+                </div>
+                <div>
+                  <div class="showcase-preview__kicker">Luxury Dentistry Reference</div>
+                  <div class="showcase-preview__name">Aurelia Smile Atelier</div>
+                  <div class="showcase-preview__pills">
+                    <span class="showcase-pill">5 Pages</span>
+                    <span class="showcase-pill">Interactive Calculator</span>
+                    <span class="showcase-pill">3-Step Booking</span>
+                  </div>
+                </div>
+              </div>
+              <div class="showcase-body">
+                <p>Editorial champagne-and-espresso dental architecture demonstrating multi-page treatment flows, clinical case galleries, and zero-friction mobile booking.</p>
+                <div class="showcase-foot">
+                  <a href="https://hs-frontend.online/aurelia/" target="_blank" rel="noopener noreferrer" class="text-link" data-cursor="Open">Open Aurelia &rarr;</a>
+                  <span class="showcase-pages">5 pages</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 2. Aura MedSpa & Regenerative Aesthetics -->
+            <article class="showcase-card">
+              <div class="showcase-preview showcase-preview--aura" aria-hidden="true">
+                <div class="showcase-bar">
+                  <span class="showcase-bar__dots"><span></span><span></span><span></span></span>
+                  <span>hs-frontend.online/aura/</span>
+                </div>
+                <div>
+                  <div class="showcase-preview__kicker">Regenerative Aesthetics &amp; Longevity</div>
+                  <div class="showcase-preview__name">Aura Regenerative MedSpa</div>
+                  <div class="showcase-preview__pills">
+                    <span class="showcase-pill">5 Pages</span>
+                    <span class="showcase-pill">VISIA Cohort Switcher</span>
+                    <span class="showcase-pill">Custom ARIA Forms</span>
+                  </div>
+                </div>
+              </div>
+              <div class="showcase-body">
+                <p>Obsidian-and-emerald medical wellness platform featuring protocol filtering, clinical outcome cohorts, and a custom zero-lag concierge booking flow.</p>
+                <div class="showcase-foot">
+                  <a href="https://hs-frontend.online/aura/" target="_blank" rel="noopener noreferrer" class="text-link" data-cursor="Open">Open Aura MedSpa &rarr;</a>
+                  <span class="showcase-pages">5 pages</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 3. CarZ3 Bespoke Motors -->
+            <article class="showcase-card">
+              <div class="showcase-preview showcase-preview--carz3" aria-hidden="true">
+                <div class="showcase-bar">
+                  <span class="showcase-bar__dots"><span></span><span></span><span></span></span>
+                  <span>hs-frontend.online/carz3/</span>
+                </div>
+                <div>
+                  <div class="showcase-preview__kicker">Luxury Automotive Concierge</div>
+                  <div class="showcase-preview__name">CarZ3 Bespoke Motors</div>
+                  <div class="showcase-preview__pills">
+                    <span class="showcase-pill">6 Pages</span>
+                    <span class="showcase-pill">84-Vehicle Live Filter</span>
+                    <span class="showcase-pill">Lightbox Gallery</span>
+                  </div>
+                </div>
+              </div>
+              <div class="showcase-body">
+                <p>High-performance automotive sourcing platform with real-time search and multi-facet inventory filtering across 84 vehicles, interactive modals, and customs logistics.</p>
+                <div class="showcase-foot">
+                  <a href="https://hs-frontend.online/carz3/" target="_blank" rel="noopener noreferrer" class="text-link" data-cursor="Open">Open CarZ3 Motors &rarr;</a>
+                  <span class="showcase-pages">6 pages</span>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>

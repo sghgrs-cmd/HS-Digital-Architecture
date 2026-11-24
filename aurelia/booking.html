@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Apply for a private consultation at Aurelia Smile Atelier. Our three-step intake process ensures every client receives the full measure of our attention." />
+  <meta name="theme-color" content="#FDFCF8" />
+  <title>Private Consultation | Aurelia Smile Atelier</title>
+  <link rel="stylesheet" href="luxury.css?v=9" />
+</head>
+<body>
+
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <span id="cur-ring" aria-hidden="true"><span id="cur-label"></span></span>
+  <span id="cur-dot" aria-hidden="true"></span>
+  <div class="page-wipe" aria-hidden="true">
+    <div class="page-wipe__panel"></div><div class="page-wipe__panel"></div>
+    <div class="page-wipe__panel"></div><div class="page-wipe__panel"></div>
+    <div class="page-wipe__panel"></div>
+  </div>
+  <div class="page-wipe__accent" aria-hidden="true"></div>
+
+  
+
+  <!-- NAV -->
+  <nav class="site-nav" role="navigation" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark__name">AURELIA</span>
+        <span class="nav-wordmark__sub">Smile Atelier</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Atelier</a>
+        <a href="treatments.html">Treatments</a>
+        <a href="results.html">Results</a>
+        <a href="studio.html">Studio</a>
+        <a href="booking.html" class="is-active">Booking</a>
+      </div>
+      <a href="booking.html" class="nav-cta btn-magnetic" data-cursor="Book">
+        <span class="btn-magnetic__text">Request Consultation</span>
+      </a>
+      <button class="burger" id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-cursor="">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ═══ SPLIT LAYOUT ═══ -->
+    <div class="split-layout pt-nav">
+
+      <!-- LEFT: ATMOSPHERIC IMAGE -->
+      <div class="split-left" aria-hidden="true">
+        <img
+          src="images/luxuryhotelreceptiondeskwhitemarble.png"
+          alt=""
+          style="width:100%;height:100%;object-fit:cover;object-position:center;"
+          width="900" height="1200"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <!-- Gradient overlay -->
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--alabaster) 100%);" aria-hidden="true"></div>
+        <!-- Floating badge -->
+        <div class="booking-badge-wrap">
+          <div class="glass-card-dark" style="padding:var(--space-5) var(--space-6); background: rgba(253, 252, 248, 0.9); border: 1px solid rgba(26, 21, 20, 0.1);">
+            <p class="eyebrow" style="color:var(--espresso); margin-bottom:var(--space-2);">Strictly Limited Availability</p>
+            <p style="color:var(--espresso); font-family:var(--font-editorial); font-size:var(--text-lg); font-weight:400; font-style:italic; line-height:1.4;">
+              "We accept only those for whom excellence is not optional."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="booking-form-wrap">
+
+        <div style="max-width:520px;width:100%;margin:0 auto;">
+          <span class="eyebrow fade-up">Private Consultation Application</span>
+          <h1 class="display-md fade-up" style="margin:var(--space-3) 0 var(--space-5);transition-delay:80ms;">
+            Begin Your<br/>Atelier Journey.
+          </h1>
+          <p class="body-base fade-up" style="margin-bottom:var(--space-8);transition-delay:160ms;">
+            Complete the three-step application below. A member of our team will respond within 24 hours.
+          </p>
+
+          <!-- ─── PROGRESS INDICATOR ─── -->
+          <div class="booking-progress fade-up" style="margin-bottom:var(--space-8);transition-delay:220ms;" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Form progress">
+            <!-- Step 1 -->
+            <div class="progress-step is-active" id="prog-step-1">
+              <div class="progress-step__dot is-active" id="prog-dot-1">1</div>
+            </div>
+            <span class="progress-step__label" id="prog-label-1" style="color:var(--espresso);">Identity</span>
+            <div class="progress-line"><div class="progress-line__fill" id="prog-fill-1"></div></div>
+            <!-- Step 2 -->
+            <div class="progress-step" id="prog-step-2">
+              <div class="progress-step__dot" id="prog-dot-2">2</div>
+            </div>
+            <span class="progress-step__label" id="prog-label-2">Goals</span>
+            <div class="progress-line"><div class="progress-line__fill" id="prog-fill-2"></div></div>
+            <!-- Step 3 -->
+            <div class="progress-step" id="prog-step-3">
+              <div class="progress-step__dot" id="prog-dot-3">3</div>
+            </div>
+            <span class="progress-step__label" id="prog-label-3">Protocol</span>
+          </div>
+
+          <!-- ─── FORM PANELS ─── -->
+          <form id="booking-form" novalidate aria-label="Private consultation application form">
+            <div class="form-panels" id="form-panels" style="min-height:380px;">
+
+              <!-- PANEL 1: Identity -->
+              <div class="form-panel" id="form-panel-1" aria-labelledby="panel-1-heading">
+                <h2 id="panel-1-heading" style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:500;margin-bottom:var(--space-5);color:var(--espresso);">
+                  Your Identity
+                </h2>
+                <div class="field-group">
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="first-name">First Name <span aria-hidden="true">*</span></label>
+                      <input type="text" id="first-name" name="first-name" placeholder="Alexandra" required autocomplete="given-name" />
+                    </div>
+                    <div class="field">
+                      <label for="last-name">Last Name <span aria-hidden="true">*</span></label>
+                      <input type="text" id="last-name" name="last-name" placeholder="Chen" required autocomplete="family-name" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="email">Email Address <span aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Private Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 (310) 000-0000" autocomplete="tel" />
+                  </div>
+                  <div class="field">
+                    <label>How did you hear of the Atelier?</label>
+                    <div class="luxury-select-wrap" data-select-name="referral">
+                      <select id="referral" name="referral" class="luxury-select-hidden" aria-hidden="true" tabindex="-1">
+                        <option value="" disabled selected></option>
+                        <option value="personal-referral">Personal Referral</option>
+                        <option value="press">Press &amp; Media</option>
+                        <option value="social">Social Media</option>
+                        <option value="concierge">Hotel / Concierge Service</option>
+                        <option value="other">Other</option>
+                      </select>
+                      <button type="button" class="luxury-select-trigger" aria-haspopup="listbox" aria-expanded="false" id="referral-trigger">
+                        <span class="luxury-select-trigger__text">Select one</span>
+                        <svg class="luxury-select-trigger__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4,6 8,10 12,6"/></svg>
+                      </button>
+                      <div class="luxury-select-dropdown" role="listbox" aria-labelledby="referral-trigger">
+                        <div class="luxury-select-option" role="option" data-value="personal-referral" aria-selected="false">Personal Referral</div>
+                        <div class="luxury-select-option" role="option" data-value="press" aria-selected="false">Press &amp; Media</div>
+                        <div class="luxury-select-option" role="option" data-value="social" aria-selected="false">Social Media</div>
+                        <div class="luxury-select-option" role="option" data-value="concierge" aria-selected="false">Hotel / Concierge Service</div>
+                        <div class="luxury-select-option" role="option" data-value="other" aria-selected="false">Other</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-nav">
+                  <span class="body-sm">Step 1 of 3</span>
+                  <button type="button" class="btn-primary btn-magnetic" data-form-next aria-label="Continue to Step 2 — Clinical Goals" data-cursor="Next">
+                    <span class="btn-magnetic__text">Continue →</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- PANEL 2: Clinical Goals -->
+              <div class="form-panel" id="form-panel-2" aria-labelledby="panel-2-heading">
+                <h2 id="panel-2-heading" style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:500;margin-bottom:var(--space-2);color:var(--espresso);">
+                  Your Clinical Goals
+                </h2>
+                <p class="body-sm" style="margin-bottom:var(--space-5);">Select all that apply to your aspirations.</p>
+
+                <div class="goal-grid" role="group" aria-label="Treatment goals — select all that apply">
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="brighter">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">Brighter, Whiter Smile</span>
+                  </div>
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="veneers">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">Porcelain Veneers</span>
+                  </div>
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="alignment">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">Alignment &amp; Shape Correction</span>
+                  </div>
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="implants">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">Implants &amp; Restoration</span>
+                  </div>
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="gums">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">Gum Contouring</span>
+                  </div>
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="full">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">Full-Mouth Reconstruction</span>
+                  </div>
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="design">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">Digital Smile Design Only</span>
+                  </div>
+                  <div class="goal-chip" role="checkbox" aria-checked="false" tabindex="0" data-goal="unsure">
+                    <div class="goal-chip__icon" aria-hidden="true"></div>
+                    <span class="goal-chip__label">I'll Discuss at Consultation</span>
+                  </div>
+                </div>
+
+                <div class="field" style="margin-top:var(--space-5);">
+                  <label>Preferred Timeline</label>
+                  <div class="luxury-select-wrap" data-select-name="timeline">
+                    <select id="timeline" name="timeline" class="luxury-select-hidden" aria-hidden="true" tabindex="-1">
+                      <option value="" disabled selected></option>
+                      <option value="immediate">Immediately — within 2 weeks</option>
+                      <option value="1month">Within 1 month</option>
+                      <option value="3months">Within 3 months</option>
+                      <option value="exploring">Still exploring options</option>
+                    </select>
+                    <button type="button" class="luxury-select-trigger" aria-haspopup="listbox" aria-expanded="false" id="timeline-trigger">
+                      <span class="luxury-select-trigger__text">When are you looking to begin?</span>
+                      <svg class="luxury-select-trigger__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4,6 8,10 12,6"/></svg>
+                    </button>
+                    <div class="luxury-select-dropdown" role="listbox" aria-labelledby="timeline-trigger">
+                      <div class="luxury-select-option" role="option" data-value="immediate" aria-selected="false">Immediately — within 2 weeks</div>
+                      <div class="luxury-select-option" role="option" data-value="1month" aria-selected="false">Within 1 month</div>
+                      <div class="luxury-select-option" role="option" data-value="3months" aria-selected="false">Within 3 months</div>
+                      <div class="luxury-select-option" role="option" data-value="exploring" aria-selected="false">Still exploring options</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-nav">
+                  <button type="button" class="btn-ghost btn-magnetic" data-form-back aria-label="Back to Step 1 — Identity" data-cursor="Back">
+                    <span class="btn-magnetic__text">← Back</span>
+                  </button>
+                  <button type="button" class="btn-primary btn-magnetic" data-form-next aria-label="Continue to Step 3 — Protocol Preferences" data-cursor="Next">
+                    <span class="btn-magnetic__text">Continue →</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- PANEL 3: Protocol Preferences -->
+              <div class="form-panel" id="form-panel-3" aria-labelledby="panel-3-heading">
+                <h2 id="panel-3-heading" style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:500;margin-bottom:var(--space-5);color:var(--espresso);">
+                  Protocol Preferences
+                </h2>
+
+                <div class="field-group">
+                  <div class="field">
+                    <label>Investment Range</label>
+                    <div class="luxury-select-wrap" data-select-name="budget">
+                      <select id="budget" name="budget" class="luxury-select-hidden" aria-hidden="true" tabindex="-1">
+                        <option value="" disabled selected></option>
+                        <option value="3500-10000">$3,500 – $10,000</option>
+                        <option value="10000-30000">$10,000 – $30,000</option>
+                        <option value="30000-60000">$30,000 – $60,000</option>
+                        <option value="60000+">$60,000+ (Pinnacle Protocol)</option>
+                      </select>
+                      <button type="button" class="luxury-select-trigger" aria-haspopup="listbox" aria-expanded="false" id="budget-trigger">
+                        <span class="luxury-select-trigger__text">Select your range</span>
+                        <svg class="luxury-select-trigger__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4,6 8,10 12,6"/></svg>
+                      </button>
+                      <div class="luxury-select-dropdown" role="listbox" aria-labelledby="budget-trigger">
+                        <div class="luxury-select-option" role="option" data-value="3500-10000" aria-selected="false">$3,500 – $10,000</div>
+                        <div class="luxury-select-option" role="option" data-value="10000-30000" aria-selected="false">$10,000 – $30,000</div>
+                        <div class="luxury-select-option" role="option" data-value="30000-60000" aria-selected="false">$30,000 – $60,000</div>
+                        <div class="luxury-select-option" role="option" data-value="60000+" aria-selected="false">$60,000+ (Pinnacle Protocol)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Preferred Consultation Location</label>
+                    <div class="luxury-select-wrap" data-select-name="location">
+                      <select id="location" name="location" class="luxury-select-hidden" aria-hidden="true" tabindex="-1">
+                        <option value="" disabled selected></option>
+                        <option value="rodeo">Rodeo Drive Atelier (Beverly Hills)</option>
+                        <option value="home">Private Home Visit (LA metro)</option>
+                        <option value="virtual">Virtual Preview Consultation</option>
+                        <option value="yacht">Yacht / Jet / Hotel — On Request</option>
+                      </select>
+                      <button type="button" class="luxury-select-trigger" aria-haspopup="listbox" aria-expanded="false" id="location-trigger">
+                        <span class="luxury-select-trigger__text">Select preference</span>
+                        <svg class="luxury-select-trigger__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4,6 8,10 12,6"/></svg>
+                      </button>
+                      <div class="luxury-select-dropdown" role="listbox" aria-labelledby="location-trigger">
+                        <div class="luxury-select-option" role="option" data-value="rodeo" aria-selected="false">Rodeo Drive Atelier (Beverly Hills)</div>
+                        <div class="luxury-select-option" role="option" data-value="home" aria-selected="false">Private Home Visit (LA metro)</div>
+                        <div class="luxury-select-option" role="option" data-value="virtual" aria-selected="false">Virtual Preview Consultation</div>
+                        <div class="luxury-select-option" role="option" data-value="yacht" aria-selected="false">Yacht / Jet / Hotel — On Request</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="additional">Anything else we should know?</label>
+                    <textarea
+                      id="additional"
+                      name="additional"
+                      rows="4"
+                      placeholder="Previous dental work, specific concerns, scheduling constraints, or anything else you'd like the Atelier to consider…"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <!-- Privacy note -->
+                <div style="padding:var(--space-3) var(--space-4);background:var(--soft-cream);border-radius:var(--radius-md);border:var(--border-thin);margin-bottom:var(--space-3);">
+                  <p class="body-sm" style="display:flex;gap:var(--space-2);align-items:flex-start;">
+                    <span style="color:var(--champagne);flex-shrink:0;">🔒</span>
+                    All information is held under strict HIPAA confidentiality. We will never share your details with third parties.
+                  </p>
+                </div>
+
+                <div class="form-nav">
+                  <button type="button" class="btn-ghost btn-magnetic" data-form-back aria-label="Back to Step 2 — Clinical Goals" data-cursor="Back">
+                    <span class="btn-magnetic__text">← Back</span>
+                  </button>
+                  <button type="submit" class="btn-primary btn-magnetic" id="submit-btn" aria-label="Submit consultation application" data-cursor="Send">
+                    <span class="btn-magnetic__text">Submit Application</span>
+                  </button>
+                </div>
+              </div>
+
+            </div><!-- /form-panels -->
+          </form>
+
+          <!-- SUCCESS STATE (hidden initially) -->
+          <div id="form-success" style="display:none;text-align:center;padding:var(--space-8) 0;" aria-live="polite">
+            <div style="width:72px;height:72px;border-radius:9999px;background:var(--champagne);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-5);">
+              <svg width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true">
+                <path d="M2 12.5l9 9L30 2" stroke="#FDFCF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:600;margin-bottom:var(--space-3);color:var(--espresso);">
+              Application Received.
+            </h2>
+            <p class="body-base" style="max-width:380px;margin:0 auto var(--space-6);">
+              Thank you. A member of our Atelier team will contact you personally within 24 hours to arrange your consultation.
+            </p>
+            <a href="index.html" class="btn-gold btn-magnetic" data-cursor="Home">
+              <span class="btn-magnetic__text">Return to the Atelier</span>
+            </a>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <!-- ░░ ARCHITECTURAL FOOTER ░░ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-gold-line"></div>
+
+      <div class="footer-top">
+        <div>
+          <p class="footer-brand__name" style="margin-bottom:2px;">AURELIA</p>
+          <p class="footer-brand__tag" style="margin-bottom:0;">Smile Atelier · Beverly Hills</p>
+          <h2 class="footer-top__title">Haute couture restorative dentistry above Rodeo Drive.</h2>
+        </div>
+        <div class="footer-top__actions">
+          <a href="booking.html" class="btn-gold btn-magnetic" data-cursor="Book"><span class="btn-magnetic__text">Reserve Consultation</span></a>
+          <a href="tel:+13105550199" class="btn-ghost" style="color:var(--alabaster);border-color:rgba(197,160,89,0.4);" data-cursor="Call">(310) 555-0199</a>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div>
+          <p class="footer-col__title">Rodeo Drive Flagship</p>
+          <p style="font-size:14px;color:rgba(253,252,248,0.68);line-height:1.7;max-width:34ch;margin-bottom:14px;">
+            Hand-layered master porcelain, digital facial proportioning, and strictly private suite attendance.
+          </p>
+          <address class="footer-brand__address" style="font-style:normal;color:var(--alabaster);font-size:13.5px;line-height:1.6;">
+            1234 Rodeo Drive, Penthouse Suite<br/>
+            Beverly Hills, CA 90210
+          </address>
+        </div>
+
+        <div class="footer-cols-pair">
+          <div>
+            <p class="footer-col__title">Treatments</p>
+            <ul class="footer-links">
+              <li><a href="treatments.html" data-cursor="Open">Digital Smile Design</a></li>
+              <li><a href="treatments.html" data-cursor="Open">Holistic Whitening</a></li>
+              <li><a href="treatments.html" data-cursor="Open">Mastercrafted Veneers</a></li>
+              <li><a href="treatments.html" data-cursor="Open">Full-Mouth Reconstruction</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-col__title">Atelier</p>
+            <ul class="footer-links">
+              <li><a href="index.html" data-cursor="Open">Philosophy</a></li>
+              <li><a href="studio.html" data-cursor="Open">The Studio</a></li>
+              <li><a href="results.html" data-cursor="Open">Before &amp; After</a></li>
+              <li><a href="booking.html" data-cursor="Book">Private Booking</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-hours-card">
+          <p class="footer-col__title" style="margin-bottom:10px;">Suite Hours</p>
+          <div class="footer-hours-row"><span>Mon – Thu</span><strong>9:00 AM – 6:00 PM</strong></div>
+          <div class="footer-hours-row"><span>Friday</span><strong>9:00 AM – 4:00 PM</strong></div>
+          <div class="footer-hours-row"><span>Weekend</span><strong>Private Charter</strong></div>
+          <a href="tel:+13105550199" style="display:inline-block;margin-top:12px;font-size:13.5px;color:var(--champagne);text-decoration:none;font-weight:500;" data-cursor="Call">(310) 555-0199</a>
+        </div>
+      </div>
+
+      <div class="footer-legal-strip">
+        <a href="#" onclick="return false;" data-cursor="Info">Privacy Policy</a>
+        <a href="#" onclick="return false;" data-cursor="Info">Terms of Service</a>
+        <a href="#" onclick="return false;" data-cursor="Info">Accessibility</a>
+        <a href="#" onclick="return false;" data-cursor="Info">CA HIPAA Notice</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aurelia Smile Atelier. All rights reserved.</p>
+        <p>Fictional Studio Reference Architecture · 5-Page Showcase</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container" aria-live="assertive"></div>
+  <script src="engine.js?v=9"></script>
+  
+
+  <!-- FULLSCREEN LUXURY MOBILE MENU -->
+  <div class="menu" id="mobile-menu" data-open="false" aria-hidden="true" inert>
+    <div class="menu__top">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark__name">AURELIA</span>
+        <span class="nav-wordmark__sub">Smile Atelier</span>
+      </a>
+      <button type="button" class="menu-close-btn" id="mobile-close" aria-label="Close menu" data-cursor="">Close</button>
+    </div>
+    <nav class="menu__links" aria-label="Mobile navigation">
+      <a class="menu__link" href="index.html"><span>Atelier</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="menu__link" href="treatments.html"><span>Treatments</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="menu__link" href="results.html"><span>Results</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="menu__link" href="studio.html"><span>The Studio</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="menu__link is-active" href="booking.html"><span>Private Booking</span><span class="menu__arrow" aria-hidden="true">&#8594;</span></a>
+    </nav>
+    <div class="menu__foot">
+      <a href="tel:+13105550199" data-cursor="Call">(310) 555-0199</a>
+      <span class="menu__foot-note">1234 Rodeo Drive, Penthouse Suite · Beverly Hills</span>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -2347,83 +2347,104 @@
   var CLIENT_PHOTOS = [
   {
     "src": "images/clients/mercedes-a.jpg",
-    "alt": "Mercedes-Benz A-Class private client handover with red bow"
+    "alt": "Client taking delivery of a Mercedes-Benz A-Class sedan in bright sunshine"
   },
   {
     "src": "images/clients/bmw-5.jpg",
-    "alt": "BMW 5 Series bespoke concierge handover"
+    "alt": "Client receiving keys to a white BMW 5 Series executive sedan"
   },
   {
     "src": "images/clients/bmw-black.jpg",
-    "alt": "BMW M-Sport black edition client key presentation"
-  },
-  {
-    "src": "images/clients/tiguan-family.webp",
-    "alt": "Volkswagen Tiguan R-Line family delivery moment"
-  },
-  {
-    "src": "images/clients/tiguan-rline.jpg",
-    "alt": "Volkswagen Tiguan R-Line handover"
-  },
-  {
-    "src": "images/clients/tiguan-blue.jpg",
-    "alt": "Volkswagen Tiguan metallic blue arrival with red bow"
+    "alt": "Executive client accepting keys to a black BMW sports sedan"
   },
   {
     "src": "images/clients/tiguan-white.jpg",
-    "alt": "Volkswagen Tiguan white edition handover"
+    "alt": "White Volkswagen Tiguan presented with signature red delivery bow"
   },
   {
-    "src": "images/clients/toyota-rav4.webp",
-    "alt": "Toyota RAV4 Adventure private delivery"
+    "src": "images/clients/tiguan-blue.jpg",
+    "alt": "Metallic blue Volkswagen Tiguan prepared for turnkey client handover"
   },
   {
-    "src": "images/clients/mazda-cx5.jpg",
-    "alt": "Mazda CX-5 Signature delivery"
+    "src": "images/clients/tiguan-rline.jpg",
+    "alt": "Black Volkswagen Tiguan R-Line delivered with complete inspection dossier"
   },
   {
-    "src": "images/clients/mazda-cx5-oksana.jpg",
-    "alt": "Mazda CX-5 client handover"
+    "src": "images/clients/tiguan-family.webp",
+    "alt": "Family celebrating delivery of their white Volkswagen Tiguan SUV"
   },
   {
     "src": "images/clients/kia-carnival.jpg",
-    "alt": "Kia Carnival VIP Lounge edition delivery"
+    "alt": "Luxury Kia Carnival minivan prepared for nationwide family delivery"
   },
   {
     "src": "images/clients/kia-seltos-1.jpg",
-    "alt": "Kia Seltos AWD client key handover"
+    "alt": "Compact Kia Seltos SUV presented to its new owner on handover day"
   },
   {
     "src": "images/clients/kia-seltos-blonde.jpg",
-    "alt": "Kia Seltos Pearl White delivery"
+    "alt": "Client accepting keys to a white Kia Seltos with red delivery ribbon"
+  },
+  {
+    "src": "images/clients/mazda-cx5.jpg",
+    "alt": "Mazda CX-5 crossover handed over after 140-point inspection clearance"
+  },
+  {
+    "src": "images/clients/mazda-cx5-oksana.jpg",
+    "alt": "Client celebrating handover of a pearl-white Mazda CX-5 SUV"
+  },
+  {
+    "src": "images/clients/mazda-cx5-num.jpg",
+    "alt": "Dark metallic Mazda CX-5 delivered in front of modern glass showroom"
+  },
+  {
+    "src": "images/clients/toyota-rav4.webp",
+    "alt": "Toyota RAV4 AWD ready for enclosed carrier dispatch"
   },
   {
     "src": "images/clients/hyundai-avante.webp",
-    "alt": "Hyundai Elantra N-Line arrival with red ribbon"
+    "alt": "Hyundai Elantra sedan presented on delivery day"
+  },
+  {
+    "src": "images/clients/hyundai-sonata.jpg",
+    "alt": "Hyundai Sonata executive sedan handed over at dusk"
+  },
+  {
+    "src": "images/clients/skoda-superb.webp",
+    "alt": "Executive European fastback prepared in bright daylight"
+  },
+  {
+    "src": "images/clients/skoda-close.jpg",
+    "alt": "Detail shot of European fastback presentation bow and trim"
+  },
+  {
+    "src": "images/clients/skoda-white.jpg",
+    "alt": "Pearl white European sedan ready for client handover"
+  },
+  {
+    "src": "images/clients/tayron-1.webp",
+    "alt": "Volkswagen Tayron SUV presented with red delivery ribbon"
+  },
+  {
+    "src": "images/clients/coolray-2.jpg",
+    "alt": "Sport crossover close-up on handover day with signature ribbon"
+  },
+  {
+    "src": "images/clients/jetour-t2.jpg",
+    "alt": "Off-road luxury SUV delivered to client at golden hour"
+  },
+  {
+    "src": "images/clients/jetour-x70s.jpg",
+    "alt": "Family 7-seat crossover prepared for client pickup"
+  },
+  {
+    "src": "images/clients/jetta-vs5.jpg",
+    "alt": "Compact German-engineered SUV handed over on delivery day"
   }
 ];
   var PROCESS_LAST_PHOTO = { src: 'images/clients/mercedes-a.jpg', alt: 'Client receiving turnkey vehicle handover with complete US title documentation', style: 'object-position: 50% 80%;' };
   var VIDEOS = [];
-  var CLIPS = [
-  {
-    "file": "video/clip-mercedes.mp4",
-    "poster": "video/posters/clip-mercedes.jpg",
-    "dur": "0:04",
-    "title": "Mercedes-Benz A-Class · Enclosed Carrier Departure"
-  },
-  {
-    "file": "video/clip-tiguan.mp4",
-    "poster": "video/posters/clip-tiguan.jpg",
-    "dur": "0:09",
-    "title": "Volkswagen Tiguan R-Line · First Walkaround"
-  },
-  {
-    "file": "video/clip-tiguan-bow.mp4",
-    "poster": "video/posters/clip-tiguan-bow.jpg",
-    "dur": "0:17",
-    "title": "Ribbon Presentation & Nationwide Transport Prep"
-  }
-];
+  var CLIPS = [];
   var FAQ = [
   {
     "q": "How long does international sourcing and enclosed delivery take?",
@@ -2525,7 +2546,7 @@
     return car.mileage === 0 ? 'New · 0 mi' : num(car.mileage) + ' mi';
   }
   function managerLink(car) {
-    return 'index.html#request';
+    return '#';
   }
   function trapFocus(e, box) {
     if (e.key !== 'Tab' || !box) return;
@@ -2676,106 +2697,199 @@
     });
   }
   function setupCursor() {
-    var query = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1024px)');
-    var dot = null, ring = null, raf = null;
-    var mouseX = 0, mouseY = 0;
-    var dotX = 0, dotY = 0, ringX = 0, ringY = 0;
-    var scale = 1, targetScale = 1;
-    function onMove(e) {
-      if (!dot || !ring) return;
-      if (e.clientX >= document.documentElement.clientWidth - 2) {
-        onLeave();
+    var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!FINE || REDUCED) return;
+
+    var dot = document.getElementById('cur-dot');
+    var ring = document.getElementById('cur-ring');
+    var label = document.getElementById('cur-label');
+    if (!dot) {
+      ring = document.createElement('span');
+      ring.id = 'cur-ring';
+      ring.setAttribute('aria-hidden', 'true');
+      label = document.createElement('span');
+      label.id = 'cur-label';
+      ring.appendChild(label);
+      dot = document.createElement('span');
+      dot.id = 'cur-dot';
+      dot.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(ring);
+      document.body.appendChild(dot);
+    }
+
+    var root = document.documentElement;
+    var hide = document.createElement('style');
+    hide.textContent =
+      'html, html *{cursor:none!important} ' +
+      '[data-cursor-off], [data-cursor-off] *, .map-frame, .map-frame *, iframe{cursor:auto!important} ' +
+      'html.autoscroll-on #cur-dot, html.autoscroll-on #cur-ring{opacity:0!important;visibility:hidden!important}';
+    document.head.appendChild(hide);
+
+    var disc = document.createElement('div');
+    disc.className = 'autoscroll-disc';
+    disc.setAttribute('aria-hidden', 'true');
+    disc.innerHTML =
+      '<svg viewBox="0 0 24 24"><path class="autoscroll-disc__up" d="M8 7l4-4 4 4"/><circle class="autoscroll-disc__dot" cx="12" cy="12" r="2.2"/><path class="autoscroll-disc__dn" d="M8 17l4 4 4-4"/></svg>';
+    document.body.appendChild(disc);
+
+    var autoScrollActive = false;
+    var autoOriginX = 0, autoOriginY = 0, autoCurX = 0, autoCurY = 0, autoDownTime = 0, autoRaf = null;
+    var live = false, off = false, blocked = false;
+    var m = { x: -100, y: -100 }, d = { x: -100, y: -100 }, r = { x: -100, y: -100 }, raf = null;
+    var edgeX = root.clientWidth, edgeY = root.clientHeight;
+
+    function measure() { edgeX = root.clientWidth; edgeY = root.clientHeight; }
+    window.addEventListener('resize', measure, { passive: true });
+
+    function show(state) {
+      var want = (off || blocked || autoScrollActive) ? false : state;
+      if (want === live) return;
+      live = want;
+      root.classList.toggle('cursor-on', want);
+    }
+
+    function inGutter(x, y) {
+      return (window.innerWidth > edgeX && x >= edgeX - 3) || (window.innerHeight > edgeY && y >= edgeY - 3);
+    }
+
+    function tick() {
+      d.x += (m.x - d.x) * 0.85; d.y += (m.y - d.y) * 0.85;
+      r.x += (m.x - r.x) * 0.15; r.y += (m.y - r.y) * 0.15;
+      dot.style.transform = 'translate(' + d.x.toFixed(2) + 'px,' + d.y.toFixed(2) + 'px) translate(-50%,-50%)';
+      ring.style.transform = 'translate(' + r.x.toFixed(2) + 'px,' + r.y.toFixed(2) + 'px) translate(-50%,-50%)';
+      var settled = Math.abs(m.x - r.x) < 0.1 && Math.abs(m.y - r.y) < 0.1;
+      raf = settled ? null : requestAnimationFrame(tick);
+    }
+
+    function stopAutoScroll(e) {
+      if (!autoScrollActive) return;
+      autoScrollActive = false;
+      root.classList.remove('autoscroll-on');
+      root.style.scrollBehavior = '';
+      disc.classList.remove('is-active', 'is-up', 'is-dn');
+      if (autoRaf) { cancelAnimationFrame(autoRaf); autoRaf = null; }
+      var fx = (e && typeof e.clientX === 'number') ? e.clientX : autoCurX;
+      var fy = (e && typeof e.clientY === 'number') ? e.clientY : autoCurY;
+      m.x = d.x = r.x = fx; m.y = d.y = r.y = fy;
+      show(true);
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+
+    function tickAutoScroll() {
+      if (!autoScrollActive) return;
+      var dy = autoCurY - autoOriginY;
+      var absDy = Math.abs(dy);
+      if (absDy > 8) {
+        var sign = dy > 0 ? 1 : -1;
+        var speed = Math.min(46, Math.pow((absDy - 8) / 8.5, 1.35));
+        window.scrollBy({ top: sign * speed, left: 0, behavior: 'instant' });
+        disc.classList.toggle('is-dn', sign > 0);
+        disc.classList.toggle('is-up', sign < 0);
+      } else {
+        disc.classList.remove('is-up', 'is-dn');
+      }
+      autoRaf = requestAnimationFrame(tickAutoScroll);
+    }
+
+    window.addEventListener('mousedown', function (e) {
+      if (e.button === 1) {
+        e.preventDefault();
+        if (autoScrollActive) { stopAutoScroll(e); }
+        else {
+          autoScrollActive = true;
+          autoOriginX = autoCurX = m.x = d.x = r.x = e.clientX;
+          autoOriginY = autoCurY = m.y = d.y = r.y = e.clientY;
+          autoDownTime = performance.now();
+          root.classList.add('autoscroll-on');
+          root.style.scrollBehavior = 'auto';
+          show(false);
+          disc.style.transform = 'translate(' + autoCurX.toFixed(1) + 'px,' + autoCurY.toFixed(1) + 'px) translate(-50%,-50%) scale(1)';
+          disc.classList.add('is-active');
+          if (!autoRaf) autoRaf = requestAnimationFrame(tickAutoScroll);
+        }
+      } else if (autoScrollActive) {
+        e.preventDefault();
+        stopAutoScroll(e);
+      }
+    }, { passive: false });
+
+    window.addEventListener('mouseup', function (e) {
+      if (e.button === 1 && autoScrollActive && (performance.now() - autoDownTime) > 240 && Math.hypot(e.clientX - autoOriginX, e.clientY - autoOriginY) > 18) {
+        stopAutoScroll(e);
+      }
+    }, { passive: true });
+    window.addEventListener('auxclick', function (e) { if (e.button === 1) e.preventDefault(); }, { passive: false });
+    window.addEventListener('wheel', function () { if (autoScrollActive) stopAutoScroll(); }, { passive: true });
+
+    window.addEventListener('mousemove', function (e) {
+      if (autoScrollActive) {
+        autoCurX = m.x = d.x = r.x = e.clientX;
+        autoCurY = m.y = d.y = r.y = e.clientY;
+        disc.style.transform = 'translate(' + autoCurX.toFixed(1) + 'px,' + autoCurY.toFixed(1) + 'px) translate(-50%,-50%) scale(1)';
         return;
       }
-      if (e.target) {
-        var modal = e.target.closest('.modal__dialog');
-        if (modal) {
-          var rect = modal.getBoundingClientRect();
-          var scrollbarWidth = modal.offsetWidth - modal.clientWidth;
-          if (scrollbarWidth > 0 && e.clientX >= rect.right - scrollbarWidth - 2) {
-            onLeave();
-            return;
-          }
-        }
+      if (e.target && e.target.closest && e.target.closest('[data-cursor-off], .map-frame, iframe')) {
+        blocked = true; show(false); return;
       }
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      dot.classList.add('is-on');
-      ring.classList.add('is-on');
+      blocked = false;
+      if (off) return;
+      if (inGutter(e.clientX, e.clientY)) { show(false); return; }
+      m.x = e.clientX; m.y = e.clientY;
+      show(true);
+      if (!raf) raf = requestAnimationFrame(tick);
+    }, { passive: true });
+
+    var CLICKY = 'a, button, [role="option"], [role="button"], .sel__btn, .sel__opt, .select-row, .country-row, .gallery__item, .car-card, .filter, .faq__q, [data-cursor]';
+    var TEXTY = 'input:not([type="hidden"]):not([type="checkbox"]), textarea';
+
+    function resolveLabel(el) {
+      if (!el) return '';
+      if (el.hasAttribute('data-cursor')) return el.getAttribute('data-cursor');
+      if (el.matches('.modal__close, .lightbox__close')) return 'Close';
+      if (el.matches('.modal__nav--prev, .lightbox__nav--prev, .carousel__arrow--prev')) return 'Prev';
+      if (el.matches('.modal__nav--next, .lightbox__nav--next, .carousel__arrow--next')) return 'Next';
+      if (el.matches('.burger')) return 'Menu';
+      if (el.matches('.sel__btn, .sel__opt, .select-row, .country-row, .phone-code')) return 'Pick';
+      if (el.matches('.filter')) return 'Filter';
+      if (el.matches('.gallery__item')) return 'Zoom';
+      if (el.matches('.faq__q')) return 'Read';
+      if (el.matches('.car-card')) return 'Spec';
+      if (el.matches('a[href^="tel:"]')) return 'Call';
+      if (el.matches('a[href^="mailto:"]')) return 'Mail';
+      if (el.matches('button[type="submit"]')) return 'Send';
+      if (el.matches('.logo')) return 'Home';
+      return 'Open';
     }
-    function onOver(e) {
-      if (!ring) return;
-      if (!e.target || !e.target.closest) return;
-      var interactive = !!e.target.closest('a, button, .cvp-container, [data-video], [data-gallery]');
-      targetScale = interactive ? 1.55 : 1;
-      ring.classList.toggle('is-hover', interactive);
+
+    function setState(el) {
+      var texty = el && el.closest ? el.closest(TEXTY) : null;
+      var clicky = !texty && el && el.closest ? el.closest(CLICKY) : null;
+      dot.classList.toggle('is-text', !!texty);
+      ring.classList.toggle('is-text', !!texty);
+      dot.classList.toggle('is-over', !!clicky);
+      ring.classList.toggle('is-over', !!clicky);
+      ring.classList.toggle('is-active', !!clicky);
+      var txt = clicky ? resolveLabel(clicky) : '';
+      ring.classList.toggle('has-label', Boolean(txt));
+      if (label) label.textContent = txt;
     }
-    function onLeave() {
-      if (!dot || !ring) return;
-      dot.classList.remove('is-on');
-      ring.classList.remove('is-on', 'is-hover', 'is-active');
-      targetScale = 1;
-    }
-    function tick() {
-      dotX += (mouseX - dotX) * 0.35;
-      dotY += (mouseY - dotY) * 0.35;
-      ringX += (mouseX - ringX) * 0.14;
-      ringY += (mouseY - ringY) * 0.14;
-      scale += (targetScale - scale) * 0.18;
-      dot.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)';
-      ring.style.transform = 'translate3d(' + ringX + 'px,' + ringY + 'px,0) scale(' + scale + ')';
-      raf = requestAnimationFrame(tick);
-    }
-    function enable() {
-      if (dot) return;
-      dot = document.createElement('div');
-      dot.className = 'cursor-dot';
-      ring = document.createElement('div');
-      ring.className = 'cursor-ring';
-      dot.setAttribute('aria-hidden', 'true');
-      ring.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(dot);
-      document.body.appendChild(ring);
-      document.documentElement.classList.add('custom-cursor-active');
-      document.addEventListener('mousemove', onMove);
-      document.addEventListener('mouseover', onOver);
-      document.addEventListener('mouseleave', onLeave);
-      document.addEventListener('pointerleave', onLeave);
-      window.addEventListener('blur', onLeave);
-      bindFrames();
-      raf = requestAnimationFrame(tick);
-    }
-    function setActive(on) {
-      document.documentElement.classList.toggle('custom-cursor-active', on);
-      if (dot) dot.classList.toggle('is-off', !on);
-      if (ring) ring.classList.toggle('is-off', !on);
-    }
-    function bindFrames() {
-      document.querySelectorAll('.map-frame, iframe').forEach(function (frame) {
-        if (frame._cursorBound) return;
-        frame._cursorBound = true;
-        frame.addEventListener('mouseenter', function () { setActive(false); });
-        frame.addEventListener('mouseleave', function () { setActive(true); });
-      });
-    }
-    function disable() {
-      if (!dot) return;
-      cancelAnimationFrame(raf);
-      document.documentElement.classList.remove('custom-cursor-active');
-      document.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseover', onOver);
-      document.removeEventListener('mouseleave', onLeave);
-      document.removeEventListener('pointerleave', onLeave);
-      window.removeEventListener('blur', onLeave);
-      dot.remove();
-      ring.remove();
-      dot = ring = null;
-    }
-    if (reduceMotion) return;
-    if (query.matches) enable();
-    onMediaChange(query, function (e) {
-      if (e.matches) enable(); else disable();
+
+    function resetCursor() { setState(null); show(false); }
+
+    document.addEventListener('mouseover', function (e) {
+      if (e.target && e.target.closest && e.target.closest('[data-cursor-off], .map-frame, iframe')) {
+        blocked = true; show(false); return;
+      }
+      blocked = false;
+      setState(e.target);
+      show(true);
     });
+    document.addEventListener('mouseout', function (e) { if (!e.relatedTarget) resetCursor(); });
+    document.addEventListener('mouseleave', resetCursor);
+    document.addEventListener('pointerleave', resetCursor);
+    window.addEventListener('blur', resetCursor);
+    window.addEventListener('touchstart', function () { off = true; show(false); hide.remove(); }, { once: true, passive: true });
   }
   function createLightbox() {
     var box = null, boxImg = null, caption = null, zoomHint = null;
@@ -3044,7 +3158,7 @@
         '<dl class="modal__specs"></dl>' +
         '<div class="modal__features"></div>' +
         '<p class="modal__price"></p>' +
-        '<a class="btn btn--gold btn--full modal__cta" href="#" target="_blank" rel="noopener noreferrer">Inquire With Concierge</a>' +
+        '<a class="btn btn--gold btn--full modal__cta" href="#" target="_blank" rel="noopener noreferrer" data-demo-noop="true" data-cursor="Inquire">Inquire With Concierge</a>' +
         '<p class="modal__hint">Click any photo to inspect full-screen</p>' +
         '</div>' +
         '</div>';
@@ -4177,6 +4291,7 @@
   function init() {
     safe('module', setupMenu);
     safe('module', setupCursor);
+    safe('module', setupLuxurySelects);
     safe('module', setupTouchEffects);
     safe('module', setupHeroPhoto);
     safe('module', setupTimeline);
@@ -4299,4 +4414,60 @@
   } else {
     init();
   }
+
+  document.addEventListener('click', function (e) {
+    var noop = e.target.closest('a[data-demo-noop="true"], a[href="#"]');
+    if (noop) e.preventDefault();
+  });
+
+  function setupLuxurySelects() {
+    var widgets = Array.prototype.slice.call(document.querySelectorAll('[data-select]'));
+    if (!widgets.length) return;
+    function closeAll(except) {
+      widgets.forEach(function (w) {
+        if (w === except) return;
+        w.dataset.open = 'false';
+        var b = w.querySelector('.sel__btn');
+        var l = w.querySelector('.sel__list');
+        if (b) b.setAttribute('aria-expanded', 'false');
+        if (l) l.hidden = true;
+      });
+    }
+    widgets.forEach(function (w) {
+      var btn = w.querySelector('.sel__btn');
+      var valEl = w.querySelector('.sel__value');
+      var list = w.querySelector('.sel__list');
+      var inp = w.querySelector('input[type="hidden"]');
+      var opts = Array.prototype.slice.call(w.querySelectorAll('.sel__opt'));
+      if (!btn || !list || !opts.length) return;
+      function setOpen(state) {
+        if (state) closeAll(w);
+        w.dataset.open = String(state);
+        btn.setAttribute('aria-expanded', String(state));
+        list.hidden = !state;
+      }
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(w.dataset.open !== 'true');
+      });
+      opts.forEach(function (opt) {
+        opt.addEventListener('click', function (e) {
+          e.stopPropagation();
+          opts.forEach(function (o) { o.setAttribute('aria-selected', String(o === opt)); });
+          if (valEl) valEl.textContent = opt.textContent.trim();
+          if (inp) inp.value = opt.getAttribute('data-value') || opt.textContent.trim();
+          setOpen(false);
+          btn.focus();
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('[data-select]')) closeAll(null);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll(null);
+    });
+  }
+  setupLuxurySelects();
+
 })();
