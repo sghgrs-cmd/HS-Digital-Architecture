@@ -402,6 +402,42 @@
       color: var(--accent);
     }
 
+    .header__topbar {
+      background: var(--espresso);
+      color: rgba(247, 244, 238, 0.88);
+      font-size: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header__topbar-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 6px var(--pad-x);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px 16px;
+    }
+
+    .header__topbar-phone {
+      color: #FFFFFF;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: rgba(232, 207, 160, 0.48);
+      text-underline-offset: 3px;
+    }
+
+    .header__topbar-phone:hover {
+      color: #E8CFA0;
+      text-decoration-color: #E8CFA0;
+    }
+
+    .header__topbar-sub {
+      color: rgba(247, 244, 238, 0.70);
+      font-size: 11.5px;
+    }
+
     .header__cta {
       display: inline-flex;
       align-items: center;
@@ -463,8 +499,8 @@
       transform: translateY(-3.5px) rotate(-45deg);
     }
 
-    @media (max-width: 1060px) {
-      .nav, .header__cta {
+    @media (max-width: 1140px) {
+      .nav, .header__actions, .header__cta {
         display: none;
       }
       .burger {
@@ -1236,6 +1272,81 @@
       line-height: 1.65;
     }
 
+    /* Compact Compatibility & HIPAA Architecture Cards */
+    .compat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 860px) {
+      .compat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .compat-card {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 24px 26px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .compat-card h3 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.24;
+    }
+
+    .compat-card p {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    .phone-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      padding-top: 16px;
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .phone-number-link {
+      font-family: var(--font-display);
+      font-size: clamp(19px, 2.2vw, 24px);
+      color: #FFFFFF;
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.28);
+      text-underline-offset: 5px;
+    }
+
+    .phone-sub {
+      font-size: 12.5px;
+      color: rgba(246, 242, 236, 0.72);
+    }
+
+    .footer-phone {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: rgba(22, 19, 17, 0.28);
+      text-underline-offset: 3px;
+    }
+
+    .footer-phone:hover {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+
     /* From Approval to Launch (Editorial Timeline) + What We Need From You */
     .timeline-rail {
       position: relative;
@@ -1920,6 +2031,16 @@
   <span id="cur-dot" aria-hidden="true"></span>
 
   <header class="header" id="header">
+    <div class="header__topbar">
+      <div class="header__topbar-inner">
+        <div>
+          US Client Line: <a href="tel:+16265229192" class="header__topbar-phone" data-cursor="Call">+1 (626) 522-9192</a>
+        </div>
+        <div class="header__topbar-sub">
+          US Coordinator Line &middot; Mon-Fri Business Hours
+        </div>
+      </div>
+    </div>
     <div class="header__inner">
       <a href="#top" class="brand" aria-label="HS Frontend Home">
         <span class="brand__name">HS Frontend<span class="brand-dot">.</span></span>
@@ -1976,6 +2097,9 @@
       </div>
       <div>
         <a href="mailto:hayk@hs-frontend.online">hayk@hs-frontend.online</a> &middot; Reply by next morning US time
+      </div>
+      <div>
+        US Client Line: <a href="tel:+16265229192">+1 (626) 522-9192</a> &middot; US Coordinator Line &middot; Mon-Fri Business Hours
       </div>
     </div>
   </aside>
@@ -2409,6 +2533,24 @@
             </div>
           </article>
         </div>
+
+        <div class="compat-grid">
+          <article class="compat-card">
+            <span class="standard-tag">Agency-Friendly Architecture</span>
+            <h3>Works Alongside Your Current SEO &amp; Ads Agency</h3>
+            <p>
+              We do not sell ads, SEO retainers, or ask you to replace your marketing team. We rebuild the slow mobile frontend, preserve 100% of existing Google URLs with permanent 301 redirects, and keep GA4, Google Ads tags, and call tracking intact.
+            </p>
+          </article>
+
+          <article class="compat-card">
+            <span class="standard-tag">Privacy &amp; Full Ownership</span>
+            <h3>Zero-PHI HIPAA-Safe Architecture</h3>
+            <p>
+              We never store patient health records (ePHI) on studio servers. We natively embed your practice&rsquo;s existing HIPAA-compliant booking tools (Demandforce, NexHealth, LocalMed, Weave, or Open Dental), and every practice retains 100% ownership of its domain, hosting, and source code with $0 mandatory retainers.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -2662,6 +2804,15 @@
             <div id="copy-status" role="status" aria-live="polite" style="font-size:12.5px;color:rgba(246,242,236,0.72);min-height:18px;">
               Guaranteed reply by the next morning US time (including weekends).
             </div>
+            <div class="phone-divider">
+              <div class="email-meta">US Client Line</div>
+              <a href="tel:+16265229192" class="phone-number-link" data-cursor="Call">
+                +1 (626) 522-9192
+              </a>
+              <div class="phone-sub">
+                US Coordinator Line &middot; Mon-Fri Business Hours
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2672,6 +2823,9 @@
     <div class="container footer-inner">
       <div>
         <strong style="color:var(--ink);">HS Frontend</strong> &middot; Led by Hayk Shirinyan &middot; Yerevan, Armenia
+      </div>
+      <div>
+        US Client Line: <a href="tel:+16265229192" class="footer-phone">+1 (626) 522-9192</a> &middot; US Coordinator Line &middot; Mon-Fri Business Hours
       </div>
       <div>
         Custom Web Architecture for US Private Dental &amp; Oral Surgery Practices &middot; &copy; <span id="year-val">2026</span>
